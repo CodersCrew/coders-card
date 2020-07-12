@@ -22,24 +22,32 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-feather": "^2.0.8",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^5.3.19",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.19",
     "@types/react": "^16.9.42",
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.0.0",
+    "fork-ts-checker-webpack-plugin": "^5.0.7",
     "prettier": "2.0.5",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-loader": "^3.5.4",
     "tslint-plugin-prettier": "^2.3.0",
     "tslint-react": "^5.0.0",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.6",
+    "ts-loader": "^8.0.0"
   },
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -48,6 +56,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project ."
   },
