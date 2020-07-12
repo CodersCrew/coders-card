@@ -15,6 +15,7 @@
     "gatsby-plugin-react-helmet": "^3.3.6",
     "gatsby-plugin-sharp": "^2.6.14",
     "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-plugin-typescript": "^2.4.14",
     "gatsby-source-filesystem": "^2.3.14",
     "gatsby-transformer-sharp": "^2.5.7",
     "netlify-cms-app": "^2.12.16",
@@ -24,7 +25,16 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "@types/react": "^16.9.42",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-helmet": "^6.0.0",
+    "prettier": "2.0.5",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-plugin-prettier": "^2.3.0",
+    "tslint-react": "^5.0.0",
+    "typescript": "^3.9.6"
   },
   "keywords": [
     "gatsby"
@@ -37,7 +47,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project ."
   },
   "repository": {
     "type": "git",
