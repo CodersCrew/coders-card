@@ -1,22 +1,14 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { PageProps, useStaticQuery, graphql } from "gatsby";
+import React, { ReactNode } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Header from "./header";
 import "./layout.css";
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
+type LayoutProps = {
+  children: ReactNode;
+};
 
-const Layout: React.FC<PageProps<LayoutProps>> = ({ children }) => {
+const Layout = ({ children }: LayoutProps) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,7 +20,7 @@ const Layout: React.FC<PageProps<LayoutProps>> = ({ children }) => {
   `);
 
   return (
-    <Fragment>
+    <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -44,7 +36,7 @@ const Layout: React.FC<PageProps<LayoutProps>> = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </Fragment>
+    </>
   );
 };
 
