@@ -4,5 +4,5 @@ import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@material-ui
 export type ButtonProps = MuiButtonProps;
 
 export const Button = (props: ButtonProps) => {
-  return <MuiButton {...props} />;
+  return <MuiButton variant="primary" {...props} />;
 }
