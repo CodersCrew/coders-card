@@ -1,0 +1,20 @@
+{
+  "plugins": [
+    {
+      "name": "@zeplin/cli-connect-storybook-plugin",
+      "config": {
+          "url": "https://coderscard-storybook.netlify.app"
+      }
+    }
+  ],
+  "projects": [
+        "5f078d44dc9b6d6bb8c46134"
+    ],
+    "styleguides": [],
+    "components": [
+      {
+        "path": "src/components/Button/Button.tsx",
+        "zeplinNames": ["button"]
+      }
+    ]
+}
