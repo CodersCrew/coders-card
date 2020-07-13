@@ -65,7 +65,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "type-check": "tsc --noEmit",
-    "chromatic": "npx chromatic"
+    "chromatic": "npx chromatic",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix"
   },
