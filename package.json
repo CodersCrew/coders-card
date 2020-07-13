@@ -59,7 +59,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "type-check": "tsc --noEmit",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "chromatic": "npx chromatic"
   },
   "repository": {
     "type": "git",
