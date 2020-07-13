@@ -38,6 +38,7 @@ test/**/public
 .gatsby-context.js
 .DS_Store
 public/
+storybook-static/
 node_modules/
 e2e-tests/gatsby-pnp/
 .cache/
@@ -57,3 +58,6 @@ yarn.lock
 package-lock.json
 # ignore any lock file other than main lock file
 !/yarn.lock
+
+# environment
+.env
