@@ -1,20 +1,24 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { Button, ButtonProps } from '.';
-//import { IconButton } from '@material-ui/core';
+import { IconButton, IconButtonProps } from '.';
+import { Close } from '@material-ui/icons';
 
 export default {
   title: 'IconButton',
-  component: Button,
+  component: IconButton,
   excludeStories: /.*Data$/,
 };
 
-const basePropsData: Partial<ButtonProps> = {
+const basePropsData: Partial<IconButtonProps> = {
   color: 'primary',
-  variant: 'contained',
+  //variant: 'contained',
   onClick: action('onClick'),
 };
 
-export const IconButton = () => {
-  return <IconButton {...basePropsData}></IconButton>;
+export const ButtonWithIcon = () => {
+  return (
+    <IconButton {...basePropsData}>
+      <Close />
+    </IconButton>
+  );
 };
