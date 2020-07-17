@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { IconButton, IconButtonProps } from '.';
-import { Close } from '@material-ui/icons';
+import { Close, NavigateNext, NavigateBefore } from '@material-ui/icons';
 
 export default {
   title: 'IconButton',
@@ -25,6 +25,38 @@ export const SmallCloseButton = () => {
   return (
     <IconButton {...basePropsData} size={'small'}>
       <Close />
+    </IconButton>
+  );
+};
+
+export const MediumNextButton = () => {
+  return (
+    <IconButton {...basePropsData}>
+      <NavigateNext />
+    </IconButton>
+  );
+};
+
+export const SmallNextButton = () => {
+  return (
+    <IconButton {...basePropsData} size={'small'}>
+      <NavigateNext />
+    </IconButton>
+  );
+};
+
+export const MediumBackButton = () => {
+  return (
+    <IconButton {...basePropsData}>
+      <NavigateBefore />
+    </IconButton>
+  );
+};
+
+export const SmallBackButton = () => {
+  return (
+    <IconButton {...basePropsData} size={'small'}>
+      <NavigateBefore />
     </IconButton>
   );
 };
