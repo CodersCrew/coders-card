@@ -10,14 +10,20 @@ export default {
 };
 
 const basePropsData: Partial<IconButtonProps> = {
-  color: 'primary',
-  //variant: 'contained',
   onClick: action('onClick'),
 };
 
-export const ButtonWithIcon = () => {
+export const MediumCloseButton = () => {
   return (
     <IconButton {...basePropsData}>
+      <Close />
+    </IconButton>
+  );
+};
+
+export const SmallCloseButton = () => {
+  return (
+    <IconButton {...basePropsData} size={'small'}>
       <Close />
     </IconButton>
   );
