@@ -1,6 +1,5 @@
 import React from 'react';
-import { TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, makeStyles, Theme } from '@material-ui/core';
-
+import { TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, makeStyles } from '@material-ui/core';
 export type TextFieldProps = MuiTextFieldProps;
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TextField = ({ ...props }: TextFieldProps) => {
+export const TextField = (props: TextFieldProps): JSX.Element => {
   const classes = useStyles();
   return <MuiTextField className={classes.TextField} {...props} />;
 };

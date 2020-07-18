@@ -6,16 +6,13 @@ export default {
   component: 'TextField',
   excludeStories: /.*Data$/,
 };
-
 const basePropsData: Partial<TextFieldProps> = {
   label: 'Label',
   variant: 'filled',
 };
-
-export const BaseInput = () => {
+export const BaseInput = (): JSX.Element => {
   return <TextField InputProps={{ disableUnderline: true }} {...basePropsData} />;
 };
-
-export const AreaInput = () => {
+export const AreaInput = (): JSX.Element => {
   return <TextField InputProps={{ disableUnderline: true, multiline: true }} {...basePropsData} />;
 };
