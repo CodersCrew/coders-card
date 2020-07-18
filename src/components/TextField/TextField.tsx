@@ -1,10 +1,7 @@
 import React from 'react';
 import { TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, makeStyles, Theme } from '@material-ui/core';
 
-export type TextFieldProps = MuiTextFieldProps & {
-  width?: string;
-  height?: string;
-};
+export type TextFieldProps = MuiTextFieldProps;
 
 const useStyles = makeStyles((theme) => ({
   TextField: {
@@ -13,27 +10,21 @@ const useStyles = makeStyles((theme) => ({
     },
     '& .MuiFormLabel-root': {
       fontSize: '16px',
-      color: theme.palette.text.secondary,
+      color: theme.palette.text.primary,
     },
     '& .label.Mui-focused': {
       fontSize: '12px',
-      color: theme.palette.text.primary,
-    },
-    '& .MuiInputBase-input': {
-      borderRadius: '8px',
-      backgroundColor: theme.palette.background.field,
+      color: theme.palette.text.secondary,
     },
     '& .MuiFilledInput-root': {
       borderRadius: '8px',
       color: theme.palette.text.primary,
-      width: (props: TextFieldProps) => props.width,
-      height: (props: TextFieldProps) => props.height,
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.background.field,
     },
   },
 }));
 
-export const TextField = ({ width, height, ...props }: TextFieldProps) => {
-  const classes = useStyles({ width, height });
+export const TextField = ({ ...props }: TextFieldProps) => {
+  const classes = useStyles();
   return <MuiTextField className={classes.TextField} {...props} />;
 };

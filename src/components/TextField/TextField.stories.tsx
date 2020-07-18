@@ -12,6 +12,10 @@ const basePropsData: Partial<TextFieldProps> = {
   variant: 'filled',
 };
 
-export const FullField = () => {
-  return <TextField InputProps={{ disableUnderline: true }} width={'400px'} height={'56px'} {...basePropsData} />;
+export const BaseInput = () => {
+  return <TextField InputProps={{ disableUnderline: true }} {...basePropsData} />;
+};
+
+export const AreaInput = () => {
+  return <TextField InputProps={{ disableUnderline: true, multiline: true }} {...basePropsData} />;
 };
