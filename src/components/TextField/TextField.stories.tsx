@@ -8,8 +8,10 @@ export default {
 };
 
 const basePropsData: Partial<TextFieldProps> = {
-  variant: 'filled',
   label: 'Label',
+  width: '400px',
+  height: '56px',
+  variant: 'filled',
 };
 
 export const FullField = () => {
