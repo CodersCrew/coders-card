@@ -9,11 +9,9 @@ export default {
 
 const basePropsData: Partial<TextFieldProps> = {
   label: 'Label',
-  width: '400px',
-  height: '56px',
   variant: 'filled',
 };
 
 export const FullField = () => {
-  return <TextField InputProps={{ disableUnderline: true }} {...basePropsData} />;
+  return <TextField InputProps={{ disableUnderline: true }} width={'400px'} height={'56px'} {...basePropsData} />;
 };
