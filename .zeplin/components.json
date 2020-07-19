@@ -17,7 +17,13 @@
       "zeplinNames": [
         "button"
       ]
-    }
+    },
+    {
+      "path": "src/components/Skill/Skill.tsx",
+      "zeplinNames": [
+        "skill"
+      ]
+    }	    
   ],
   "github": {
     "repository": "CodersCrew/CodersCard",

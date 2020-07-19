@@ -12,6 +12,7 @@ export interface SkillProps extends MuiBoxProps {
 
 const useStyles = makeStyles(theme => {
     const { palette } = theme;
+
     return {
         root: {
             width: "176px",
