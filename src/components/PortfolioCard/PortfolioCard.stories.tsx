@@ -1,6 +1,6 @@
 import React from 'react';
 import { PortfolioCard } from '.';
-import astronaut from '../../images/gatsby-astronaut.png';
+import image from '../../images/download.jpeg';
 
 export default {
   title: 'PortfolioCard',
@@ -13,14 +13,22 @@ export const Desktop = () => {
 };
 
 export const Tablet = () => {
-  return <PortfolioCard type="tablet" />;
+  return (
+    <PortfolioCard
+      type="tablet"
+      image={image}
+      title="My Awesome Project"
+      description="In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque."
+      label="Label"
+    />
+  );
 };
 
 export const Mobile = () => {
   return (
     <PortfolioCard
       type="mobile"
-      image={astronaut}
+      image={image}
       title="My Awesome Project"
       description="In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque."
       label="Label"

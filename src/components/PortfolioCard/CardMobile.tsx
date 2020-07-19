@@ -12,33 +12,32 @@ import { CardProps } from './cardProps';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
     width: 272,
     height: 331,
     borderRadius: 8,
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
   },
   action: {
+    display: 'flex',
+    flexDirection: 'column',
     height: '100%',
   },
   media: {
     height: 152,
+    width: '100%',
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
   },
   title: {
     color: theme.palette.text.primary,
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(1),
   },
   description: {
     color: theme.palette.text.secondary,
   },
   label: {
-    margin: theme.spacing(0.5),
+    margin: theme.spacing(1),
     padding: theme.spacing(0.5, 2),
     color: theme.palette.text.secondary,
     backgroundColor: theme.palette.background.paper,
@@ -55,10 +54,12 @@ const CardMobile: FC<Props> = ({ title, label, description, image }) => {
     <Card className={classes.card}>
       <CardActionArea className={classes.action}>
         <CardMedia className={classes.media} image={image} title={title}>
-          <Box className={classes.label}>{label}</Box>
+          <Typography className={classes.label} variant="subtitle2">
+            {label}
+          </Typography>
         </CardMedia>
         <CardContent>
-          <Typography className={title} variant="h4">
+          <Typography className={classes.title} variant="h4">
             {title}
           </Typography>
           <Typography className={classes.description} variant="body2">

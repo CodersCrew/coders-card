@@ -15,7 +15,7 @@ interface PortfolioCardProps extends CardProps {
 
 export const PortfolioCard: FC<PortfolioCardProps> = ({ type, description, label, image, title }) => {
   const cardProps: CardProps = { description, label, image, title };
-  console.log(cardProps);
+
   if (type === 'desktop') return <CardDesktop {...cardProps} />;
   else if (type === 'tablet') return <CardTablet {...cardProps} />;
   else return <CardMobile {...cardProps} />;
