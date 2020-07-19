@@ -17,6 +17,12 @@
       "zeplinNames": [
         "button"
       ]
+    },
+    {
+      "path": "src/components/SectionTitle/SectionTitle.tsx",
+      "zeplinNames": [
+        "section-title"
+      ]
     }
   ],
   "github": {
