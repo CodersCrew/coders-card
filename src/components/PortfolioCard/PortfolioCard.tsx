@@ -1,24 +1,22 @@
-import React, { Suspense, FC, lazy } from 'react';
-const CardDesktop = lazy(() => import('./CardDesktop'));
-const CardMobile = lazy(() => import('./CardMobile'));
-const CardTablet = lazy(() => import('./CardTablet'));
+import React from 'react';
+import { FC } from '../../typings/components';
 
-export enum CardType {
-  MOBILE = 'mobile',
-  TABLET = 'tablet',
-  DESKTOP = 'desktop',
+import CardMobile from './CardMobile';
+import CardTablet from './CardTablet';
+import CardDesktop from './CardDesktop';
+
+import { CardProps } from './cardProps';
+
+type CardType = 'mobile' | 'tablet' | 'desktop';
+
+interface PortfolioCardProps extends CardProps {
+  type: CardType;
 }
 
-type Props = {
-  type: CardType;
-};
-
-const renderCard = (type: CardType) => {
-  if (type === CardType.DESKTOP) return <CardDesktop />;
-  if (type === CardType.TABLET) return <CardTablet />;
-  if (type === CardType.MOBILE) return <CardMobile />;
-};
-
-export const PortfolioCard: FC<Props> = ({ type }: Props) => {
-  return <Suspense fallback={<div>Loading card</div>}>{renderCard(type)}</Suspense>;
+export const PortfolioCard: FC<PortfolioCardProps> = ({ type, description, label, image, title }) => {
+  const cardProps: CardProps = { description, label, image, title };
+  console.log(cardProps);
+  if (type === 'desktop') return <CardDesktop {...cardProps} />;
+  else if (type === 'tablet') return <CardTablet {...cardProps} />;
+  else return <CardMobile {...cardProps} />;
 };
