@@ -4,7 +4,7 @@ import { IconButton as MuiIconButton, IconButtonProps as MuiIconButtonProps, mak
 export type IconButtonProps = MuiIconButtonProps;
 
 const useStyles = makeStyles((theme) => ({
-  MuiIconButton: {
+  muiIconButton: {
     color: theme.palette.background.paper,
     border: 'solid 2px',
     borderRadius: '8px',
@@ -13,5 +13,5 @@ const useStyles = makeStyles((theme) => ({
 
 export const IconButton = (props: IconButtonProps) => {
   const classes = useStyles();
-  return <MuiIconButton className={classes.MuiIconButton} {...props} />;
+  return <MuiIconButton className={classes.muiIconButton} {...props} />;
 };

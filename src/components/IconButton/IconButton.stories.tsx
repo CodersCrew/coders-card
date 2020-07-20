@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { IconButton, IconButtonProps } from '.';
-import { Close, NavigateNext, NavigateBefore } from '@material-ui/icons';
+import { X, ChevronLeft, ChevronRight } from 'react-feather';
 
 export default {
   title: 'IconButton',
@@ -16,7 +16,7 @@ const basePropsData: Partial<IconButtonProps> = {
 export const MediumCloseButton = () => {
   return (
     <IconButton {...basePropsData}>
-      <Close />
+      <X size={20} />
     </IconButton>
   );
 };
@@ -24,7 +24,7 @@ export const MediumCloseButton = () => {
 export const SmallCloseButton = () => {
   return (
     <IconButton {...basePropsData} size={'small'}>
-      <Close />
+      <X size={15} />
     </IconButton>
   );
 };
@@ -32,7 +32,7 @@ export const SmallCloseButton = () => {
 export const MediumNextButton = () => {
   return (
     <IconButton {...basePropsData}>
-      <NavigateNext />
+      <ChevronRight size={20} />
     </IconButton>
   );
 };
@@ -40,7 +40,7 @@ export const MediumNextButton = () => {
 export const SmallNextButton = () => {
   return (
     <IconButton {...basePropsData} size={'small'}>
-      <NavigateNext />
+      <ChevronRight size={15} />
     </IconButton>
   );
 };
@@ -48,7 +48,7 @@ export const SmallNextButton = () => {
 export const MediumBackButton = () => {
   return (
     <IconButton {...basePropsData}>
-      <NavigateBefore />
+      <ChevronLeft size={20} />
     </IconButton>
   );
 };
@@ -56,7 +56,7 @@ export const MediumBackButton = () => {
 export const SmallBackButton = () => {
   return (
     <IconButton {...basePropsData} size={'small'}>
-      <NavigateBefore />
+      <ChevronLeft size={15} />
     </IconButton>
   );
 };
