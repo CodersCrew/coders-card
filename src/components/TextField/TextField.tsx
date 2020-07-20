@@ -3,12 +3,12 @@ import { TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, makeSty
 export type TextFieldProps = MuiTextFieldProps;
 
 const useStyles = makeStyles((theme) => ({
-  TextField: {
+  textField: {
     '& .MuiOutlinedInput-notchedOutline': {
       border: 'none',
     },
     '& .MuiFormLabel-root': {
-      fontSize: '16px',
+      fontSize: theme.typography.body1.fontSize,
       color: theme.palette.text.primary,
     },
     '& .label.Mui-focused': {
@@ -20,10 +20,12 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.primary,
       backgroundColor: theme.palette.background.field,
     },
+    '& .MuiFilledInput-underline:before': { borderBottom: 'none' },
+    '& .MuiFilledInput-underline:after': { borderBottom: 'none' },
   },
 }));
 
 export const TextField = (props: TextFieldProps): JSX.Element => {
   const classes = useStyles();
-  return <MuiTextField className={classes.TextField} {...props} />;
+  return <MuiTextField className={classes.textField} {...props} />;
 };

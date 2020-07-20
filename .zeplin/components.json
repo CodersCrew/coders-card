@@ -17,5 +17,9 @@
       "path": "src/components/TextField/TextField.tsx",
       "zeplinNames": ["text-field/empty", "text-field/filled"]
     }
-  ]
+  ],
+  "github": {
+    "repository": "CodersCrew/CodersCard",
+    "branch": "master"
+  }
 }
