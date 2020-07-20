@@ -10,14 +10,14 @@
   ],
   "styleguides": [],
   "components": [{
-      "path": "src/components/Button/Button.tsx",
-      "zeplinNames": ["button"]
-    },
-    {
-      "path": "src/components/TextField/TextField.tsx",
-      "zeplinNames": ["text-field/empty", "text-field/filled"]
-    }
-  ],
+    "path": "src/components/Button/Button.tsx",
+    "zeplinNames": [
+      "button"
+    ]
+  },{
+    "path": "src/components/TextField/TextField.tsx",
+    "zeplinNames": ["text-field/empty", "text-field/filled"]
+  }],
   "github": {
     "repository": "CodersCrew/CodersCard",
     "branch": "master"
