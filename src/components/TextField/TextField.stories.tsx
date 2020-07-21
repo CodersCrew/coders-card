@@ -15,5 +15,5 @@ export const BaseInput = (): JSX.Element => {
   return <TextField {...basePropsData} />;
 };
 export const AreaInput = (): JSX.Element => {
-  return <TextField multiline={true} {...basePropsData} />;
+  return <TextField multiline {...basePropsData} />;
 };
