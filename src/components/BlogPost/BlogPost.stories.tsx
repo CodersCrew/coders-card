@@ -1,5 +1,4 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { BlogPost } from '.';
 import image from '../../images/blogpost-image.jpg';
 
@@ -7,12 +6,6 @@ export default {
   title: 'BlogPost',
   component: BlogPost,
   excludeStories: /.*Data$/,
-};
-
-const basePropsData = {
-  color: 'primary',
-  variant: 'contained',
-  onClick: action('onClick'),
 };
 
 export const WithLongTitle = () => {
