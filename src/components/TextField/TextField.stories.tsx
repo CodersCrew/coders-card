@@ -10,6 +10,7 @@ const basePropsData: Partial<TextFieldProps> = {
   label: 'Label',
   variant: 'filled',
 };
+
 export const BaseInput = (): JSX.Element => {
   return <TextField {...basePropsData} />;
 };

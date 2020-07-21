@@ -14,7 +14,7 @@
     "zeplinNames": [
       "button"
     ]
-  },{
+  }, {
     "path": "src/components/TextField/TextField.tsx",
     "zeplinNames": ["text-field/empty", "text-field/filled"]
   }],
