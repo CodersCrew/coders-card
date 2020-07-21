@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardContent, CardMedia, Typography, Chip } from '@material-ui/core';
 
-export interface IBLogPost {
+export interface IBlogPost {
   title: string;
   text: string;
   tagName: string;
