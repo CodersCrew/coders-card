@@ -17,6 +17,12 @@
       "zeplinNames": [
         "button"
       ]
+    },
+    {
+      "path": "src/components/BlogPost.BlogPost.tsx",
+      "zeplinNames": [
+        "blog-post"
+      ]
     }
   ],
   "github": {
