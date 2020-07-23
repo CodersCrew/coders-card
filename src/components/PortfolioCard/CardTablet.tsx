@@ -1,14 +1,9 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card } from '@material-ui/core';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import { CardProps } from './cardProps';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { PhoneIphone } from '@material-ui/icons';
 
-// TODO
-// handle onclicks properly
+import { CardProps } from './cardProps';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -43,25 +38,31 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   label: {
+    display: 'flex',
+    alignItems: 'center',
     margin: theme.spacing(1),
-    padding: theme.spacing(0.5, 2),
+    padding: theme.spacing(0.5, 1.5),
     color: theme.palette.text.secondary,
     backgroundColor: theme.palette.background.paper,
     borderRadius: 8,
+  },
+  icon: {
+    marginRight: theme.spacing(1),
   },
 }));
 
 type Props = CardProps;
 
-const CardMobile: FC<Props> = ({ title, label, description, image }) => {
+const CardMobile: FC<Props> = ({ title, label, description, image, onClick }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
+    <Card onClick={onClick} className={classes.card}>
       <CardActionArea className={classes.action}>
         <CardMedia className={classes.media} image={image} title={title}>
           <Typography className={classes.label} variant="subtitle2">
-            {label}
+            <PhoneIphone fontSize="small" className={classes.icon} />
+            <span>{label}</span>
           </Typography>
         </CardMedia>
         <CardContent className={classes.content}>

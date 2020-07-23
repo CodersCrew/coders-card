@@ -3,4 +3,5 @@ export interface CardProps {
   image: string;
   label: string;
   description: string;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
