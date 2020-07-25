@@ -13,10 +13,8 @@ interface PortfolioCardProps extends CardProps {
   type: CardType;
 }
 
-export const PortfolioCard: FC<PortfolioCardProps> = ({ type, description, label, image, title, onClick }) => {
-  const cardProps: CardProps = { description, label, image, title, onClick };
-
-  if (type === 'desktop') return <CardDesktop {...cardProps} />;
-  else if (type === 'tablet') return <CardTablet {...cardProps} />;
-  else return <CardMobile {...cardProps} />;
+export const PortfolioCard: FC<PortfolioCardProps> = ({ type, ...props }) => {
+  if (type === 'desktop') return <CardDesktop {...props} />;
+  if (type === 'tablet') return <CardTablet {...props} />;
+  return <CardMobile {...props} />;
 };

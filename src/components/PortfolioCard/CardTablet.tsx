@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
-import { PhoneIphone } from '@material-ui/icons';
+import { Smartphone } from 'react-feather';
 
 import { CardProps } from './cardProps';
 
@@ -41,13 +41,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     margin: theme.spacing(1),
-    padding: theme.spacing(0.5, 1.5),
+    padding: theme.spacing(0.5, 1.5, 0.5, 1),
     color: theme.palette.text.secondary,
     backgroundColor: theme.palette.background.paper,
     borderRadius: 8,
   },
   icon: {
     marginRight: theme.spacing(1),
+    color: theme.palette.text.secondary,
+    height: 16,
   },
 }));
 
@@ -61,7 +63,7 @@ const CardMobile: FC<Props> = ({ title, label, description, image, onClick }) =>
       <CardActionArea className={classes.action}>
         <CardMedia className={classes.media} image={image} title={title}>
           <Typography className={classes.label} variant="subtitle2">
-            <PhoneIphone fontSize="small" className={classes.icon} />
+            <Smartphone className={classes.icon} />
             <span>{label}</span>
           </Typography>
         </CardMedia>
