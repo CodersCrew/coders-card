@@ -1,5 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
+import { Box } from '@material-ui/core';
 
 import { PortfolioCard } from '.';
 import { CardProps } from './cardProps';
@@ -22,13 +23,25 @@ const basePropsData: CardProps = {
 };
 
 export const Desktop = () => {
-  return <PortfolioCard type="desktop" {...basePropsData} />;
+  return (
+    <Box style={{ width: 400, height: 224 }}>
+      <PortfolioCard type="desktop" {...basePropsData} />
+    </Box>
+  );
 };
 
 export const Tablet = () => {
-  return <PortfolioCard type="tablet" {...basePropsData} />;
+  return (
+    <Box style={{ width: 672, height: 135 }}>
+      <PortfolioCard type="tablet" {...basePropsData} />
+    </Box>
+  );
 };
 
 export const Mobile = () => {
-  return <PortfolioCard type="mobile" {...basePropsData} />;
+  return (
+    <Box style={{ width: 272, height: 331 }}>
+      <PortfolioCard type="mobile" {...basePropsData} />
+    </Box>
+  );
 };

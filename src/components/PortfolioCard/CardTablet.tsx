@@ -7,8 +7,8 @@ import { CardProps } from './cardProps';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: 672,
-    height: 135,
+    width: '100%',
+    height: '100%',
     borderRadius: 8,
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
   },
@@ -19,15 +19,15 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   media: {
-    width: 240,
+    minWidth: 240,
+    minHeight: 135,
     height: '100%',
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-    objectFit: 'cover',
   },
   content: {
-    width: 432,
+    width: '100%',
     padding: theme.spacing(2.5, 3),
   },
   title: {

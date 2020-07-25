@@ -7,8 +7,8 @@ import { CardProps } from './cardProps';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: 272,
-    height: 331,
+    width: '100%',
+    height: '100%',
     borderRadius: 8,
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
   },
@@ -18,11 +18,14 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   media: {
-    height: 152,
     width: '100%',
+    minHeight: 152,
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
+  },
+  content: {
+    height: '100%',
   },
   title: {
     color: theme.palette.text.primary,
@@ -61,7 +64,7 @@ const CardMobile: FC<Props> = ({ title, label, description, image, onClick, ...p
             <span>{label}</span>
           </Typography>
         </CardMedia>
-        <CardContent>
+        <CardContent className={classes.content}>
           <Typography className={classes.title} variant="h4">
             {title}
           </Typography>
