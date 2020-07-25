@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = CardProps;
 
-const CardMobile: FC<Props> = ({ title, label, description, image, onClick }) => {
+const CardTablet: FC<Props> = ({ title, label, description, image, onClick, ...props }) => {
   const classes = useStyles();
   const [isHovered, setHovered] = useState(false);
   return (
@@ -69,6 +69,7 @@ const CardMobile: FC<Props> = ({ title, label, description, image, onClick }) =>
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={classes.card}
+      {...props}
     >
       <CardActionArea className={classes.action}>
         <CardMedia className={classes.media} image={image} title={title}></CardMedia>
@@ -88,4 +89,4 @@ const CardMobile: FC<Props> = ({ title, label, description, image, onClick }) =>
   );
 };
 
-export default CardMobile;
+export default CardTablet;
