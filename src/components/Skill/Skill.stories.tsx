@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skill, SkillProps } from ".";
+import { Skill } from ".";
 
 export default {
     title: 'Skill',
@@ -7,20 +7,14 @@ export default {
     excludeStories: /.*Data$/,
 };
 
-const basePropsData: Partial<SkillProps> = {
-    component: "div",
-    label: "Example skill",
-    level: 0
-}
-
 export const NoSkill = () => {
-    return <Skill {...basePropsData} />
+    return <div style={{ width: "176px" }}><Skill label="Example skill" level={0} /></div>
 }
 
 export const MediumSkill = () => {
-    return <Skill {...{ ...basePropsData, level: 3 }} />
+    return <div style={{ width: "176px" }}><Skill label="Example skill" level={3} /></div>
 }
 
 export const HardSkill = () => {
-    return <Skill {...{ ...basePropsData, level: 5 }} />
+    return <div style={{ width: "176px" }}><Skill label="Example skill" level={5} /></div>
 }
