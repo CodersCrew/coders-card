@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 type LevelRange = 0 | 1 | 2 | 3 | 4 | 5;
 
 export interface SkillProps extends MuiBoxProps {
-    label: string;
     level: LevelRange;
+    children: string;
 }
 
 
@@ -39,16 +39,16 @@ const useStyles = makeStyles(theme => {
 });
 
 
-export const Skill: React.FC<SkillProps> = ({ label, level, ...rest }) => {
+export const Skill: React.FC<SkillProps> = ({ children, level, ...rest }) => {
     const classes = useStyles();
 
     return <MuiBox {...rest} className={classes.root}>
         <Typography variant="subtitle2" gutterBottom>
-            {label}
+            {children}
         </Typography>
         <div className={classes.tilesContainer}>
             {[1, 2, 3, 4, 5].map(tileLevel => {
-                return <div key={`${label}-${tileLevel}`} className={`${classes.tile} ${tileLevel <= level ? classes.active : classes.inactive}`} />
+                return <div key={`${children}-${tileLevel}`} className={`${classes.tile} ${tileLevel <= level ? classes.active : classes.inactive}`} />
             })}
         </div>
     </MuiBox>;

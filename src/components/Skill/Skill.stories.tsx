@@ -8,13 +8,19 @@ export default {
 };
 
 export const NoSkill = () => {
-    return <div style={{ width: "176px" }}><Skill label="Example skill" level={0} /></div>
+    return <div style={{ width: "176px" }}>
+        <Skill level={0}>Example skill</Skill>
+    </div>
 }
 
 export const MediumSkill = () => {
-    return <div style={{ width: "176px" }}><Skill label="Example skill" level={3} /></div>
+    return <div style={{ width: "176px" }}>
+        <Skill level={3}>Example skill</Skill>
+    </div>
 }
 
 export const HardSkill = () => {
-    return <div style={{ width: "176px" }}><Skill label="Example skill" level={5} /></div>
+    return <div style={{ width: "176px" }}>
+        <Skill level={5}>Example skill</Skill>
+    </div>
 }
