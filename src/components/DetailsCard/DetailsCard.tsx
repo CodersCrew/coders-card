@@ -1,10 +1,18 @@
 import React from 'react';
 import { FC } from '../../typings/components';
 
-type DetailsCardProps = {
-  someProp: string;
-};
+import CardMobile from './CardMobile';
+import CardTablet from './CardTablet';
+import CardDesktop from './CardDesktop';
 
-export const DetailsCard: FC<DetailsCardProps> = ({ someProp }) => {
-  return <div>{someProp}</div>;
+type CardType = 'mobile' | 'tablet' | 'desktop';
+
+interface DetailsCardProps {
+  type: CardType;
+}
+
+export const DetailsCard: FC<DetailsCardProps> = ({ type }) => {
+  if (type === 'desktop') return <CardDesktop />;
+  if (type === 'tablet') return <CardTablet />;
+  return <CardMobile />;
 };
