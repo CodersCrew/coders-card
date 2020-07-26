@@ -1,3 +1,1 @@
-import { DetailsCard } from './DetailsCard';
-
-export default DetailsCard;
+export * from './DetailsCard';
