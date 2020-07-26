@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     width: 200,
     height: 200,
     borderRadius: 16,
+    // TODO fix shadow
     boxShadow: '0px 10px 40px -10px rgba(0,0,0,0.2)',
   },
   content: {
@@ -109,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
     width: 158,
     height: 40,
     borderRadius: 8,
+    // TODO fix shadow
     boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
   },
 }));
@@ -121,11 +123,10 @@ const CardDesktop: FC<CardProps> = ({
   phone,
   email,
   location,
-  isFreelancer,
+  isFreelancer = false,
   resumeLink,
 }) => {
   const classes = useStyles();
-  const displayName = `${fullName.firstName} ${fullName.lastName}`;
   const displayLocation = location && `${location.city}, ${location.country}`;
 
   const renderIcon = (socialMediaName: string, className: string) => {
@@ -141,21 +142,22 @@ const CardDesktop: FC<CardProps> = ({
         <CardMedia className={classes.avatar} image={image} title="Contemplative Reptile" />
         <CardContent className={classes.content}>
           <Box className={classes.basicInfo}>
-            <Typography variant="h1" className={classes.name}>
-              {displayName}
-            </Typography>
+            <Box className={classes.name}>
+              <Typography variant="h1">{fullName.firstName}</Typography>
+              <Typography variant="h1">{fullName.lastName}</Typography>
+            </Box>
             <Typography variant="subtitle1" className={classes.position}>
               {position}
             </Typography>
-            {socialMedia && (
-              <Box className={classes.iconsWrapper}>
-                {socialMedia.map((media) => (
-                  <a className={classes.link} key={media.name} href={media.link}>
-                    {renderIcon(media.name, classes.icon)}
-                  </a>
-                ))}
-              </Box>
-            )}
+            {/* TODO change to icon button */}
+
+            <Box className={classes.iconsWrapper}>
+              {socialMedia?.map((media) => (
+                <a className={classes.link} key={media.name} href={media.link}>
+                  {renderIcon(media.name, classes.icon)}
+                </a>
+              ))}
+            </Box>
           </Box>
           <Box className={classes.moreInfo}>
             {phone && <DetailsItem className={classes.detailsItem} label={phone} icon="phone" />}

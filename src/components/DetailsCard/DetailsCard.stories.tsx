@@ -40,7 +40,7 @@ export const Desktop = () => {
 
 export const Tablet = () => {
   return (
-    <Box style={{ width: 720, height: 288 }}>
+    <Box style={{ width: 280, height: 668 }}>
       <DetailsCard type="tablet" {...basePropsData} />
     </Box>
   );
@@ -48,7 +48,7 @@ export const Tablet = () => {
 
 export const Mobile = () => {
   return (
-    <Box style={{ width: 280, height: 488 }}>
+    <Box style={{ width: 280, height: 668 }}>
       <DetailsCard type="mobile" {...basePropsData} />
     </Box>
   );

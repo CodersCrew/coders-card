@@ -24,27 +24,16 @@ const CardTablet: FC<CardProps> = ({
 
   return (
     <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia image={image} title="Contemplative Reptile" />
-        <CardContent>
-          <Box>
-            {fullName.firstName} {fullName.lastName}
-          </Box>
-          <Box>{position}</Box>
-          {socialMedia.map((media) => (
-            <Box key={media.name}>
-              {media.name} {media.link}
-            </Box>
-          ))}
-          <Box>{phone}</Box>
-          <Box>{email}</Box>
-          <Box>
-            {location.city}, {location.country}
-          </Box>
-          <Box>{isFreelancer ? 'i am freelancer' : 'i am not freelancer'}</Box>
-          <Box>{resumeLink}</Box>
-        </CardContent>
-      </CardActionArea>
+      {fullName.firstName}
+      {fullName.lastName}
+      {position}
+      {image}
+      {socialMedia?.map((media) => media.name)}
+      {phone}
+      {email}
+      {location && location.country}
+      {isFreelancer ? 'yes' : 'no'}
+      {resumeLink}
     </Card>
   );
 };
