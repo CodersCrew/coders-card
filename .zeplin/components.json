@@ -17,6 +17,9 @@
   }, {
     "path": "src/components/TextField/TextField.tsx",
     "zeplinNames": ["text-field/empty", "text-field/filled"]
+  }, {
+    "path": "src/components/ResumeList/ResumeList.tsx",
+    "zeplinNames": ["ResumeList"]
   }],
   "github": {
     "repository": "CodersCrew/CodersCard",
