@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Typography, CardActionArea, CardMedia } from '@material-ui/core';
+import { Card, CardContent, Typography, CardMedia } from '@material-ui/core';
 
 import { TestimonialProps } from '.';
 
@@ -10,11 +10,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     borderRadius: 8,
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
-  },
-  action: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
   },
   media: {
     height: '100%',
@@ -59,22 +54,20 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = TestimonialProps;
 
-const TestimonialDefault: FC<Props> = ({ label, description, image, onClick, ...props }) => {
+const TestimonialDefault: FC<Props> = ({ label, description, image, ...props }) => {
   const classes = useStyles();
   return (
-    <Card onClick={onClick} className={classes.card} {...props}>
-      <CardActionArea className={classes.action}>
-        <CardMedia className={classes.media} image={image}></CardMedia>
-        <CardContent className={classes.overlay}>
-          <Typography className={classes.title} variant="h4"></Typography>
-          <Typography className={classes.description} variant="body2">
-            {description}
-          </Typography>
-          <Typography className={classes.label} variant="subtitle2">
-            <span>{label}</span>
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card className={classes.card} {...props}>
+      <CardMedia className={classes.media} image={image}></CardMedia>
+      <CardContent className={classes.overlay}>
+        <Typography className={classes.title} variant="h4"></Typography>
+        <Typography className={classes.description} variant="body2">
+          {description}
+        </Typography>
+        <Typography className={classes.label} variant="subtitle2">
+          <span>{label}</span>
+        </Typography>
+      </CardContent>
     </Card>
   );
 };

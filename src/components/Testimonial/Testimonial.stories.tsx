@@ -1,5 +1,4 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { Box } from '@material-ui/core';
 
 import { Testimonial, TestimonialProps } from '.';
@@ -16,8 +15,8 @@ const basePropsData: TestimonialProps = {
   image: image,
   description:
     'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor',
-  label: 'Marlene Watson, CEO of Donec',
-  onClick: action('onClick'),
+  labelBold: 'Marlene Watson,',
+  label: 'CEO of Donec',
 };
 
 export const Default = () => {

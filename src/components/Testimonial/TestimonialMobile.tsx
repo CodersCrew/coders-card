@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 
 import { TestimonialProps } from '.';
 
@@ -10,11 +10,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     borderRadius: 8,
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
-  },
-  action: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
   },
   media: {
     width: '100%',
@@ -51,24 +46,22 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = TestimonialProps;
 
-const TestimonialMobile: FC<Props> = ({ label, description, image, onClick, ...props }) => {
+const TestimonialMobile: FC<Props> = ({ label, description, image, ...props }) => {
   const classes = useStyles();
 
   return (
-    <Card {...props} onClick={onClick} className={classes.card}>
-      <CardActionArea className={classes.action}>
-        <CardMedia className={classes.media} image={image}>
-          <Typography className={classes.label} variant="subtitle2">
-            <span>{label}</span>
-          </Typography>
-        </CardMedia>
-        <CardContent className={classes.content}>
-          <Typography className={classes.title} variant="h4"></Typography>
-          <Typography className={classes.description} variant="body2">
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card {...props} className={classes.card}>
+      <CardMedia className={classes.media} image={image}>
+        <Typography className={classes.label} variant="subtitle2">
+          <span>{label}</span>
+        </Typography>
+      </CardMedia>
+      <CardContent className={classes.content}>
+        <Typography className={classes.title} variant="h4"></Typography>
+        <Typography className={classes.description} variant="body2">
+          {description}
+        </Typography>
+      </CardContent>
     </Card>
   );
 };

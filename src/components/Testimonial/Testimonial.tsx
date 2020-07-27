@@ -9,8 +9,8 @@ type TestimonialMobile = 'true' | 'false';
 export interface TestimonialProps {
   image: string;
   label: string;
+  labelBold: string;
   description: string;
-  onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface TestimonialCardProps extends TestimonialProps {
