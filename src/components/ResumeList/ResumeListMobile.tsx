@@ -21,21 +21,16 @@ const useStyles = makeStyles((theme) => ({
 
   header: {
     color: theme.palette.text.primary,
-    fontSize: theme.typography.h5.fontSize,
     margin: theme.spacing(0.5, 0, 0.75, 0),
-    fontWeight: theme.typography.h5.fontWeight,
   },
 
   title: {
     color: theme.palette.text.secondary,
-    fontSize: theme.typography.h6.fontSize,
-    fontWeight: theme.typography.h6.fontWeight,
     margin: theme.spacing(0, 0, 0.75, 0),
   },
 
   description: {
     color: theme.palette.text.secondary,
-    fontSize: theme.typography.body2.fontSize,
   },
 }));
 
@@ -47,9 +42,15 @@ const ResumeListMobile: FC<BoxProps> = ({ labelText, headerText, title, descript
         {labelText}
       </Paper>
       <div className={classes.wrapper}>
-        <Typography className={classes.header}>{headerText}</Typography>
-        <Typography className={classes.title}>{title}</Typography>
-        <Typography className={classes.description}>{description}</Typography>
+        <Typography className={classes.header} variant="h5">
+          {headerText}
+        </Typography>
+        <Typography className={classes.title} variant="h6">
+          {title}
+        </Typography>
+        <Typography className={classes.description} variant="body2">
+          {description}
+        </Typography>
       </div>
     </MuiBox>
   );

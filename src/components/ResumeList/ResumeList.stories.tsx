@@ -16,10 +16,10 @@ const basePropsData: BoxProps = {
     'In tristique vulputate augue vel egestas. Quisque ac imperdiet tortor, at lacinia ex. Duis vel ex hendrerit, commodo odio sed, aliquam enim. Ut arcu nulla, tincidunt eget arcu eget, molestie vulputate nisi. Nunc malesuada leo et est iaculis facilisis. Fusce eu urna ut magna malesuada fringilla.',
 };
 
-export const ResumeListDefault: FC<BoxProps> = () => {
+export const ResumeListMobile: FC<BoxProps> = () => {
   return <ResumeList mobile {...basePropsData} />;
 };
 
-export const ResumeListMobile: FC<BoxProps> = () => {
+export const ResumeListDefault: FC<BoxProps> = () => {
   return <ResumeList {...basePropsData} />;
 };

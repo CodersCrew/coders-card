@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: `2px solid ${theme.palette.primary.main}`,
     padding: theme.spacing(0.75, 0, 1, 2.25),
   },
+
   label: {
     padding: theme.spacing(0.5, 1.25),
     backgroundColor: theme.palette.text.secondary,
@@ -21,23 +22,21 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     margin: theme.spacing(0, 0, 0.5, 0),
   },
 
   header: {
     color: theme.palette.text.primary,
-    fontSize: theme.typography.h5.fontSize,
-    fontWeight: theme.typography.h5.fontWeight,
   },
+
   title: {
     color: theme.palette.text.secondary,
-    fontSize: theme.typography.h6.fontSize,
-    fontWeight: theme.typography.h6.fontWeight,
     margin: theme.spacing(0, 0, 1, 0),
   },
+
   description: {
     color: theme.palette.text.secondary,
-    fontSize: theme.typography.body2.fontSize,
   },
 }));
 
@@ -46,13 +45,19 @@ const ResumeListDefault: FC<BoxProps> = ({ labelText, headerText, title, descrip
   return (
     <MuiBox className={classes.box}>
       <div className={classes.wrapper}>
-        <Typography className={classes.header}>{headerText}</Typography>
+        <Typography className={classes.header} variant="h5">
+          {headerText}
+        </Typography>
         <Paper className={classes.label} component="span">
           {labelText}
         </Paper>
       </div>
-      <Typography className={classes.title}>{title}</Typography>
-      <Typography className={classes.description}>{description}</Typography>
+      <Typography className={classes.title} variant="h6">
+        {title}
+      </Typography>
+      <Typography className={classes.description} variant="body2">
+        {description}
+      </Typography>
     </MuiBox>
   );
 };
