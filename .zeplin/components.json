@@ -27,6 +27,12 @@
         "portfolio-card-mobile",
         "portfolio-card-desktop-hover"
       ]
+    },
+    {
+      "path": "src/components/SectionTitle/SectionTitle.tsx",
+      "zeplinNames": [
+        "section-title"
+      ]
     }
   ],
   "github": {
