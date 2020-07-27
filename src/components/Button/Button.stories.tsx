@@ -14,31 +14,29 @@ const basePropsData: Partial<ButtonProps> = {
   variant: 'contained',
   onClick: action('onClick'),
 };
-const smallBasePropsData: Partial<ButtonProps> = {
-  color: 'primary',
-  variant: 'contained',
-  onClick: action('onClick'),
-  size: 'small',
-};
 
-export const TextOnly = () => {
+export const TextOnly = (): JSX.Element => {
   return <Button {...basePropsData}>Text only</Button>;
 };
 
-export const WithIcon = () => {
+export const WithIcon = (): JSX.Element => {
   return (
     <Button {...basePropsData} startIcon={<Smile size={16} />}>
       With icon
     </Button>
   );
 };
-export const TextOnlySmall = () => {
-  return <Button {...smallBasePropsData}>Text only</Button>;
+export const TextOnlySmall = (): JSX.Element => {
+  return (
+    <Button {...basePropsData} size={'small'}>
+      Text only
+    </Button>
+  );
 };
 
-export const WithIconSmall = () => {
+export const WithIconSmall = (): JSX.Element => {
   return (
-    <Button {...smallBasePropsData} startIcon={<Smile size={16} />}>
+    <Button {...basePropsData} size={'small'} startIcon={<Smile size={16} />}>
       With icon
     </Button>
   );
