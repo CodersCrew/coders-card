@@ -16,20 +16,20 @@ const basePropsData: Partial<ButtonProps> = {
 };
 
 export const TextOnly = (): JSX.Element => {
-  return <Button {...basePropsData}>Text only</Button>;
+  return <Button {...basePropsData}>Text Only</Button>;
 };
 
 export const WithIcon = (): JSX.Element => {
   return (
     <Button {...basePropsData} startIcon={<Smile size={16} />}>
-      With icon
+      With Icon
     </Button>
   );
 };
 export const TextOnlySmall = (): JSX.Element => {
   return (
     <Button {...basePropsData} size={'small'}>
-      Text only
+      Text Only
     </Button>
   );
 };
@@ -37,7 +37,7 @@ export const TextOnlySmall = (): JSX.Element => {
 export const WithIconSmall = (): JSX.Element => {
   return (
     <Button {...basePropsData} size={'small'} startIcon={<Smile size={16} />}>
-      With icon
+      With Icon
     </Button>
   );
 };
