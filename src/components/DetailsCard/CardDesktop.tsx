@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { Box, Card, Typography, CardContent, CardMedia, makeStyles } from '@material-ui/core/';
-import { GitHub, Facebook, Twitter, Instagram, Download } from 'react-feather';
+import { Download } from 'react-feather';
 
 import { DetailsItem } from './DetailsItem';
 import { Button } from '../Button';
+
+import { renderSocialMediaIcon } from './renderSocialMediaIcon';
 
 import { FC } from '../../typings/components';
 import { CardProps } from './cardProps';
@@ -113,6 +115,10 @@ const useStyles = makeStyles((theme) => ({
     // TODO fix shadow
     boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
   },
+  resetAnchorStyle: {
+    textDecoration: 'none',
+    color: 'unset',
+  },
 }));
 
 const CardDesktop: FC<CardProps> = ({
@@ -129,17 +135,10 @@ const CardDesktop: FC<CardProps> = ({
   const classes = useStyles();
   const displayLocation = location && `${location.city}, ${location.country}`;
 
-  const renderIcon = (socialMediaName: string, className: string) => {
-    if (socialMediaName === 'facebook') return <Facebook className={className} />;
-    if (socialMediaName === 'github') return <GitHub className={className} />;
-    if (socialMediaName === 'twitter') return <Twitter className={className} />;
-    if (socialMediaName === 'instagram') return <Instagram className={className} />;
-  };
-
   return (
     <Box className={classes.wrapper}>
       <Card className={classes.card}>
-        <CardMedia className={classes.avatar} image={image} title="Contemplative Reptile" />
+        <CardMedia className={classes.avatar} image={image} />
         <CardContent className={classes.content}>
           <Box className={classes.basicInfo}>
             <Box className={classes.name}>
@@ -149,19 +148,33 @@ const CardDesktop: FC<CardProps> = ({
             <Typography variant="subtitle1" className={classes.position}>
               {position}
             </Typography>
-            {/* TODO change to icon button */}
-
             <Box className={classes.iconsWrapper}>
               {socialMedia?.map((media) => (
                 <a className={classes.link} key={media.name} href={media.link}>
-                  {renderIcon(media.name, classes.icon)}
+                  {renderSocialMediaIcon(media.name, classes.icon)}
                 </a>
               ))}
             </Box>
           </Box>
           <Box className={classes.moreInfo}>
-            {phone && <DetailsItem className={classes.detailsItem} label={phone} icon="phone" />}
-            {email && <DetailsItem className={classes.detailsItem} label={email} icon="mail" />}
+            {phone && (
+              <DetailsItem
+                className={`${classes.detailsItem} ${classes.resetAnchorStyle}`}
+                label={phone}
+                icon="phone"
+                isLink
+                href={`tel:${phone}`}
+              />
+            )}
+            {email && (
+              <DetailsItem
+                className={`${classes.detailsItem} ${classes.resetAnchorStyle}`}
+                label={email}
+                icon="mail"
+                isLink
+                href={`mailto:${email}`}
+              />
+            )}
             {displayLocation && <DetailsItem className={classes.detailsItem} label={displayLocation} icon="map-pin" />}
             {isFreelancer && (
               <DetailsItem

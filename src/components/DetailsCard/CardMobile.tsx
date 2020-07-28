@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardActionArea, CardContent, CardMedia, makeStyles } from '@material-ui/core/';
+import { Box, Card, Typography, CardActionArea, CardContent, CardMedia, makeStyles } from '@material-ui/core/';
 import { FC } from '../../typings/components';
 
 import { CardProps } from './cardProps';
@@ -21,12 +21,12 @@ const CardMobile: FC<CardProps> = ({
   resumeLink,
 }) => {
   const classes = useStyles();
+  const displayName = `${fullName.firstName} ${fullName.lastName}`;
 
   return (
     <Card className={classes.card}>
-      {fullName.firstName}
-      {fullName.lastName}
-      {position}
+      <Typography variant="h1">{displayName}</Typography>
+
       {image}
       {socialMedia?.map((media) => media.name)}
       {phone}
