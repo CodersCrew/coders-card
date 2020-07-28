@@ -9,40 +9,48 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
   },
-  media: {
+  overlay: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    //justifyContent: 'space-between',
-    //width: 64,
     width: '100%',
+    height: 64,
+  },
+  media: {
+    width: 64,
     height: 64,
     borderRadius: 8,
   },
+  overlayMedia: {
+    width: 64,
+    height: 64,
+    filter: 'blur(24px)',
+    opacity: 0.4,
+    padding: 0,
+  },
   description: {
     color: theme.palette.text.secondary,
-    margin: theme.spacing(3),
+    margin: theme.spacing(1.5),
     fontFamily: 'Inter-Italic',
+    textAlign: 'center',
+  },
+  labelOverlay: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    padding: '0',
   },
   label: {
     display: 'flex',
     color: theme.palette.text.primary,
-    fontFamily: 'Inter-Regular',
-    // alignItems: 'center',
-    // justifyContent: 'space-between',
-    // margin: theme.spacing(1),
-    // marginTop: theme.spacing(7),
-    // borderRadius: 8,
+    fontFamily: 'Inter',
+    margin: theme.spacing(0.5),
   },
   labelBold: {
     display: 'flex',
     color: theme.palette.text.primary,
     fontFamily: 'Inter-Bold',
-    // alignItems: 'center',
-    // justifyContent: 'space-between',
-    // margin: theme.spacing(1),
-    // marginTop: theme.spacing(7),
-    // borderRadius: 8,
   },
 }));
 
@@ -52,16 +60,24 @@ const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ..
   const classes = useStyles();
   return (
     <Card className={classes.card} {...props}>
-      <CardMedia className={classes.media} image={image}></CardMedia>
+      <CardContent className={classes.overlay}>
+        <CardMedia className={classes.media} image={image}>
+          <CardContent className={classes.overlayMedia}>
+            <CardMedia className={classes.media} image={image}></CardMedia>
+          </CardContent>
+        </CardMedia>
+      </CardContent>
       <Typography className={classes.description} variant="body2">
         {description}
       </Typography>
-      <Typography className={classes.labelBold} variant="h6">
-        {labelBold}
-      </Typography>
-      <Typography className={classes.label} variant="body2">
-        {label}
-      </Typography>
+      <CardContent className={classes.labelOverlay}>
+        <Typography className={classes.labelBold} variant="h6">
+          {labelBold}
+        </Typography>
+        <Typography className={classes.label} variant="body2">
+          {label}
+        </Typography>
+      </CardContent>
     </Card>
   );
 };

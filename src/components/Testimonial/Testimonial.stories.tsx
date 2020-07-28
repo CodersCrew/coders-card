@@ -14,7 +14,7 @@ export default {
 const basePropsData: TestimonialProps = {
   image: image,
   description:
-    'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor',
+    'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
   labelBold: 'Marlene Watson,',
   label: 'CEO of Donec',
 };
