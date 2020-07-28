@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   description: {
     color: theme.palette.text.secondary,
     margin: theme.spacing(1.5),
-    fontFamily: 'Inter-Italic',
     textAlign: 'center',
   },
   labelOverlay: {
@@ -42,15 +41,11 @@ const useStyles = makeStyles((theme) => ({
     padding: '0',
   },
   label: {
-    display: 'flex',
     color: theme.palette.text.primary,
-    fontFamily: 'Inter',
     margin: theme.spacing(0.5),
   },
   labelBold: {
-    display: 'flex',
     color: theme.palette.text.primary,
-    fontFamily: 'Inter-Bold',
   },
 }));
 

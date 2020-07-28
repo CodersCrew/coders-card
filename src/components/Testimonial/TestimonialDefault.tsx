@@ -48,13 +48,9 @@ const useStyles = makeStyles((theme) => ({
   description: {
     color: theme.palette.text.secondary,
     margin: theme.spacing(3),
-    fontFamily: 'Inter-Italic',
-    fontWeight: 'normal',
-    fontStretch: 'normal',
   },
   label: {
     color: theme.palette.text.secondary,
-    fontFamily: 'Inter',
   },
   labelBold: {
     color: theme.palette.text.primary,
