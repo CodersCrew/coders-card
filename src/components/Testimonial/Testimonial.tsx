@@ -4,8 +4,6 @@ import { FC } from '../../typings/components';
 import TestimonialMobile from './TestimonialMobile';
 import TestimonialDefault from './TestimonialDefault';
 
-type TestimonialMobile = 'true' | 'false';
-
 export type TestimonialProps = {
   image: string;
   label: string;
@@ -14,10 +12,9 @@ export type TestimonialProps = {
 };
 
 type TestimonialCardProps = TestimonialProps & {
-  type: TestimonialMobile;
+  isMobile: boolean;
 };
 
-export const Testimonial: FC<TestimonialCardProps> = ({ type, ...props }) => {
-  if (type === 'true') return <TestimonialMobile {...props} />;
-  return <TestimonialDefault {...props} />;
+export const Testimonial: FC<TestimonialCardProps> = ({ isMobile, ...props }) => {
+  return isMobile == true ? <TestimonialMobile {...props} /> : <TestimonialDefault {...props} />;
 };

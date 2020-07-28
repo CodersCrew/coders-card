@@ -57,9 +57,7 @@ const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ..
     <Card className={classes.card} {...props}>
       <CardContent className={classes.overlay}>
         <CardMedia className={classes.media} image={image}>
-          <CardContent className={classes.overlayMedia}>
-            <CardMedia className={classes.media} image={image}></CardMedia>
-          </CardContent>
+          <CardContent className={classes.overlayMedia}></CardContent>
         </CardMedia>
       </CardContent>
       <Typography className={classes.description} variant="body2">

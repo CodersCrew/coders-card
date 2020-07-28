@@ -22,7 +22,7 @@ const basePropsData: TestimonialProps = {
 export const Default = () => {
   return (
     <Box style={{ width: 396, height: 188 }}>
-      <Testimonial type="false" {...basePropsData} />
+      <Testimonial isMobile={false} {...basePropsData} />
     </Box>
   );
 };
@@ -30,7 +30,7 @@ export const Default = () => {
 export const Mobile = () => {
   return (
     <Box style={{ width: 396, height: 196 }}>
-      <Testimonial type="true" {...basePropsData} />
+      <Testimonial isMobile={true} {...basePropsData} />
     </Box>
   );
 };

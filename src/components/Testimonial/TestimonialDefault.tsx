@@ -71,9 +71,7 @@ const TestimonialDefault: FC<Props> = ({ label, labelBold, description, image, .
       </CardContent>
       <CardContent className={classes.overlay}>
         <CardMedia className={classes.media} image={image}>
-          <CardContent className={classes.overlayMedia}>
-            <CardMedia className={classes.media} image={image}></CardMedia>
-          </CardContent>
+          <CardContent className={classes.overlayMedia}></CardContent>
         </CardMedia>
         <CardContent className={classes.overlayLabel}>
           <Typography className={classes.labelBold} variant="h6">
