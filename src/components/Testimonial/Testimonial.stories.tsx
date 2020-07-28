@@ -21,7 +21,7 @@ const basePropsData: TestimonialProps = {
 
 export const Default = () => {
   return (
-    <Box style={{ width: 396, height: 190 }}>
+    <Box style={{ width: 396, height: 188 }}>
       <Testimonial type="false" {...basePropsData} />
     </Box>
   );
