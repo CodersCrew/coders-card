@@ -48,7 +48,7 @@ export const Tablet = () => {
 
 export const Mobile = () => {
   return (
-    <Box style={{ width: 280, height: 668 }}>
+    <Box style={{ width: 280, height: 488 }}>
       <DetailsCard type="mobile" {...basePropsData} />
     </Box>
   );

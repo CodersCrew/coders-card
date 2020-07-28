@@ -112,7 +112,6 @@ const useStyles = makeStyles((theme) => ({
     width: 158,
     height: 40,
     borderRadius: 8,
-    // TODO fix shadow
     boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
   },
   resetAnchorStyle: {
