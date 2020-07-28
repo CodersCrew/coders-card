@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     width: 200,
     height: 200,
     borderRadius: 16,
-    // TODO fix shadow
     boxShadow: '0px 10px 40px -10px rgba(0,0,0,0.2)',
   },
   content: {
