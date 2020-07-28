@@ -3,7 +3,7 @@ import { Box } from '@material-ui/core';
 
 import { Testimonial, TestimonialProps } from '.';
 
-import image from '../../images/download.jpeg';
+import image from '../../images/MarleneWatson.png';
 
 export default {
   title: 'Testimonial',
