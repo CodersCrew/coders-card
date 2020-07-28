@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     width: 64,
     height: 64,
     borderRadius: 8,
+    transform: 'translateY(-4px)',
   },
   description: {
     color: theme.palette.text.secondary,
