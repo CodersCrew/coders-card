@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Box as MuiBox, makeStyles, Paper, Typography } from '@material-ui/core';
-import { BoxProps } from './type';
+import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
+import { ResumeListProps } from './type';
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -10,14 +10,12 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: `2px solid ${theme.palette.primary.main}`,
     padding: theme.spacing(0.75, 0, 1, 2.25),
   },
-
   label: {
     padding: theme.spacing(0.5, 1.25),
     backgroundColor: theme.palette.text.secondary,
     borderRadius: `5px 5px`,
     color: theme.palette.background.paper,
   },
-
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
@@ -25,27 +23,19 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     margin: theme.spacing(0, 0, 0.5, 0),
   },
-
-  header: {
-    color: theme.palette.text.primary,
-  },
-
   title: {
     color: theme.palette.text.secondary,
     margin: theme.spacing(0, 0, 1, 0),
   },
-
-  description: {
-    color: theme.palette.text.secondary,
-  },
 }));
 
-const ResumeListDefault: FC<BoxProps> = ({ labelText, headerText, title, description }) => {
+type Props = ResumeListProps;
+const ResumeListDefault: FC<Props> = ({ labelText, headerText, title, description, ...props }) => {
   const classes = useStyles();
   return (
-    <MuiBox className={classes.box}>
+    <Box {...props} className={classes.box}>
       <div className={classes.wrapper}>
-        <Typography className={classes.header} variant="h5">
+        <Typography color="textPrimary" variant="h5">
           {headerText}
         </Typography>
         <Paper className={classes.label} component="span">
@@ -55,10 +45,10 @@ const ResumeListDefault: FC<BoxProps> = ({ labelText, headerText, title, descrip
       <Typography className={classes.title} variant="h6">
         {title}
       </Typography>
-      <Typography className={classes.description} variant="body2">
+      <Typography color="textSecondary" variant="body2">
         {description}
       </Typography>
-    </MuiBox>
+    </Box>
   );
 };
 

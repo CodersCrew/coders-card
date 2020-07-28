@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { ResumeList } from './ResumeList';
-import { BoxProps } from './type';
+import { ResumeListProps } from './type';
 
 export default {
   title: 'ResumeList',
@@ -8,7 +8,7 @@ export default {
   excludeStories: /.*Data$/,
 };
 
-const basePropsData: BoxProps = {
+const basePropsData: ResumeListProps = {
   labelText: '02.2020-current',
   headerText: 'Senior front-end developer',
   title: 'Google',
@@ -16,10 +16,10 @@ const basePropsData: BoxProps = {
     'In tristique vulputate augue vel egestas. Quisque ac imperdiet tortor, at lacinia ex. Duis vel ex hendrerit, commodo odio sed, aliquam enim. Ut arcu nulla, tincidunt eget arcu eget, molestie vulputate nisi. Nunc malesuada leo et est iaculis facilisis. Fusce eu urna ut magna malesuada fringilla.',
 };
 
-export const ResumeListMobile: FC<BoxProps> = () => {
-  return <ResumeList mobile {...basePropsData} />;
+export const ResumeListMobile = (): JSX.Element => {
+  return <ResumeList isMobile="true" {...basePropsData} />;
 };
 
-export const ResumeListDefault: FC<BoxProps> = () => {
-  return <ResumeList {...basePropsData} />;
+export const ResumeListDefault = (): JSX.Element => {
+  return <ResumeList isMobile="false" {...basePropsData} />;
 };

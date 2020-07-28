@@ -1,43 +1,33 @@
 import React, { FC } from 'react';
-import { BoxProps } from './type';
-import { Box as MuiBox, makeStyles, Paper, Typography } from '@material-ui/core';
+import { ResumeListProps } from './type';
+import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  box: {
-    backgroundColor: theme.palette.background.paper,
-  },
-
   label: {
     padding: theme.spacing(0.5, 1.25),
     backgroundColor: theme.palette.primary.main,
     borderRadius: `0px 5px 5px 0px `,
     color: theme.palette.background.paper,
   },
-
   wrapper: {
     padding: theme.spacing(1.5, 0, 0.75, 1.75),
     borderLeft: `2px solid ${theme.palette.primary.main}`,
   },
-
   header: {
     color: theme.palette.text.primary,
     margin: theme.spacing(0.5, 0, 0.75, 0),
   },
-
   title: {
     color: theme.palette.text.secondary,
     margin: theme.spacing(0, 0, 0.75, 0),
   },
-
-  description: {
-    color: theme.palette.text.secondary,
-  },
 }));
 
-const ResumeListMobile: FC<BoxProps> = ({ labelText, headerText, title, description }) => {
+type Props = ResumeListProps;
+const ResumeListMobile: FC<Props> = ({ labelText, headerText, title, description, ...props }) => {
   const classes = useStyles();
   return (
-    <MuiBox className={classes.box}>
+    <Box {...props} bgcolor="background.paper">
       <Paper className={classes.label} component="span">
         {labelText}
       </Paper>
@@ -48,11 +38,11 @@ const ResumeListMobile: FC<BoxProps> = ({ labelText, headerText, title, descript
         <Typography className={classes.title} variant="h6">
           {title}
         </Typography>
-        <Typography className={classes.description} variant="body2">
+        <Typography color="textSecondary" variant="body2">
           {description}
         </Typography>
       </div>
-    </MuiBox>
+    </Box>
   );
 };
 

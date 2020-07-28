@@ -19,7 +19,7 @@
     "zeplinNames": ["text-field/empty", "text-field/filled"]
   }, {
     "path": "src/components/ResumeList/ResumeList.tsx",
-    "zeplinNames": ["ResumeList"]
+    "zeplinNames": ["resume-item-mobile", "resume-item"]
   }],
   "github": {
     "repository": "CodersCrew/CodersCard",

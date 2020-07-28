@@ -1,7 +1,6 @@
-export interface BoxProps {
+export type ResumeListProps = {
   labelText: string;
   headerText: string;
   title: string;
   description: string;
-  mobile?: boolean;
-}
+};

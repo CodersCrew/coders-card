@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
-import { BoxProps } from './type';
-
+import { ResumeListProps } from './type';
 import ResumeListDefault from './ResumeListDefault';
 import ResumeListMobile from './ResumeListMobile';
 
-export const ResumeList: FC<BoxProps> = ({ ...props }) => {
-  if (props.mobile) return <ResumeListMobile {...props} />;
-  else return <ResumeListDefault {...props} />;
+type MobileProps = 'true' | 'false';
+type ResumeListPropsMobile = ResumeListProps & { isMobile: MobileProps };
+
+export const ResumeList: FC<ResumeListPropsMobile> = ({ isMobile, ...props }) => {
+  return isMobile === 'true' ? <ResumeListMobile {...props} /> : <ResumeListDefault {...props} />;
 };
