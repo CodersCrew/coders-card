@@ -9,11 +9,11 @@ import { CardProps } from './cardProps';
 
 type CardType = 'mobile' | 'tablet' | 'desktop';
 
-interface DetailsCardProps extends CardProps {
+type DetailsCardProps = {
   type: CardType;
-}
+};
 
-export const DetailsCard: FC<DetailsCardProps> = ({ type, ...props }) => {
+export const DetailsCard: FC<DetailsCardProps & CardProps> = ({ type, ...props }) => {
   if (type === 'desktop') return <CardDesktop {...props} />;
   if (type === 'tablet') return <CardTablet {...props} />;
   return <CardMobile {...props} />;
