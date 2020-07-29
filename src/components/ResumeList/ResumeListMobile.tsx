@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
-import { ResumeListProps } from './type';
+import { ResumeListProps } from './ResumeList';
 import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   label: {
     padding: theme.spacing(0.5, 1.25),
     backgroundColor: theme.palette.primary.main,
-    borderRadius: `0px 5px 5px 0px `,
+    borderRadius: '0 5 5 0 ',
     color: theme.palette.background.paper,
   },
   wrapper: {
     padding: theme.spacing(1.5, 0, 0.75, 1.75),
-    borderLeft: `2px solid ${theme.palette.primary.main}`,
+    borderLeft: '2px solid ${theme.palette.primary.main}',
   },
   header: {
     color: theme.palette.text.primary,

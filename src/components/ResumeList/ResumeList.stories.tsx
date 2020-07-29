@@ -1,10 +1,10 @@
 import React from 'react';
 import { ResumeList } from './ResumeList';
-import { ResumeListProps } from './type';
+import { ResumeListProps } from '.';
 
 export default {
   title: 'ResumeList',
-  component: 'ResumeList',
+  component: ResumeList,
   excludeStories: /.*Data$/,
 };
 
@@ -17,9 +17,9 @@ const basePropsData: ResumeListProps = {
 };
 
 export const ResumeListMobile = (): JSX.Element => {
-  return <ResumeList isMobile="true" {...basePropsData} />;
+  return <ResumeList isMobile={true} {...basePropsData} />;
 };
 
 export const ResumeListDefault = (): JSX.Element => {
-  return <ResumeList isMobile="false" {...basePropsData} />;
+  return <ResumeList isMobile={false} {...basePropsData} />;
 };

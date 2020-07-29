@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
-import { ResumeListProps } from './type';
+import { ResumeListProps } from '.';
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -13,12 +13,11 @@ const useStyles = makeStyles((theme) => ({
   label: {
     padding: theme.spacing(0.5, 1.25),
     backgroundColor: theme.palette.text.secondary,
-    borderRadius: `5px 5px`,
+    borderRadius: '5',
     color: theme.palette.background.paper,
   },
   wrapper: {
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: theme.spacing(0, 0, 0.5, 0),
@@ -29,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type Props = ResumeListProps;
-const ResumeListDefault: FC<Props> = ({ labelText, headerText, title, description, ...props }) => {
+const ResumeListDefault: FC<ResumeListProps> = ({ labelText, headerText, title, description, ...props }) => {
   const classes = useStyles();
   return (
     <Box {...props} className={classes.box}>
