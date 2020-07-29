@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     padding: theme.spacing(1.5, 0, 0.75, 1.75),
-    borderLeft: '2px solid ${theme.palette.primary.main}',
+    borderLeft: `2px solid ${theme.palette.primary.main}`,
   },
   header: {
     color: theme.palette.text.primary,

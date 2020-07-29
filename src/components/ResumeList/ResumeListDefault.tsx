@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   label: {
     padding: theme.spacing(0.5, 1.25),
     backgroundColor: theme.palette.text.secondary,
-    borderRadius: '5',
+    borderRadius: 5,
     color: theme.palette.background.paper,
   },
   wrapper: {
