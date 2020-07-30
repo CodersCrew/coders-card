@@ -12,5 +12,5 @@ export type ResumeListProps = {
 type ResumeListPropsMobile = ResumeListProps & { isMobile: boolean };
 
 export const ResumeList: FC<ResumeListPropsMobile> = ({ isMobile, ...props }) => {
-  return isMobile === true ? <ResumeListMobile {...props} /> : <ResumeListDefault {...props} />;
+  return isMobile ? <ResumeListMobile {...props} /> : <ResumeListDefault {...props} />;
 };

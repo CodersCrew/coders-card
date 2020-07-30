@@ -17,9 +17,9 @@ const basePropsData: ResumeListProps = {
 };
 
 export const ResumeListMobile = (): JSX.Element => {
-  return <ResumeList isMobile={true} {...basePropsData} />;
+  return <ResumeList isMobile {...basePropsData} />;
 };
 
 export const ResumeListDefault = (): JSX.Element => {
-  return <ResumeList isMobile={false} {...basePropsData} />;
+  return <ResumeList {...basePropsData} />;
 };

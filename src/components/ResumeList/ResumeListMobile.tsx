@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type Props = ResumeListProps;
-const ResumeListMobile: FC<Props> = ({ labelText, headerText, title, description, ...props }) => {
+const ResumeListMobile: FC<ResumeListProps> = ({ labelText, headerText, title, description, ...props }) => {
   const classes = useStyles();
   return (
     <Box {...props} bgcolor="background.paper">
