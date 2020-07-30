@@ -8,8 +8,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.tag,
     borderRadius: '4px',
     height: '24px',
-    color: theme.palette.text.white,
-    ...theme.typography.subtitle2
+    color: theme.palette.text.white
   },
 }));
 export const Tag = (props: TagProps) => {
