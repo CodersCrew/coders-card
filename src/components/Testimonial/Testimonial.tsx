@@ -16,5 +16,5 @@ type TestimonialCardProps = TestimonialProps & {
 };
 
 export const Testimonial: FC<TestimonialCardProps> = ({ isMobile, ...props }) => {
-  return isMobile == true ? <TestimonialMobile {...props} /> : <TestimonialDefault {...props} />;
+  return isMobile ? <TestimonialMobile {...props} /> : <TestimonialDefault {...props} />;
 };

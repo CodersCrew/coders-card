@@ -8,6 +8,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     width: '100%',
     height: '100%',
+    borderRadius: 0,
+    boxShadow: 'none',
   },
   overlay: {
     display: 'flex',
@@ -50,17 +52,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     margin: theme.spacing(3),
   },
-  label: {
-    color: theme.palette.text.secondary,
-  },
-  labelBold: {
-    color: theme.palette.text.primary,
-  },
 }));
 
-type Props = TestimonialProps;
-
-const TestimonialDefault: FC<Props> = ({ label, labelBold, description, image, ...props }) => {
+const TestimonialDefault: FC<TestimonialProps> = ({ label, labelBold, description, image, ...props }) => {
   const classes = useStyles();
   return (
     <Card className={classes.card} {...props}>
@@ -74,10 +68,10 @@ const TestimonialDefault: FC<Props> = ({ label, labelBold, description, image, .
           <CardContent className={classes.overlayMedia}></CardContent>
         </CardMedia>
         <CardContent className={classes.overlayLabel}>
-          <Typography className={classes.labelBold} variant="h6">
+          <Typography color={'textPrimary'} variant="h6">
             {labelBold}
           </Typography>
-          <Typography className={classes.label} variant="subtitle2">
+          <Typography color={'textPrimary'} variant="subtitle2">
             {label}
           </Typography>
         </CardContent>

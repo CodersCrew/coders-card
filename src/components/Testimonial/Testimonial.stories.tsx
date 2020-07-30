@@ -15,7 +15,7 @@ const basePropsData: TestimonialProps = {
   image: image,
   description:
     'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
-  labelBold: 'Marlene Watson,',
+  labelBold: 'Marlene Watson',
   label: 'CEO of Donec',
 };
 
@@ -30,7 +30,7 @@ export const Default = () => {
 export const Mobile = () => {
   return (
     <Box style={{ width: 396, height: 196 }}>
-      <Testimonial isMobile={true} {...basePropsData} />
+      <Testimonial isMobile {...basePropsData} />
     </Box>
   );
 };

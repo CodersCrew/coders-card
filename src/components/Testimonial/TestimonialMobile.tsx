@@ -8,6 +8,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     width: '100%',
     height: '100%',
+    borderRadius: 0,
+    boxShadow: 'none',
   },
   overlay: {
     display: 'flex',
@@ -28,10 +30,18 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.4,
     padding: 0,
   },
+  overlayBox: {
+    padding: 0,
+    borderRadius: 8,
+    boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+    height: 156,
+    transform: 'translateY(-40px)',
+  },
   description: {
     color: theme.palette.text.secondary,
     margin: theme.spacing(1.5),
     textAlign: 'center',
+    transform: 'translateY(40px)',
   },
   labelOverlay: {
     display: 'flex',
@@ -39,13 +49,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: '100%',
     padding: '0',
+    transform: 'translateY(40px)',
   },
   label: {
     color: theme.palette.text.primary,
     margin: theme.spacing(0.5),
-  },
-  labelBold: {
-    color: theme.palette.text.primary,
   },
 }));
 
@@ -60,16 +68,18 @@ const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ..
           <CardContent className={classes.overlayMedia}></CardContent>
         </CardMedia>
       </CardContent>
-      <Typography className={classes.description} variant="body2">
-        {description}
-      </Typography>
-      <CardContent className={classes.labelOverlay}>
-        <Typography className={classes.labelBold} variant="h6">
-          {labelBold}
+      <CardContent className={classes.overlayBox}>
+        <Typography className={classes.description} variant="body2">
+          {description}
         </Typography>
-        <Typography className={classes.label} variant="body2">
-          {label}
-        </Typography>
+        <CardContent className={classes.labelOverlay}>
+          <Typography color={'textPrimary'} variant="h6">
+            {labelBold + ','}
+          </Typography>
+          <Typography className={classes.label} variant="body2">
+            {label}
+          </Typography>
+        </CardContent>
       </CardContent>
     </Card>
   );
