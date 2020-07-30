@@ -21,5 +21,5 @@ export const ResumeListMobile = (): JSX.Element => {
 };
 
 export const ResumeListDefault = (): JSX.Element => {
-  return <ResumeList {...basePropsData} />;
+  return <ResumeList isMobile={false} {...basePropsData} />;
 };
