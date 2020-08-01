@@ -105,7 +105,6 @@ const CardMobile: FC<CardProps> = ({
   resumeLink,
 }) => {
   const classes = useStyles();
-  const displayName = `${fullName.firstName} ${fullName.lastName}`;
   const displayLocation = location && `${location.city}, ${location.country}`;
 
   return (
@@ -114,7 +113,7 @@ const CardMobile: FC<CardProps> = ({
         <Box className={classes.topSection}>
           <CardMedia className={classes.avatar} image={image} />
           <Typography className={classes.name} variant="h2">
-            {displayName}
+            {fullName}
           </Typography>
           <Typography variant="subtitle1" className={classes.position}>
             {position}

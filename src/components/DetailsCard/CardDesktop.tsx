@@ -140,8 +140,7 @@ const CardDesktop: FC<CardProps> = ({
         <CardContent className={classes.content}>
           <Box className={classes.basicInfo}>
             <Box className={classes.name}>
-              <Typography variant="h1">{fullName.firstName}</Typography>
-              <Typography variant="h1">{fullName.lastName}</Typography>
+              <Typography variant="h1">{fullName}</Typography>
             </Box>
             <Typography variant="subtitle1" className={classes.position}>
               {position}

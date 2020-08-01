@@ -4,10 +4,8 @@ type SocialMedia = { name: SocialMediaNames; link: string }[];
 
 type Location = { city: string; country: string };
 
-type FullName = { firstName: string; lastName: string };
-
 export type CardProps = {
-  fullName: FullName;
+  fullName: string;
   image: string;
   position: string;
   socialMedia?: SocialMedia;

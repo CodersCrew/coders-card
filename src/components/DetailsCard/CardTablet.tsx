@@ -82,14 +82,13 @@ const CardTablet: FC<CardProps> = ({
   isFreelancer,
 }) => {
   const classes = useStyles();
-  const displayName = `${fullName.firstName} ${fullName.lastName}`;
   const displayLocation = location && `${location.city}, ${location.country}`;
 
   return (
     <Card className={classes.card}>
       <CardMedia className={classes.avatar} image={image} />
       <CardContent className={classes.content}>
-        <Typography variant="h1">{displayName}</Typography>
+        <Typography variant="h1">{fullName}</Typography>
         <Typography variant="subtitle1" className={classes.position}>
           {position}
         </Typography>

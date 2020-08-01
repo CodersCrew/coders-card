@@ -14,7 +14,7 @@ export default {
 };
 
 const basePropsData: CardProps = {
-  fullName: { firstName: 'Jonathan', lastName: 'Harwood' },
+  fullName: 'Jonathan Harwood',
   image,
   position: 'Full stack developer',
   socialMedia: [
