@@ -9,18 +9,42 @@
     "5f078d44dc9b6d6bb8c46134"
   ],
   "styleguides": [],
-  "components": [{
-    "path": "src/components/Button/Button.tsx",
-    "zeplinNames": [
-      "button"
-    ]
-  }, {
-    "path": "src/components/TextField/TextField.tsx",
-    "zeplinNames": ["text-field/empty", "text-field/filled"]
-  }, {
+  "components": [
+    {
+      "path": "src/components/Button/Button.tsx",
+      "zeplinNames": [
+        "button"
+      ]
+    },
+    {
+      "path": "src/components/TextField/TextField.tsx",
+      "zeplinNames": ["text-field/empty", "text-field/filled"]
+    },
+    {
+      "path": "src/components/PortfolioCard/PortfolioCard.tsx",
+      "zeplinNames": [
+        "portfolio-card",
+        "portfolio-card-mobile",
+        "portfolio-card-desktop-hover"
+      ]
+    },
+    {
+      "path": "src/components/SectionTitle/SectionTitle.tsx",
+      "zeplinNames": [
+        "section-title"
+      ]
+    },
+    {
+      "path": "src/components/DetailsCard/DetailsCard.tsx",
+      "zeplinNames": [
+        "details-card"
+      ]
+    },
+    {
     "path": "src/components/ResumeList/ResumeList.tsx",
     "zeplinNames": ["resume-item-mobile", "resume-item"]
-  }],
+  }
+  ],
   "github": {
     "repository": "CodersCrew/CodersCard",
     "branch": "master"
