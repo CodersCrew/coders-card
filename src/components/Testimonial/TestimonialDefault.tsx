@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
   description: {
     color: theme.palette.text.secondary,
     margin: theme.spacing(3),
+    fontStyle: 'italic',
   },
 }));
 

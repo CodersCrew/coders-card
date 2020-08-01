@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1.5),
     textAlign: 'center',
     transform: 'translateY(40px)',
+    fontStyle: 'italic',
   },
   labelOverlay: {
     display: 'flex',
