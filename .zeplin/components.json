@@ -33,6 +33,12 @@
       "zeplinNames": [
         "section-title"
       ]
+    },
+    {
+      "path": "src/components/DetailsCard/DetailsCard.tsx",
+      "zeplinNames": [
+        "details-card"
+      ]
     }
   ],
   "github": {
