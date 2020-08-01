@@ -1,6 +1,7 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { Box, Typography, makeStyles } from '@material-ui/core/';
 import { FC } from '../../typings/components';
+import { MapPin, Download, Mail, Phone, Check } from 'react-feather';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -16,13 +17,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type Props = { label: string; icon: string; className?: string; isLink?: boolean; href?: string };
+type DetailItemIcon = 'map-pin' | 'check' | 'download' | 'phone' | 'mail';
+
+type Props = { label: string; icon: DetailItemIcon; className?: string; isLink?: boolean; href?: string };
 
 export const DetailsItem: FC<Props> = ({ label, icon, className = '', isLink = false, href }) => {
   const classes = useStyles();
   const renderIcon = () => {
-    const SelectedIcon = lazy(() => import(`react-feather/dist/icons/${icon}.js`));
-    return <SelectedIcon className={classes.icon} />;
+    if (icon === 'map-pin') return <MapPin className={classes.icon} />;
+    if (icon === 'check') return <Check className={classes.icon} />;
+    if (icon === 'download') return <Download className={classes.icon} />;
+    if (icon === 'phone') return <Phone className={classes.icon} />;
+    return <Mail className={classes.icon} />;
   };
   return (
     <Typography
@@ -31,7 +37,7 @@ export const DetailsItem: FC<Props> = ({ label, icon, className = '', isLink = f
       component={isLink ? 'a' : 'span'}
       href={href}
     >
-      <Suspense fallback={null}>{renderIcon()}</Suspense>
+      {renderIcon()}
       <Box className={classes.label}>{label}</Box>
     </Typography>
   );
