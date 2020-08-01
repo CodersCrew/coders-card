@@ -126,7 +126,7 @@ const CardDesktop: FC<CardProps> = ({
   socialMedia,
   phone,
   email,
-  location,
+  address,
   isFreelancer = false,
   resumeLink,
 }) => {
@@ -173,7 +173,7 @@ const CardDesktop: FC<CardProps> = ({
                 href={`mailto:${email}`}
               />
             )}
-            {location && <DetailsItem className={classes.detailsItem} label={location} icon="map-pin" />}
+            {address && <DetailsItem className={classes.detailsItem} label={address} icon="map-pin" />}
             {isFreelancer && (
               <DetailsItem
                 className={`${classes.detailsItem} ${classes.detailsItemAvailable}`}

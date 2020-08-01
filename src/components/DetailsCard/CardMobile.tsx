@@ -100,7 +100,7 @@ const CardMobile: FC<CardProps> = ({
   socialMedia,
   phone,
   email,
-  location,
+  address,
   isFreelancer,
   resumeLink,
 }) => {
@@ -144,7 +144,7 @@ const CardMobile: FC<CardProps> = ({
               href={`mailto:${email}`}
             />
           )}
-          {location && <DetailsItem className={classes.bottomSectionItem} label={location} icon="map-pin" />}
+          {address && <DetailsItem className={classes.bottomSectionItem} label={address} icon="map-pin" />}
           {isFreelancer && (
             <DetailsItem className={classes.detailsItemAvailable} label="Available for freelance" icon="check" />
           )}

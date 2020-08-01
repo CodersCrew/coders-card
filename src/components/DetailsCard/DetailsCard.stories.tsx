@@ -25,7 +25,7 @@ const basePropsData: CardProps = {
   ],
   phone: '+48 601 345 132',
   email: 'jonathan.harwood@gmail.com',
-  location: 'Wroclaw, Poland',
+  address: 'Wroclaw, Poland',
   isFreelancer: true,
   resumeLink: 'https://www.docdroid.net/WyjIuyO/fake-resume-pdf',
 };

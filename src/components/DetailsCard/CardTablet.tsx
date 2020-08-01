@@ -71,16 +71,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.success.main,
   },
 }));
-const CardTablet: FC<CardProps> = ({
-  fullName,
-  image,
-  position,
-  socialMedia,
-  phone,
-  email,
-  location,
-  isFreelancer,
-}) => {
+const CardTablet: FC<CardProps> = ({ fullName, image, position, socialMedia, phone, email, address, isFreelancer }) => {
   const classes = useStyles();
 
   return (
@@ -111,7 +102,7 @@ const CardTablet: FC<CardProps> = ({
               href={`mailto:${email}`}
             />
           )}
-          {location && <DetailsItem label={location} icon="map-pin" />}
+          {address && <DetailsItem label={address} icon="map-pin" />}
           {isFreelancer && (
             <DetailsItem className={classes.detailsItemAvailable} label="Available for freelance" icon="check" />
           )}

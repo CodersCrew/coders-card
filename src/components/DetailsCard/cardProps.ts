@@ -9,7 +9,7 @@ export type CardProps = {
   socialMedia?: SocialMedia;
   phone?: string;
   email?: string;
-  location?: string;
+  address?: string;
   isFreelancer?: boolean;
   resumeLink?: string;
 };
