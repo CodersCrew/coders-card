@@ -21,9 +21,10 @@ const useStyles = makeStyles((theme) => ({
   overlayMedia: {
     width: 64,
     height: 64,
-    filter: 'blur(24px)',
+    filter: 'blur(10px)',
     opacity: 0.4,
     padding: 0,
+    borderRadius: 8,
   },
   overlayDescription: {
     display: 'flex',
@@ -65,7 +66,7 @@ const TestimonialDefault: FC<TestimonialProps> = ({ label, labelBold, descriptio
       </CardContent>
       <CardContent className={classes.overlay}>
         <CardMedia className={classes.media} image={image}>
-          <CardContent className={classes.overlayMedia}></CardContent>
+          <CardMedia className={classes.overlayMedia} image={image}></CardMedia>
         </CardMedia>
         <CardContent className={classes.overlayLabel}>
           <Typography color={'textPrimary'} variant="h6">

@@ -26,9 +26,10 @@ const useStyles = makeStyles((theme) => ({
   overlayMedia: {
     width: 64,
     height: 64,
-    filter: 'blur(24px)',
+    filter: 'blur(10px)',
     opacity: 0.4,
     padding: 0,
+    borderRadius: 8,
   },
   overlayBox: {
     padding: 0,
@@ -65,7 +66,7 @@ const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ..
     <Card className={classes.card} {...props}>
       <CardContent className={classes.overlay}>
         <CardMedia className={classes.media} image={image}>
-          <CardContent className={classes.overlayMedia}></CardContent>
+          <CardMedia className={classes.overlayMedia} image={image}></CardMedia>
         </CardMedia>
       </CardContent>
       <CardContent className={classes.overlayBox}>
