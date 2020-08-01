@@ -1,9 +1,17 @@
 import React, { ReactElement } from 'react';
 import { GitHub, Facebook, Twitter, Instagram } from 'react-feather';
 
-export const renderSocialMediaIcon = (socialMediaName: string, className: string): ReactElement => {
-  if (socialMediaName === 'facebook') return <Facebook className={className} />;
-  if (socialMediaName === 'github') return <GitHub className={className} />;
-  if (socialMediaName === 'twitter') return <Twitter className={className} />;
-  return <Instagram className={className} />;
+import { SocialMediaName } from './cardProps';
+
+const socialMediaIcons = {
+  facebook: Facebook,
+  github: GitHub,
+  twitter: Twitter,
+  instagram: Instagram,
+};
+
+export const renderSocialMediaIcon = (socialMediaName: SocialMediaName, className: string): ReactElement => {
+  const Icon = socialMediaIcons[socialMediaName];
+
+  return <Icon className={className} />;
 };

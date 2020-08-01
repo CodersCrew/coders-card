@@ -1,6 +1,6 @@
-export type SocialMediaNames = 'facebook' | 'twitter' | 'instagram' | 'github';
+export type SocialMediaName = 'facebook' | 'twitter' | 'instagram' | 'github';
 
-type SocialMedia = { name: SocialMediaNames; link: string }[];
+type SocialMedia = { name: SocialMediaName; link: string }[];
 
 export type CardProps = {
   fullName: string;
