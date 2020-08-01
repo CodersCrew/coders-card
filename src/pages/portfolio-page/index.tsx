@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
 
 import { DetailsCard } from '../../components/DetailsCard';
@@ -33,14 +34,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainContent: {
-    boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+    backgroundColor: 'transparent',
     borderRadius: 16,
     margin: theme.spacing(0, 3, 7, 3),
+
+    [theme.breakpoints.up('sm')]: {
+      backgroundColor: theme.palette.background.paper,
+    },
 
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
       flexDirection: 'column',
       margin: theme.spacing(0, 0, 7, 0),
+      boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
     },
   },
   navbar: {
@@ -51,7 +57,11 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     height: 120,
     width: '100%',
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(2),
+
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: theme.spacing(4),
+    },
 
     [theme.breakpoints.up('lg')]: {
       marginBottom: theme.spacing(7),
@@ -59,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   projectsContainer: {
-    boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+    backgroundColor: 'transparent',
     borderRadius: 16,
     padding: theme.spacing(3),
 
@@ -71,7 +81,11 @@ const useStyles = makeStyles((theme) => ({
   projects: {
     display: 'grid',
     gridTemplateColumns: '1fr',
-    gridRowGap: theme.spacing(3),
+    gridRowGap: theme.spacing(4),
+
+    [theme.breakpoints.up('sm')]: {
+      gridRowGap: theme.spacing(3),
+    },
 
     [theme.breakpoints.up('lg')]: {
       gridTemplateColumns: '400px 400px',
@@ -87,7 +101,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(4),
+
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: theme.spacing(3),
+    },
 
     [theme.breakpoints.up('lg')]: {
       margin: theme.spacing(0, 2, 4, 2),
@@ -104,10 +122,17 @@ const IndexPage = () => {
 
   return (
     <Container className={classes.container} maxWidth="lg">
-      <Box className={classes.aside}>{isDesktop && <DetailsCard type="desktop" {...userData} />}</Box>
+      <Helmet>
+        <title>Portfolio page</title>
+      </Helmet>
+      {isDesktop && (
+        <Box className={classes.aside}>
+          <DetailsCard type="desktop" {...userData} />
+        </Box>
+      )}
       <Box className={classes.main}>
         <Card className={classes.navbar}>navbar</Card>
-        <Card className={classes.mainContent}>
+        <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
@@ -118,7 +143,7 @@ const IndexPage = () => {
               ))}
             </Box>
           </Box>
-        </Card>
+        </Box>
       </Box>
     </Container>
   );
