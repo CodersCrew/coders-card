@@ -2,8 +2,6 @@ export type SocialMediaNames = 'facebook' | 'twitter' | 'instagram' | 'github';
 
 type SocialMedia = { name: SocialMediaNames; link: string }[];
 
-type Location = { city: string; country: string };
-
 export type CardProps = {
   fullName: string;
   image: string;
@@ -11,7 +9,7 @@ export type CardProps = {
   socialMedia?: SocialMedia;
   phone?: string;
   email?: string;
-  location?: Location;
+  location?: string;
   isFreelancer?: boolean;
   resumeLink?: string;
 };

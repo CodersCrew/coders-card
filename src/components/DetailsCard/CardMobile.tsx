@@ -105,7 +105,6 @@ const CardMobile: FC<CardProps> = ({
   resumeLink,
 }) => {
   const classes = useStyles();
-  const displayLocation = location && `${location.city}, ${location.country}`;
 
   return (
     <Card className={classes.card}>
@@ -145,9 +144,7 @@ const CardMobile: FC<CardProps> = ({
               href={`mailto:${email}`}
             />
           )}
-          {displayLocation && (
-            <DetailsItem className={classes.bottomSectionItem} label={displayLocation} icon="map-pin" />
-          )}
+          {location && <DetailsItem className={classes.bottomSectionItem} label={location} icon="map-pin" />}
           {isFreelancer && (
             <DetailsItem className={classes.detailsItemAvailable} label="Available for freelance" icon="check" />
           )}

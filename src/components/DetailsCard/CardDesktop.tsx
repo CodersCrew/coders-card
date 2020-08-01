@@ -131,7 +131,6 @@ const CardDesktop: FC<CardProps> = ({
   resumeLink,
 }) => {
   const classes = useStyles();
-  const displayLocation = location && `${location.city}, ${location.country}`;
 
   return (
     <Box className={classes.wrapper}>
@@ -172,7 +171,7 @@ const CardDesktop: FC<CardProps> = ({
                 href={`mailto:${email}`}
               />
             )}
-            {displayLocation && <DetailsItem className={classes.detailsItem} label={displayLocation} icon="map-pin" />}
+            {location && <DetailsItem className={classes.detailsItem} label={location} icon="map-pin" />}
             {isFreelancer && (
               <DetailsItem
                 className={`${classes.detailsItem} ${classes.detailsItemAvailable}`}

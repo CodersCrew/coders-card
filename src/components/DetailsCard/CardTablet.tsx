@@ -82,7 +82,6 @@ const CardTablet: FC<CardProps> = ({
   isFreelancer,
 }) => {
   const classes = useStyles();
-  const displayLocation = location && `${location.city}, ${location.country}`;
 
   return (
     <Card className={classes.card}>
@@ -112,7 +111,7 @@ const CardTablet: FC<CardProps> = ({
               href={`mailto:${email}`}
             />
           )}
-          {displayLocation && <DetailsItem label={displayLocation} icon="map-pin" />}
+          {location && <DetailsItem label={location} icon="map-pin" />}
           {isFreelancer && (
             <DetailsItem className={classes.detailsItemAvailable} label="Available for freelance" icon="check" />
           )}
