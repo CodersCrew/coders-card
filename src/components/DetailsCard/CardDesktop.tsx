@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     background: theme.palette.background.paper,
+    boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
     borderRadius: 16,
     height: '100%',
     width: '100%',
