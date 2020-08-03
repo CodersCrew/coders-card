@@ -37,10 +37,11 @@ const useStyles = makeStyles((theme) => ({
   mainContent: {
     backgroundColor: 'transparent',
     borderRadius: 16,
-    margin: theme.spacing(0, 3, 7, 3),
+    margin: theme.spacing(0, 0, 7, 0),
 
     [theme.breakpoints.up('sm')]: {
       backgroundColor: theme.palette.background.paper,
+      margin: theme.spacing(0, 3, 7, 3),
     },
 
     [theme.breakpoints.up('lg')]: {
@@ -136,9 +137,9 @@ const IndexPage = () => {
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
-              {[...Array(6)].map((key) => (
+              {[...Array(6)].map((_, index) => (
                 <PortfolioCard
-                  key={key}
+                  key={index}
                   className={classes.project}
                   type={isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}
                   {...projectData}
