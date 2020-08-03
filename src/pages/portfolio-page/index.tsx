@@ -8,12 +8,13 @@ import { PortfolioCard } from '../../components/PortfolioCard';
 
 import { projectData, userData } from './data';
 
+const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: 0,
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
-      minHeight: '100vh',
       padding: theme.spacing(8, 2, 0, 2),
     },
   },
@@ -46,14 +47,14 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       margin: theme.spacing(0, 0, 7, 0),
-      boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+      boxShadow: portfolioPageItemShadow,
     },
   },
   navbar: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+    boxShadow: portfolioPageItemShadow,
     borderRadius: 8,
     height: 120,
     width: '100%',
@@ -69,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   projectsContainer: {
-    backgroundColor: 'transparent',
     borderRadius: 16,
     padding: theme.spacing(3),
 
@@ -136,10 +136,13 @@ const IndexPage = () => {
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
-              {[1, 2, 3, 4, 5, 6].map((_) => (
-                <Box key={_} className={classes.project}>
-                  {<PortfolioCard type={isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'} {...projectData} />}
-                </Box>
+              {[...Array(6)].map((key) => (
+                <PortfolioCard
+                  key={key}
+                  className={classes.project}
+                  type={isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}
+                  {...projectData}
+                />
               ))}
             </Box>
           </Box>
