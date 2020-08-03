@@ -35,12 +35,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainContent: {
-    backgroundColor: 'transparent',
+    backgroundColor: theme.palette.background.paper,
     borderRadius: 16,
     margin: theme.spacing(0, 0, 7, 0),
 
     [theme.breakpoints.up('sm')]: {
-      backgroundColor: theme.palette.background.paper,
       margin: theme.spacing(0, 3, 7, 3),
     },
 
