@@ -33,6 +33,18 @@
       "zeplinNames": [
         "section-title"
       ]
+    },
+    {
+      "path": "src/components/FilterTab/FilterTab.tsx",
+      "zeplinNames": [
+        "filter-tag"
+      ]
+    }
+    {
+      "path": "src/components/FilterTabs/FilterTab.stsx",
+      "zeplinNames": [
+        "filter-tag"
+      ]
     }
   ],
   "github": {
