@@ -5,23 +5,18 @@ export type TabProps = MuiTabProps;
 
 const useStyles = makeStyles((theme) => ({
   Tab: {
-    '&.MuiButton-containedPrimary': {
-      backgroundColor: theme.palette.primary.main,
-      padding: theme.spacing(1),
+    '&.MuiTab-textColorPrimary': {
+      color: theme.palette,
     },
-    '&.MuiButton-contained': {
-      width: '158px',
-      height: '40x',
-    },
-    '&.MuiButton-containedSizeSmall': {
-      width: '150px',
-      height: '32px',
+
+    '&.MuiTab-textColorPrimary.Mui-selected': {
+      color: theme.palette.primary.main,
     },
   },
 }));
 
-export const Button = (props: TabProps) => {
+export const FilterTab = (props: TabProps): JSX.Element => {
   const classes = useStyles();
 
-  return <MuiTab className={classes.Tab} {...props} />;
+  return <MuiTab label="All" className={classes.Tab} {...props} />;
 };
