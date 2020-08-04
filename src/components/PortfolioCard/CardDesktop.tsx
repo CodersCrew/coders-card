@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = CardProps;
 
-const CardTablet: FC<Props> = ({ title, label, description, image, onClick, ...props }) => {
+const CardTablet: FC<Props> = ({ title, label, description, image, onClick, className = '', ...props }) => {
   const classes = useStyles();
   const [isHovered, setHovered] = useState(false);
   return (
@@ -68,7 +68,7 @@ const CardTablet: FC<Props> = ({ title, label, description, image, onClick, ...p
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={classes.card}
+      className={`${classes.card} ${className}`}
       {...props}
     >
       <CardActionArea className={classes.action}>
