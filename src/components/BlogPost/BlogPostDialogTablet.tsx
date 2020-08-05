@@ -1,17 +1,15 @@
-import React, { useState, FC } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
-import { DialogProps } from './PostDialog';
+import React, { FC } from 'react';
 
-import { IconButton } from '../IconButton/IconButton';
 import { Tag } from '../Tag/Tag';
+import { BlogPostDialogProps } from './BlogPostDialog';
+import { IconButton } from '../IconButton/IconButton';
 
-import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
+import { X, ChevronLeft, ChevronRight } from 'react-feather';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
-    WebkitBackdropFilter: 'blur(40)',
-    position: 'absolute',
     '& .MuiDialog-paper': {
       overflowY: 'inherit',
     },
@@ -23,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     position: 'absolute',
     left: '103%',
-    marginLeft: theme.spacing(0),
   },
   buttonX: {
     margin: theme.spacing(2, 0, 5, 0),
@@ -33,26 +30,33 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     backgroundColor: theme.palette.background.light,
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
   },
+  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: 600, height: 336 },
   headerTitle: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    display: 'grid',
+    gridTemplateColumns: '2fr 1fr',
     marginBottom: theme.spacing(0.6),
   },
-  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15 },
   headerContent: { marginTop: theme.spacing(1.5) },
-  content: { padding: theme.spacing(3), overflowY: 'auto' },
+  content: {
+    padding: theme.spacing(4),
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      width: '0.5em',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: fade(theme.palette.text.primary, 0.8),
+    },
+  },
 }));
 
-const DialogTablet: FC<DialogProps> = ({ ...props }) => {
-  const [open, setOpen] = useState(true);
+const BlogPostDialogTablet: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} open={open} {...props}>
+      <Dialog className={classes.wrapper} open={isOpen} {...props}>
         <Box className={classes.buttons}>
           <Box className={classes.buttonX}>
             <IconButton {...props} size={'small'}>
@@ -71,21 +75,21 @@ const DialogTablet: FC<DialogProps> = ({ ...props }) => {
         <img className={classes.img} src={props.imgurl} />
         <Box className={classes.header}>
           <Box className={classes.headerTitle}>
-            <Typography variant="h4" color="textPrimary">
+            <Typography variant="h2" color="textPrimary">
               {props.title}
             </Typography>
-            <Tag label="Teamwork" />
+            <Tag label="Teamwork" color="secondary" />
           </Box>
           <Typography variant="subtitle2" color="textPrimary">
             {props.subtitle}
           </Typography>
           <Typography className={classes.headerContent} variant="body1" color="textSecondary">
-            {props.contentHeader}
+            {props.contentheader}
           </Typography>
         </Box>
         <Box className={classes.content}>
           <Typography variant="body2" color="textSecondary">
-            {props.contentMain}
+            {props.contentmain}
           </Typography>
         </Box>
       </Dialog>
@@ -93,4 +97,4 @@ const DialogTablet: FC<DialogProps> = ({ ...props }) => {
   );
 };
 
-export default DialogTablet;
+export default BlogPostDialogTablet;

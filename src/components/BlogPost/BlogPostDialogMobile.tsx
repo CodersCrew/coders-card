@@ -1,17 +1,15 @@
-import React, { useState, FC } from 'react';
+import React, { FC } from 'react';
 
-import { IconButton } from '../IconButton/IconButton';
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
 import { Tag } from '../Tag/Tag';
-import { DialogProps } from './PostDialog';
+import { BlogPostDialogProps } from './BlogPostDialog';
+import { IconButton } from '../IconButton/IconButton';
 
+import { X, ChevronLeft, ChevronRight } from 'react-feather';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
 
 const useStyles = makeStyles((theme) => ({
-  paper: { minWidth: '500px' },
   buttons: {
-    // backgroundColor: theme.palette.background.paper,
-    backgroundColor: 'red',
+    backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(1, 2),
     display: 'flex',
     flexDirection: 'row',
@@ -19,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     marginTop: theme.spacing(1, 2),
+    height: 180,
   },
   header: {
     backgroundColor: theme.palette.background.light,
@@ -33,25 +32,24 @@ const useStyles = makeStyles((theme) => ({
   rightButton: { marginRight: 15 },
 }));
 
-const DialogMobile: FC<DialogProps> = ({ ...props }) => {
-  const [open, setOpen] = useState(true);
+const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog scroll="paper" className={classes.wrapper} fullScreen={true} open={open} {...props}>
+      <Dialog className={classes.wrapper} fullScreen={true} open={isOpen} {...props}>
         <Box className={classes.buttons}>
           <Box className={classes.button}>
             <Box className={classes.rightButton}>
-              <IconButton {...props} size={'small'}>
+              <IconButton color="inherit" {...props} size={'small'}>
                 <ChevronLeft size={15} />
               </IconButton>
             </Box>
-            <IconButton {...props} size={'small'}>
+            <IconButton color="inherit" {...props} size={'small'}>
               <ChevronRight size={15} />
             </IconButton>
           </Box>
-          <IconButton {...props} size={'small'}>
+          <IconButton color="inherit" {...props} size={'small'}>
             <X size={15} />
           </IconButton>
         </Box>
@@ -63,17 +61,17 @@ const DialogMobile: FC<DialogProps> = ({ ...props }) => {
           <Typography className={classes.subtitle} variant="subtitle2" color="textPrimary">
             {props.subtitle}
           </Typography>
-          <Tag label="Teamwork" />
+          <Tag label="Teamwork" color="secondary" />
           <Typography className={classes.contentHeader} variant="body1" color="textSecondary">
-            {props.contentHeader}
+            {props.contentheader}
           </Typography>
         </Box>
         <Typography className={classes.content} variant="body2" color="textSecondary">
-          {props.contentMain}
+          {props.contentmain}
         </Typography>
       </Dialog>
     </Box>
   );
 };
 
-export default DialogMobile;
+export default BlogPostDialogMobile;

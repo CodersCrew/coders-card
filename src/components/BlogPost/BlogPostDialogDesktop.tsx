@@ -1,16 +1,15 @@
-import React, { useState, FC } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
-import { DialogProps } from './PostDialog';
+import React, { FC } from 'react';
 
+import { BlogPostDialogProps } from './BlogPostDialog';
 import { IconButton } from '../IconButton/IconButton';
 import { Tag } from '../Tag/Tag';
 
+import { X, ChevronLeft, ChevronRight } from 'react-feather';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
-    position: 'absolute',
     '& .MuiDialog-paper': {
       overflowY: 'inherit',
     },
@@ -22,41 +21,42 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     position: 'absolute',
     left: '103%',
-    marginLeft: theme.spacing(0),
-    boxShadow: 'null',
   },
   buttonX: {
     marginBottom: theme.spacing(5),
-    boxShadow: 'null',
   },
   buttonChevronLeft: {
     marginBottom: theme.spacing(2.5),
-    boxShadow: 'null',
   },
   header: {
     backgroundColor: theme.palette.background.light,
-    padding: theme.spacing(3),
-    boxShadow: 'null',
+    padding: theme.spacing(4),
   },
-  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, boxShadow: 'null' },
+  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: 600, height: 330 },
   headerTitle: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    display: 'grid',
+    gridTemplateColumns: '2fr 1fr',
     marginBottom: theme.spacing(0.6),
-    boxShadow: 'null',
   },
-  headerContent: { marginTop: theme.spacing(1.5), boxShadow: 'null' },
-  content: { padding: theme.spacing(3), overflowY: 'auto', boxShadow: 'null' },
+  headerContent: { marginTop: theme.spacing(1.5) },
+  content: {
+    padding: theme.spacing(4),
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      width: '0.5em',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: fade(theme.palette.text.primary, 0.8),
+    },
+  },
 }));
 
-const DialogDesktop: FC<DialogProps> = ({ ...props }) => {
-  const [open, setOpen] = useState(true);
+const BlogPostDialogDesktop: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} open={open} {...props}>
+      <Dialog className={classes.wrapper} open={isOpen} {...props}>
         <Box className={classes.buttons}>
           <Box className={classes.buttonX}>
             <IconButton {...props} size={'small'}>
@@ -78,18 +78,18 @@ const DialogDesktop: FC<DialogProps> = ({ ...props }) => {
             <Typography variant="h4" color="textPrimary">
               {props.title}
             </Typography>
-            <Tag label="Teamwork" />
+            <Tag label="Teamwork" color="secondary" />
           </Box>
           <Typography variant="subtitle2" color="textPrimary">
             {props.subtitle}
           </Typography>
           <Typography className={classes.headerContent} variant="body1" color="textSecondary">
-            {props.contentHeader}
+            {props.contentheader}
           </Typography>
         </Box>
         <Box className={classes.content}>
           <Typography variant="body2" color="textSecondary">
-            {props.contentMain}
+            {props.contentmain}
           </Typography>
         </Box>
       </Dialog>
@@ -97,4 +97,4 @@ const DialogDesktop: FC<DialogProps> = ({ ...props }) => {
   );
 };
 
-export default DialogDesktop;
+export default BlogPostDialogDesktop;
