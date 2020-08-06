@@ -6,11 +6,11 @@ export type TabProps = MuiTabProps;
 const useStyles = makeStyles((theme) => ({
   tab: {
     '&.MuiTab-textColorPrimary': {
-      color: theme.palette.primary.main,
+      color: theme.palette.secondary,
     },
 
     '&.MuiTab-textColorPrimary.Mui-selected': {
-      color: theme.palette.primary.main,
+      color: 'theme.palette.primary.main',
     },
   },
 }));
@@ -18,5 +18,5 @@ const useStyles = makeStyles((theme) => ({
 export const FilterTab = (props: TabProps): JSX.Element => {
   const classes = useStyles();
 
-  return <MuiTab label="All" className={classes.Tab} {...props} />;
+  return <MuiTab label="All" className={classes.tab} {...props} />;
 };
