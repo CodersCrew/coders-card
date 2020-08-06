@@ -4,9 +4,9 @@ import { Tab as MuiTab, TabProps as MuiTabProps, makeStyles } from '@material-ui
 export type TabProps = MuiTabProps;
 
 const useStyles = makeStyles((theme) => ({
-  Tab: {
+  tab: {
     '&.MuiTab-textColorPrimary': {
-      color: theme.palette,
+      color: theme.palette.primary.main,
     },
 
     '&.MuiTab-textColorPrimary.Mui-selected': {

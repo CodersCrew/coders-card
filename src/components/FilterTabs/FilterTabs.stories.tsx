@@ -4,6 +4,7 @@ import { FilterTabs, TabsProps } from '.';
 
 export default {
   title: 'FilterTabs',
+  component: FilterTabs,
   excludeStories: /.*Data$/,
 };
 

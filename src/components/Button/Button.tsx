@@ -9,14 +9,6 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.primary.main,
       padding: theme.spacing(1),
     },
-    '&.MuiButton-contained': {
-      width: '158px',
-      height: '40x',
-    },
-    '&.MuiButton-containedSizeSmall': {
-      width: '150px',
-      height: '32px',
-    },
   },
 }));
 
