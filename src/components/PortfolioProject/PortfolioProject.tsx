@@ -4,7 +4,7 @@ import PortfolioProjectDialogMobile from './PortfolioProjectMobile';
 import PortfolioProjectDialogDesktop from './PortfolioProjectDesktop';
 import PortfolioProjectDialogTablet from './PortfolioProjectTablet';
 
-export type BlogPostDialogProps = {
+export type PortfolioProjectDialogProps = {
   title: string;
   subtitle: string;
   tagtitle: string;
@@ -14,11 +14,11 @@ export type BlogPostDialogProps = {
   isOpen: boolean;
 };
 
-type DetailsBlogPostDialogType = BlogPostDialogProps & {
+type DetailsPortfolioProjectDialogType = PortfolioProjectDialogProps & {
   type: 'mobile' | 'tablet' | 'desktop';
 };
 
-export const PortfolioProjectDialog: FC<DetailsBlogPostDialogType> = ({ type, ...props }) => {
+export const PortfolioProjectDialog: FC<DetailsPortfolioProjectDialogType> = ({ type, ...props }) => {
   if (type === 'mobile') return <PortfolioProjectDialogMobile {...props} />;
   else if (type === 'desktop') return <PortfolioProjectDialogDesktop {...props} />;
   else return <PortfolioProjectDialogTablet {...props} />;

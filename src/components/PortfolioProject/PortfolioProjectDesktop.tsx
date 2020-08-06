@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { BlogPostDialogProps } from './PortfolioProject';
+import { PortfolioProjectDialogProps } from './PortfolioProject';
 import { IconButton } from '../IconButton/IconButton';
 import { Tag } from '../Tag/Tag';
 
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlogPostDialogDesktop: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
+const BlogPostDialogDesktop: FC<PortfolioProjectDialogProps> = ({ isOpen, ...props }) => {
   const classes = useStyles();
 
   return (

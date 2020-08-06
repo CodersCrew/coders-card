@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { Tag } from '../Tag/Tag';
-import { BlogPostDialogProps } from './PortfolioProject';
+import { PortfolioProjectDialogProps } from './PortfolioProject';
 import { IconButton } from '../IconButton/IconButton';
 
 import { X, ChevronLeft, ChevronRight } from 'react-feather';
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   rightButton: { marginRight: 15 },
 }));
 
-const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
+const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...props }) => {
   const classes = useStyles();
 
   return (
