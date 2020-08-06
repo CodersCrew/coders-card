@@ -24,6 +24,12 @@
       ]
     },
     {
+      "path": "src/components/Skill/Skill.tsx",
+      "zeplinNames": [
+        "skill"
+      ]
+    },
+    {
       "path": "src/components/TextField/TextField.tsx",
       "zeplinNames": ["text-field/empty", "text-field/filled"]
     },
@@ -47,7 +53,17 @@
       "zeplinNames": [
         "section-title"
       ]
-    }
+    },
+    {
+      "path": "src/components/DetailsCard/DetailsCard.tsx",
+      "zeplinNames": [
+        "details-card"
+      ]
+    },
+    {
+    "path": "src/components/ResumeList/ResumeList.tsx",
+    "zeplinNames": ["resume-item-mobile", "resume-item"]
+  }
   ],
   "github": {
     "repository": "CodersCrew/CodersCard",
