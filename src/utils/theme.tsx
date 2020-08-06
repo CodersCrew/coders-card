@@ -1,8 +1,8 @@
 import React from 'react';
-import createMuiTheme, { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
+import createMuiTheme, { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import { FC } from "../typings/components";
-import { CssBaseline } from "@material-ui/core";
+import { FC } from '../typings/components';
+import { CssBaseline } from '@material-ui/core';
 
 const themeOptions: ThemeOptions = {
   palette: {
@@ -14,7 +14,7 @@ const themeOptions: ThemeOptions = {
     success: {
       light: '#78e744',
       main: '#52c41a',
-      dark: '#24a200'
+      dark: '#24a200',
     },
     text: {
       primary: '#232d38',
@@ -95,7 +95,7 @@ const themeOptions: ThemeOptions = {
       fontWeight: 500,
       textTransform: 'none',
     },
-  }
+  },
 };
 
 const theme = createMuiTheme(themeOptions);
