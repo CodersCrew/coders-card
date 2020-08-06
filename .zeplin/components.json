@@ -17,6 +17,12 @@
       ]
     },
     {
+      "path": "src/components/Skill/Skill.tsx",
+      "zeplinNames": [
+        "skill"
+      ]
+    },
+    {
       "path": "src/components/TextField/TextField.tsx",
       "zeplinNames": ["text-field/empty", "text-field/filled"]
     },
