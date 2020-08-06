@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     borderRadius: 0,
     boxShadow: 'none',
+    backgroundColor: 'transparent',
   },
   overlay: {
     display: 'flex',

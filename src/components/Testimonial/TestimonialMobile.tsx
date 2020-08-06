@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     borderRadius: 0,
     boxShadow: 'none',
+    backgroundColor: 'transparent',
   },
   overlay: {
     display: 'flex',
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: 64,
     height: 64,
     borderRadius: 8,
+    zIndex: 2,
   },
   overlayMedia: {
     width: 64,
@@ -37,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
     height: 156,
     transform: 'translateY(-40px)',
+    backgroundColor: theme.palette.background.paper,
   },
   description: {
     color: theme.palette.text.secondary,

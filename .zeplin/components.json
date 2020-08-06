@@ -17,6 +17,13 @@
       ]
     },
     {
+      "path": "src/components/IconButton/IconButton.tsx",
+      "zeplinNames": [
+        "icon-button/normal",
+        "icon-button/small"
+      ]
+    },
+    {
       "path": "src/components/TextField/TextField.tsx",
       "zeplinNames": ["text-field/empty", "text-field/filled"]
     },
@@ -26,6 +33,13 @@
         "portfolio-card",
         "portfolio-card-mobile",
         "portfolio-card-desktop-hover"
+      ]
+    },
+    {
+      "path": "src/components/Testimonial/Testimonial.tsx",
+      "zeplinNames": [
+        "testimonial",
+        "testimonial-mobile"
       ]
     },
     {
