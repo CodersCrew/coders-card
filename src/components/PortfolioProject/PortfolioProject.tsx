@@ -8,9 +8,10 @@ export type PortfolioProjectDialogProps = {
   title: string;
   subtitle: string;
   tagtitle: string;
-  contentheader: string;
+  contentHeader: string;
   imgurl: string;
-  contentmain: string;
+  contentMainDescription: string;
+  contentMainRole: string;
   isOpen: boolean;
 };
 

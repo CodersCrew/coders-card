@@ -84,12 +84,12 @@ const BlogPostDialogDesktop: FC<PortfolioProjectDialogProps> = ({ isOpen, ...pro
             {props.subtitle}
           </Typography>
           <Typography className={classes.headerContent} variant="body1" color="textSecondary">
-            {props.contentheader}
+            {props.contentHeader}
           </Typography>
         </Box>
         <Box className={classes.content}>
           <Typography variant="body2" color="textSecondary">
-            {props.contentmain}
+            {props.contentMainDescription}
           </Typography>
         </Box>
       </Dialog>
