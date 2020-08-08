@@ -3,8 +3,9 @@ import React, { FC } from 'react';
 import { Tag } from '../Tag/Tag';
 import { PortfolioProjectDialogProps } from './PortfolioProject';
 import { IconButton } from '../IconButton/IconButton';
+import { Button } from '../Button/Button';
 
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
+import { X, ChevronLeft, ChevronRight, Code, Image, ExternalLink } from 'react-feather';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
 
@@ -17,30 +18,6 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.text.primary, 0.8),
     },
     '& .MuiPaper-rounded': { borderRadius: 15 },
-  },
-  buttons: {
-    position: 'absolute',
-    left: '103%',
-  },
-  buttonX: {
-    margin: theme.spacing(2, 0, 5, 0),
-  },
-  buttonChevronLeft: {
-    marginBottom: theme.spacing(2.5),
-  },
-  header: {
-    backgroundColor: theme.palette.background.light,
-    padding: theme.spacing(4),
-  },
-  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: 600, height: 336 },
-  headerTitle: {
-    display: 'grid',
-    gridTemplateColumns: '2fr 1fr',
-    marginBottom: theme.spacing(0.6),
-  },
-  headerContent: { marginTop: theme.spacing(1.5) },
-  content: {
-    padding: theme.spacing(4),
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
       width: '0.5em',
@@ -48,7 +25,57 @@ const useStyles = makeStyles((theme) => ({
     '&::-webkit-scrollbar-thumb': {
       backgroundColor: fade(theme.palette.text.primary, 0.8),
     },
+    '& .MuiDialog-container': {
+      height: 'auto',
+    },
   },
+  button: {
+    display: 'flex',
+    justifyContent: 'normal',
+    margin: theme.spacing(1, 1, 1, 0),
+  },
+  buttons: {
+    display: 'flex',
+  },
+  iconButtons: {
+    position: 'absolute',
+    left: '103%',
+  },
+  iconButtonX: {
+    margin: theme.spacing(2, 0, 5, 0),
+  },
+  iconButtonChevronLeft: {
+    marginBottom: theme.spacing(2.5),
+  },
+  header: {
+    backgroundColor: theme.palette.background.light,
+    padding: theme.spacing(4),
+  },
+  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: '100%', height: 'auto' },
+  headerTitle: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: theme.spacing(0.6),
+  },
+  headerContent: { marginTop: theme.spacing(1.5) },
+  mainTag: {
+    backgroundColor: theme.palette.text.secondary,
+    borderRadius: '4px',
+    height: '24px',
+    color: theme.palette.text.white,
+  },
+  tags: {
+    display: 'flex',
+    justifyContent: 'start',
+    flexWrap: 'wrap',
+    padding: theme.spacing(0, 3, 3, 3),
+    '& > *': {
+      margin: theme.spacing(0.5, 1, 0.5, 0),
+    },
+  },
+  content: { paddingRight: theme.spacing(3), paddingLeft: theme.spacing(3) },
+  contentMain: { padding: theme.spacing(3, 3, 1.5, 3) },
 }));
 
 const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...props }) => {
@@ -57,13 +84,13 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
   return (
     <Box display="inline-block">
       <Dialog className={classes.wrapper} open={isOpen} {...props}>
-        <Box className={classes.buttons}>
-          <Box className={classes.buttonX}>
+        <Box className={classes.iconButtons}>
+          <Box className={classes.iconButtonX}>
             <IconButton {...props} size={'small'}>
               <X size={20} />
             </IconButton>
           </Box>
-          <Box className={classes.buttonChevronLeft}>
+          <Box className={classes.iconButtonChevronLeft}>
             <IconButton {...props} size={'small'}>
               <ChevronLeft size={20} />
             </IconButton>
@@ -78,7 +105,7 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
             <Typography variant="h2" color="textPrimary">
               {props.title}
             </Typography>
-            <Tag label="Teamwork" color="secondary" />
+            <Tag label="Mobile app" color="default" className={classes.mainTag} />
           </Box>
           <Typography variant="subtitle2" color="textPrimary">
             {props.subtitle}
@@ -86,11 +113,43 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           <Typography className={classes.headerContent} variant="body1" color="textSecondary">
             {props.contentHeader}
           </Typography>
+          <Box className={classes.buttons}>
+            <Button className={classes.button} color="primary" variant="contained" startIcon={<Code size={16} />}>
+              See code
+            </Button>
+            <Button className={classes.button} color="primary" variant="contained" startIcon={<Image size={16} />}>
+              See mockups
+            </Button>
+            <Button
+              className={classes.button}
+              color="primary"
+              variant="contained"
+              startIcon={<ExternalLink size={16} />}
+            >
+              Open the app
+            </Button>
+          </Box>
         </Box>
-        <Box className={classes.content}>
-          <Typography variant="body2" color="textSecondary">
-            {props.contentMainDescription}
-          </Typography>
+        <Typography className={classes.contentMain} variant="h5" color="textPrimary">
+          Project description
+        </Typography>
+        <Typography className={classes.content} variant="body2" color="textSecondary">
+          {props.contentMainDescription}
+        </Typography>
+        <Typography className={classes.contentMain} variant="h5" color="textPrimary">
+          My role
+        </Typography>
+        <Typography className={classes.content} variant="body2" color="textSecondary">
+          {props.contentMainRole}
+        </Typography>
+        <Typography className={classes.contentMain} variant="h5" color="textPrimary">
+          Technologies
+        </Typography>
+        <Box className={classes.tags}>
+          <Tag label="TypeScript" color="secondary" />
+          <Tag label="React" color="secondary" />
+          <Tag label="Redux" color="secondary" />
+          <Tag label="Material UI" color="secondary" />
         </Box>
       </Dialog>
     </Box>
