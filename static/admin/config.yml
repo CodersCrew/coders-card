@@ -17,11 +17,11 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Label", name: "label", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Title", name: "blog-title", widget: "string" }
+      - { label: "Publish Date", name: "publish-date", widget: "datetime" }
+      - { label: "Label", name: "blog-label", widget: "string" }
+      - { label: "Description", name: "blog-description", widget: "string" }
+      - { label: "Body", name: "blog-body", widget: "markdown" }
 
   - name: "developer-profile"
     label: "Developer profile"
@@ -63,7 +63,7 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string", default: "About me" }
+      - { label: "Title", name: "about-page-title", widget: "string", default: "About me" }
       - { label: "Description", name: "description", widget: "markdown" }
       - label: "Skills"
         name: "social-media"
@@ -87,3 +87,37 @@ collections:
             widget: "list"
             fields:
               - { label: "Name", name: "other-skill-name", widget: "string" }
+
+  - name: "resume"
+    label: "Resume"
+    folder: "content/about-me"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}/index"
+    editor:
+      preview: false
+    fields:
+      - label: "Work experience"
+        name: "work-experience"
+        widget: "list"
+        fields:
+          - { label: "Job title", name: "job-title", widget: "string" }
+          - { label: "Company name", name: "company-name", widget: "string" }
+          - { label: "Job description", name: "job-description", widget: "string" }
+          - { label: "Start date", name: "start-job-date", widget: "datetime" }
+          - { label: "Finish date", name: "finish-job-date", widget: "datetime" }
+      - label: "Education"
+        name: "education"
+        widget: "list"
+        fields:
+          - { label: "School/University name", name: "school-name", widget: "string" }
+          - { label: "Course/Degree", name: "course", widget: "string" }
+          - { label: "Education description", name: "education-description", widget: "string" }
+          - { label: "Start date", name: "start-school-date", widget: "datetime" }
+          - { label: "Finish date", name: "finish-school-date", widget: "datetime" }
+
+
+
+
