@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IndexPage = () => {
+const PortfolioPage = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -152,4 +152,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default PortfolioPage;

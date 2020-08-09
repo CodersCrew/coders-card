@@ -118,6 +118,34 @@ collections:
           - { label: "Start date", name: "start-school-date", widget: "datetime" }
           - { label: "Finish date", name: "finish-school-date", widget: "datetime" }
 
-
-
-
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "content/portfolio"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}/index"
+    editor:
+      preview: false
+    fields:
+      - label: "Projects"
+        name: "projects"
+        widget: "list"
+        fields:
+          - { label: "Project name", name: "project-name", widget: "string" }
+          - { label: "Preview note", name: "project-preview-note", widget: "string" }
+          - { label: "Preview image", name: "project-preview-image", widget: "image" }
+          - { label: "Project description", name: "project-description", widget: "markdown" }
+          - { label: "My role in the project", name: "project-role", widget: "markdown" }
+          - { label: "Link to code", name: "project-code", widget: "string" }
+          - { label: "Link to mockups", name: "project-mockups", widget: "string" }
+          - { label: "Link to application", name: "project-app", widget: "string" }
+          - { label: "Project label (example: Mobile app)", name: "project-label", widget: "string" }
+          - { label: "Project start date", name: "project-start-date", widget: "datetime" }
+          - { label: "Project finish date", name: "project-finish-date", widget: "datetime" }
+          - label: "Technologies"
+            name: "project-technologies"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "technology-name", widget: "string" }
