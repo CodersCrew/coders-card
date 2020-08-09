@@ -156,3 +156,4 @@ collections:
             widget: "list"
             fields:
               - { label: "Name", name: "technology-name", widget: "string" }
+
