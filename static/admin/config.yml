@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: plan-information-structure
 
 media_folder: src/images
 public_folder: /img
@@ -17,6 +17,7 @@ collections:
     editor:
       preview: false
     fields:
+      - { label: "Title", name: "blog-page-title", widget: "string" }
       - label: "Blog post"
         name: "blog-post"
         widget: "list"
@@ -103,6 +104,7 @@ collections:
     editor:
       preview: false
     fields:
+      - { label: "Title", name: "resume-page-title", widget: "string" }
       - label: "Work experience"
         name: "work-experience"
         widget: "list"
@@ -133,6 +135,7 @@ collections:
     editor:
       preview: false
     fields:
+      - { label: "Title", name: "portfolio-page-title", widget: "string" }
       - label: "Projects"
         name: "projects"
         widget: "list"
