@@ -17,11 +17,15 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "blog-title", widget: "string" }
-      - { label: "Publish Date", name: "publish-date", widget: "datetime" }
-      - { label: "Label", name: "blog-label", widget: "string" }
-      - { label: "Description", name: "blog-description", widget: "string" }
-      - { label: "Body", name: "blog-body", widget: "markdown" }
+      - label: "Blog post"
+        name: "blog-post"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "blog-title", widget: "string" }
+          - { label: "Publish Date", name: "publish-date", widget: "datetime" }
+          - { label: "Label", name: "blog-label", widget: "string" }
+          - { label: "Description", name: "blog-description", widget: "string" }
+          - { label: "Body", name: "blog-body", widget: "markdown" }
 
   - name: "developer-profile"
     label: "Developer profile"
