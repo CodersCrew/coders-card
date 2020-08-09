@@ -19,12 +19,13 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Label", name: "label", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "profile"
-    label: "Profile"
-    folder: "content/profile"
+  - name: "developer-profile"
+    label: "Developer profile"
+    folder: "content/developer-profile"
     create: true
     slug: "index"
     media_folder: ""
@@ -51,3 +52,38 @@ collections:
           - { label: "Instagram profile link", name: "instagram", widget: "string", required: false }
           - { label: "Facebook profile link", name: "facebook", widget: "string", required: false}
 
+  - name: "about-me"
+    label: "About me"
+    folder: "content/about-me"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}/index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string", default: "About me" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - label: "Skills"
+        name: "social-media"
+        widget: "object"
+        fields:
+          - label: "Technologies"
+            name: "technologies"
+            required: false
+            widget: "list"
+            fields:
+              - { label: "Name", name: "technology-name", widget: "string" }
+          - label: "Tools"
+            name: "tools"
+            required: false
+            widget: "list"
+            fields:
+              - { label: "Name", name: "tool-name", widget: "string" }
+          - label: "Other skills"
+            name: "other-skills"
+            required: false
+            widget: "list"
+            fields:
+              - { label: "Name", name: "other-skill-name", widget: "string" }
