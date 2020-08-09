@@ -42,12 +42,6 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(0.5, 1, 0.5, 0),
     },
   },
-  mainTag: {
-    backgroundColor: theme.palette.text.secondary,
-    borderRadius: '4px',
-    height: '24px',
-    color: theme.palette.text.white,
-  },
   iconButtonX: {
     margin: theme.spacing(2, 0, 5, 0),
   },
@@ -86,16 +80,16 @@ const BlogPostDialogDesktop: FC<PortfolioProjectDialogProps> = ({ isOpen, ...pro
         <Box className={classes.iconButtons}>
           <Box className={classes.iconButtonX}>
             <IconButton {...props} size={'small'}>
-              <X size={20} />
+              <X size={30} />
             </IconButton>
           </Box>
           <Box className={classes.iconButtonChevronLeft}>
             <IconButton {...props} size={'small'}>
-              <ChevronLeft size={20} />
+              <ChevronLeft size={30} />
             </IconButton>
           </Box>
           <IconButton {...props} size={'small'}>
-            <ChevronRight size={20} />
+            <ChevronRight size={30} />
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imgurl} />
@@ -104,7 +98,7 @@ const BlogPostDialogDesktop: FC<PortfolioProjectDialogProps> = ({ isOpen, ...pro
             <Typography variant="h2" color="textPrimary">
               {props.title}
             </Typography>
-            <Tag label="Mobile app" color="default" className={classes.mainTag} />
+            <Tag label="Mobile app" color="default" />
           </Box>
           <Typography variant="subtitle2" color="textPrimary">
             {props.subtitle}
@@ -145,10 +139,10 @@ const BlogPostDialogDesktop: FC<PortfolioProjectDialogProps> = ({ isOpen, ...pro
           Technologies
         </Typography>
         <Box className={classes.tags}>
-          <Tag label="TypeScript" color="secondary" />
-          <Tag label="React" color="secondary" />
-          <Tag label="Redux" color="secondary" />
-          <Tag label="Material UI" color="secondary" />
+          <Tag label="TypeScript" />
+          <Tag label="React" />
+          <Tag label="Redux" />
+          <Tag label="Material UI" />
         </Box>
       </Dialog>
     </Box>

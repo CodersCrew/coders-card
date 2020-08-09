@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../images/download.jpeg';
+import image from '../../images/background.jpg';
 
 import { PortfolioProjectDialog } from './PortfolioProject';
 

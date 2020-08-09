@@ -48,12 +48,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'normal',
     margin: theme.spacing(1, 1, 1, 0),
   },
-  mainTag: {
-    backgroundColor: theme.palette.text.secondary,
-    borderRadius: '4px',
-    height: '24px',
-    color: theme.palette.text.white,
-  },
 }));
 
 const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...props }) => {
@@ -85,7 +79,7 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           <Typography className={classes.subtitle} variant="subtitle2" color="textPrimary">
             {props.subtitle}
           </Typography>
-          <Tag label="Mobile app" color="default" className={classes.mainTag} />
+          <Tag label="Mobile app" color="primary" />
           <Typography className={classes.contentHeader} variant="body1" color="textSecondary">
             {props.contentHeader}
           </Typography>
@@ -115,10 +109,10 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           Technologies
         </Typography>
         <Box className={classes.tags}>
-          <Tag label="TypeScript" color="secondary" />
-          <Tag label="React" color="secondary" />
-          <Tag label="Redux" color="secondary" />
-          <Tag label="Material UI" color="secondary" />
+          <Tag label="TypeScript" />
+          <Tag label="React" />
+          <Tag label="Redux" />
+          <Tag label="Material UI" />
         </Box>
       </Dialog>
     </Box>
