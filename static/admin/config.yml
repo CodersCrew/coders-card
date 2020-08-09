@@ -21,3 +21,33 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "profile"
+    label: "Profile"
+    folder: "content/profile"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}/index"
+    editor:
+      preview: false
+    fields:
+      - { label: "First name", name: "first-name", widget: "string" }
+      - { label: "Last name", name: "last-name", widget: "string" }
+      - { label: "Avatar image", name: "avatar", widget: "image" }
+      - { label: "Job position", name: "position", widget: "string" }
+      - { label: "Phone number", name: "phone", widget: "string" }
+      - { label: "Email", name: "email", widget: "string" }
+      - { label: "City of residence", name: "city", widget: "string" }
+      - { label: "Country of residence", name: "country", widget: "string" }
+      - { label: "Available for freelance", name: "is-freelancer", widget: "boolean" }
+      - label: "Social media"
+        name: "social-media"
+        widget: "object"
+        fields:
+          - { label: "Twitter profile link", name: "twitter", widget: "string", required: false }
+          - { label: "Github profile link", name: "github", widget: "string", required: false }
+          - { label: "Instagram profile link", name: "instagram", widget: "string", required: false }
+          - { label: "Facebook profile link", name: "facebook", widget: "string", required: false}
+
