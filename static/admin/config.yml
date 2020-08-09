@@ -13,7 +13,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
+    path: "{{content}}/index"
     editor:
       preview: false
     fields:
@@ -35,7 +35,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
+    path: "{{content}}/index"
     editor:
       preview: false
     fields:
@@ -64,7 +64,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
+    path: "{{content}}/index"
     editor:
       preview: false
     fields:
@@ -95,12 +95,12 @@ collections:
 
   - name: "resume"
     label: "Resume"
-    folder: "content/about-me"
+    folder: "content/resume"
     create: true
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
+    path: "{{content}}/index"
     editor:
       preview: false
     fields:
@@ -131,7 +131,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
+    path: "{{content}}/index"
     editor:
       preview: false
     fields:
