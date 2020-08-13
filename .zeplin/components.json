@@ -36,6 +36,13 @@
       ]
     },
     {
+      "path": "src/components/Testimonial/Testimonial.tsx",
+      "zeplinNames": [
+        "testimonial",
+        "testimonial-mobile"
+      ]
+    },
+    {
       "path": "src/components/SectionTitle/SectionTitle.tsx",
       "zeplinNames": [
         "section-title"
