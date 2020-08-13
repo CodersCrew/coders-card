@@ -6,6 +6,7 @@ import { IconButton } from '../IconButton/IconButton';
 
 import { X, ChevronLeft, ChevronRight } from 'react-feather';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
   buttons: {
@@ -14,10 +15,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    opacity: 0.4,
   },
   img: {
     marginTop: theme.spacing(1, 2),
-    height: 180,
+    width: '100%',
+    height: 'auto',
   },
   header: {
     backgroundColor: theme.palette.background.light,
@@ -27,7 +30,15 @@ const useStyles = makeStyles((theme) => ({
   textHeader: { marginBottom: theme.spacing(0.5) },
   subtitle: { margin: theme.spacing(0.5, 0, 1, 0) },
   contentHeader: { marginTop: theme.spacing(2) },
-  content: { padding: theme.spacing(3) },
+  content: {
+    padding: theme.spacing(3),
+    '&::-webkit-scrollbar': {
+      width: '0.5em',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: fade(theme.palette.text.primary, 0.8),
+    },
+  },
   button: { display: 'flex' },
   rightButton: { marginRight: 15 },
 }));
@@ -42,15 +53,15 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
           <Box className={classes.button}>
             <Box className={classes.rightButton}>
               <IconButton color="inherit" {...props} size={'small'}>
-                <ChevronLeft size={15} />
+                <ChevronLeft size={20} />
               </IconButton>
             </Box>
             <IconButton color="inherit" {...props} size={'small'}>
-              <ChevronRight size={15} />
+              <ChevronRight size={20} />
             </IconButton>
           </Box>
           <IconButton color="inherit" {...props} size={'small'}>
-            <X size={15} />
+            <X size={20} />
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imgurl} />

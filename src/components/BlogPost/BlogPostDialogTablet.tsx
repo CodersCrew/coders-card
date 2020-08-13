@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.light,
     padding: theme.spacing(4),
   },
-  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: 600, height: 336 },
+  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: '100%', height: 'auto' },
   headerTitle: {
     display: 'grid',
     gridTemplateColumns: '2fr 1fr',
@@ -60,16 +60,16 @@ const BlogPostDialogTablet: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
         <Box className={classes.buttons}>
           <Box className={classes.buttonX}>
             <IconButton {...props} size={'small'}>
-              <X size={20} />
+              <X size={30} />
             </IconButton>
           </Box>
           <Box className={classes.buttonChevronLeft}>
             <IconButton {...props} size={'small'}>
-              <ChevronLeft size={20} />
+              <ChevronLeft size={30} />
             </IconButton>
           </Box>
           <IconButton {...props} size={'small'}>
-            <ChevronRight size={20} />
+            <ChevronRight size={30} />
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imgurl} />

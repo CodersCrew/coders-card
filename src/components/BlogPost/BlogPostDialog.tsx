@@ -14,13 +14,10 @@ export type BlogPostDialogProps = {
   isOpen: boolean;
 };
 
-type BlogPostDialogType = 'mobile' | 'tablet' | 'desktop';
+type BlogPostDialogType = BlogPostDialogProps & { type: 'mobile' | 'tablet' | 'desktop' };
 
-export type DetailsBlogPostDialogType = {
-  type: BlogPostDialogType;
-};
-export const BlogPostDialog: FC<BlogPostDialogProps & DetailsBlogPostDialogType> = ({ isOpen, type, ...props }) => {
-  if (type === 'mobile') return <BlogPostDialogMobile isOpen={isOpen} {...props} />;
-  else if (type === 'desktop') return <BlogPostDialogDesktop isOpen={isOpen} {...props} />;
-  else return <BlogPostDialogTablet isOpen={isOpen} {...props} />;
+export const BlogPostDialog: FC<BlogPostDialogType> = ({ type, ...props }) => {
+  if (type === 'mobile') return <BlogPostDialogMobile {...props} />;
+  else if (type === 'desktop') return <BlogPostDialogDesktop {...props} />;
+  else return <BlogPostDialogTablet {...props} />;
 };
