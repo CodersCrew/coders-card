@@ -16,6 +16,19 @@
       ]
     },
     {
+      "path": "src/components/IconButton/IconButton.tsx",
+      "zeplinNames": [
+        "icon-button/normal",
+        "icon-button/small"
+      ]
+    },
+    {
+      "path": "src/components/Skill/Skill.tsx",
+      "zeplinNames": [
+        "skill"
+      ]
+    },
+    {
       "path": "src/components/TextField/TextField.tsx",
       "zeplinNames": ["text-field/empty", "text-field/filled"]
     },
@@ -27,7 +40,7 @@
         "portfolio-card-desktop-hover"
       ]
     },
-    {
+   {
       "path": "src/components/BlogPostDialog/BlogPostDialog.tsx",
       "zeplinNames": [
         "blog-post-dialog-desktop",
@@ -42,7 +55,6 @@
         "testimonial-mobile"
       ]
     },
-
     {
       "path": "src/components/SectionTitle/SectionTitle.tsx",
       "zeplinNames": [
