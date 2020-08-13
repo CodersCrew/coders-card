@@ -42,6 +42,7 @@
         "testimonial-mobile"
       ]
     },
+
     {
       "path": "src/components/SectionTitle/SectionTitle.tsx",
       "zeplinNames": [
