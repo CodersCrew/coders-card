@@ -92,6 +92,14 @@ collections:
             widget: "list"
             fields:
               - { label: "Name", name: "other-skill-name", widget: "string" }
+      - label: "Testimonials"
+        name: "testimonials"
+        widget: list
+        fields:
+          - { label: "Text", name: "testimonial-text", widget: "string" }
+          - { label: "Image", name: "testimonial-image", widget: "image", required: false }
+          - { label: "Testimone name", name: "testimonial-name", widget: "string" }
+          - { label: "Testimone job position", name: "testimonial-job", widget: "string" }
 
   - name: "resume"
     label: "Resume"
