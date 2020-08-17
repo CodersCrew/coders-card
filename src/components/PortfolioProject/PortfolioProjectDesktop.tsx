@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.light,
     padding: theme.spacing(4),
   },
-  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: 600, height: 330 },
+  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: '100%', height: 'auto' },
   headerTitle: {
     display: 'grid',
     gridTemplateColumns: '2fr 1fr',
