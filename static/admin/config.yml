@@ -13,7 +13,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{content}}/index"
+    path: "{{content}}index"
     editor:
       preview: false
     fields:
@@ -35,7 +35,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{content}}/index"
+    path: "{{content}}index"
     editor:
       preview: false
     fields:
@@ -64,7 +64,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{content}}/index"
+    path: "{{content}}index"
     editor:
       preview: false
     fields:
@@ -108,7 +108,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{content}}/index"
+    path: "{{content}}index"
     editor:
       preview: false
     fields:
@@ -139,7 +139,7 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{content}}/index"
+    path: "{{content}}index"
     editor:
       preview: false
     fields:
