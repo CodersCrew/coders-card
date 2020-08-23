@@ -140,11 +140,13 @@ const useStyles = makeStyles((theme) => ({
   },
   testimonials: {
     display: 'grid',
+    justifyContent: 'center',
+    justifyItems: 'center',
     gridTemplateColumns: '1fr',
     gridRowGap: theme.spacing(4),
     marginBottom: theme.spacing(4),
 
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('lg')]: {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },
   },
@@ -155,7 +157,6 @@ const About = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isDesktop = !isMobile && !isTablet;
 
   const getType = () => {
     if (isMobile) {
