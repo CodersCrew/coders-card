@@ -6,7 +6,7 @@ import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { PortfolioCard } from '../../components/PortfolioCard';
 
-import { projectData, userData } from './data';
+import { projectData, userData } from '../../views/portfolio-page/data';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IndexPage = () => {
+const PortfolioPage = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -152,4 +152,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default PortfolioPage;
