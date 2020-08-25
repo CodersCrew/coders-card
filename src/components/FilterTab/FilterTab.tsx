@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const FilterTab = (props: TabProps): JSX.Element => {
+export const FilterTab = (props: TabProps) => {
   const classes = useStyles();
 
   return <MuiTab label="All" className={classes.tab} {...props} />;
