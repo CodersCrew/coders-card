@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Tabs as MuiTabs, TabsProps as MuiTabsProps } from '@material-ui/core';
+import React, { useState, ComponentProps } from 'react';
+import { Tabs as MuiTabs } from '@material-ui/core';
 import { FilterTab } from '../FilterTab/FilterTab';
-export type TabsProps = MuiTabsProps;
+export type TabsProps = ComponentProps<typeof MuiTabs>;
 
 export const FilterTabs = (props: TabsProps) => {
   const [value, setValue] = useState(1);
 
-  const handleChange: MuiTabsProps['onChange'] = (event, newValue) => {
+  const handleChange: TabsProps['onChange'] = (event, newValue) => {
     setValue(newValue);
   };
 
