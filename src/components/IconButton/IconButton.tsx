@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.background.paper,
     border: 'solid 2px',
     borderRadius: '8px',
+    '&.MuiIconButton-colorInherit': {
+      color: theme.palette.text.secondary,
+    },
   },
 }));
 
