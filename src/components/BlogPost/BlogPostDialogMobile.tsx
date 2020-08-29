@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 
-import { Tag } from '../Tag/Tag';
 import { BlogPostDialogProps } from './BlogPostDialog';
 import { IconButton } from '../IconButton/IconButton';
+import { Tag } from '../Tag/Tag';
 
 import { X, ChevronLeft, ChevronRight } from 'react-feather';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
   buttons: {
@@ -22,25 +21,10 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 'auto',
   },
-  header: {
-    backgroundColor: theme.palette.background.light,
-    padding: theme.spacing(3),
-  },
   wrapper: { boxShadow: '0px 0px 0px 0px rgba(0,0,0,0.2)' },
   textHeader: { marginBottom: theme.spacing(0.5) },
   subtitle: { margin: theme.spacing(0.5, 0, 1, 0) },
   contentHeader: { marginTop: theme.spacing(2) },
-  content: {
-    padding: theme.spacing(3),
-    '&::-webkit-scrollbar': {
-      width: '0.5em',
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: fade(theme.palette.text.primary, 0.8),
-    },
-  },
-  button: { display: 'flex' },
-  rightButton: { marginRight: 15 },
 }));
 
 const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
@@ -50,8 +34,8 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
     <Box display="inline-block">
       <Dialog className={classes.wrapper} fullScreen={true} open={isOpen} {...props}>
         <Box className={classes.buttons}>
-          <Box className={classes.button}>
-            <Box className={classes.rightButton}>
+          <Box display="flex">
+            <Box mr="15px">
               <IconButton color="inherit" {...props} size={'small'}>
                 <ChevronLeft size={20} />
               </IconButton>
@@ -65,7 +49,7 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imgurl} />
-        <Box className={classes.header}>
+        <Box bgcolor="background.light" p={3}>
           <Typography className={classes.textHeader} variant="h4" color="textPrimary">
             {props.title}
           </Typography>
@@ -77,9 +61,12 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
             {props.contentheader}
           </Typography>
         </Box>
-        <Typography className={classes.content} variant="body2" color="textSecondary">
-          {props.contentmain}
-        </Typography>
+        <Box p={4}>
+          {' '}
+          <Typography variant="body2" color="textSecondary">
+            {props.contentmain}
+          </Typography>
+        </Box>
       </Dialog>
     </Box>
   );

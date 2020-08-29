@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { BlogPostDialog } from './BlogPostDialog';
 
@@ -20,16 +20,13 @@ const basePropsData = {
 };
 
 export const Desktop = (): JSX.Element => {
-  const [isOpen, SetOpen] = useState(true);
-  return <BlogPostDialog type="desktop" isOpen={isOpen} {...basePropsData} />;
+  return <BlogPostDialog type="desktop" isOpen {...basePropsData} />;
 };
 
 export const Tablet = (): JSX.Element => {
-  const [isOpen, SetOpen] = useState(true);
-  return <BlogPostDialog type="tablet" isOpen={isOpen} {...basePropsData} />;
+  return <BlogPostDialog type="tablet" isOpen {...basePropsData} />;
 };
 
 export const Mobile = (): JSX.Element => {
-  const [isOpen, SetOpen] = useState(true);
-  return <BlogPostDialog type="mobile" isOpen={isOpen} {...basePropsData} />;
+  return <BlogPostDialog type="mobile" isOpen {...basePropsData} />;
 };

@@ -19,5 +19,5 @@ type BlogPostDialogType = BlogPostDialogProps & { type: 'mobile' | 'tablet' | 'd
 export const BlogPostDialog: FC<BlogPostDialogType> = ({ type, ...props }) => {
   if (type === 'mobile') return <BlogPostDialogMobile {...props} />;
   else if (type === 'desktop') return <BlogPostDialogDesktop {...props} />;
-  else return <BlogPostDialogTablet {...props} />;
+  return <BlogPostDialogTablet {...props} />;
 };

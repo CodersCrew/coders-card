@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
-import { Tag } from '../Tag/Tag';
 import { BlogPostDialogProps } from './BlogPostDialog';
 import { IconButton } from '../IconButton/IconButton';
+import { Tag } from '../Tag/Tag';
 
 import { X, ChevronLeft, ChevronRight } from 'react-feather';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -17,30 +17,6 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.text.primary, 0.8),
     },
     '& .MuiPaper-rounded': { borderRadius: 15 },
-  },
-  buttons: {
-    position: 'absolute',
-    left: '103%',
-  },
-  buttonX: {
-    margin: theme.spacing(2, 0, 5, 0),
-  },
-  buttonChevronLeft: {
-    marginBottom: theme.spacing(2.5),
-  },
-  header: {
-    backgroundColor: theme.palette.background.light,
-    padding: theme.spacing(4),
-  },
-  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: '100%', height: 'auto' },
-  headerTitle: {
-    display: 'grid',
-    gridTemplateColumns: '2fr 1fr',
-    marginBottom: theme.spacing(0.6),
-  },
-  headerContent: { marginTop: theme.spacing(1.5) },
-  content: {
-    padding: theme.spacing(4),
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
       width: '0.5em',
@@ -48,7 +24,17 @@ const useStyles = makeStyles((theme) => ({
     '&::-webkit-scrollbar-thumb': {
       backgroundColor: fade(theme.palette.text.primary, 0.8),
     },
+    '& .MuiDialog-container': {
+      height: 'auto',
+    },
   },
+  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: '100%', height: 'auto' },
+  headerTitle: {
+    display: 'grid',
+    gridTemplateColumns: '2fr 1fr',
+    marginBottom: theme.spacing(0.5),
+  },
+  headerContent: { marginTop: theme.spacing(1.5) },
 }));
 
 const BlogPostDialogTablet: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
@@ -57,13 +43,13 @@ const BlogPostDialogTablet: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
   return (
     <Box display="inline-block">
       <Dialog className={classes.wrapper} open={isOpen} {...props}>
-        <Box className={classes.buttons}>
-          <Box className={classes.buttonX}>
+        <Box position="absolute" left="620px">
+          <Box mb={5}>
             <IconButton {...props} size={'small'}>
               <X size={30} />
             </IconButton>
           </Box>
-          <Box className={classes.buttonChevronLeft}>
+          <Box mb={2.5}>
             <IconButton {...props} size={'small'}>
               <ChevronLeft size={30} />
             </IconButton>
@@ -73,7 +59,7 @@ const BlogPostDialogTablet: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imgurl} />
-        <Box className={classes.header}>
+        <Box bgcolor="background.light" p={4}>
           <Box className={classes.headerTitle}>
             <Typography variant="h2" color="textPrimary">
               {props.title}
@@ -87,7 +73,7 @@ const BlogPostDialogTablet: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => 
             {props.contentheader}
           </Typography>
         </Box>
-        <Box className={classes.content}>
+        <Box p={4}>
           <Typography variant="body2" color="textSecondary">
             {props.contentmain}
           </Typography>
