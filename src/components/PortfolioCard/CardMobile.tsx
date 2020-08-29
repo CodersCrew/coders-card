@@ -52,11 +52,11 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = CardProps;
 
-const CardMobile: FC<Props> = ({ title, label, description, image, onClick, ...props }) => {
+const CardMobile: FC<Props> = ({ title, label, description, image, onClick, className = '', ...props }) => {
   const classes = useStyles();
 
   return (
-    <Card {...props} onClick={onClick} className={classes.card}>
+    <Card {...props} onClick={onClick} className={`${classes.card} ${className}`}>
       <CardActionArea className={classes.action}>
         <CardMedia className={classes.media} image={image} title={title}>
           <Typography className={classes.label} variant="subtitle2">
