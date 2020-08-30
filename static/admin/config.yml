@@ -13,11 +13,155 @@ collections:
     slug: "index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
+    path: "{{content}}index"
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Title", name: "blog-page-title", widget: "string" }
+      - label: "Blog post"
+        name: "blog-post"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "blog-title", widget: "string" }
+          - { label: "Publish Date", name: "publish-date", widget: "datetime" }
+          - { label: "Label", name: "blog-label", widget: "string" }
+          - { label: "Description", name: "blog-description", widget: "string" }
+          - { label: "Body", name: "blog-body", widget: "markdown" }
+
+  - name: "developer-profile"
+    label: "Developer profile"
+    folder: "content/developer-profile"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{content}}index"
+    editor:
+      preview: false
+    fields:
+      - { label: "First name", name: "first-name", widget: "string" }
+      - { label: "Last name", name: "last-name", widget: "string" }
+      - { label: "Avatar image", name: "avatar", widget: "image" }
+      - { label: "Job position", name: "position", widget: "string" }
+      - { label: "Phone number", name: "phone", widget: "string" }
+      - { label: "Email", name: "email", widget: "string" }
+      - { label: "City of residence", name: "city", widget: "string" }
+      - { label: "Country of residence", name: "country", widget: "string" }
+      - { label: "Available for freelance", name: "is-freelancer", widget: "boolean" }
+      - label: "Social media"
+        name: "social-media"
+        widget: "object"
+        fields:
+          - { label: "Twitter profile link", name: "twitter", widget: "string", required: false }
+          - { label: "Github profile link", name: "github", widget: "string", required: false }
+          - { label: "Instagram profile link", name: "instagram", widget: "string", required: false }
+          - { label: "Facebook profile link", name: "facebook", widget: "string", required: false}
+
+  - name: "about-me"
+    label: "About me"
+    folder: "content/about-me"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{content}}index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "about-page-title", widget: "string", default: "About me" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - label: "Skills"
+        name: "social-media"
+        widget: "object"
+        fields:
+          - label: "Technologies"
+            name: "technologies"
+            required: false
+            widget: "list"
+            fields:
+              - { label: "Name", name: "technology-name", widget: "string" }
+          - label: "Tools"
+            name: "tools"
+            required: false
+            widget: "list"
+            fields:
+              - { label: "Name", name: "tool-name", widget: "string" }
+          - label: "Other skills"
+            name: "other-skills"
+            required: false
+            widget: "list"
+            fields:
+              - { label: "Name", name: "other-skill-name", widget: "string" }
+      - label: "Testimonials"
+        name: "testimonials"
+        widget: list
+        fields:
+          - { label: "Text", name: "testimonial-text", widget: "string" }
+          - { label: "Image", name: "testimonial-image", widget: "image", required: false }
+          - { label: "Testimone name", name: "testimonial-name", widget: "string" }
+          - { label: "Testimone job position", name: "testimonial-job", widget: "string" }
+
+  - name: "resume"
+    label: "Resume"
+    folder: "content/resume"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{content}}index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "resume-page-title", widget: "string" }
+      - label: "Work experience"
+        name: "work-experience"
+        widget: "list"
+        fields:
+          - { label: "Job title", name: "job-title", widget: "string" }
+          - { label: "Company name", name: "company-name", widget: "string" }
+          - { label: "Job description", name: "job-description", widget: "string" }
+          - { label: "Start date", name: "start-job-date", widget: "datetime" }
+          - { label: "Finish date", name: "finish-job-date", widget: "datetime" }
+      - label: "Education"
+        name: "education"
+        widget: "list"
+        fields:
+          - { label: "School/University name", name: "school-name", widget: "string" }
+          - { label: "Course/Degree", name: "course", widget: "string" }
+          - { label: "Education description", name: "education-description", widget: "string" }
+          - { label: "Start date", name: "start-school-date", widget: "datetime" }
+          - { label: "Finish date", name: "finish-school-date", widget: "datetime" }
+
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "content/portfolio"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{content}}index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "portfolio-page-title", widget: "string" }
+      - label: "Projects"
+        name: "projects"
+        widget: "list"
+        fields:
+          - { label: "Project name", name: "project-name", widget: "string" }
+          - { label: "Preview note", name: "project-preview-note", widget: "string" }
+          - { label: "Preview image", name: "project-preview-image", widget: "image" }
+          - { label: "Project description", name: "project-description", widget: "markdown" }
+          - { label: "My role in the project", name: "project-role", widget: "markdown" }
+          - { label: "Link to code", name: "project-code", widget: "string" }
+          - { label: "Link to mockups", name: "project-mockups", widget: "string" }
+          - { label: "Link to application", name: "project-app", widget: "string" }
+          - { label: "Project label (example: Mobile app)", name: "project-label", widget: "string" }
+          - { label: "Project start date", name: "project-start-date", widget: "datetime" }
+          - { label: "Project finish date", name: "project-finish-date", widget: "datetime" }
+          - label: "Technologies"
+            name: "project-technologies"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "technology-name", widget: "string" }
+
