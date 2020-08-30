@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardContent, CardMedia, Typography, Chip } from '@material-ui/core';
 
-export interface IBlogPost {
+export type BlogPostProps = {
   title: string;
   text: string;
   tagName: string;
@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ spacing, typography }) => ({
     position: 'absolute',
     bottom: 0,
     left: 0,
-    borderRadius: spacing(0, 1, 0, 0),
+    borderRadius: '0px 8px 0px 0px',
   },
   label: {
     fontSize: typography.subtitle2.fontSize,
@@ -47,11 +47,11 @@ const useStyles = makeStyles(({ spacing, typography }) => ({
   },
 }));
 
-export const BlogPost: React.FC<IBlogPost> = ({ title, text, tagName, date, image }) => {
+export const BlogPost: React.FC<BlogPostProps> = ({ title, text, tagName, date, image, ...props }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} {...props}>
       <CardActionArea>
         <CardMedia className={classes.media} image={image}>
           <Chip label={tagName} className={classes.tag} classes={{ label: classes.label }} />
