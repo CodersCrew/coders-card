@@ -19,7 +19,7 @@
       ]
     },
     {
-      "path": "src/components/BlogPost.BlogPost.tsx",
+      "path": "src/components/BlogPostComponent/BlogPost.tsx",
       "zeplinNames": [
         "blog-post"
       ]
