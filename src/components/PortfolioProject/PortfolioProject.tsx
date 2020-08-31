@@ -22,5 +22,5 @@ type DetailsPortfolioProjectDialogType = PortfolioProjectDialogProps & {
 export const PortfolioProjectDialog: FC<DetailsPortfolioProjectDialogType> = ({ type, ...props }) => {
   if (type === 'mobile') return <PortfolioProjectDialogMobile {...props} />;
   else if (type === 'desktop') return <PortfolioProjectDialogDesktop {...props} />;
-  else return <PortfolioProjectDialogTablet {...props} />;
+  return <PortfolioProjectDialogTablet {...props} />;
 };

@@ -22,17 +22,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 'auto',
   },
-  header: {
-    backgroundColor: theme.palette.background.light,
-    padding: theme.spacing(3),
-  },
   wrapper: { boxShadow: '0px 0px 0px 0px rgba(0,0,0,0.2)' },
   textHeader: { marginBottom: theme.spacing(0.5) },
   subtitle: { margin: theme.spacing(0.5, 0, 1, 0) },
   contentHeader: { margin: theme.spacing(2, 0, 2) },
   content: { paddingRight: theme.spacing(3), paddingLeft: theme.spacing(3) },
   contentMain: { padding: theme.spacing(3, 3, 1.5, 3) },
-  iconButton: { display: 'flex' },
   tags: {
     display: 'flex',
     justifyContent: 'start',
@@ -42,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(0.5, 1, 0.5, 0),
     },
   },
-  iconRightButton: { marginRight: 15 },
   button: {
     display: 'flex',
     justifyContent: 'normal',
@@ -57,8 +51,8 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
     <Box display="inline-block">
       <Dialog className={classes.wrapper} fullScreen={true} open={isOpen} {...props}>
         <Box className={classes.iconButtons}>
-          <Box className={classes.iconButton}>
-            <Box className={classes.iconRightButton}>
+          <Box display="flex">
+            <Box mr="15px">
               <IconButton color="inherit" {...props} size={'small'}>
                 <ChevronLeft size={20} />
               </IconButton>
@@ -72,7 +66,7 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imgurl} />
-        <Box className={classes.header}>
+        <Box bgcolor="background.light" p={3}>
           <Typography className={classes.textHeader} variant="h4" color="textPrimary">
             {props.title}
           </Typography>

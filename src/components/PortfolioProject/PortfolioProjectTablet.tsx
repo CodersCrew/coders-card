@@ -34,29 +34,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'normal',
     margin: theme.spacing(1, 1, 1, 0),
   },
-  buttons: {
-    display: 'flex',
+  img: {
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    width: '100%',
+    height: 'auto',
   },
-  iconButtons: {
-    position: 'absolute',
-    left: '103%',
-  },
-  iconButtonX: {
-    margin: theme.spacing(2, 0, 5, 0),
-  },
-  iconButtonChevronLeft: {
-    marginBottom: theme.spacing(2.5),
-  },
-  header: {
-    backgroundColor: theme.palette.background.light,
-    padding: theme.spacing(4),
-  },
-  img: { borderTopLeftRadius: 15, borderTopRightRadius: 15, width: '100%', height: 'auto' },
   headerTitle: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: theme.spacing(0.6),
+    marginBottom: theme.spacing(0.5),
   },
   headerContent: { marginTop: theme.spacing(1.5) },
   tags: {
@@ -78,13 +66,13 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
   return (
     <Box display="inline-block">
       <Dialog className={classes.wrapper} open={isOpen} {...props}>
-        <Box className={classes.iconButtons}>
-          <Box className={classes.iconButtonX}>
+        <Box position="absolute" left="620px">
+          <Box mt={2} mb={5}>
             <IconButton {...props} size={'small'}>
               <X size={30} />
             </IconButton>
           </Box>
-          <Box className={classes.iconButtonChevronLeft}>
+          <Box mb={2.5}>
             <IconButton {...props} size={'small'}>
               <ChevronLeft size={30} />
             </IconButton>
@@ -94,7 +82,7 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imgurl} />
-        <Box className={classes.header}>
+        <Box bgcolor="background.light" p={4}>
           <Box className={classes.headerTitle}>
             <Typography variant="h2" color="textPrimary">
               {props.title}
@@ -107,7 +95,7 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           <Typography className={classes.headerContent} variant="body1" color="textSecondary">
             {props.contentHeader}
           </Typography>
-          <Box className={classes.buttons}>
+          <Box display="flex">
             <Button className={classes.button} color="primary" variant="contained" startIcon={<Code size={16} />}>
               See code
             </Button>
@@ -143,7 +131,7 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           <Tag label="TypeScript" />
           <Tag label="React" />
           <Tag label="Redux" />
-          <Tag label="Material UI"/>
+          <Tag label="Material UI" />
         </Box>
       </Dialog>
     </Box>

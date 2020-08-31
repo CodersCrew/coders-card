@@ -23,13 +23,13 @@ const basePropsData = {
 };
 
 export const Desktop = (): JSX.Element => {
-  return <PortfolioProjectDialog type="desktop" isOpen={true} {...basePropsData} />;
+  return <PortfolioProjectDialog type="desktop" isOpen {...basePropsData} />;
 };
 
 export const Tablet = (): JSX.Element => {
-  return <PortfolioProjectDialog type="tablet" isOpen={true} {...basePropsData} />;
+  return <PortfolioProjectDialog type="tablet" isOpen {...basePropsData} />;
 };
 
 export const Mobile = (): JSX.Element => {
-  return <PortfolioProjectDialog type="mobile" isOpen={true} {...basePropsData} />;
+  return <PortfolioProjectDialog type="mobile" isOpen {...basePropsData} />;
 };
