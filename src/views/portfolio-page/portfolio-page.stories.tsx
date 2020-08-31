@@ -1,6 +1,6 @@
 import React from 'react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import PortfolioPage from '.';
+import PortfolioPage from '../../pages/portfolio-page';
 
 export default {
   title: 'portfolio-page',
