@@ -9,7 +9,7 @@ import { Testimonial } from '../../components/Testimonial';
 import MarleneImg from '../../images/MarleneWatson.png';
 import GabeImg from '../../images/GabeMcdonalid.png';
 
-import { projectData, userData } from './data';
+import { userData } from './data';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
