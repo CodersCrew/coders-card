@@ -1,12 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
+import { Container, Box, makeStyles, Card, useTheme, useMediaQuery, Divider } from '@material-ui/core';
 
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
-import { PortfolioCard } from '../../components/PortfolioCard';
+import { ResumeList } from '../../components/ResumeList';
 
-import { projectData, userData } from '../../views/portfolio-page/data';
+import { projectData, userData } from './data';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -72,32 +72,9 @@ const useStyles = makeStyles((theme) => ({
   projectsContainer: {
     borderRadius: 16,
     padding: theme.spacing(3),
-
     [theme.breakpoints.up('lg')]: {
       width: '100%',
       padding: theme.spacing(4),
-    },
-  },
-  projects: {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridRowGap: theme.spacing(4),
-
-    [theme.breakpoints.up('sm')]: {
-      gridRowGap: theme.spacing(3),
-    },
-
-    [theme.breakpoints.up('lg')]: {
-      gridTemplateColumns: '400px 400px',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gridGap: theme.spacing(5),
-    },
-  },
-  project: {
-    [theme.breakpoints.up('lg')]: {
-      width: 400,
-      height: 224,
     },
   },
   title: {
@@ -111,19 +88,26 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(0, 2, 4, 2),
     },
   },
+  divider: {
+    height: 16,
+    width: 2,
+    backgroundColor: theme.palette.divider,
+  },
+  project: {
+    marginBottom: theme.spacing(5),
+  },
 }));
 
-const PortfolioPage = () => {
+const IndexPage = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const isDesktop = !isMobile && !isTablet;
-
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>Portfolio page</title>
+        <title>Resume page</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
@@ -134,17 +118,24 @@ const PortfolioPage = () => {
         <Card className={classes.navbar}>navbar</Card>
         <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>
-            <SectionTitle className={classes.title}>My works</SectionTitle>
-            <Box className={classes.projects}>
-              {[...Array(6)].map((_, index) => (
-                <PortfolioCard
-                  key={index}
-                  className={classes.project}
-                  type={isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}
-                  {...projectData}
-                />
+            <SectionTitle className={classes.title}>Work Experience</SectionTitle>
+            <Box className={classes.project}>
+              {[...Array(3)].map((_, index) => (
+                <Box key={index}>
+                  <Divider className={classes.divider} orientation="vertical" />
+                  <ResumeList isMobile={isMobile ? true : false} {...projectData} />
+                  <Divider className={classes.divider} orientation="vertical" />
+                </Box>
               ))}
             </Box>
+            <SectionTitle className={classes.title}>Education</SectionTitle>
+            {[...Array(3)].map((_, index) => (
+              <Box key={index}>
+                <Divider className={classes.divider} orientation="vertical" />
+                <ResumeList isMobile={isMobile ? true : false} {...projectData} />
+                <Divider className={classes.divider} orientation="vertical" />
+              </Box>
+            ))}
           </Box>
         </Box>
       </Box>
@@ -152,4 +143,4 @@ const PortfolioPage = () => {
   );
 };
 
-export default PortfolioPage;
+export default IndexPage;
