@@ -1,6 +1,6 @@
 export type ProjectGQL = {
   markdownRemark: {
-    frontmatter: {
+    portfolioPage: {
       portfolio_page_title: string;
       projects: {
         project_label: string;
@@ -20,6 +20,13 @@ export type ProjectGQL = {
         }[];
         project_name: string;
       }[];
+    };
+  };
+  profileImage: {
+    childImageSharp: {
+      fixed: {
+        src: string;
+      };
     };
   };
 };

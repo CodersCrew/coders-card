@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import { Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
@@ -118,8 +118,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
-  console.log(data);
-  const [projectData, setProjectData] = useState(mapProjectQueryToProjectComponentData(data));
+  const projectData = mapProjectQueryToProjectComponentData(data);
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -148,8 +147,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                   className={classes.project}
                   type={isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}
                   {...project}
-                  // find out how to handle images - it doesnt work
-                  image={`../../../content/${project.image}`}
+                  image={project.image}
+                  onClick={() => {
+                    window.alert('project clicked');
+                  }}
                 />
               ))}
             </Box>
@@ -165,7 +166,7 @@ export default PortfolioPage;
 export const pageQuery = graphql`
   query IndexPageQuery {
     markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
-      frontmatter {
+      portfolioPage: frontmatter {
         portfolio_page_title
         projects {
           project_label
@@ -185,6 +186,13 @@ export const pageQuery = graphql`
             technology_name
           }
           project_name
+        }
+      }
+    }
+    profileImage: file(relativePath: { regex: "/portfolio/profile.jpg/" }) {
+      childImageSharp {
+        fixed(quality: 90) {
+          ...GatsbyImageSharpFixed_withWebp
         }
       }
     }
