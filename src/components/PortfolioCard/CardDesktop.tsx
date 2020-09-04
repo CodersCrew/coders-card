@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
   description: {
     color: theme.palette.text.white,
     marginLeft: theme.spacing(1),
+    height: 75,
   },
   label: {
     display: 'flex',
