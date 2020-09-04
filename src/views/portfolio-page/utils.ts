@@ -35,8 +35,7 @@ export const mapProjectQueryToProjectComponentData = (data: ProjectGQL) => {
       phone: developerProfile.phone,
       email: developerProfile.email,
       isFreelancer: developerProfile.is_freelancer,
-      // TODO
-      resumeLink: 'TODO',
+      resumeLink: developerProfile.cv,
     },
   };
 };

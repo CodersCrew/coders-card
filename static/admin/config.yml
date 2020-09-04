@@ -48,6 +48,7 @@ collections:
       - { label: "City of residence", name: "city", widget: "string" }
       - { label: "Country of residence", name: "country", widget: "string" }
       - { label: "Available for freelance", name: "is-freelancer", widget: "boolean" }
+      - { label: "Link to download CV", name: "cv", widget: "string" }
       - label: "Social media"
         name: "social-media"
         widget: "object"

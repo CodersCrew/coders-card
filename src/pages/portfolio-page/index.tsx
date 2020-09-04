@@ -248,6 +248,7 @@ export const pageQuery = graphql`
           twitter
         }
         position
+        cv
       }
     }
   }

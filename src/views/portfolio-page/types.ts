@@ -41,6 +41,7 @@ export type ProjectGQL = {
         twitter: string;
       };
       position: string;
+      cv: string;
     };
   };
 };
