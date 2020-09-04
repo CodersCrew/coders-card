@@ -22,14 +22,14 @@ const basePropsData = {
     'Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales. Vestibulum ut dui laoreet, consequat mi a, aliquam quam. Vivamus ac felis non lectus dapibus pulvinar. Nulla imperdiet maximus mi vel lacinia. Sed sagittis velit sed arcu hendrerit sollicitudin. Quisque faucibus bibendum egestas.',
 };
 
-export const Desktop = (): JSX.Element => {
+export const Desktop = () => {
   return <PortfolioProjectDialog type="desktop" isOpen {...basePropsData} />;
 };
 
-export const Tablet = (): JSX.Element => {
+export const Tablet = () => {
   return <PortfolioProjectDialog type="tablet" isOpen {...basePropsData} />;
 };
 
-export const Mobile = (): JSX.Element => {
+export const Mobile = () => {
   return <PortfolioProjectDialog type="mobile" isOpen {...basePropsData} />;
 };
