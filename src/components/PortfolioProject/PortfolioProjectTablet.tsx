@@ -60,30 +60,24 @@ const useStyles = makeStyles((theme) => ({
   contentMain: { padding: theme.spacing(3, 3, 1.5, 3) },
 }));
 
-const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({
-  isOpen,
-  handleClose,
-  handlePrev,
-  handleNext,
-  ...props
-}) => {
+const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ ...props }) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} open={isOpen}>
+      <Dialog className={classes.wrapper} open={props.isOpen}>
         <Box position="absolute" left="620px">
           <Box mt={2} mb={5}>
-            <IconButton onClick={handleClose} size={'small'}>
+            <IconButton onClick={props.handleClose} size={'small'}>
               <X size={30} />
             </IconButton>
           </Box>
           <Box mb={2.5}>
-            <IconButton onClick={handlePrev} size={'small'}>
+            <IconButton onClick={props.handlePrev} size={'small'}>
               <ChevronLeft size={30} />
             </IconButton>
           </Box>
-          <IconButton onClick={handleNext} size={'small'}>
+          <IconButton onClick={props.handleNext} size={'small'}>
             <ChevronRight size={30} />
           </IconButton>
         </Box>
