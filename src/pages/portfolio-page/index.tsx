@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
+import dayjs from 'dayjs';
 import { Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
 
 import { FC } from '../../typings/components';
 
 import { DetailsCard } from '../../components/DetailsCard';
+import { PortfolioProjectDialog } from '../../components/PortfolioProject';
 import { SectionTitle } from '../../components/SectionTitle';
 import { PortfolioCard } from '../../components/PortfolioCard';
 
@@ -124,6 +126,23 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const isDesktop = !isMobile && !isTablet;
+  const componentType = isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop';
+
+  const [selectedProject, setSelectedProject] = useState(-1);
+
+  // no project will have index equal to -1 therefore no project will be selected
+  const handleCloseProject = () => {
+    setSelectedProject(-1);
+  };
+  // if is first project, choose last project
+  const handlePreviousProject = (index: number) => {
+    setSelectedProject(index === 0 ? projectData.projects.length - 1 : index - 1);
+  };
+
+  // if is last project, choose first project
+  const handleNextProject = (index: number) => {
+    setSelectedProject(index === projectData.projects.length - 1 ? 0 : index + 1);
+  };
 
   return (
     <Container className={classes.container} maxWidth="lg">
@@ -142,16 +161,38 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
               {projectData.projects.map((project, index) => (
-                <PortfolioCard
-                  key={index}
-                  className={classes.project}
-                  type={isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}
-                  {...project}
-                  image={project.image}
-                  onClick={() => {
-                    window.alert('project clicked');
-                  }}
-                />
+                <div key={index}>
+                  <PortfolioCard
+                    className={classes.project}
+                    type={componentType}
+                    title={project.title}
+                    label={project.label}
+                    description={project.previewNote}
+                    image={project.image}
+                    onClick={() => setSelectedProject(index)}
+                  />
+                  <PortfolioProjectDialog
+                    type={componentType}
+                    handleClose={() => handleCloseProject()}
+                    handlePrev={() => handlePreviousProject(index)}
+                    handleNext={() => handleNextProject(index)}
+                    isOpen={index === selectedProject}
+                    title={project.title}
+                    tags={project.technologies}
+                    imgurl={project.image}
+                    subtitle={`
+                      ${dayjs(project.startDate).format('YYYY-MM-DD')}
+                      -
+                      ${dayjs(project.finishDate).format('YYYY-MM-DD')}`}
+                    contentMainDescription={project.description}
+                    contentMainRole={project.role}
+                    contentHeader={project.previewNote}
+                    tagtitle={project.label}
+                    mockupsUrl={project.mockupsUrl}
+                    projectUrl={project.projectUrl}
+                    codeUrl={project.codeUrl}
+                  />
+                </div>
               ))}
             </Box>
           </Box>
