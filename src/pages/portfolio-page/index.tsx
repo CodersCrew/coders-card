@@ -151,7 +151,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type="desktop" {...userData} />
+          <DetailsCard type="desktop" {...projectData.developerProfile} />
         </Box>
       )}
       <Box className={classes.main}>
@@ -206,16 +206,12 @@ export default PortfolioPage;
 
 export const pageQuery = graphql`
   query IndexPageQuery {
-    markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
-      portfolioPage: frontmatter {
+    portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
+      frontmatter {
         portfolio_page_title
         projects {
           project_label
           project_code
-          project_preview_image {
-            # this is from GraphQL File type
-            relativePath
-          }
           project_description
           project_role
           project_preview_note
@@ -223,6 +219,9 @@ export const pageQuery = graphql`
           project_start_date
           project_finish_date
           project_mockups
+          project_preview_image {
+            publicURL
+          }
           project_technologies {
             technology_name
           }
@@ -230,11 +229,25 @@ export const pageQuery = graphql`
         }
       }
     }
-    profileImage: file(relativePath: { regex: "/portfolio/.*.(jpg|jpeg|png|)/" }) {
-      childImageSharp {
-        fixed(quality: 90) {
-          ...GatsbyImageSharpFixed_withWebp
+    developerProfile: markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
+      frontmatter {
+        last_name
+        is_freelancer
+        first_name
+        email
+        country
+        city
+        phone
+        avatar {
+          publicURL
         }
+        social_media {
+          facebook
+          github
+          instagram
+          twitter
+        }
+        position
       }
     }
   }

@@ -1,13 +1,14 @@
 import { ProjectGQL } from './types';
+import { SocialMediaName } from '../../components/DetailsCard/cardProps';
 
 export const mapProjectQueryToProjectComponentData = (data: ProjectGQL) => {
-  const projectPageData = data.markdownRemark.portfolioPage;
-  const image = data.profileImage.childImageSharp.fixed.src;
+  const projectPageData = data.portfolioPage.frontmatter;
+  const developerProfile = data.developerProfile.frontmatter;
 
   return {
     pageTitle: projectPageData.portfolio_page_title,
     projects: projectPageData.projects.map((project) => ({
-      image,
+      image: project.project_preview_image.publicURL,
       title: project.project_name,
       previewNote: project.project_preview_note,
       description: project.project_description,
@@ -20,5 +21,22 @@ export const mapProjectQueryToProjectComponentData = (data: ProjectGQL) => {
       codeUrl: project.project_code,
       projectUrl: project.project_app,
     })),
+    developerProfile: {
+      fullName: `${developerProfile.first_name} ${developerProfile.last_name}`,
+      address: `${developerProfile.city}, ${developerProfile.country}`,
+      image: developerProfile.avatar.publicURL,
+      position: developerProfile.position,
+      socialMedia: [
+        { name: 'facebook' as SocialMediaName, link: developerProfile.social_media.facebook },
+        { name: 'github' as SocialMediaName, link: developerProfile.social_media.github },
+        { name: 'twitter' as SocialMediaName, link: developerProfile.social_media.twitter },
+        { name: 'instagram' as SocialMediaName, link: developerProfile.social_media.instagram },
+      ],
+      phone: developerProfile.phone,
+      email: developerProfile.email,
+      isFreelancer: developerProfile.is_freelancer,
+      // TODO
+      resumeLink: 'TODO',
+    },
   };
 };

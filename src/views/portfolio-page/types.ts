@@ -1,12 +1,12 @@
 export type ProjectGQL = {
-  markdownRemark: {
-    portfolioPage: {
+  portfolioPage: {
+    frontmatter: {
       portfolio_page_title: string;
       projects: {
         project_label: string;
         project_code: string;
         project_preview_image: {
-          relativePath: string;
+          publicURL: string;
         };
         project_description: string;
         project_role: string;
@@ -22,11 +22,25 @@ export type ProjectGQL = {
       }[];
     };
   };
-  profileImage: {
-    childImageSharp: {
-      fixed: {
-        src: string;
+  developerProfile: {
+    frontmatter: {
+      last_name: string;
+      is_freelancer: boolean;
+      first_name: string;
+      email: string;
+      phone: string;
+      country: string;
+      city: string;
+      avatar: {
+        publicURL: string;
       };
+      social_media: {
+        facebook: string;
+        github: string;
+        instagram: string;
+        twitter: string;
+      };
+      position: string;
     };
   };
 };
