@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
     '&.MuiChip-colorSecondary': {
       backgroundColor: theme.palette.success.main,
     },
+    '&.MuiChip-colorPrimary': {
+      backgroundColor: theme.palette.text.secondary,
+    },
   },
 }));
 export const Tag = (props: TagProps) => {
