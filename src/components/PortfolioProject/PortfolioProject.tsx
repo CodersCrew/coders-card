@@ -13,6 +13,13 @@ export type PortfolioProjectDialogProps = {
   contentMainDescription: string;
   contentMainRole: string;
   isOpen: boolean;
+  codeUrl: string;
+  mockupsUrl: string;
+  projectUrl: string;
+  handleClose: () => void;
+  handleNext: () => void;
+  handlePrev: () => void;
+  tags: { name: string }[];
 };
 
 type DetailsPortfolioProjectDialogType = PortfolioProjectDialogProps & {
