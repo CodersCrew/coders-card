@@ -230,7 +230,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    profileImage: file(relativePath: { regex: "/portfolio/profile.jpg/" }) {
+    profileImage: file(relativePath: { regex: "/portfolio/.*.(jpg|jpeg|png|)/" }) {
       childImageSharp {
         fixed(quality: 90) {
           ...GatsbyImageSharpFixed_withWebp
