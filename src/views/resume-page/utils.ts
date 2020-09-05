@@ -4,6 +4,7 @@ import { SocialMediaName } from '../../components/DetailsCard/cardProps';
 export const dataResumePage = (data: ResumePageData) => {
   const resumeData = data.resumePage.frontmatter;
   const developerProfile = data.developerProfile.frontmatter;
+
   return {
     title: resumeData.resumePageTitle,
     workexperience: resumeData.workExperience.map((work) => ({
