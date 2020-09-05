@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
-  const { title, education, workexperience } = dataResumePage(data);
+  const { title, education, workexperience, developerProfile } = dataResumePage(data);
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -114,7 +114,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type="desktop" />
+          <DetailsCard type="desktop" {...developerProfile} />
         </Box>
       )}
       <Box className={classes.main}>
@@ -169,28 +169,27 @@ export const resumePageQuery = graphql`
         }
       }
     }
+    developerProfile: markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
+      frontmatter {
+        firstName
+        lastName
+        isFreelancer
+        email
+        country
+        city
+        phone
+        avatar {
+          publicURL
+        }
+        socialMedia {
+          facebook
+          github
+          instagram
+          twitter
+        }
+        position
+        cv
+      }
+    }
   }
 `;
-
-// developerProfile: markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
-//   frontmatter {
-//     firstName
-//     lastName
-//     isFreelancer
-//     email
-//     country
-//     city
-//     phone
-//     avatar {
-//       publicURL
-//     }
-//     socialMedia {
-//       facebook
-//       github
-//       instagram
-//       twitter
-//     }
-//     position
-//     cv
-//   }
-// }
