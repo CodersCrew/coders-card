@@ -2,17 +2,17 @@ import { ResumePageData } from './types';
 import { SocialMediaName } from '../../components/DetailsCard/cardProps';
 
 export const dataResumePage = (data: ResumePageData) => {
-  const resumePageData = data.resumePage.frontmatter;
+  const resumeData = data.resumePage.frontmatter;
   const developerProfile = data.developerProfile.frontmatter;
   return {
-    title: resumePageData.resumePageTitle,
-    workexperience: resumePageData.workExperience.map((work) => ({
+    title: resumeData.resumePageTitle,
+    workexperience: resumeData.workExperience.map((work) => ({
       labelText: `${work.startJobDate} -   ${work.finishJobDate}`,
       headerText: work.jobTitle,
       title: work.companyName,
       description: work.jobDescription,
     })),
-    education: resumePageData.education.map((item) => ({
+    education: resumeData.education.map((item) => ({
       labelText: `${item.startSchoolDate} - ${item.finishSchoolDate}`,
       headerText: item.course,
       title: item.schoolName,

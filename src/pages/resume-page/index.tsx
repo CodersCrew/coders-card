@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
-  const { title, education, workexperience, developerProfile } = dataResumePage(data);
+  const resumeData = dataResumePage(data);
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -110,11 +110,11 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>{title}</title>
+        <title>{resumeData.title}</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type="desktop" {...developerProfile} />
+          <DetailsCard type="desktop" {...resumeData.developerProfile} />
         </Box>
       )}
       <Box className={classes.main}>
@@ -123,7 +123,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>Work Experience</SectionTitle>
             <Box className={classes.project}>
-              {workexperience.map((item, index) => (
+              {resumeData.workexperience.map((item, index) => (
                 <Box key={index}>
                   <Divider className={classes.divider} orientation="vertical" />
                   <ResumeList isMobile={isMobile ? true : false} {...item} />
@@ -132,7 +132,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
               ))}
             </Box>
             <SectionTitle className={classes.title}>Education</SectionTitle>
-            {education.map((item, index) => (
+            {resumeData.education.map((item, index) => (
               <Box key={index}>
                 <Divider className={classes.divider} orientation="vertical" />
                 <ResumeList isMobile={isMobile ? true : false} {...item} />

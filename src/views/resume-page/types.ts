@@ -1,5 +1,5 @@
 export type ResumePageData = {
-  markdownRemark: {
+  resumePage: {
     frontmatter: {
       resumePageTitle: string;
       workExperience: {
@@ -8,14 +8,14 @@ export type ResumePageData = {
         jobTitle: string;
         companyName: string;
         jobDescription: string;
-      };
+      }[];
       education: {
         startSchoolDate: string;
         finishSchoolDate: string;
         schoolName: string;
         course: string;
         educationDescription: string;
-      };
+      }[];
     };
   };
   developerProfile: {
@@ -30,7 +30,7 @@ export type ResumePageData = {
       avatar: {
         publicURL: string;
       };
-      social_media: {
+      socialMedia: {
         facebook: string;
         github: string;
         instagram: string;

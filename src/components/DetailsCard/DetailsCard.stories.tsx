@@ -33,7 +33,7 @@ const basePropsData: CardProps = {
 export const Desktop = () => {
   return (
     <Box style={{ width: 280, height: 668 }}>
-      <DetailsCard type="desktop" />
+      <DetailsCard type="desktop" {...basePropsData} />
     </Box>
   );
 };
@@ -41,7 +41,7 @@ export const Desktop = () => {
 export const Tablet = () => {
   return (
     <Box style={{ width: 720, height: 288 }}>
-      <DetailsCard type="tablet" />
+      <DetailsCard type="tablet" {...basePropsData} />
     </Box>
   );
 };
@@ -49,7 +49,7 @@ export const Tablet = () => {
 export const Mobile = () => {
   return (
     <Box style={{ width: 280, height: 488 }}>
-      <DetailsCard type="mobile" />
+      <DetailsCard type="mobile" {...basePropsData} />
     </Box>
   );
 };
