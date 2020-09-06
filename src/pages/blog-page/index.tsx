@@ -3,9 +3,9 @@ import { Container, Box, makeStyles } from '@material-ui/core';
 
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
+import { BlogPost } from '../../components/BlogPostComponent';
 
-import { userData } from './data';
-import DummyBlogPost from './DummyBlogPost';
+import { blogData, userData } from './data';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.up('md')]: {
-      gridTemplateColumns: '1fr 1fr',
+      gridTemplateColumns: '400px 400px',
       alignItems: 'center',
       justifyContent: 'center',
       gridGap: theme.spacing(5),
@@ -108,6 +108,10 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(0, 2, 4, 2),
     },
   },
+  blogPost: {
+    maxWidth: 400,
+    boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+  }
 }));
 
 const BlogPage = () => {
@@ -124,7 +128,7 @@ const BlogPage = () => {
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
               {[...Array(4)].map((_, index) => (
-                <DummyBlogPost key={index} />
+                <BlogPost key={index} className={classes.blogPost} {...blogData} />
               ))}
             </Box>
           </Box>
