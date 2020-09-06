@@ -13,27 +13,10 @@ export default {
   excludeStories: /.*Data$/,
 };
 
-const basePropsData: CardProps = {
-  fullName: 'Jonathan Harwood',
-  image,
-  position: 'Full stack developer',
-  socialMedia: [
-    { name: 'facebook', link: 'https://www.facebook.com/' },
-    { name: 'github', link: 'https://github.com/' },
-    { name: 'twitter', link: 'https://twitter.com/' },
-    { name: 'instagram', link: 'https://www.instagram.com/' },
-  ],
-  phone: '+48 601 345 132',
-  email: 'jonathan.harwood@gmail.com',
-  address: 'Wroclaw, Poland',
-  isFreelancer: true,
-  resumeLink: 'https://www.docdroid.net/WyjIuyO/fake-resume-pdf',
-};
-
 export const Desktop = () => {
   return (
     <Box style={{ width: 280, height: 668 }}>
-      <DetailsCard type="desktop" {...basePropsData} />
+      <DetailsCard type="desktop" />
     </Box>
   );
 };
@@ -41,7 +24,7 @@ export const Desktop = () => {
 export const Tablet = () => {
   return (
     <Box style={{ width: 720, height: 288 }}>
-      <DetailsCard type="tablet" {...basePropsData} />
+      <DetailsCard type="tablet" />
     </Box>
   );
 };
@@ -49,7 +32,7 @@ export const Tablet = () => {
 export const Mobile = () => {
   return (
     <Box style={{ width: 280, height: 488 }}>
-      <DetailsCard type="mobile" {...basePropsData} />
+      <DetailsCard type="mobile" />
     </Box>
   );
 };
