@@ -11,7 +11,6 @@ import { PortfolioProjectDialog } from '../../components/PortfolioProject';
 import { SectionTitle } from '../../components/SectionTitle';
 import { PortfolioCard } from '../../components/PortfolioCard';
 
-import { userData } from '../../views/portfolio-page/data';
 import { ProjectGQL } from '../../views/portfolio-page/types';
 import { mapProjectQueryToProjectComponentData } from '../../views/portfolio-page/utils';
 
@@ -151,7 +150,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type="desktop" {...projectData.developerProfile} />
+          <DetailsCard type="desktop" />
         </Box>
       )}
       <Box className={classes.main}>
@@ -227,28 +226,6 @@ export const pageQuery = graphql`
           }
           project_name
         }
-      }
-    }
-    developerProfile: markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
-      frontmatter {
-        last_name
-        is_freelancer
-        first_name
-        email
-        country
-        city
-        phone
-        avatar {
-          publicURL
-        }
-        social_media {
-          facebook
-          github
-          instagram
-          twitter
-        }
-        position
-        cv
       }
     }
   }
