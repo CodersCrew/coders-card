@@ -1,5 +1,4 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { Tag, TagProps } from '.';
 
 export default {
@@ -10,4 +9,8 @@ export default {
 
 export const DefaultTag = () => {
   return <Tag label="Tag" />;
-}
+};
+
+export const SuccessTag = () => {
+  return <Tag label="Tag" color="secondary" />;
+};
