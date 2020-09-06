@@ -109,8 +109,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   blogPost: {
-    maxWidth: 400,
+    
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+
+    [theme.breakpoints.up('lg')]: {
+      maxWidth: 400,
+    },
   }
 }));
 
