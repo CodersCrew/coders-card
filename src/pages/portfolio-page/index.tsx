@@ -12,7 +12,6 @@ import { SectionTitle } from '../../components/SectionTitle';
 import { PortfolioCard } from '../../components/PortfolioCard';
 
 import { ProjectGQL } from '../../views/portfolio-page/types';
-import { mapProjectQueryToProjectComponentData } from '../../views/portfolio-page/utils';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 const useStyles = makeStyles((theme) => ({
@@ -119,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
-  const projectData = mapProjectQueryToProjectComponentData(data);
+  const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -146,7 +145,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>{projectData.pageTitle}</title>
+        <title>{projectData.portfolio_page_title}</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
@@ -164,10 +163,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                   <PortfolioCard
                     className={classes.project}
                     type={componentType}
-                    title={project.title}
-                    label={project.label}
-                    description={project.previewNote}
-                    image={project.image}
+                    title={project.project_name}
+                    label={project.project_label}
+                    description={project.project_description}
+                    image={project.project_preview_image.publicURL}
                     onClick={() => setSelectedProject(index)}
                   />
                   <PortfolioProjectDialog
@@ -176,20 +175,20 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                     handlePrev={() => handlePreviousProject(index)}
                     handleNext={() => handleNextProject(index)}
                     isOpen={index === selectedProject}
-                    title={project.title}
-                    tags={project.technologies}
-                    imgurl={project.image}
+                    title={project.project_name}
+                    tags={project.project_technologies.map((technology) => ({ name: technology.technology_name }))}
+                    imgurl={project.project_preview_image.publicURL}
                     subtitle={`
-                      ${dayjs(project.startDate).format('YYYY-MM-DD')}
+                      ${dayjs(project.project_start_date).format('YYYY-MM-DD')}
                       -
-                      ${dayjs(project.finishDate).format('YYYY-MM-DD')}`}
-                    contentMainDescription={project.description}
-                    contentMainRole={project.role}
-                    contentHeader={project.previewNote}
-                    tagtitle={project.label}
-                    mockupsUrl={project.mockupsUrl}
-                    projectUrl={project.projectUrl}
-                    codeUrl={project.codeUrl}
+                      ${dayjs(project.project_finish_date).format('YYYY-MM-DD')}`}
+                    contentMainDescription={project.project_description}
+                    contentMainRole={project.project_role}
+                    contentHeader={project.project_preview_note}
+                    tagtitle={project.project_label}
+                    mockupsUrl={project.project_mockups}
+                    projectUrl={project.project_app}
+                    codeUrl={project.project_code}
                   />
                 </div>
               ))}
