@@ -16,6 +16,12 @@
       ]
     },
     {
+      "path": "src/components/BlogPostComponent/BlogPost.tsx",
+      "zeplinNames": [
+        "blog-post"
+      ]
+    },
+    {
       "path": "src/components/IconButton/IconButton.tsx",
       "zeplinNames": [
         "icon-button/normal",
