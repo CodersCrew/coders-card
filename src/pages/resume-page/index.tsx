@@ -3,12 +3,9 @@ import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import { Container, Box, makeStyles, Card, useTheme, useMediaQuery, Divider } from '@material-ui/core';
 
-import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { ResumeList } from '../../components/ResumeList';
-
 import { ResumePageData } from '../../views/resume-page/types';
-import { dataResumePage } from '../../views/resume-page/utils';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -101,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
-  const resumeData = dataResumePage(data);
+  const resumeData = data.resumePage.frontmatter;
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -110,12 +107,10 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>{resumeData.title}</title>
+        <title>{resumeData.resumePageTitle}</title>
       </Helmet>
       {isDesktop && (
-        <Box className={classes.aside}>
-          <DetailsCard type="desktop" {...resumeData.developerProfile} />
-        </Box>
+        <Box className={classes.aside}>{/* <DetailsCard type="desktop" {...resumeData.developerProfile} /> */}</Box>
       )}
       <Box className={classes.main}>
         <Card className={classes.navbar}>navbar</Card>
@@ -123,10 +118,16 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>Work Experience</SectionTitle>
             <Box className={classes.project}>
-              {resumeData.workexperience.map((item, index) => (
+              {resumeData.workExperience.map((item, index) => (
                 <Box key={index}>
                   <Divider className={classes.divider} orientation="vertical" />
-                  <ResumeList isMobile={isMobile ? true : false} {...item} />
+                  <ResumeList
+                    isMobile={isMobile ? true : false}
+                    labelText={`${item.startJobDate} -   ${item.finishJobDate}`}
+                    headerText={item.jobTitle}
+                    title={item.companyName}
+                    description={item.jobDescription}
+                  />
                   <Divider className={classes.divider} orientation="vertical" />
                 </Box>
               ))}
@@ -135,7 +136,13 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
             {resumeData.education.map((item, index) => (
               <Box key={index}>
                 <Divider className={classes.divider} orientation="vertical" />
-                <ResumeList isMobile={isMobile ? true : false} {...item} />
+                <ResumeList
+                  isMobile={isMobile ? true : false}
+                  labelText={`${item.startSchoolDate} -   ${item.finishSchoolDate}`}
+                  headerText={item.course}
+                  title={item.schoolName}
+                  description={item.educationDescription}
+                />
                 <Divider className={classes.divider} orientation="vertical" />
               </Box>
             ))}
@@ -167,28 +174,6 @@ export const resumePageQuery = graphql`
           course
           educationDescription
         }
-      }
-    }
-    developerProfile: markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
-      frontmatter {
-        firstName
-        lastName
-        isFreelancer
-        email
-        country
-        city
-        phone
-        avatar {
-          publicURL
-        }
-        socialMedia {
-          facebook
-          github
-          instagram
-          twitter
-        }
-        position
-        cv
       }
     }
   }

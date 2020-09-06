@@ -18,26 +18,4 @@ export type ResumePageData = {
       }[];
     };
   };
-  developerProfile: {
-    frontmatter: {
-      firstName: string;
-      lastName: string;
-      isFreelancer: boolean;
-      email: string;
-      phone: string;
-      country: string;
-      city: string;
-      avatar: {
-        publicURL: string;
-      };
-      socialMedia: {
-        facebook: string;
-        github: string;
-        instagram: string;
-        twitter: string;
-      };
-      position: string;
-      cv: string;
-    };
-  };
 };
