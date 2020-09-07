@@ -5,7 +5,7 @@ import { Container, Box, makeStyles, Card, useTheme, useMediaQuery, Divider } fr
 
 import { SectionTitle } from '../../components/SectionTitle';
 import { ResumeList } from '../../components/ResumeList';
-import { ResumePageData } from '../../views/resume-page/types';
+import { ResumePageData } from './types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -123,7 +123,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
                   <Divider className={classes.divider} orientation="vertical" />
                   <ResumeList
                     isMobile={isMobile ? true : false}
-                    labelText={`${item.startJobDate} -   ${item.finishJobDate}`}
+                    labelText={`${item.startJobDate} - ${item.finishJobDate}`}
                     headerText={item.jobTitle}
                     title={item.companyName}
                     description={item.jobDescription}
@@ -138,7 +138,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
                 <Divider className={classes.divider} orientation="vertical" />
                 <ResumeList
                   isMobile={isMobile ? true : false}
-                  labelText={`${item.startSchoolDate} -   ${item.finishSchoolDate}`}
+                  labelText={`${item.startSchoolDate} - ${item.finishSchoolDate}`}
                   headerText={item.course}
                   title={item.schoolName}
                   description={item.educationDescription}
