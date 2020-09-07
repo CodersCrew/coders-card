@@ -25,9 +25,9 @@ const basePropsData = {
   contentMainRole:
     'Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales. Vestibulum ut dui laoreet, consequat mi a, aliquam quam. Vivamus ac felis non lectus dapibus pulvinar. Nulla imperdiet maximus mi vel lacinia. Sed sagittis velit sed arcu hendrerit sollicitudin. Quisque faucibus bibendum egestas.',
   tags: [{ name: 'Redux' }, { name: 'React' }, { name: 'TypeScript' }],
-  handleClose: action('onClick'),
-  handleNext: action('onClick'),
-  handlePrev: action('onClick'),
+  handleClose: action('handleClose'),
+  handleNext: action('handleNext'),
+  handlePrev: action('handlePrev'),
 };
 
 export const Desktop = () => {
