@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   contentMain: { padding: theme.spacing(3, 3, 1.5, 3) },
 }));
 
-const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ ...props }) => {
+const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = (props) => {
   const classes = useStyles();
 
   return (

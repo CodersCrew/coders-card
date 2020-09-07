@@ -1,5 +1,6 @@
 import React from 'react';
 import image from '../../images/background.jpg';
+import { action } from '@storybook/addon-actions';
 
 import { PortfolioProjectDialog } from './PortfolioProject';
 
@@ -24,9 +25,9 @@ const basePropsData = {
   contentMainRole:
     'Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales. Vestibulum ut dui laoreet, consequat mi a, aliquam quam. Vivamus ac felis non lectus dapibus pulvinar. Nulla imperdiet maximus mi vel lacinia. Sed sagittis velit sed arcu hendrerit sollicitudin. Quisque faucibus bibendum egestas.',
   tags: [{ name: 'Redux' }, { name: 'React' }, { name: 'TypeScript' }],
-  handleClose: () => window.alert('closed'),
-  handleNext: () => window.alert('nexted'),
-  handlePrev: () => window.alert('preved'),
+  handleClose: action('onClick'),
+  handleNext: action('onClick'),
+  handlePrev: action('onClick'),
 };
 
 export const Desktop = () => {

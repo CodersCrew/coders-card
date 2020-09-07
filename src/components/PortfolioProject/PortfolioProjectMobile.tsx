@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ ...props }) => {
+const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = (props) => {
   const classes = useStyles();
 
   return (
