@@ -6,7 +6,6 @@ import { TestimonialProps } from '.';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: '100%',
     height: '100%',
     borderRadius: 0,
     boxShadow: 'none',
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+
     height: 64,
   },
   media: {
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     borderRadius: 8,
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
-    height: 156,
+    minHeight: 156,
     transform: 'translateY(-40px)',
     backgroundColor: theme.palette.background.paper,
   },

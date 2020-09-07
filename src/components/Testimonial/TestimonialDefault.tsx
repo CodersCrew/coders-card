@@ -6,7 +6,6 @@ import { TestimonialProps } from '.';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: '100%',
     height: '100%',
     borderRadius: 0,
     boxShadow: 'none',
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+
     height: 48,
   },
   overlayMedia: {
