@@ -40,6 +40,7 @@ export const DetailsCard: FC<DetailsCardProps> = ({ type }) => {
           }
           position
           cv
+          phone
         }
       }
     }
