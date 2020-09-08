@@ -1,6 +1,6 @@
 import React from 'react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import BlogPage from '.';
+import BlogPage from '../../pages/blog-page';
 
 export default {
   title: 'blog-page',
