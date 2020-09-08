@@ -7,7 +7,7 @@ phone: 601 345 132
 email: jonathan.harwood@gmail.com
 city: Wroclaw
 country: Poland
-isFreelancer: true
+is-freelancer: true
 cv: https://s2.q4cdn.com/175719177/files/doc_presentations/Placeholder-PDF.pdf
 social-media:
   twitter: https://twitter.com/
