@@ -5,7 +5,7 @@ import { Container, Box, makeStyles, Card, useTheme, useMediaQuery, Divider } fr
 
 import { SectionTitle } from '../../components/SectionTitle';
 import { ResumeList } from '../../components/ResumeList';
-import { ResumePageData } from './types';
+import { ResumePageData } from '../../views/resume-page/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
