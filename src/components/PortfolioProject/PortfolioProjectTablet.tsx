@@ -60,24 +60,24 @@ const useStyles = makeStyles((theme) => ({
   contentMain: { padding: theme.spacing(3, 3, 1.5, 3) },
 }));
 
-const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...props }) => {
+const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = (props) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} open={isOpen} {...props}>
+      <Dialog className={classes.wrapper} open={props.isOpen}>
         <Box position="absolute" left="620px">
           <Box mt={2} mb={5}>
-            <IconButton {...props} size={'small'}>
+            <IconButton onClick={props.handleClose} size={'small'}>
               <X size={30} />
             </IconButton>
           </Box>
           <Box mb={2.5}>
-            <IconButton {...props} size={'small'}>
+            <IconButton onClick={props.handlePrev} size={'small'}>
               <ChevronLeft size={30} />
             </IconButton>
           </Box>
-          <IconButton {...props} size={'small'}>
+          <IconButton onClick={props.handleNext} size={'small'}>
             <ChevronRight size={30} />
           </IconButton>
         </Box>
@@ -96,13 +96,26 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
             {props.contentHeader}
           </Typography>
           <Box display="flex">
-            <Button className={classes.button} color="primary" variant="contained" startIcon={<Code size={16} />}>
+            <Button
+              href={props.codeUrl}
+              className={classes.button}
+              color="primary"
+              variant="contained"
+              startIcon={<Code size={16} />}
+            >
               See code
             </Button>
-            <Button className={classes.button} color="primary" variant="contained" startIcon={<Image size={16} />}>
+            <Button
+              href={props.mockupsUrl}
+              className={classes.button}
+              color="primary"
+              variant="contained"
+              startIcon={<Image size={16} />}
+            >
               See mockups
             </Button>
             <Button
+              href={props.projectUrl}
               className={classes.button}
               color="primary"
               variant="contained"
@@ -128,10 +141,9 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           Technologies
         </Typography>
         <Box className={classes.tags}>
-          <Tag label="TypeScript" />
-          <Tag label="React" />
-          <Tag label="Redux" />
-          <Tag label="Material UI" />
+          {props.tags.map((tag, index) => (
+            <Tag key={`${tag.name}-${index}`} label={tag.name} />
+          ))}
         </Box>
       </Dialog>
     </Box>

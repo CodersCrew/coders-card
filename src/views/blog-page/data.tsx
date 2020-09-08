@@ -3,11 +3,12 @@ import avatar from '../../images/avatar.jpg';
 import image from '../../images/blogpost-image.jpg';
 
 export const blogData = {
-  title: "Ut vitae elit vitae metus convallis consectetur ut et ligula",
-  text: "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
-  tagName: "Teamwork",
-  date: "20 April 2020",
-  image: image,
+  title: 'Ut vitae elit vitae metus convallis consectetur ut et ligula',
+  text:
+    'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+  tagName: 'Teamwork',
+  date: '20 April 2020',
+  image,
 };
 
 export const userData: CardProps = {

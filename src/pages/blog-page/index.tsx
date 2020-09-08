@@ -5,7 +5,7 @@ import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { BlogPost } from '../../components/BlogPostComponent';
 
-import { blogData, userData } from './data';
+import { blogData, userData } from '../../views/blog-page/data';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       maxWidth: 400,
     },
-  }
+  },
 }));
 
 const BlogPage = () => {

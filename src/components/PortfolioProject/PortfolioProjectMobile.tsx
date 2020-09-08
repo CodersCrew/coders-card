@@ -44,24 +44,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...props }) => {
+const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = (props) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} fullScreen={true} open={isOpen} {...props}>
+      <Dialog className={classes.wrapper} fullScreen={true} open={props.isOpen}>
         <Box className={classes.iconButtons}>
           <Box display="flex">
             <Box mr="15px">
-              <IconButton color="inherit" {...props} size={'small'}>
+              <IconButton color="inherit" onClick={props.handlePrev} size={'small'}>
                 <ChevronLeft size={20} />
               </IconButton>
             </Box>
-            <IconButton color="inherit" {...props} size={'small'}>
+            <IconButton color="inherit" onClick={props.handleNext} size={'small'}>
               <ChevronRight size={20} />
             </IconButton>
           </Box>
-          <IconButton color="inherit" {...props} size={'small'}>
+          <IconButton color="inherit" onClick={props.handleClose} size={'small'}>
             <X size={20} />
           </IconButton>
         </Box>
@@ -77,13 +77,31 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           <Typography className={classes.contentHeader} variant="body1" color="textSecondary">
             {props.contentHeader}
           </Typography>
-          <Button className={classes.button} color="primary" variant="contained" startIcon={<Code size={16} />}>
+          <Button
+            href={props.codeUrl}
+            className={classes.button}
+            color="primary"
+            variant="contained"
+            startIcon={<Code size={16} />}
+          >
             See code
           </Button>
-          <Button className={classes.button} color="primary" variant="contained" startIcon={<Image size={16} />}>
+          <Button
+            href={props.mockupsUrl}
+            className={classes.button}
+            color="primary"
+            variant="contained"
+            startIcon={<Image size={16} />}
+          >
             See mockups
           </Button>
-          <Button className={classes.button} color="primary" variant="contained" startIcon={<ExternalLink size={16} />}>
+          <Button
+            href={props.projectUrl}
+            className={classes.button}
+            color="primary"
+            variant="contained"
+            startIcon={<ExternalLink size={16} />}
+          >
             Open the app
           </Button>
         </Box>
@@ -103,10 +121,9 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = ({ isOpen, ...prop
           Technologies
         </Typography>
         <Box className={classes.tags}>
-          <Tag label="TypeScript" />
-          <Tag label="React" />
-          <Tag label="Redux" />
-          <Tag label="Material UI" />
+          {props.tags.map((tag, index) => (
+            <Tag key={`${tag.name}-${index}`} label={tag.name} />
+          ))}
         </Box>
       </Dialog>
     </Box>

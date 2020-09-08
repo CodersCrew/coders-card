@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
+import dayjs from 'dayjs';
 import { Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
 
+import { FC } from '../../typings/components';
+
 import { DetailsCard } from '../../components/DetailsCard';
+import { PortfolioProjectDialog } from '../../components/PortfolioProject';
 import { SectionTitle } from '../../components/SectionTitle';
 import { PortfolioCard } from '../../components/PortfolioCard';
 
-import { projectData, userData } from '../../views/portfolio-page/data';
+import { ProjectGQL } from '../../views/portfolio-page/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
-
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: 0,
@@ -113,21 +117,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PortfolioPage = () => {
+const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
+  const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const isDesktop = !isMobile && !isTablet;
+  const componentType = isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop';
+
+  const [selectedProject, setSelectedProject] = useState(-1);
+
+  // no project will have index equal to -1 therefore no project will be selected
+  const handleCloseProject = () => {
+    setSelectedProject(-1);
+  };
+  // if is first project, choose last project
+  const handlePreviousProject = (index: number) => {
+    setSelectedProject(index === 0 ? projectData.projects.length - 1 : index - 1);
+  };
+
+  // if is last project, choose first project
+  const handleNextProject = (index: number) => {
+    setSelectedProject(index === projectData.projects.length - 1 ? 0 : index + 1);
+  };
 
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>Portfolio page</title>
+        <title>{projectData.portfolio_page_title}</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type="desktop" {...userData} />
+          <DetailsCard type="desktop" />
         </Box>
       )}
       <Box className={classes.main}>
@@ -136,13 +158,39 @@ const PortfolioPage = () => {
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
-              {[...Array(6)].map((_, index) => (
-                <PortfolioCard
-                  key={index}
-                  className={classes.project}
-                  type={isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}
-                  {...projectData}
-                />
+              {projectData.projects.map((project, index) => (
+                <div key={index}>
+                  <PortfolioCard
+                    className={classes.project}
+                    type={componentType}
+                    title={project.project_name}
+                    label={project.project_label}
+                    description={project.project_description}
+                    image={project.project_preview_image.publicURL}
+                    onClick={() => setSelectedProject(index)}
+                  />
+                  <PortfolioProjectDialog
+                    type={componentType}
+                    handleClose={() => handleCloseProject()}
+                    handlePrev={() => handlePreviousProject(index)}
+                    handleNext={() => handleNextProject(index)}
+                    isOpen={index === selectedProject}
+                    title={project.project_name}
+                    tags={project.project_technologies.map((technology) => ({ name: technology.technology_name }))}
+                    imgurl={project.project_preview_image.publicURL}
+                    subtitle={`
+                      ${dayjs(project.project_start_date).format('YYYY-MM-DD')}
+                      -
+                      ${dayjs(project.project_finish_date).format('YYYY-MM-DD')}`}
+                    contentMainDescription={project.project_description}
+                    contentMainRole={project.project_role}
+                    contentHeader={project.project_preview_note}
+                    tagtitle={project.project_label}
+                    mockupsUrl={project.project_mockups}
+                    projectUrl={project.project_app}
+                    codeUrl={project.project_code}
+                  />
+                </div>
               ))}
             </Box>
           </Box>
@@ -153,3 +201,31 @@ const PortfolioPage = () => {
 };
 
 export default PortfolioPage;
+
+export const pageQuery = graphql`
+  query IndexPageQuery {
+    portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
+      frontmatter {
+        portfolio_page_title
+        projects {
+          project_label
+          project_code
+          project_description
+          project_role
+          project_preview_note
+          project_app
+          project_start_date
+          project_finish_date
+          project_mockups
+          project_preview_image {
+            publicURL
+          }
+          project_technologies {
+            technology_name
+          }
+          project_name
+        }
+      }
+    }
+  }
+`;

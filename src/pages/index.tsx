@@ -1,1 +1,3 @@
-export { default } from '../views/about';
+import about from '../views/about';
+
+export default about;
