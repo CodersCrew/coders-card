@@ -16,6 +16,12 @@
       ]
     },
     {
+      "path": "src/components/BlogPostComponent/BlogPost.tsx",
+      "zeplinNames": [
+        "blog-post"
+      ]
+    },
+    {
       "path": "src/components/IconButton/IconButton.tsx",
       "zeplinNames": [
         "icon-button/normal",
@@ -66,20 +72,20 @@
       "zeplinNames": [
         "filter-tag"
       ]
-    }
+    },
     {
       "path": "src/components/FilterTabs/FilterTab.stsx",
       "zeplinNames": [
         "filter-tag"
       ]
-    }
+    },
+    {
       "path": "src/components/DetailsCard/DetailsCard.tsx",
       "zeplinNames": [
         "details-card"
       ]
     },
     {
-
       "path": "src/components/ResumeList/ResumeList.tsx",
       "zeplinNames": ["resume-item-mobile", "resume-item"]
     }

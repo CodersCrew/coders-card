@@ -1,10 +1,10 @@
 import React from 'react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import ResumePage from '.';
+import AboutPage from '.';
 
 export default {
-  title: 'resume-page',
-  component: ResumePage,
+  title: 'About',
+  component: AboutPage,
   excludeStories: /.*Data$/,
   parameters: {
     viewport: {
@@ -14,11 +14,11 @@ export default {
   },
 };
 
-export const MobileResumePage = () => {
-  return <ResumePage />;
+export const MobileAboutPage = () => {
+  return <AboutPage />;
 };
 
-MobileResumePage.story = {
+MobileAboutPage.story = {
   parameters: {
     viewport: {
       defaultViewport: 'iphone6',
@@ -26,11 +26,11 @@ MobileResumePage.story = {
   },
 };
 
-export const TabletResumePage = () => {
-  return <ResumePage />;
+export const TabletAboutPage = () => {
+  return <AboutPage />;
 };
 
-TabletResumePage.story = {
+TabletAboutPage.story = {
   parameters: {
     viewport: {
       defaultViewport: 'ipad',
@@ -38,6 +38,6 @@ TabletResumePage.story = {
   },
 };
 
-export const DesktopResumePage = () => {
-  return <ResumePage />;
+export const DesktopAboutPage = () => {
+  return <AboutPage />;
 };
