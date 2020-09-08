@@ -8,6 +8,7 @@ export type BlogPostProps = {
   tagName: string;
   date: string;
   image: string;
+  className?: string;
 }
 
 const useStyles = makeStyles(({ spacing, typography }) => ({
@@ -47,11 +48,11 @@ const useStyles = makeStyles(({ spacing, typography }) => ({
   },
 }));
 
-export const BlogPost: React.FC<BlogPostProps> = ({ title, text, tagName, date, image, ...props }) => {
+export const BlogPost: React.FC<BlogPostProps> = ({ title, text, tagName, date, image, className = '', ...props }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} {...props}>
+    <Card className={`${classes.root} ${className}`} {...props}>
       <CardActionArea>
         <CardMedia className={classes.media} image={image}>
           <Chip label={tagName} className={classes.tag} classes={{ label: classes.label }} />
