@@ -17,12 +17,4 @@ module.exports = {
     '@storybook/addon-a11y/register',
     '@storybook/addon-viewport/register',
   ],
-  webpackFinal: async (config) => {
-    config.module.rules[0].use[0].options.plugins = [
-      // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-      require.resolve('babel-plugin-remove-graphql-queries'),
-    ];
-
-    return config;
-  },
 };
