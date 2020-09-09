@@ -64,7 +64,7 @@ const BlogPostDialogDesktop: FC<BlogPostDialogProps> = (props) => {
             <Typography variant="h4" color="textPrimary">
               {props.title}
             </Typography>
-            <Tag label="Teamwork" color="secondary" />
+            <Tag label={props.tagtitle} color="secondary" />
           </Box>
           <Typography variant="subtitle2" color="textPrimary">
             {props.subtitle}

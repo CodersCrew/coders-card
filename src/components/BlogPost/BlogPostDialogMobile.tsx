@@ -56,7 +56,7 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = (props) => {
           <Typography className={classes.subtitle} variant="subtitle2" color="textPrimary">
             {props.subtitle}
           </Typography>
-          <Tag label="Teamwork" color="secondary" />
+          <Tag label={props.tagtitle} color="secondary" />
           <Typography className={classes.contentHeader} variant="body1" color="textSecondary">
             {props.contentheader}
           </Typography>

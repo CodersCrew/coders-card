@@ -6,6 +6,7 @@ export type BlogGQL = {
         blog_title: string;
         blog_label: string;
         blog_body: string;
+        blog_description: string;
         blog_image: {
           publicURL: string;
         };

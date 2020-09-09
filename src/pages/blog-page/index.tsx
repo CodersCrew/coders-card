@@ -8,6 +8,7 @@ import { useComponentType } from '../../hooks/useComponentType';
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { BlogPost } from '../../components/BlogPostComponent';
+import { BlogPostDialog } from '../../components/BlogPost';
 
 import { FC } from '../../typings/components';
 import { BlogGQL } from '../../views/blog-page/types';
@@ -133,13 +134,12 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
 
   const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
 
-  // TODO BlogPostDialog
   // no blogpost will have index equal to -1 therefore no blogpost will be selected
   const handleCloseBlogpost = () => {
     setSelectedBlogpost(-1);
   };
   // if is first blogpost, choose last blogpost
-  const handlePreviousBlogpost = (index: number) => {
+  const handlePrevBlogpost = (index: number) => {
     setSelectedBlogpost(index === 0 ? blogData.blog_post.length - 1 : index - 1);
   };
 
@@ -162,15 +162,31 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
               {blogData.blog_post.map((blogPost, index) => (
-                <BlogPost
-                  key={index}
-                  className={classes.blogPost}
-                  image={blogPost.blog_image.publicURL}
-                  tagName={blogPost.blog_label}
-                  text={blogPost.blog_body}
-                  title={blogPost.blog_title}
-                  date={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
-                />
+                <div key={index}>
+                  <BlogPost
+                    key={index}
+                    className={classes.blogPost}
+                    image={blogPost.blog_image.publicURL}
+                    tagName={blogPost.blog_label}
+                    text={blogPost.blog_description}
+                    title={blogPost.blog_title}
+                    date={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
+                    onClick={() => setSelectedBlogpost(index)}
+                  />
+                  <BlogPostDialog
+                    contentheader={blogPost.blog_description}
+                    contentmain={blogPost.blog_body}
+                    imgurl={blogPost.blog_image.publicURL}
+                    isOpen={index === selectedBlogpost}
+                    subtitle={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
+                    tagtitle={blogPost.blog_label}
+                    title={blogPost.blog_title}
+                    type={componentType}
+                    handleClose={() => handleCloseBlogpost()}
+                    handlePrev={() => handlePrevBlogpost(index)}
+                    handleNext={() => handleNextBlogpost(index)}
+                  />
+                </div>
               ))}
             </Box>
           </Box>
@@ -191,6 +207,7 @@ export const pageQuery = graphql`
           blog_title
           blog_label
           blog_body
+          blog_description
           blog_image {
             publicURL
           }
