@@ -1,11 +1,14 @@
 import React from 'react';
 import { Container, Box, makeStyles } from '@material-ui/core';
+import { graphql } from 'gatsby';
+import dayjs from 'dayjs';
 
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { BlogPost } from '../../components/BlogPostComponent';
 
-import { blogData, userData } from '../../views/blog-page/data';
+import { FC } from '../../typings/components';
+import { BlogGQL } from '../../views/blog-page/types';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -121,12 +124,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlogPage = () => {
+const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
+  const blogData = data.markdownRemark.blogPage;
   const classes = useStyles();
   return (
     <Container className={classes.container}>
       <Box className={classes.aside}>
-        <DetailsCard type="desktop" {...userData}></DetailsCard>
+        <DetailsCard type="desktop" />
       </Box>
       <Box className={classes.main}>
         <Box className={classes.navbar}>NavBar</Box>
@@ -134,8 +138,16 @@ const BlogPage = () => {
           <Box className={classes.blogContainer}>
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
-              {[...Array(4)].map((_, index) => (
-                <BlogPost key={index} className={classes.blogPost} {...blogData} />
+              {blogData.blog_post.map((blogPost, index) => (
+                <BlogPost
+                  key={index}
+                  className={classes.blogPost}
+                  image={blogPost.blog_image.publicURL}
+                  tagName={blogPost.blog_label}
+                  text={blogPost.blog_body}
+                  title={blogPost.blog_title}
+                  date={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
+                />
               ))}
             </Box>
           </Box>
@@ -146,3 +158,22 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
+
+export const pageQuery = graphql`
+  query BlogPage {
+    markdownRemark(fileAbsolutePath: { regex: "/blog/index-1.md/" }) {
+      blogPage: frontmatter {
+        blog_page_title
+        blog_post {
+          blog_title
+          blog_label
+          blog_body
+          blog_image {
+            publicURL
+          }
+          publish_date
+        }
+      }
+    }
+  }
+`;
