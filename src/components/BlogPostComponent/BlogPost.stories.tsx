@@ -1,6 +1,7 @@
 import React from 'react';
 import { BlogPost } from '.';
 import image from '../../images/blogpost-image.jpg';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'BlogPost',
@@ -17,6 +18,7 @@ export const WithLongTitle = () => {
       tagName="Teamwork"
       date="20 April 2020"
       image={image}
+      onClick={action('onClick')}
     />
   );
 };
@@ -30,6 +32,7 @@ export const WitShortTitle = () => {
       tagName="Clean code"
       date="20 April 2020"
       image={image}
+      onClick={action('onClick')}
     />
   );
 };
