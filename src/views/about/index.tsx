@@ -1,15 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Typography, Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
+import { Typography, Container, Box, makeStyles, Card } from '@material-ui/core';
 
+import { useComponentType } from '../../hooks/useComponentType';
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { Skill } from '../../components/Skill';
 import { Testimonial } from '../../components/Testimonial';
 import MarleneImg from '../../images/MarleneWatson.png';
 import GabeImg from '../../images/GabeMcdonalid.png';
-
-import { userData } from './data';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -154,28 +153,18 @@ const useStyles = makeStyles((theme) => ({
 
 const About = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-
-  const getType = () => {
-    if (isMobile) {
-      return 'mobile';
-    }
-    if (isTablet) {
-      return 'tablet';
-    }
-    return 'desktop';
-  };
+  const componentType = useComponentType();
 
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>About page</title>
       </Helmet>
-      <Box className={classes.aside}>
-        <DetailsCard type={getType()} {...userData} />
-      </Box>
+      {componentType === 'desktop' && (
+        <Box className={classes.aside}>
+          <DetailsCard type={componentType} />
+        </Box>
+      )}
       <Card className={classes.navbar}>navbar</Card>
       <Box className={classes.main}>
         <Box className={classes.mainContent}>
@@ -234,14 +223,14 @@ const About = () => {
             <SectionTitle className={classes.title}>Testimonials</SectionTitle>
             <Box className={classes.testimonials}>
               <Testimonial
-                isMobile={isMobile}
+                isMobile={componentType === 'mobile'}
                 image={MarleneImg}
                 description="Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor."
                 labelBold="Marlene Watson"
                 label="CEO of Donec"
               />
               <Testimonial
-                isMobile={isMobile}
+                isMobile={componentType === 'mobile'}
                 image={GabeImg}
                 description="Suspendisse ullamcorper massa nec lectus volutpat malesuada. Proin at nibh dui. Nunc at tincidunt mauris, non sagittis libero. Proin porta id elit sit amet maximus."
                 labelBold="Gabe Mcdonalid"

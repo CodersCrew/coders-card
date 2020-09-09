@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import dayjs from 'dayjs';
-import { Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
+import { Container, Box, makeStyles, Card } from '@material-ui/core';
 
 import { FC } from '../../typings/components';
+import { useComponentType } from '../../hooks/useComponentType';
 
 import { DetailsCard } from '../../components/DetailsCard';
 import { PortfolioProjectDialog } from '../../components/PortfolioProject';
@@ -120,11 +121,7 @@ const useStyles = makeStyles((theme) => ({
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isDesktop = !isMobile && !isTablet;
-  const componentType = isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop';
+  const componentType = useComponentType();
 
   const [selectedProject, setSelectedProject] = useState(-1);
 
@@ -147,9 +144,9 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       <Helmet>
         <title>{projectData.portfolio_page_title}</title>
       </Helmet>
-      {isDesktop && (
+      {componentType === 'desktop' && (
         <Box className={classes.aside}>
-          <DetailsCard type="desktop" />
+          <DetailsCard type={componentType} />
         </Box>
       )}
       <Box className={classes.main}>

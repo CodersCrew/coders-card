@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Box, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
 import dayjs from 'dayjs';
+
+import { useComponentType } from '../../hooks/useComponentType';
 
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
@@ -127,11 +129,32 @@ const useStyles = makeStyles((theme) => ({
 const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const blogData = data.markdownRemark.blogPage;
   const classes = useStyles();
+  const componentType = useComponentType();
+
+  const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
+
+  // TODO BlogPostDialog
+  // no blogpost will have index equal to -1 therefore no blogpost will be selected
+  const handleCloseBlogpost = () => {
+    setSelectedBlogpost(-1);
+  };
+  // if is first blogpost, choose last blogpost
+  const handlePreviousBlogpost = (index: number) => {
+    setSelectedBlogpost(index === 0 ? blogData.blog_post.length - 1 : index - 1);
+  };
+
+  // if is last blogpost, choose first blogpost
+  const handleNextBlogpost = (index: number) => {
+    setSelectedBlogpost(index === blogData.blog_post.length - 1 ? 0 : index + 1);
+  };
+
   return (
     <Container className={classes.container}>
-      <Box className={classes.aside}>
-        <DetailsCard type="desktop" />
-      </Box>
+      {componentType === 'desktop' && (
+        <Box className={classes.aside}>
+          <DetailsCard type={componentType} />
+        </Box>
+      )}
       <Box className={classes.main}>
         <Box className={classes.navbar}>NavBar</Box>
         <Box className={classes.mainContent}>

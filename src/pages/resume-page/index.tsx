@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
-import { Container, Box, makeStyles, Card, useTheme, useMediaQuery, Divider } from '@material-ui/core';
+import { Container, Box, makeStyles, Card, Divider } from '@material-ui/core';
+
+import { useComponentType } from '../../hooks/useComponentType';
 
 import { SectionTitle } from '../../components/SectionTitle';
 import { ResumeList } from '../../components/ResumeList';
 import { ResumePageData } from '../../views/resume-page/types';
+import { DetailsCard } from '../../components/DetailsCard';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -100,17 +103,17 @@ const useStyles = makeStyles((theme) => ({
 const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
   const resumeData = data.resumePage.frontmatter;
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isDesktop = !isMobile && !isTablet;
+  const componentType = useComponentType();
+
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>{resumeData.resumePageTitle}</title>
       </Helmet>
-      {isDesktop && (
-        <Box className={classes.aside}>{/* <DetailsCard type="desktop" {...resumeData.developerProfile} /> */}</Box>
+      {componentType === 'desktop' && (
+        <Box className={classes.aside}>
+          <DetailsCard type={componentType} />
+        </Box>
       )}
       <Box className={classes.main}>
         <Card className={classes.navbar}>navbar</Card>
@@ -122,7 +125,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
                 <Box key={index}>
                   <Divider className={classes.divider} orientation="vertical" />
                   <ResumeList
-                    isMobile={isMobile ? true : false}
+                    isMobile={componentType === 'mobile'}
                     labelText={`${item.startJobDate} - ${item.finishJobDate}`}
                     headerText={item.jobTitle}
                     title={item.companyName}
@@ -137,7 +140,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
               <Box key={index}>
                 <Divider className={classes.divider} orientation="vertical" />
                 <ResumeList
-                  isMobile={isMobile ? true : false}
+                  isMobile={componentType === 'mobile'}
                   labelText={`${item.startSchoolDate} - ${item.finishSchoolDate}`}
                   headerText={item.course}
                   title={item.schoolName}

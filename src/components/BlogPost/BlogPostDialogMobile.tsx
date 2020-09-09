@@ -27,24 +27,24 @@ const useStyles = makeStyles((theme) => ({
   contentHeader: { marginTop: theme.spacing(2) },
 }));
 
-const BlogPostDialogMobile: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
+const BlogPostDialogMobile: FC<BlogPostDialogProps> = (props) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} fullScreen={true} open={isOpen} {...props}>
+      <Dialog className={classes.wrapper} fullScreen={true} open={props.isOpen}>
         <Box className={classes.buttons}>
           <Box display="flex">
             <Box mr="15px">
-              <IconButton color="inherit" {...props} size={'small'}>
+              <IconButton color="inherit" onClick={props.handlePrev} size={'small'}>
                 <ChevronLeft size={20} />
               </IconButton>
             </Box>
-            <IconButton color="inherit" {...props} size={'small'}>
+            <IconButton color="inherit" onClick={props.handleNext} size={'small'}>
               <ChevronRight size={20} />
             </IconButton>
           </Box>
-          <IconButton color="inherit" {...props} size={'small'}>
+          <IconButton color="inherit" onClick={props.handleClose} size={'small'}>
             <X size={20} />
           </IconButton>
         </Box>

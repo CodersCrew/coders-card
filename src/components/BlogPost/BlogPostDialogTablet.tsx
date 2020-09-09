@@ -37,24 +37,24 @@ const useStyles = makeStyles((theme) => ({
   headerContent: { marginTop: theme.spacing(1.5) },
 }));
 
-const BlogPostDialogTablet: FC<BlogPostDialogProps> = ({ isOpen, ...props }) => {
+const BlogPostDialogTablet: FC<BlogPostDialogProps> = (props) => {
   const classes = useStyles();
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} open={isOpen} {...props}>
+      <Dialog className={classes.wrapper} open={props.isOpen}>
         <Box position="absolute" left="620px">
           <Box mb={5}>
-            <IconButton {...props} size={'small'}>
+            <IconButton onClick={props.handleClose} size={'small'}>
               <X size={30} />
             </IconButton>
           </Box>
           <Box mb={2.5}>
-            <IconButton {...props} size={'small'}>
+            <IconButton onClick={props.handlePrev} size={'small'}>
               <ChevronLeft size={30} />
             </IconButton>
           </Box>
-          <IconButton {...props} size={'small'}>
+          <IconButton onClick={props.handleNext} size={'small'}>
             <ChevronRight size={30} />
           </IconButton>
         </Box>
