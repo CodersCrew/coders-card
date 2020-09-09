@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
 const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const blogData = data.markdownRemark.blogPage;
   const classes = useStyles();
-  const componentType = useComponentType();
+  const { componentType, isDesktop } = useComponentType();
 
   const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
 
@@ -150,7 +150,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
 
   return (
     <Container className={classes.container}>
-      {componentType === 'desktop' && (
+      {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
         </Box>

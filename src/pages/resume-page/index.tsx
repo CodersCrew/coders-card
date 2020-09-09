@@ -103,14 +103,14 @@ const useStyles = makeStyles((theme) => ({
 const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
   const resumeData = data.resumePage.frontmatter;
   const classes = useStyles();
-  const componentType = useComponentType();
+  const { componentType, isDesktop, isMobile } = useComponentType();
 
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>{resumeData.resumePageTitle}</title>
       </Helmet>
-      {componentType === 'desktop' && (
+      {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
         </Box>
@@ -125,7 +125,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
                 <Box key={index}>
                   <Divider className={classes.divider} orientation="vertical" />
                   <ResumeList
-                    isMobile={componentType === 'mobile'}
+                    isMobile={isMobile}
                     labelText={`${item.startJobDate} - ${item.finishJobDate}`}
                     headerText={item.jobTitle}
                     title={item.companyName}
@@ -140,7 +140,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
               <Box key={index}>
                 <Divider className={classes.divider} orientation="vertical" />
                 <ResumeList
-                  isMobile={componentType === 'mobile'}
+                  isMobile={isMobile}
                   labelText={`${item.startSchoolDate} - ${item.finishSchoolDate}`}
                   headerText={item.course}
                   title={item.schoolName}

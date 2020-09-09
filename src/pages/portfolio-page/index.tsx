@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
-  const componentType = useComponentType();
+  const { componentType, isDesktop } = useComponentType();
 
   const [selectedProject, setSelectedProject] = useState(-1);
 
@@ -144,7 +144,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       <Helmet>
         <title>{projectData.portfolio_page_title}</title>
       </Helmet>
-      {componentType === 'desktop' && (
+      {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
         </Box>

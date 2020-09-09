@@ -153,14 +153,14 @@ const useStyles = makeStyles((theme) => ({
 
 const About = () => {
   const classes = useStyles();
-  const componentType = useComponentType();
+  const { componentType, isDesktop, isMobile } = useComponentType();
 
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>About page</title>
       </Helmet>
-      {componentType === 'desktop' && (
+      {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
         </Box>
@@ -223,14 +223,14 @@ const About = () => {
             <SectionTitle className={classes.title}>Testimonials</SectionTitle>
             <Box className={classes.testimonials}>
               <Testimonial
-                isMobile={componentType === 'mobile'}
+                isMobile={isMobile}
                 image={MarleneImg}
                 description="Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor."
                 labelBold="Marlene Watson"
                 label="CEO of Donec"
               />
               <Testimonial
-                isMobile={componentType === 'mobile'}
+                isMobile={isMobile}
                 image={GabeImg}
                 description="Suspendisse ullamcorper massa nec lectus volutpat malesuada. Proin at nibh dui. Nunc at tincidunt mauris, non sagittis libero. Proin porta id elit sit amet maximus."
                 labelBold="Gabe Mcdonalid"
