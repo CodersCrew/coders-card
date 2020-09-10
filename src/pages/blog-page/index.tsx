@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Box, makeStyles } from '@material-ui/core';
+import { graphql } from 'gatsby';
+import dayjs from 'dayjs';
+
+import { useComponentType } from '../../hooks/useComponentType';
 
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { BlogPost } from '../../components/BlogPostComponent';
+import { BlogPostDialog } from '../../components/BlogPost';
 
-import { blogData, userData } from '../../views/blog-page/data';
+import { FC } from '../../typings/components';
+import { BlogGQL } from '../../views/blog-page/types';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -121,21 +127,65 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlogPage = () => {
+const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
+  const blogData = data.markdownRemark.blogPage;
   const classes = useStyles();
+  const { componentType, isDesktop } = useComponentType();
+
+  const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
+
+  // no blogpost will have index equal to -1 therefore no blogpost will be selected
+  const handleCloseBlogpost = () => {
+    setSelectedBlogpost(-1);
+  };
+  // if is first blogpost, choose last blogpost
+  const handlePrevBlogpost = (index: number) => {
+    setSelectedBlogpost(index === 0 ? blogData.blog_post.length - 1 : index - 1);
+  };
+
+  // if is last blogpost, choose first blogpost
+  const handleNextBlogpost = (index: number) => {
+    setSelectedBlogpost(index === blogData.blog_post.length - 1 ? 0 : index + 1);
+  };
+
   return (
     <Container className={classes.container}>
-      <Box className={classes.aside}>
-        <DetailsCard type="desktop" {...userData}></DetailsCard>
-      </Box>
+      {isDesktop && (
+        <Box className={classes.aside}>
+          <DetailsCard type={componentType} />
+        </Box>
+      )}
       <Box className={classes.main}>
         <Box className={classes.navbar}>NavBar</Box>
         <Box className={classes.mainContent}>
           <Box className={classes.blogContainer}>
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
-              {[...Array(4)].map((_, index) => (
-                <BlogPost key={index} className={classes.blogPost} {...blogData} />
+              {blogData.blog_post.map((blogPost, index) => (
+                <div key={`${blogPost.blog_title}-${index}`}>
+                  <BlogPost
+                    className={classes.blogPost}
+                    image={blogPost.blog_image.publicURL}
+                    tagName={blogPost.blog_label}
+                    text={blogPost.blog_description}
+                    title={blogPost.blog_title}
+                    date={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
+                    onClick={() => setSelectedBlogpost(index)}
+                  />
+                  <BlogPostDialog
+                    contentheader={blogPost.blog_description}
+                    contentmain={blogPost.blog_body}
+                    imgurl={blogPost.blog_image.publicURL}
+                    isOpen={index === selectedBlogpost}
+                    subtitle={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
+                    tagtitle={blogPost.blog_label}
+                    title={blogPost.blog_title}
+                    type={componentType}
+                    handleClose={() => handleCloseBlogpost()}
+                    handlePrev={() => handlePrevBlogpost(index)}
+                    handleNext={() => handleNextBlogpost(index)}
+                  />
+                </div>
               ))}
             </Box>
           </Box>
@@ -146,3 +196,23 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
+
+export const pageQuery = graphql`
+  query BlogPage {
+    markdownRemark(fileAbsolutePath: { regex: "/blog/index-1.md/" }) {
+      blogPage: frontmatter {
+        blog_page_title
+        blog_post {
+          blog_title
+          blog_label
+          blog_body
+          blog_description
+          blog_image {
+            publicURL
+          }
+          publish_date
+        }
+      }
+    }
+  }
+`;

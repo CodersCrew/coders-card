@@ -67,16 +67,16 @@ const BlogPostDialogDesktop: FC<PortfolioProjectDialogProps> = (props) => {
       <Dialog className={classes.wrapper} open={props.isOpen}>
         <Box position="absolute" left="620px">
           <Box mt={2} mb={5}>
-            <IconButton onClick={props.handleClose} size={'small'}>
+            <IconButton onClick={props.handleClose} size="small">
               <X size={30} />
             </IconButton>
           </Box>
           <Box mb={2.5}>
-            <IconButton onClick={props.handlePrev} size={'small'}>
+            <IconButton onClick={props.handlePrev} size="small">
               <ChevronLeft size={30} />
             </IconButton>
           </Box>
-          <IconButton onClick={props.handleNext} size={'small'}>
+          <IconButton onClick={props.handleNext} size="small">
             <ChevronRight size={30} />
           </IconButton>
         </Box>

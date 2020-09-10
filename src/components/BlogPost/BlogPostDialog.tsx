@@ -12,6 +12,9 @@ export type BlogPostDialogProps = {
   imgurl: string;
   contentmain: string;
   isOpen: boolean;
+  handleClose: () => void;
+  handleNext: () => void;
+  handlePrev: () => void;
 };
 
 type BlogPostDialogType = BlogPostDialogProps & { type: 'mobile' | 'tablet' | 'desktop' };

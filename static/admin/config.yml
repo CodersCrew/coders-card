@@ -27,6 +27,7 @@ collections:
           - { label: "Label", name: "blog-label", widget: "string" }
           - { label: "Description", name: "blog-description", widget: "string" }
           - { label: "Body", name: "blog-body", widget: "markdown" }
+          - { label: "Blogpost image", name: "blog-image", widget: "image" }
 
   - name: "developer-profile"
     label: "Developer profile"

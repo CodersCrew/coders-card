@@ -23,7 +23,7 @@ export const MediumCloseButton = () => {
 
 export const SmallCloseButton = () => {
   return (
-    <IconButton color="inherit" {...basePropsData} size={'small'}>
+    <IconButton color="inherit" {...basePropsData} size="small">
       <X size={15} />
     </IconButton>
   );
@@ -39,7 +39,7 @@ export const MediumNextButton = () => {
 
 export const SmallNextButton = () => {
   return (
-    <IconButton color="inherit" {...basePropsData} size={'small'}>
+    <IconButton color="inherit" {...basePropsData} size="small">
       <ChevronRight size={15} />
     </IconButton>
   );
@@ -55,7 +55,7 @@ export const MediumBackButton = () => {
 
 export const SmallBackButton = () => {
   return (
-    <IconButton color="inherit" {...basePropsData} size={'small'}>
+    <IconButton color="inherit" {...basePropsData} size="small">
       <ChevronLeft size={15} />
     </IconButton>
   );

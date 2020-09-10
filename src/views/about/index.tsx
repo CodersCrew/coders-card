@@ -1,15 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Typography, Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
+import { Typography, Container, Box, makeStyles, Card } from '@material-ui/core';
 
+import { useComponentType } from '../../hooks/useComponentType';
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { Skill } from '../../components/Skill';
 import { Testimonial } from '../../components/Testimonial';
 import MarleneImg from '../../images/MarleneWatson.png';
 import GabeImg from '../../images/GabeMcdonalid.png';
-
-import { userData } from './data';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -154,28 +153,18 @@ const useStyles = makeStyles((theme) => ({
 
 const About = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-
-  const getType = () => {
-    if (isMobile) {
-      return 'mobile';
-    }
-    if (isTablet) {
-      return 'tablet';
-    }
-    return 'desktop';
-  };
+  const { componentType, isDesktop, isMobile } = useComponentType();
 
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>About page</title>
       </Helmet>
-      <Box className={classes.aside}>
-        <DetailsCard type={getType()} {...userData} />
-      </Box>
+      {isDesktop && (
+        <Box className={classes.aside}>
+          <DetailsCard type={componentType} />
+        </Box>
+      )}
       <Card className={classes.navbar}>navbar</Card>
       <Box className={classes.main}>
         <Box className={classes.mainContent}>
