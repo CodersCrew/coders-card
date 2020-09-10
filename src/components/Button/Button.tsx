@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button as MuiButton, ButtonProps as MuiButtonProps, makeStyles } from '@material-ui/core';
 
-
 export type ButtonProps = MuiButtonProps;
 
 const useStyles = makeStyles((theme) => ({
@@ -17,5 +16,4 @@ export const Button = (props: ButtonProps) => {
   const classes = useStyles();
 
   return <MuiButton className={classes.button} {...props} />;
-
 };

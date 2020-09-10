@@ -14,5 +14,5 @@ const baseTabsPropsData: Partial<TabsProps> = {
 };
 
 export const BaseFilterTabs = (): JSX.Element => {
-  return <FilterTabs {...baseTabsPropsData}></FilterTabs>;
+  return <FilterTabs {...baseTabsPropsData} />;
 };

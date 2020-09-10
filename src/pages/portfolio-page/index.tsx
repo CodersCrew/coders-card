@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
+import { Box, Card, Container, makeStyles } from '@material-ui/core';
 import dayjs from 'dayjs';
-import { Container, Box, makeStyles, Card } from '@material-ui/core';
-
-import { FC } from '../../typings/components';
-import { useComponentType } from '../../hooks/useComponentType';
+import { graphql } from 'gatsby';
 
 import { DetailsCard } from '../../components/DetailsCard';
+import { PortfolioCard } from '../../components/PortfolioCard';
 import { PortfolioProjectDialog } from '../../components/PortfolioProject';
 import { SectionTitle } from '../../components/SectionTitle';
-import { PortfolioCard } from '../../components/PortfolioCard';
-
+import { useComponentType } from '../../hooks/useComponentType';
+import { FC } from '../../typings/components';
 import { ProjectGQL } from '../../views/portfolio-page/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
@@ -156,7 +154,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
               {projectData.projects.map((project, index) => (
-                <div key={`${project.project_name}-${index}`}>
+                <div key={`${project.project_name}-${project.project_description}`}>
                   <PortfolioCard
                     className={classes.project}
                     type={componentType}

@@ -1,8 +1,8 @@
 import React from 'react';
-import { FC } from '../../typings/components';
 
-import TestimonialMobile from './TestimonialMobile';
+import { FC } from '../../typings/components';
 import TestimonialDefault from './TestimonialDefault';
+import TestimonialMobile from './TestimonialMobile';
 
 export type TestimonialProps = {
   image: string;

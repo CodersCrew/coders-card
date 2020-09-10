@@ -1,6 +1,5 @@
 import { CardProps } from '../../components/DetailsCard/cardProps';
 import avatar from '../../images/avatar.jpg';
-import project from '../../images/download.jpeg';
 
 export const userData: CardProps = {
   fullName: 'Jonathan Harwood',

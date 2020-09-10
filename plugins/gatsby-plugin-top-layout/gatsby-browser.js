@@ -1,6 +1,5 @@
-import React from "react";
-import TopLayout from "./TopLayout";
+import React from 'react';
 
-export const wrapRootElement = ({ element }) => (
-  <TopLayout>{element}</TopLayout>
-);
+import TopLayout from './TopLayout';
+
+export const wrapRootElement = ({ element }) => <TopLayout>{element}</TopLayout>;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps, Typography, makeStyles } from '@material-ui/core';
+import { Box, BoxProps, makeStyles, Typography } from '@material-ui/core';
 
 export type SectionTitleProps = BoxProps;
 

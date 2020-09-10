@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab as MuiTab, TabProps as MuiTabProps, makeStyles } from '@material-ui/core';
+import { makeStyles, Tab as MuiTab, TabProps as MuiTabProps } from '@material-ui/core';
 
 export type TabProps = MuiTabProps;
 

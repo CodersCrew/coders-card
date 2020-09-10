@@ -1,5 +1,6 @@
 import React from 'react';
-import { SectionTitle, SectionTitleProps } from '.';
+
+import { SectionTitle } from '.';
 
 export default {
   title: 'SectionTitle',
@@ -8,7 +9,5 @@ export default {
 };
 
 export const SectionTitleExample = () => {
-  return (
-    <SectionTitle>About me</SectionTitle>
-  )
-}
+  return <SectionTitle>About me</SectionTitle>;
+};

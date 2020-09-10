@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Typography, makeStyles } from '@material-ui/core/';
+import { Check, Download, Mail, MapPin, Phone } from 'react-feather';
+import { Box, makeStyles, Typography } from '@material-ui/core/';
+
 import { FC } from '../../typings/components';
-import { MapPin, Download, Mail, Phone, Check } from 'react-feather';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {

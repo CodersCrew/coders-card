@@ -1,6 +1,6 @@
 import React from 'react';
+import { Card, CardActionArea, CardContent, CardMedia, Chip, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardActionArea, CardContent, CardMedia, Typography, Chip } from '@material-ui/core';
 
 export type BlogPostProps = {
   title: string;

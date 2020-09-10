@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import BlogPostDialogMobile from './BlogPostDialogMobile';
 import BlogPostDialogDesktop from './BlogPostDialogDesktop';
+import BlogPostDialogMobile from './BlogPostDialogMobile';
 import BlogPostDialogTablet from './BlogPostDialogTablet';
 
 export type BlogPostDialogProps = {
@@ -21,6 +21,6 @@ type BlogPostDialogType = BlogPostDialogProps & { type: 'mobile' | 'tablet' | 'd
 
 export const BlogPostDialog: FC<BlogPostDialogType> = ({ type, ...props }) => {
   if (type === 'mobile') return <BlogPostDialogMobile {...props} />;
-  else if (type === 'desktop') return <BlogPostDialogDesktop {...props} />;
+  if (type === 'desktop') return <BlogPostDialogDesktop {...props} />;
   return <BlogPostDialogTablet {...props} />;
 };

@@ -1,6 +1,7 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { Smile } from 'react-feather';
+import { action } from '@storybook/addon-actions';
+
 import { Button, ButtonProps } from '.';
 
 export default {

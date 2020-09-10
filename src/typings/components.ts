@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { PropsWithChildren, ReactElement, Ref, ValidationMap } from 'react';
 
 type ChildlessFunctionComponent<P = {}, C = {}> = {

@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
+import { ChevronLeft, ChevronRight, X } from 'react-feather';
+import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
 
-import { BlogPostDialogProps } from './BlogPostDialog';
 import { IconButton } from '../IconButton/IconButton';
 import { Tag } from '../Tag/Tag';
-
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
-import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
+import { BlogPostDialogProps } from './BlogPostDialog';
 
 const useStyles = makeStyles((theme) => ({
   buttons: {
@@ -32,7 +31,7 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = (props) => {
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} fullScreen={true} open={props.isOpen}>
+      <Dialog className={classes.wrapper} fullScreen open={props.isOpen}>
         <Box className={classes.buttons}>
           <Box display="flex">
             <Box mr="15px">
@@ -48,7 +47,7 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = (props) => {
             <X size={20} />
           </IconButton>
         </Box>
-        <img className={classes.img} src={props.imgurl} />
+        <img className={classes.img} src={props.imgurl} alt={props.title} />
         <Box bgcolor="background.light" p={3}>
           <Typography className={classes.textHeader} variant="h4" color="textPrimary">
             {props.title}

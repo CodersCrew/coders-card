@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import PortfolioProjectDialogMobile from './PortfolioProjectMobile';
 import PortfolioProjectDialogDesktop from './PortfolioProjectDesktop';
+import PortfolioProjectDialogMobile from './PortfolioProjectMobile';
 import PortfolioProjectDialogTablet from './PortfolioProjectTablet';
 
 export type PortfolioProjectDialogProps = {

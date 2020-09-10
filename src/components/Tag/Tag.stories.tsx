@@ -1,5 +1,6 @@
 import React from 'react';
-import { Tag, TagProps } from '.';
+
+import { Tag } from '.';
 
 export default {
   title: 'Tag',

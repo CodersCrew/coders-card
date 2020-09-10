@@ -1,7 +1,8 @@
 import React from 'react';
-import { BlogPost } from '.';
-import image from '../../images/blogpost-image.jpg';
 import { action } from '@storybook/addon-actions';
+
+import image from '../../images/blogpost-image.jpg';
+import { BlogPost } from '.';
 
 export default {
   title: 'BlogPost',
