@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { PropsWithChildren, ReactElement, Ref, ValidationMap } from 'react';
 
 type ChildlessFunctionComponent<P = {}, C = {}> = {
@@ -26,3 +27,5 @@ type RefForwardingComponent<T, P = {}, C = {}> = {
 };
 
 export type RFC<T, P = {}> = RefForwardingComponent<T, P>;
+
+export type FeatherIcon = typeof import('react-feather').Activity;
