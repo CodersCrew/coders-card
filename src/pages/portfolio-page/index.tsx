@@ -156,7 +156,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
               {projectData.projects.map((project, index) => (
-                <div key={index}>
+                <div key={`${project.project_name}-${index}`}>
                   <PortfolioCard
                     className={classes.project}
                     type={componentType}

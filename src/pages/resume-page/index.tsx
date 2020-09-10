@@ -122,7 +122,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
             <SectionTitle className={classes.title}>Work Experience</SectionTitle>
             <Box className={classes.project}>
               {resumeData.workExperience.map((item, index) => (
-                <Box key={index}>
+                <Box key={`${item.companyName}-${index}`}>
                   <Divider className={classes.divider} orientation="vertical" />
                   <ResumeList
                     isMobile={isMobile}
@@ -137,7 +137,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
             </Box>
             <SectionTitle className={classes.title}>Education</SectionTitle>
             {resumeData.education.map((item, index) => (
-              <Box key={index}>
+              <Box key={`${item.schoolName}-${index}`}>
                 <Divider className={classes.divider} orientation="vertical" />
                 <ResumeList
                   isMobile={isMobile}

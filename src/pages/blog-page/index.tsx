@@ -162,9 +162,8 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
               {blogData.blog_post.map((blogPost, index) => (
-                <div key={index}>
+                <div key={`${blogPost.blog_title}-${index}`}>
                   <BlogPost
-                    key={index}
                     className={classes.blogPost}
                     image={blogPost.blog_image.publicURL}
                     tagName={blogPost.blog_label}

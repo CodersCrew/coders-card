@@ -28,7 +28,7 @@ export const WithIcon = (): JSX.Element => {
 };
 export const TextOnlySmall = (): JSX.Element => {
   return (
-    <Button {...basePropsData} size={'small'}>
+    <Button {...basePropsData} size="small">
       Text Only
     </Button>
   );
@@ -36,7 +36,7 @@ export const TextOnlySmall = (): JSX.Element => {
 
 export const WithIconSmall = (): JSX.Element => {
   return (
-    <Button {...basePropsData} size={'small'} startIcon={<Smile size={16} />}>
+    <Button {...basePropsData} size="small" startIcon={<Smile size={16} />}>
       With Icon
     </Button>
   );

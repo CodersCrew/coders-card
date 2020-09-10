@@ -53,15 +53,15 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = (props) => {
         <Box className={classes.iconButtons}>
           <Box display="flex">
             <Box mr="15px">
-              <IconButton color="inherit" onClick={props.handlePrev} size={'small'}>
+              <IconButton color="inherit" onClick={props.handlePrev} size="small">
                 <ChevronLeft size={20} />
               </IconButton>
             </Box>
-            <IconButton color="inherit" onClick={props.handleNext} size={'small'}>
+            <IconButton color="inherit" onClick={props.handleNext} size="small">
               <ChevronRight size={20} />
             </IconButton>
           </Box>
-          <IconButton color="inherit" onClick={props.handleClose} size={'small'}>
+          <IconButton color="inherit" onClick={props.handleClose} size="small">
             <X size={20} />
           </IconButton>
         </Box>
