@@ -12,7 +12,7 @@ export default {
 export const Default = () => {
   return (
     <Box width={200}>
-      <NavItem to="/about" icon={User}>
+      <NavItem to="/" icon={User}>
         About
       </NavItem>
     </Box>

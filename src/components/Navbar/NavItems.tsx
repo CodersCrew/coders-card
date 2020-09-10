@@ -12,7 +12,7 @@ type NavItemsProps = {
 const NavItems: CFC<NavItemsProps> = ({ onClick }) => {
   return (
     <>
-      <NavItem to="/about" onClick={onClick} icon={User}>
+      <NavItem to="/" onClick={onClick} icon={User}>
         About
       </NavItem>
       <Divider flexItem orientation="vertical" />
