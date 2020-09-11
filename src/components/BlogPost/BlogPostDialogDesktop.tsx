@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
-
-import { BlogPostDialogProps } from './BlogPostDialog';
-import { IconButton } from '../IconButton/IconButton';
-import { Tag } from '../Tag/Tag';
-
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
+import { ChevronLeft, ChevronRight, X } from 'react-feather';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+
+import { IconButton } from '../IconButton/IconButton';
+import { Tag } from '../Tag/Tag';
+import { BlogPostDialogProps } from './BlogPostDialog';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -58,7 +57,7 @@ const BlogPostDialogDesktop: FC<BlogPostDialogProps> = (props) => {
             <ChevronRight size={30} />
           </IconButton>
         </Box>
-        <img className={classes.img} src={props.imgurl} />
+        <img className={classes.img} src={props.imgurl} alt={props.title} />
         <Box bgcolor="background.light" p={4}>
           <Box className={classes.headerTitle}>
             <Typography variant="h4" color="textPrimary">

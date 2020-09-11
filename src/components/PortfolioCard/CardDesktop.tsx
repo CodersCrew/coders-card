@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Typography, CardActionArea, CardMedia } from '@material-ui/core';
 import { Smartphone } from 'react-feather';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { CardProps } from './cardProps';
 
@@ -73,7 +73,7 @@ const CardTablet: FC<Props> = ({ title, label, description, image, onClick, clas
       {...props}
     >
       <CardActionArea className={classes.action}>
-        <CardMedia className={classes.media} image={image} title={title}></CardMedia>
+        <CardMedia className={classes.media} image={image} title={title} />
         <CardContent style={{ opacity: isHovered ? 0.9 : 0 }} className={classes.overlay}>
           <Typography className={classes.title} variant="h4">
             {title}

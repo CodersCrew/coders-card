@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { Smartphone } from 'react-feather';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { CardProps } from './cardProps';
 

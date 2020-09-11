@@ -1,6 +1,8 @@
-import React, { useState, ComponentProps } from 'react';
+import React, { ComponentProps, useState } from 'react';
 import { Tabs as MuiTabs } from '@material-ui/core';
+
 import { FilterTab } from '../FilterTab/FilterTab';
+
 export type TabsProps = ComponentProps<typeof MuiTabs>;
 
 export const FilterTabs = (props: TabsProps) => {
@@ -12,10 +14,10 @@ export const FilterTabs = (props: TabsProps) => {
 
   return (
     <MuiTabs {...props} onChange={handleChange} value={value}>
-      <FilterTab label="All"></FilterTab>
-      <FilterTab label="Mobile"></FilterTab>
-      <FilterTab label="Web"></FilterTab>
-      <FilterTab label="Other"></FilterTab>
+      <FilterTab label="All" />
+      <FilterTab label="Mobile" />
+      <FilterTab label="Web" />
+      <FilterTab label="Other" />
     </MuiTabs>
   );
 };

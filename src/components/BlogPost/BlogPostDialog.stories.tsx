@@ -1,7 +1,7 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 
 import { BlogPostDialog } from './BlogPostDialog';
-import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'BlogPostDialog',

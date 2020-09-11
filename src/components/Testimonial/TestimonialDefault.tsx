@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
+import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Typography, CardMedia } from '@material-ui/core';
 
 import { TestimonialProps } from '.';
 
@@ -67,13 +67,13 @@ const TestimonialDefault: FC<TestimonialProps> = ({ label, labelBold, descriptio
       </CardContent>
       <CardContent className={classes.overlay}>
         <CardMedia className={classes.media} image={image}>
-          <CardMedia className={classes.overlayMedia} image={image}></CardMedia>
+          <CardMedia className={classes.overlayMedia} image={image} />
         </CardMedia>
         <CardContent className={classes.overlayLabel}>
-          <Typography color={'textPrimary'} variant="h6">
+          <Typography color="textPrimary" variant="h6">
             {labelBold}
           </Typography>
-          <Typography color={'textPrimary'} variant="subtitle2">
+          <Typography color="textPrimary" variant="subtitle2">
             {label}
           </Typography>
         </CardContent>

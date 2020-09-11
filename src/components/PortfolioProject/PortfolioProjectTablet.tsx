@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
+import { ChevronLeft, ChevronRight, Code, ExternalLink, Image, X } from 'react-feather';
+import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
+import { Button } from '../Button/Button';
+import { IconButton } from '../IconButton/IconButton';
 import { Tag } from '../Tag/Tag';
 import { PortfolioProjectDialogProps } from './PortfolioProject';
-import { IconButton } from '../IconButton/IconButton';
-import { Button } from '../Button/Button';
-
-import { X, ChevronLeft, ChevronRight, Code, Image, ExternalLink } from 'react-feather';
-import { fade } from '@material-ui/core/styles/colorManipulator';
-import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -81,7 +80,7 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = (props) => {
             <ChevronRight size={30} />
           </IconButton>
         </Box>
-        <img className={classes.img} src={props.imgurl} />
+        <img className={classes.img} src={props.imgurl} alt={props.title} />
         <Box bgcolor="background.light" p={4}>
           <Box className={classes.headerTitle}>
             <Typography variant="h2" color="textPrimary">
@@ -141,8 +140,8 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = (props) => {
           Technologies
         </Typography>
         <Box className={classes.tags}>
-          {props.tags.map((tag, index) => (
-            <Tag key={`${tag.name}-${index}`} label={tag.name} />
+          {props.tags.map((tag) => (
+            <Tag key={tag.name} label={tag.name} />
           ))}
         </Box>
       </Dialog>

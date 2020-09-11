@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
+import { Box, Card, Container, Divider, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
-import { Container, Box, makeStyles, Card, Divider } from '@material-ui/core';
 
-import { useComponentType } from '../../hooks/useComponentType';
-
-import { SectionTitle } from '../../components/SectionTitle';
-import { ResumeList } from '../../components/ResumeList';
-import { ResumePageData } from '../../views/resume-page/types';
 import { DetailsCard } from '../../components/DetailsCard';
+import { ResumeList } from '../../components/ResumeList';
+import { SectionTitle } from '../../components/SectionTitle';
+import { useComponentType } from '../../hooks/useComponentType';
+import { ResumePageData } from '../../views/resume-page/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -121,8 +120,8 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>Work Experience</SectionTitle>
             <Box className={classes.project}>
-              {resumeData.workExperience.map((item, index) => (
-                <Box key={`${item.companyName}-${index}`}>
+              {resumeData.workExperience.map((item) => (
+                <Box key={`${item.companyName}-${item.jobTitle}`}>
                   <Divider className={classes.divider} orientation="vertical" />
                   <ResumeList
                     isMobile={isMobile}
@@ -136,8 +135,8 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
               ))}
             </Box>
             <SectionTitle className={classes.title}>Education</SectionTitle>
-            {resumeData.education.map((item, index) => (
-              <Box key={`${item.schoolName}-${index}`}>
+            {resumeData.education.map((item) => (
+              <Box key={`${item.schoolName}-${item.educationDescription}`}>
                 <Divider className={classes.divider} orientation="vertical" />
                 <ResumeList
                   isMobile={isMobile}

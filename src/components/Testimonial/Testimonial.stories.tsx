@@ -1,9 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import { Testimonial, TestimonialProps } from '.';
-
 import image from '../../images/MarleneWatson.png';
+import { Testimonial, TestimonialProps } from '.';
 
 export default {
   title: 'Testimonial',
@@ -12,7 +11,7 @@ export default {
 };
 
 const basePropsData: TestimonialProps = {
-  image: image,
+  image,
   description:
     'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
   labelBold: 'Marlene Watson',

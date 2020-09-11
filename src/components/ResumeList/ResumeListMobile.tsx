@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { ResumeListProps } from './ResumeList';
 import { Box, makeStyles, Paper, Typography } from '@material-ui/core';
+
+import { ResumeListProps } from './ResumeList';
 
 const useStyles = makeStyles((theme) => ({
   label: {

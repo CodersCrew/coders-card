@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { action } from '@storybook/addon-actions';
+
 import { CardProps } from '../../components/DetailsCard/cardProps';
 import avatar from '../../images/avatar.jpg';
 import project from '../../images/download.jpeg';
@@ -8,9 +11,7 @@ export const projectData = {
   description:
     'In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque.',
   label: 'Mobile app',
-  onClick: () => {
-    window.alert('project clicked');
-  },
+  onClick: action('project clicked'),
 };
 
 export const userData: CardProps = {

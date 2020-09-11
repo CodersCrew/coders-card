@@ -1,5 +1,6 @@
 import React from 'react';
 import { Chip as MuiChip, ChipProps as MuiChipProps, makeStyles } from '@material-ui/core';
+
 export type TagProps = MuiChipProps;
 
 const useStyles = makeStyles((theme) => ({

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Typography, Container, Box, makeStyles, Card } from '@material-ui/core';
+import { Box, Card, Container, makeStyles, Typography } from '@material-ui/core';
 
-import { useComponentType } from '../../hooks/useComponentType';
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
 import { Skill } from '../../components/Skill';
 import { Testimonial } from '../../components/Testimonial';
-import MarleneImg from '../../images/MarleneWatson.png';
+import { useComponentType } from '../../hooks/useComponentType';
 import GabeImg from '../../images/GabeMcdonalid.png';
+import MarleneImg from '../../images/MarleneWatson.png';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { Container, Box, makeStyles } from '@material-ui/core';
-import { graphql } from 'gatsby';
+import { Box, Container, makeStyles } from '@material-ui/core';
 import dayjs from 'dayjs';
+import { graphql } from 'gatsby';
 
-import { useComponentType } from '../../hooks/useComponentType';
-
+import { BlogPostDialog } from '../../components/BlogPost';
+import { BlogPost } from '../../components/BlogPostComponent';
 import { DetailsCard } from '../../components/DetailsCard';
 import { SectionTitle } from '../../components/SectionTitle';
-import { BlogPost } from '../../components/BlogPostComponent';
-import { BlogPostDialog } from '../../components/BlogPost';
-
+import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { BlogGQL } from '../../views/blog-page/types';
 
@@ -162,7 +160,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
               {blogData.blog_post.map((blogPost, index) => (
-                <div key={`${blogPost.blog_title}-${index}`}>
+                <div key={`${blogPost.blog_title}-${blogPost.blog_description}`}>
                   <BlogPost
                     className={classes.blogPost}
                     image={blogPost.blog_image.publicURL}

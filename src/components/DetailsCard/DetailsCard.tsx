@@ -1,13 +1,11 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+
 import { FC } from '../../typings/components';
-
-import CardMobile from './CardMobile';
-import CardTablet from './CardTablet';
 import CardDesktop from './CardDesktop';
-
-import { DeveloperProfileGQL } from './types';
+import CardMobile from './CardMobile';
 import { SocialMediaName } from './cardProps';
+import CardTablet from './CardTablet';
 
 type CardType = 'mobile' | 'tablet' | 'desktop';
 
@@ -46,7 +44,7 @@ export const DetailsCard: FC<DetailsCardProps> = ({ type }) => {
     }
   `);
 
-  const developerProfile: DeveloperProfileGQL = data.markdownRemark.developerProfile;
+  const { developerProfile } = data.markdownRemark;
 
   const cardProps = {
     fullName: `${developerProfile.first_name} ${developerProfile.last_name}`,

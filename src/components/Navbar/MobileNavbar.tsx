@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { Menu as MenuIcon } from 'react-feather';
 import { Box, IconButton, makeStyles, Menu, Typography } from '@material-ui/core';
 import clsx from 'clsx';
+
 import { CFC } from '../../typings/components';
 import { NavbarProps } from './Navbar';
 import NavItems from './NavItems';
-import { Menu as MenuIcon } from 'react-feather';
 
 type MobileNavbarProps = Omit<NavbarProps, 'type' | 'resumeLink'>;
 
@@ -51,7 +52,7 @@ export const MobileNavbar: CFC<MobileNavbarProps> = ({ className, fullName, imag
     <>
       <Box {...props} className={clsx(className, classes.root)}>
         <Box display="flex" alignItems="center">
-          <img className={classes.image} src={image} alt={`${fullName} profile image`} />
+          <img className={classes.image} src={image} alt={fullName} />
           <Box>
             <Typography variant="h5">{fullName}</Typography>
             <Typography variant="subtitle2">{position}</Typography>

@@ -1,12 +1,14 @@
-import { BoxProps } from '@material-ui/core';
 import React from 'react';
+import { BoxProps } from '@material-ui/core';
+
 import { CFC } from '../../typings/components';
+import { ScreenSize } from '../../typings/customization';
 import { DesktopNavbar } from './DesktopNavbar';
 import { MobileNavbar } from './MobileNavbar';
 import { TabletNavbar } from './TabletNavbar';
 
 export type NavbarProps = BoxProps & {
-  type: 'mobile' | 'tablet' | 'desktop';
+  type: ScreenSize;
   fullName: string;
   image: string;
   position: string;

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { GitHub, Facebook, Twitter, Instagram } from 'react-feather';
+import { Facebook, GitHub, Instagram, Twitter } from 'react-feather';
 
 import { SocialMediaName } from './cardProps';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import image from '../../images/background.jpg';
 import { action } from '@storybook/addon-actions';
 
+import image from '../../images/background.jpg';
 import { PortfolioProjectDialog } from './PortfolioProject';
 
 export default {

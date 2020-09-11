@@ -1,7 +1,8 @@
 import React from 'react';
+import { ChevronLeft, ChevronRight, X } from 'react-feather';
 import { action } from '@storybook/addon-actions';
+
 import { IconButton, IconButtonProps } from '.';
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
 
 export default {
   title: 'IconButton',

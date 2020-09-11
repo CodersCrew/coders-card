@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavItem } from './NavItem';
 import { User } from 'react-feather';
 import { Box } from '@material-ui/core';
+
+import { NavItem } from './NavItem';
 
 export default {
   title: 'NavItem',
