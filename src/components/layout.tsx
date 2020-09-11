@@ -1,5 +1,3 @@
-import './layout.css';
-
 import React, { ReactNode } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
