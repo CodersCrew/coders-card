@@ -17,6 +17,28 @@ const Layout = ({ children }: LayoutProps) => {
           title
         }
       }
+      markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
+        developerProfile: frontmatter {
+          last_name
+          is_freelancer
+          first_name
+          email
+          country
+          city
+          social_media {
+            facebook
+            github
+            instagram
+            twitter
+          }
+          avatar {
+            publicURL
+          }
+          position
+          cv
+          phone
+        }
+      }
     }
   `);
 
