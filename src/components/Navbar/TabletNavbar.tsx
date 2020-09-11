@@ -1,11 +1,12 @@
 import React from 'react';
+import { Download } from 'react-feather';
 import { Box, Divider, makeStyles, MenuList, Typography } from '@material-ui/core';
 import clsx from 'clsx';
+
 import { CFC } from '../../typings/components';
+import { Button } from '../Button';
 import { NavbarProps } from './Navbar';
 import NavItems from './NavItems';
-import { Button } from '../Button';
-import { Download } from 'react-feather';
 
 type TabletNavbarProps = Omit<NavbarProps, 'type'>;
 
@@ -43,7 +44,7 @@ export const TabletNavbar: CFC<TabletNavbarProps> = ({
     <Box {...props} className={clsx(className, classes.root)}>
       <Box display="flex" alignItems="center" justifyContent="space-between" px={4} py={1}>
         <Box display="flex" alignItems="center">
-          <img className={classes.image} src={image} alt={`${fullName} profile image`} />
+          <img className={classes.image} src={image} alt={fullName} />
           <Box>
             <Typography variant="h5">{fullName}</Typography>
             <Typography variant="subtitle2">{position}</Typography>

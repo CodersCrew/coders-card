@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
+import { FileText, Folder, MessageCircle, Type, User } from 'react-feather';
 import { Divider } from '@material-ui/core';
-import { User, FileText, Folder, Type, MessageCircle } from 'react-feather';
-import { NavItem, NavItemProps } from '../NavItem';
+
 import { CFC } from '../../typings/components';
+import { NavItem, NavItemProps } from '../NavItem';
 
 type NavItemsProps = {
   onClick?: NavItemProps['onClick'];

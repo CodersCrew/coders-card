@@ -1,5 +1,6 @@
-import { BoxProps } from '@material-ui/core';
 import React from 'react';
+import { BoxProps } from '@material-ui/core';
+
 import { CFC } from '../../typings/components';
 import { DesktopNavbar } from './DesktopNavbar';
 import { MobileNavbar } from './MobileNavbar';

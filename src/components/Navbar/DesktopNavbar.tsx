@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, makeStyles, MenuList } from '@material-ui/core';
 import clsx from 'clsx';
+
 import { CFC } from '../../typings/components';
 import { NavbarProps } from './Navbar';
 import NavItems from './NavItems';

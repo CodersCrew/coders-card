@@ -1,3 +1,4 @@
+/* eslint-disable react/default-props-match-prop-types, react/require-default-props */
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';

@@ -1,8 +1,9 @@
 import React, { ComponentProps } from 'react';
 import { makeStyles, MenuItem, Typography } from '@material-ui/core';
-import { Link, GatsbyLinkProps } from 'gatsby';
-import { CFC, FeatherIcon } from '../../typings/components';
 import clsx from 'clsx';
+import { GatsbyLinkProps, Link } from 'gatsby';
+
+import { CFC, FeatherIcon } from '../../typings/components';
 
 export type NavItemProps = ComponentProps<typeof MenuItem> & {
   to: GatsbyLinkProps<unknown>['to'];
