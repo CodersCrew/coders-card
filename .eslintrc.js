@@ -24,7 +24,6 @@ module.exports = {
     },
   },
   rules: {
-    camelcase: 0,
     'no-console': 0,
     'sort-imports': 0, // turned of as we're using simple-import-sort for sorting
     'no-use-before-define': 0,

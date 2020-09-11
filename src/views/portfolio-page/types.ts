@@ -1,24 +1,24 @@
 export type ProjectGQL = {
   portfolioPage: {
     frontmatter: {
-      portfolio_page_title: string;
+      portfolioPageTitle: string;
       projects: {
-        project_label: string;
-        project_code: string;
-        project_preview_image: {
+        projectLabel: string;
+        projectCode: string;
+        projectPreviewImage: {
           publicURL: string;
         };
-        project_description: string;
-        project_role: string;
-        project_preview_note: string;
-        project_app: string;
-        project_start_date: string;
-        project_finish_date: string;
-        project_mockups: string;
-        project_technologies: {
-          technology_name: string;
+        projectDescription: string;
+        projectRole: string;
+        projectPreviewNote: string;
+        projectApp: string;
+        projectStartDate: string;
+        projectFinishDate: string;
+        projectMockups: string;
+        projectTechnologies: {
+          technologyName: string;
         }[];
-        project_name: string;
+        projectName: string;
       }[];
     };
   };

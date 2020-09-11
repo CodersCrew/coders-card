@@ -134,24 +134,24 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>{projectData.portfolio_page_title}</title>
+        <title>{projectData.portfolioPageTitle}</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard
-            fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
             address={`${developerProfile.city}, ${developerProfile.country}`}
             image={developerProfile.avatar.publicURL}
             position={developerProfile.position}
             socialMedia={[
-              { name: 'facebook', link: developerProfile.social_media.facebook },
-              { name: 'github', link: developerProfile.social_media.github },
-              { name: 'twitter', link: developerProfile.social_media.twitter },
-              { name: 'instagram', link: developerProfile.social_media.instagram },
+              { name: 'facebook', link: developerProfile.socialMedia.facebook },
+              { name: 'github', link: developerProfile.socialMedia.github },
+              { name: 'twitter', link: developerProfile.socialMedia.twitter },
+              { name: 'instagram', link: developerProfile.socialMedia.instagram },
             ]}
             phone={developerProfile.phone}
             email={developerProfile.email}
-            isFreelancer={developerProfile.is_freelancer}
+            isFreelancer={developerProfile.isFreelancer}
             resumeLink={developerProfile.cv}
             type={componentType}
           />
@@ -161,7 +161,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
         <Navbar
           className={classes.navbar}
           type={componentType}
-          fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
           position={developerProfile.position}
           image={developerProfile.avatar.publicURL}
           resumeLink={developerProfile.cv}
@@ -171,14 +171,14 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
             <SectionTitle className={classes.title}>My works</SectionTitle>
             <Box className={classes.projects}>
               {projectData.projects.map((project, index) => (
-                <div key={`${project.project_name}-${project.project_description}`}>
+                <div key={`${project.projectName}-${project.projectDescription}`}>
                   <PortfolioCard
                     className={classes.project}
                     type={componentType}
-                    title={project.project_name}
-                    label={project.project_label}
-                    description={project.project_description}
-                    image={project.project_preview_image.publicURL}
+                    title={project.projectName}
+                    label={project.projectLabel}
+                    description={project.projectDescription}
+                    image={project.projectPreviewImage.publicURL}
                     onClick={() => setSelectedProject(index)}
                   />
                   <PortfolioProjectDialog
@@ -187,20 +187,20 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                     handlePrev={() => handlePreviousProject(index)}
                     handleNext={() => handleNextProject(index)}
                     isOpen={index === selectedProject}
-                    title={project.project_name}
-                    tags={project.project_technologies.map((technology) => ({ name: technology.technology_name }))}
-                    imgurl={project.project_preview_image.publicURL}
+                    title={project.projectName}
+                    tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
+                    imgurl={project.projectPreviewImage.publicURL}
                     subtitle={`
-                      ${dayjs(project.project_start_date).format('YYYY-MM-DD')}
+                      ${dayjs(project.projectStartDate).format('YYYY-MM-DD')}
                       -
-                      ${dayjs(project.project_finish_date).format('YYYY-MM-DD')}`}
-                    contentMainDescription={project.project_description}
-                    contentMainRole={project.project_role}
-                    contentHeader={project.project_preview_note}
-                    tagtitle={project.project_label}
-                    mockupsUrl={project.project_mockups}
-                    projectUrl={project.project_app}
-                    codeUrl={project.project_code}
+                      ${dayjs(project.projectFinishDate).format('YYYY-MM-DD')}`}
+                    contentMainDescription={project.projectDescription}
+                    contentMainRole={project.projectRole}
+                    contentHeader={project.projectPreviewNote}
+                    tagtitle={project.projectLabel}
+                    mockupsUrl={project.projectMockups}
+                    projectUrl={project.projectApp}
+                    codeUrl={project.projectCode}
                   />
                 </div>
               ))}
@@ -218,24 +218,24 @@ export const pageQuery = graphql`
   query IndexPageQuery {
     portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
       frontmatter {
-        portfolio_page_title
+        portfolioPageTitle
         projects {
-          project_label
-          project_code
-          project_description
-          project_role
-          project_preview_note
-          project_app
-          project_start_date
-          project_finish_date
-          project_mockups
-          project_preview_image {
+          projectLabel
+          projectCode
+          projectDescription
+          projectRole
+          projectPreviewNote
+          projectApp
+          projectStartDate
+          projectFinishDate
+          projectMockups
+          projectPreviewImage {
             publicURL
           }
-          project_technologies {
-            technology_name
+          projectTechnologies {
+            technologyName
           }
-          project_name
+          projectName
         }
       }
     }

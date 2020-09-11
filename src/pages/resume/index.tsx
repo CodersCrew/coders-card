@@ -107,19 +107,19 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
       {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard
-            fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
             address={`${developerProfile.city}, ${developerProfile.country}`}
             image={developerProfile.avatar.publicURL}
             position={developerProfile.position}
             socialMedia={[
-              { name: 'facebook', link: developerProfile.social_media.facebook },
-              { name: 'github', link: developerProfile.social_media.github },
-              { name: 'twitter', link: developerProfile.social_media.twitter },
-              { name: 'instagram', link: developerProfile.social_media.instagram },
+              { name: 'facebook', link: developerProfile.socialMedia.facebook },
+              { name: 'github', link: developerProfile.socialMedia.github },
+              { name: 'twitter', link: developerProfile.socialMedia.twitter },
+              { name: 'instagram', link: developerProfile.socialMedia.instagram },
             ]}
             phone={developerProfile.phone}
             email={developerProfile.email}
-            isFreelancer={developerProfile.is_freelancer}
+            isFreelancer={developerProfile.isFreelancer}
             resumeLink={developerProfile.cv}
             type={componentType}
           />
@@ -129,7 +129,7 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
         <Navbar
           className={classes.navbar}
           type={componentType}
-          fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
           position={developerProfile.position}
           image={developerProfile.avatar.publicURL}
           resumeLink={developerProfile.cv}

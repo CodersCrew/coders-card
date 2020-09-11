@@ -17,13 +17,13 @@ const Layout = ({ children }: LayoutProps) => {
       }
       markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
         developerProfile: frontmatter {
-          last_name
-          is_freelancer
-          first_name
+          lastName
+          isFreelancer
+          firstName
           email
           country
           city
-          social_media {
+          socialMedia {
             facebook
             github
             instagram
