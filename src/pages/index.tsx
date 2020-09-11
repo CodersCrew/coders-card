@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import { Typography, Container, Box, makeStyles, Card } from '@material-ui/core';
 
 import { useComponentType } from '../hooks/useComponentType';
+
 import { DetailsCard } from '../components/DetailsCard';
 import { SectionTitle } from '../components/SectionTitle';
 import { Skill } from '../components/Skill';
@@ -179,31 +180,38 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Technologies
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.social_media.technologies.map((item) => (
-                  <Skill level={item.technology_value}>{item.technology_name}</Skill>
+                {aboutData.social_media.technologies.map((item, index) => (
+                  <Skill key={`${item.technology_name} - ${index}`} level={item.technology_value}>
+                    {item.technology_name}
+                  </Skill>
                 ))}
               </Box>
               <Typography variant="h6" className={classes.skillsHeader}>
                 Tools
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.social_media.tools.map((item) => (
-                  <Skill level={item.tool_value}>{item.tool_name}</Skill>
+                {aboutData.social_media.tools.map((item, index) => (
+                  <Skill key={`${item.tool_name} - ${index}`} level={item.tool_value}>
+                    {item.tool_name}
+                  </Skill>
                 ))}
               </Box>
               <Typography variant="h6" className={classes.skillsHeader}>
                 Other skills
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.social_media.other_skills.map((item) => (
-                  <Skill level={item.other_skill_value}>{item.other_skill_name}</Skill>
+                {aboutData.social_media.other_skills.map((item, index) => (
+                  <Skill key={`${item.other_skill_name} - ${index}`} level={item.other_skill_value}>
+                    {item.other_skill_name}
+                  </Skill>
                 ))}
               </Box>
             </Box>
             <SectionTitle className={classes.title}>Testimonials</SectionTitle>
             <Box className={classes.testimonials}>
-              {aboutData.testimonials.map((item) => (
+              {aboutData.testimonials.map((item, index) => (
                 <Testimonial
+                  key={`${item.testimonial_name} - ${index}`}
                   isMobile={isMobile}
                   image={item.testimonial_image.publicURL}
                   description={item.testimonial_text}
