@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     '&.MuiButton-containedPrimary': {
       backgroundColor: theme.palette.primary.main,
-      padding: theme.spacing(1),
+      padding: theme.spacing(1, 2),
     },
   },
 }));

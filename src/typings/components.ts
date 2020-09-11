@@ -27,3 +27,5 @@ type RefForwardingComponent<T, P = {}, C = {}> = {
 };
 
 export type RFC<T, P = {}> = RefForwardingComponent<T, P>;
+
+export type FeatherIcon = typeof import('react-feather').Activity;
