@@ -3,29 +3,29 @@ import { LevelRange } from '../../components/Skill';
 export type AboutPageData = {
   aboutPage: {
     frontmatter: {
-      about_page_title: string;
+      aboutPageTitle: string;
       description: string;
-      social_media: {
+      socialMedia: {
         technologies: {
-          technology_name: string;
-          technology_value: LevelRange;
+          technologyName: string;
+          technologyValue: LevelRange;
         }[];
         tools: {
-          tool_name: string;
-          tool_value: LevelRange;
+          toolName: string;
+          toolValue: LevelRange;
         }[];
-        other_skills: {
-          other_skill_name: string;
-          other_skill_value: LevelRange;
+        otherSkills: {
+          otherSkillName: string;
+          otherSkillValue: LevelRange;
         }[];
       };
       testimonials: {
-        testimonial_text: string;
-        testimonial_image: {
+        testimonialText: string;
+        testimonialImage: {
           publicURL: string;
         };
-        testimonial_name: string;
-        testimonial_job: string;
+        testimonialName: string;
+        testimonialJob: string;
       }[];
     };
   };

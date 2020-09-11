@@ -161,7 +161,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>{aboutData.about_page_title}</title>
+        <title>{aboutData.aboutPageTitle}</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
@@ -180,9 +180,9 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Technologies
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.social_media.technologies.map((item, index) => (
-                  <Skill key={`${item.technology_name} - ${index}`} level={item.technology_value}>
-                    {item.technology_name}
+                {aboutData.socialMedia.technologies.map((item, index) => (
+                  <Skill key={`${item.technologyName} - ${index}`} level={item.technologyValue}>
+                    {item.technologyName}
                   </Skill>
                 ))}
               </Box>
@@ -190,9 +190,9 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Tools
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.social_media.tools.map((item, index) => (
-                  <Skill key={`${item.tool_name} - ${index}`} level={item.tool_value}>
-                    {item.tool_name}
+                {aboutData.socialMedia.tools.map((item, index) => (
+                  <Skill key={`${item.toolName} - ${index}`} level={item.toolValue}>
+                    {item.toolName}
                   </Skill>
                 ))}
               </Box>
@@ -200,9 +200,9 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Other skills
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.social_media.other_skills.map((item, index) => (
-                  <Skill key={`${item.other_skill_name} - ${index}`} level={item.other_skill_value}>
-                    {item.other_skill_name}
+                {aboutData.socialMedia.otherSkills.map((item, index) => (
+                  <Skill key={`${item.otherSkillName} - ${index}`} level={item.otherSkillValue}>
+                    {item.otherSkillName}
                   </Skill>
                 ))}
               </Box>
@@ -211,12 +211,12 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
             <Box className={classes.testimonials}>
               {aboutData.testimonials.map((item, index) => (
                 <Testimonial
-                  key={`${item.testimonial_name} - ${index}`}
+                  key={`${item.testimonialName} - ${index}`}
                   isMobile={isMobile}
-                  image={item.testimonial_image.publicURL}
-                  description={item.testimonial_text}
-                  labelBold={item.testimonial_name}
-                  label={item.testimonial_job}
+                  image={item.testimonialImage.publicURL}
+                  description={item.testimonialText}
+                  labelBold={item.testimonialName}
+                  label={item.testimonialJob}
                 />
               ))}
             </Box>
@@ -233,29 +233,29 @@ export const aboutPageQuery = graphql`
   {
     aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about/index-1.md/" }) {
       frontmatter {
-        about_page_title
+        aboutPageTitle
         description
-        social_media {
+        socialMedia {
           technologies {
-            technology_name
-            technology_value
+            technologyName
+            technologyValue
           }
           tools {
-            tool_name
-            tool_value
+            toolName
+            toolValue
           }
-          other_skills {
-            other_skill_name
-            other_skill_value
+          otherSkills {
+            otherSkillName
+            otherSkillValue
           }
         }
         testimonials {
-          testimonial_text
-          testimonial_image {
+          testimonialText
+          testimonialImage {
             publicURL
           }
-          testimonial_name
-          testimonial_job
+          testimonialName
+          testimonialJob
         }
       }
     }
