@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { CFC } from '../../typings/components';
 import { Button } from '../Button';
 import { NavbarProps } from './Navbar';
-import NavItems from './NavItems';
+import { renderNavItems } from './renderNavItems';
 
 type TabletNavbarProps = Omit<NavbarProps, 'type'>;
 
@@ -58,7 +58,7 @@ export const TabletNavbar: CFC<TabletNavbarProps> = ({
       </Box>
       <Divider />
       <MenuList className={classes.menu} variant="menu">
-        <NavItems />
+        {renderNavItems()}
       </MenuList>
     </Box>
   );

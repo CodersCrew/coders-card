@@ -1,11 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Box, Card, Container, makeStyles, Typography } from '@material-ui/core';
+import { Box, Container, makeStyles, Typography } from '@material-ui/core';
 
 import { DetailsCard } from '../../components/DetailsCard';
+import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/SectionTitle';
 import { Skill } from '../../components/Skill';
 import { Testimonial } from '../../components/Testimonial';
+import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import GabeImg from '../../images/GabeMcdonalid.png';
 import MarleneImg from '../../images/MarleneWatson.png';
@@ -68,23 +70,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   navbar: {
-    gridArea: 'navbar',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: portfolioPageItemShadow,
-    borderRadius: 8,
-    height: 120,
-    width: '100%',
     marginBottom: theme.spacing(2),
 
     [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(3),
     },
 
     [theme.breakpoints.up('lg')]: {
       marginBottom: theme.spacing(7),
-      height: 56,
     },
   },
   projectsContainer: {
@@ -154,6 +147,7 @@ const useStyles = makeStyles((theme) => ({
 const About = () => {
   const classes = useStyles();
   const { componentType, isDesktop, isMobile } = useComponentType();
+  const developerProfile = useDeveloperProfile();
 
   return (
     <Container className={classes.container} maxWidth="lg">
@@ -162,10 +156,33 @@ const About = () => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type={componentType} />
+          <DetailsCard
+            fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+            address={`${developerProfile.city}, ${developerProfile.country}`}
+            image={developerProfile.avatar.publicURL}
+            position={developerProfile.position}
+            socialMedia={[
+              { name: 'facebook', link: developerProfile.social_media.facebook },
+              { name: 'github', link: developerProfile.social_media.github },
+              { name: 'twitter', link: developerProfile.social_media.twitter },
+              { name: 'instagram', link: developerProfile.social_media.instagram },
+            ]}
+            phone={developerProfile.phone}
+            email={developerProfile.email}
+            isFreelancer={developerProfile.is_freelancer}
+            resumeLink={developerProfile.cv}
+            type={componentType}
+          />
         </Box>
       )}
-      <Card className={classes.navbar}>navbar</Card>
+      <Navbar
+        className={classes.navbar}
+        type={componentType}
+        fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+        position={developerProfile.position}
+        image={developerProfile.avatar.publicURL}
+        resumeLink={developerProfile.cv}
+      />
       <Box className={classes.main}>
         <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>

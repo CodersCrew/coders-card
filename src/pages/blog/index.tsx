@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Box, Container, makeStyles } from '@material-ui/core';
 import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
@@ -6,7 +7,9 @@ import { graphql } from 'gatsby';
 import { BlogPostDialog } from '../../components/BlogPost';
 import { BlogPost } from '../../components/BlogPostComponent';
 import { DetailsCard } from '../../components/DetailsCard';
+import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/SectionTitle';
+import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { BlogGQL } from '../../views/blog-page/types';
@@ -54,26 +57,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   navbar: {
-    display: 'flex',
-    alignItems: 'center',
-    zIndex: 2,
-    justifyContent: 'center',
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: '0 6px 16px 0 rgba(0, 0, 0, 0.1)',
-    height: 56,
-    width: '100%',
-    // marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(2),
 
     [theme.breakpoints.up('sm')]: {
-      borderRadius: 8,
-      boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
-      marginBottom: theme.spacing(4),
-      height: 120,
+      marginBottom: theme.spacing(3),
     },
 
     [theme.breakpoints.up('lg')]: {
       marginBottom: theme.spacing(7),
-      height: 56,
     },
   },
   blogContainer: {
@@ -129,7 +120,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const blogData = data.markdownRemark.blogPage;
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
-
+  const developerProfile = useDeveloperProfile();
   const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
 
   // no blogpost will have index equal to -1 therefore no blogpost will be selected
@@ -148,13 +139,39 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
 
   return (
     <Container className={classes.container}>
+      <Helmet>
+        <title>{blogData.blog_page_title}</title>
+      </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type={componentType} />
+          <DetailsCard
+            fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+            address={`${developerProfile.city}, ${developerProfile.country}`}
+            image={developerProfile.avatar.publicURL}
+            position={developerProfile.position}
+            socialMedia={[
+              { name: 'facebook', link: developerProfile.social_media.facebook },
+              { name: 'github', link: developerProfile.social_media.github },
+              { name: 'twitter', link: developerProfile.social_media.twitter },
+              { name: 'instagram', link: developerProfile.social_media.instagram },
+            ]}
+            phone={developerProfile.phone}
+            email={developerProfile.email}
+            isFreelancer={developerProfile.is_freelancer}
+            resumeLink={developerProfile.cv}
+            type={componentType}
+          />
         </Box>
       )}
       <Box className={classes.main}>
-        <Box className={classes.navbar}>NavBar</Box>
+        <Navbar
+          className={classes.navbar}
+          type={componentType}
+          fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+          position={developerProfile.position}
+          image={developerProfile.avatar.publicURL}
+          resumeLink={developerProfile.cv}
+        />
         <Box className={classes.mainContent}>
           <Box className={classes.blogContainer}>
             <SectionTitle className={classes.title}>Blog</SectionTitle>

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Box, Card, Container, makeStyles } from '@material-ui/core';
+import { Box, Container, makeStyles } from '@material-ui/core';
 import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
 
 import { DetailsCard } from '../../components/DetailsCard';
+import { Navbar } from '../../components/Navbar';
 import { PortfolioCard } from '../../components/PortfolioCard';
 import { PortfolioProjectDialog } from '../../components/PortfolioProject';
 import { SectionTitle } from '../../components/SectionTitle';
+import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { ProjectGQL } from '../../views/portfolio-page/types';
@@ -54,22 +56,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   navbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: portfolioPageItemShadow,
-    borderRadius: 8,
-    height: 120,
-    width: '100%',
     marginBottom: theme.spacing(2),
 
     [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(3),
     },
 
     [theme.breakpoints.up('lg')]: {
       marginBottom: theme.spacing(7),
-      height: 56,
     },
   },
   projectsContainer: {
@@ -120,7 +114,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
-
+  const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
 
   // no project will have index equal to -1 therefore no project will be selected
@@ -144,11 +138,34 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type={componentType} />
+          <DetailsCard
+            fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+            address={`${developerProfile.city}, ${developerProfile.country}`}
+            image={developerProfile.avatar.publicURL}
+            position={developerProfile.position}
+            socialMedia={[
+              { name: 'facebook', link: developerProfile.social_media.facebook },
+              { name: 'github', link: developerProfile.social_media.github },
+              { name: 'twitter', link: developerProfile.social_media.twitter },
+              { name: 'instagram', link: developerProfile.social_media.instagram },
+            ]}
+            phone={developerProfile.phone}
+            email={developerProfile.email}
+            isFreelancer={developerProfile.is_freelancer}
+            resumeLink={developerProfile.cv}
+            type={componentType}
+          />
         </Box>
       )}
       <Box className={classes.main}>
-        <Card className={classes.navbar}>navbar</Card>
+        <Navbar
+          className={classes.navbar}
+          type={componentType}
+          fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+          position={developerProfile.position}
+          image={developerProfile.avatar.publicURL}
+          resumeLink={developerProfile.cv}
+        />
         <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>
             <SectionTitle className={classes.title}>My works</SectionTitle>
