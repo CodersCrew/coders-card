@@ -1,9 +1,9 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 import { makeStyles, MenuItem, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import { GatsbyLinkProps, Link } from 'gatsby';
 
-import { CFC, FeatherIcon } from '../../typings/components';
+import { FeatherIcon } from '../../typings/components';
 
 export type NavItemProps = ComponentProps<typeof MenuItem> & {
   to: GatsbyLinkProps<unknown>['to'];
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   link: {
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -41,13 +42,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavItem: CFC<NavItemProps> = ({ icon, children, to, className, ...props }) => {
+export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(({ icon, children, to, className, ...props }, ref) => {
   const classes = useStyles();
 
   const Icon = icon;
 
   return (
-    <MenuItem {...props} className={clsx(className, classes.root)}>
+    <MenuItem {...props} className={clsx(className, classes.root)} ref={ref}>
       <Link to={to} className={classes.link} activeClassName="active">
         <Icon size={24} className={classes.icon} />
         <Typography variant="subtitle1" color="textPrimary">
@@ -56,4 +57,4 @@ export const NavItem: CFC<NavItemProps> = ({ icon, children, to, className, ...p
       </Link>
     </MenuItem>
   );
-};
+});

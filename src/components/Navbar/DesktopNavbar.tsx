@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { CFC } from '../../typings/components';
 import { NavbarProps } from './Navbar';
-import NavItems from './NavItems';
+import { renderNavItems } from './renderNavItems';
 
 type DesktopNavbarProps = Omit<NavbarProps, 'type' | 'fullName' | 'image' | 'position' | 'resumeLink'>;
 
@@ -28,7 +28,7 @@ export const DesktopNavbar: CFC<DesktopNavbarProps> = ({ className, ...props }) 
   return (
     <Box {...props} className={clsx(className, classes.root)}>
       <MenuList variant="menu" className={classes.menu}>
-        <NavItems />
+        {renderNavItems()}
       </MenuList>
     </Box>
   );

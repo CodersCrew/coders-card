@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import { CFC } from '../../typings/components';
 import { NavbarProps } from './Navbar';
-import NavItems from './NavItems';
+import { renderNavItems } from './renderNavItems';
 
 type MobileNavbarProps = Omit<NavbarProps, 'type' | 'resumeLink'>;
 
@@ -71,7 +71,7 @@ export const MobileNavbar: CFC<MobileNavbarProps> = ({ className, fullName, imag
         keepMounted
         variant="menu"
       >
-        <NavItems onClick={handleClose} />
+        {renderNavItems(handleClose)}
       </Menu>
     </>
   );
