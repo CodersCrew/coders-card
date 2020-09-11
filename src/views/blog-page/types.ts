@@ -1,16 +1,16 @@
 export type BlogGQL = {
   markdownRemark: {
     blogPage: {
-      blog_page_title: string;
-      blog_post: {
-        blog_title: string;
-        blog_label: string;
-        blog_body: string;
-        blog_description: string;
-        blog_image: {
+      blogPostTitle: string;
+      blogPost: {
+        blogTitle: string;
+        blogLabel: string;
+        blogBody: string;
+        blogDescription: string;
+        blogImage: {
           publicURL: string;
         };
-        publish_date: string;
+        publishDate: string;
       }[];
     };
   };

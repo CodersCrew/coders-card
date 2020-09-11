@@ -1,9 +1,9 @@
 import React, { createContext, PropsWithChildren, useContext } from 'react';
 
 export type DeveloperProfileGQL = {
-  last_name: string;
-  is_freelancer: boolean;
-  first_name: string;
+  lastName: string;
+  isFreelancer: boolean;
+  firstName: string;
   email: string;
   phone: string;
   country: string;
@@ -11,7 +11,7 @@ export type DeveloperProfileGQL = {
   avatar: {
     publicURL: string;
   };
-  social_media: {
+  socialMedia: {
     facebook: string;
     github: string;
     instagram: string;

@@ -1,16 +1,16 @@
 ---
-about-page-title: About me
+aboutPageTitle: About me
 description: fsadfsadfada
-social-media:
+socialMedia:
   technologies:
-    - technology-name: dsada
+    - technologyName: dsada
   tools:
-    - tool-name: dsada
-  other-skills:
-    - other-skill-name: dsada
+    - toolName: dsada
+  otherSkills:
+    - otherSkillName: dsada
 testimonials:
-  - testimonial-text: dsada
-    testimonial-image: image.png
-    testimonial-name: dsadasd
-    testimonial-job: dsadad
+  - testimonialText: dsada
+    testimonialImage: image.png
+    testimonialName: dsadasd
+    testimonialJob: dsadad
 ---

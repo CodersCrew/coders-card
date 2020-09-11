@@ -17,17 +17,17 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "blog-page-title", widget: "string" }
+      - { label: "Title", name: "blogPostTitle", widget: "string" }
       - label: "Blog post"
-        name: "blog-post"
+        name: "blogPost"
         widget: "list"
         fields:
-          - { label: "Title", name: "blog-title", widget: "string" }
-          - { label: "Publish Date", name: "publish-date", widget: "datetime" }
-          - { label: "Label", name: "blog-label", widget: "string" }
-          - { label: "Description", name: "blog-description", widget: "string" }
-          - { label: "Body", name: "blog-body", widget: "markdown" }
-          - { label: "Blogpost image", name: "blog-image", widget: "image" }
+          - { label: "Title", name: "blogTitle", widget: "string" }
+          - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+          - { label: "Label", name: "blogLabel", widget: "string" }
+          - { label: "Description", name: "blogDescription", widget: "string" }
+          - { label: "Body", name: "blogBody", widget: "markdown" }
+          - { label: "Blogpost image", name: "blogImage", widget: "image" }
 
   - name: "developer-profile"
     label: "Developer profile"
@@ -40,18 +40,18 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "First name", name: "first-name", widget: "string" }
-      - { label: "Last name", name: "last-name", widget: "string" }
+      - { label: "First name", name: "firstName", widget: "string" }
+      - { label: "Last name", name: "lastName", widget: "string" }
       - { label: "Avatar image", name: "avatar", widget: "image" }
       - { label: "Job position", name: "position", widget: "string" }
       - { label: "Phone number", name: "phone", widget: "string" }
       - { label: "Email", name: "email", widget: "string" }
       - { label: "City of residence", name: "city", widget: "string" }
       - { label: "Country of residence", name: "country", widget: "string" }
-      - { label: "Available for freelance", name: "is-freelancer", widget: "boolean" }
+      - { label: "Available for freelance", name: "isFreelancer", widget: "boolean" }
       - { label: "Link to download CV", name: "cv", widget: "string" }
       - label: "Social media"
-        name: "social-media"
+        name: "socialMedia"
         widget: "object"
         fields:
           - { label: "Twitter profile link", name: "twitter", widget: "string", required: false }
@@ -70,10 +70,10 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "about-page-title", widget: "string", default: "About me" }
+      - { label: "Title", name: "aboutPageTitle", widget: "string", default: "About me" }
       - { label: "Description", name: "description", widget: "markdown" }
       - label: "Skills"
-        name: "social-media"
+        name: "socialMedia"
         widget: "object"
         fields:
           - label: "Technologies"
@@ -81,27 +81,27 @@ collections:
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "technology-name", widget: "string" }
+              - { label: "Name", name: "technologyName", widget: "string" }
           - label: "Tools"
             name: "tools"
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "tool-name", widget: "string" }
+              - { label: "Name", name: "toolName", widget: "string" }
           - label: "Other skills"
-            name: "other-skills"
+            name: "otherSkills"
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "other-skill-name", widget: "string" }
+              - { label: "Name", name: "otherSkillName", widget: "string" }
       - label: "Testimonials"
         name: "testimonials"
         widget: list
         fields:
-          - { label: "Text", name: "testimonial-text", widget: "string" }
-          - { label: "Image", name: "testimonial-image", widget: "image", required: false }
-          - { label: "Testimone name", name: "testimonial-name", widget: "string" }
-          - { label: "Testimone job position", name: "testimonial-job", widget: "string" }
+          - { label: "Text", name: "testimonialText", widget: "string" }
+          - { label: "Image", name: "testimonialImage", widget: "image", required: false }
+          - { label: "Testimone name", name: "testimonialName", widget: "string" }
+          - { label: "Testimone job position", name: "testimonialJob", widget: "string" }
 
   - name: "resume"
     label: "Resume"
@@ -145,25 +145,25 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "portfolio-page-title", widget: "string" }
+      - { label: "Title", name: "portfolioPageTitle", widget: "string" }
       - label: "Projects"
         name: "projects"
         widget: "list"
         fields:
-          - { label: "Project name", name: "project-name", widget: "string" }
-          - { label: "Preview note", name: "project-preview-note", widget: "string" }
-          - { label: "Preview image", name: "project-preview-image", widget: "image" }
-          - { label: "Project description", name: "project-description", widget: "markdown" }
-          - { label: "My role in the project", name: "project-role", widget: "markdown" }
-          - { label: "Link to code", name: "project-code", widget: "string" }
-          - { label: "Link to mockups", name: "project-mockups", widget: "string" }
-          - { label: "Link to application", name: "project-app", widget: "string" }
-          - { label: "Project label (example: Mobile app)", name: "project-label", widget: "string" }
-          - { label: "Project start date", name: "project-start-date", widget: "datetime" }
-          - { label: "Project finish date", name: "project-finish-date", widget: "datetime" }
+          - { label: "Project name", name: "projectName", widget: "string" }
+          - { label: "Preview note", name: "projectPreviewNote", widget: "string" }
+          - { label: "Preview image", name: "projectPreviewImage", widget: "image" }
+          - { label: "Project description", name: "projectDescription", widget: "markdown" }
+          - { label: "My role in the project", name: "projectRole", widget: "markdown" }
+          - { label: "Link to code", name: "projectCode", widget: "string" }
+          - { label: "Link to mockups", name: "projectMockups", widget: "string" }
+          - { label: "Link to application", name: "projectApp", widget: "string" }
+          - { label: "Project label (example: Mobile app)", name: "projectLabel", widget: "string" }
+          - { label: "Project start date", name: "projectStartDate", widget: "datetime" }
+          - { label: "Project finish date", name: "projectFinishDate", widget: "datetime" }
           - label: "Technologies"
-            name: "project-technologies"
+            name: "projectTechnologies"
             widget: "list"
             fields:
-              - { label: "Name", name: "technology-name", widget: "string" }
+              - { label: "Name", name: "technologyName", widget: "string" }
 

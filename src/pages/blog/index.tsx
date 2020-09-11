@@ -129,35 +129,35 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   };
   // if is first blogpost, choose last blogpost
   const handlePrevBlogpost = (index: number) => {
-    setSelectedBlogpost(index === 0 ? blogData.blog_post.length - 1 : index - 1);
+    setSelectedBlogpost(index === 0 ? blogData.blogPost.length - 1 : index - 1);
   };
 
   // if is last blogpost, choose first blogpost
   const handleNextBlogpost = (index: number) => {
-    setSelectedBlogpost(index === blogData.blog_post.length - 1 ? 0 : index + 1);
+    setSelectedBlogpost(index === blogData.blogPost.length - 1 ? 0 : index + 1);
   };
 
   return (
     <Container className={classes.container}>
       <Helmet>
-        <title>{blogData.blog_page_title}</title>
+        <title>{blogData.blogPostTitle}</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard
-            fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
             address={`${developerProfile.city}, ${developerProfile.country}`}
             image={developerProfile.avatar.publicURL}
             position={developerProfile.position}
             socialMedia={[
-              { name: 'facebook', link: developerProfile.social_media.facebook },
-              { name: 'github', link: developerProfile.social_media.github },
-              { name: 'twitter', link: developerProfile.social_media.twitter },
-              { name: 'instagram', link: developerProfile.social_media.instagram },
+              { name: 'facebook', link: developerProfile.socialMedia.facebook },
+              { name: 'github', link: developerProfile.socialMedia.github },
+              { name: 'twitter', link: developerProfile.socialMedia.twitter },
+              { name: 'instagram', link: developerProfile.socialMedia.instagram },
             ]}
             phone={developerProfile.phone}
             email={developerProfile.email}
-            isFreelancer={developerProfile.is_freelancer}
+            isFreelancer={developerProfile.isFreelancer}
             resumeLink={developerProfile.cv}
             type={componentType}
           />
@@ -167,7 +167,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
         <Navbar
           className={classes.navbar}
           type={componentType}
-          fullName={`${developerProfile.first_name} ${developerProfile.last_name}`}
+          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
           position={developerProfile.position}
           image={developerProfile.avatar.publicURL}
           resumeLink={developerProfile.cv}
@@ -176,25 +176,25 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
           <Box className={classes.blogContainer}>
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
-              {blogData.blog_post.map((blogPost, index) => (
-                <div key={`${blogPost.blog_title}-${blogPost.blog_description}`}>
+              {blogData.blogPost.map((blogPost, index) => (
+                <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
                   <BlogPost
                     className={classes.blogPost}
-                    image={blogPost.blog_image.publicURL}
-                    tagName={blogPost.blog_label}
-                    text={blogPost.blog_description}
-                    title={blogPost.blog_title}
-                    date={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
+                    image={blogPost.blogImage.publicURL}
+                    tagName={blogPost.blogLabel}
+                    text={blogPost.blogDescription}
+                    title={blogPost.blogTitle}
+                    date={dayjs(blogPost.publishDate).format('DD MMMM YYYY')}
                     onClick={() => setSelectedBlogpost(index)}
                   />
                   <BlogPostDialog
-                    contentheader={blogPost.blog_description}
-                    contentmain={blogPost.blog_body}
-                    imgurl={blogPost.blog_image.publicURL}
+                    contentheader={blogPost.blogDescription}
+                    contentmain={blogPost.blogBody}
+                    imgurl={blogPost.blogImage.publicURL}
                     isOpen={index === selectedBlogpost}
-                    subtitle={dayjs(blogPost.publish_date).format('DD MMMM YYYY')}
-                    tagtitle={blogPost.blog_label}
-                    title={blogPost.blog_title}
+                    subtitle={dayjs(blogPost.publishDate).format('DD MMMM YYYY')}
+                    tagtitle={blogPost.blogLabel}
+                    title={blogPost.blogTitle}
                     type={componentType}
                     handleClose={() => handleCloseBlogpost()}
                     handlePrev={() => handlePrevBlogpost(index)}
@@ -216,16 +216,16 @@ export const pageQuery = graphql`
   query BlogPage {
     markdownRemark(fileAbsolutePath: { regex: "/blog/index-1.md/" }) {
       blogPage: frontmatter {
-        blog_page_title
-        blog_post {
-          blog_title
-          blog_label
-          blog_body
-          blog_description
-          blog_image {
+        blogPostTitle
+        blogPost {
+          blogTitle
+          blogLabel
+          blogBody
+          blogDescription
+          blogImage {
             publicURL
           }
-          publish_date
+          publishDate
         }
       }
     }
