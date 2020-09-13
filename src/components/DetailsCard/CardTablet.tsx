@@ -1,11 +1,10 @@
 import React from 'react';
-import { Box, Card, Typography, CardContent, CardMedia, makeStyles } from '@material-ui/core/';
-
-import { DetailsItem } from './DetailsItem';
-import { renderSocialMediaIcon } from './renderSocialMediaIcon';
+import { Box, Card, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core/';
 
 import { FC } from '../../typings/components';
 import { CardProps } from './cardProps';
+import { DetailsItem } from './DetailsItem';
+import { renderSocialMediaIcon } from './renderSocialMediaIcon';
 
 const useStyles = makeStyles((theme) => ({
   card: {

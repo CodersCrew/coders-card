@@ -1,11 +1,10 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { Box } from '@material-ui/core';
-
-import { PortfolioCard } from '.';
-import { CardProps } from './cardProps';
+import { action } from '@storybook/addon-actions';
 
 import image from '../../images/download.jpeg';
+import { PortfolioCard } from '.';
+import { CardProps } from './cardProps';
 
 export default {
   title: 'PortfolioCard',
@@ -14,7 +13,7 @@ export default {
 };
 
 const basePropsData: CardProps = {
-  image: image,
+  image,
   title: 'My Awesome Project',
   description:
     'In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque.',

@@ -1,6 +1,6 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { Tag, TagProps } from '.';
+
+import { Tag } from '.';
 
 export default {
   title: 'Tag',
@@ -10,4 +10,8 @@ export default {
 
 export const DefaultTag = () => {
   return <Tag label="Tag" />;
-}
+};
+
+export const SuccessTag = () => {
+  return <Tag label="Tag" color="secondary" />;
+};

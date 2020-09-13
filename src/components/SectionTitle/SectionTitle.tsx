@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps, Typography, makeStyles } from '@material-ui/core';
+import { Box, BoxProps, makeStyles, Typography } from '@material-ui/core';
 
 export type SectionTitleProps = BoxProps;
 
@@ -18,10 +18,10 @@ export const SectionTitle = (props: SectionTitleProps) => {
   const classes = useStyles();
   return (
     <Typography variant="h3">
-      <Box className={classes.sectionTitle} {...props} >
+      <Box className={classes.sectionTitle} {...props}>
         {props.children}
         <div className={classes.divider} />
       </Box>
     </Typography>
-  )
-}
+  );
+};

@@ -1,6 +1,7 @@
+/* eslint-disable react/default-props-match-prop-types, react/require-default-props */
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 type SEOProps = {
   title: string;

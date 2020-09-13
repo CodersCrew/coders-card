@@ -1,8 +1,9 @@
 import React from 'react';
-import createMuiTheme, { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import { FC } from '../typings/components';
 import { CssBaseline } from '@material-ui/core';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import createMuiTheme, { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+
+import { FC } from '../typings/components';
 
 const themeOptions: ThemeOptions = {
   palette: {

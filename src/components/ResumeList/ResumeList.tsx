@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import ResumeListDefault from './ResumeListDefault';
 import ResumeListMobile from './ResumeListMobile';
 

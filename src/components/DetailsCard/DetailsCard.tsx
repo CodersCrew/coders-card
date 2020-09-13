@@ -1,19 +1,18 @@
 import React from 'react';
+
 import { FC } from '../../typings/components';
-
-import CardMobile from './CardMobile';
-import CardTablet from './CardTablet';
 import CardDesktop from './CardDesktop';
-
+import CardMobile from './CardMobile';
 import { CardProps } from './cardProps';
+import CardTablet from './CardTablet';
 
 type CardType = 'mobile' | 'tablet' | 'desktop';
 
-type DetailsCardProps = {
+type DetailsCardProps = CardProps & {
   type: CardType;
 };
 
-export const DetailsCard: FC<DetailsCardProps & CardProps> = ({ type, ...props }) => {
+export const DetailsCard: FC<DetailsCardProps> = ({ type, ...props }) => {
   if (type === 'desktop') return <CardDesktop {...props} />;
   if (type === 'tablet') return <CardTablet {...props} />;
   return <CardMobile {...props} />;

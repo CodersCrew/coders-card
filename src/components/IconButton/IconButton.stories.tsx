@@ -1,7 +1,8 @@
 import React from 'react';
+import { ChevronLeft, ChevronRight, X } from 'react-feather';
 import { action } from '@storybook/addon-actions';
+
 import { IconButton, IconButtonProps } from '.';
-import { X, ChevronLeft, ChevronRight } from 'react-feather';
 
 export default {
   title: 'IconButton',
@@ -15,7 +16,7 @@ const basePropsData: Partial<IconButtonProps> = {
 
 export const MediumCloseButton = () => {
   return (
-    <IconButton {...basePropsData}>
+    <IconButton color="inherit" {...basePropsData}>
       <X size={20} />
     </IconButton>
   );
@@ -23,7 +24,7 @@ export const MediumCloseButton = () => {
 
 export const SmallCloseButton = () => {
   return (
-    <IconButton {...basePropsData} size={'small'}>
+    <IconButton color="inherit" {...basePropsData} size="small">
       <X size={15} />
     </IconButton>
   );
@@ -31,7 +32,7 @@ export const SmallCloseButton = () => {
 
 export const MediumNextButton = () => {
   return (
-    <IconButton {...basePropsData}>
+    <IconButton color="inherit" {...basePropsData}>
       <ChevronRight size={20} />
     </IconButton>
   );
@@ -39,7 +40,7 @@ export const MediumNextButton = () => {
 
 export const SmallNextButton = () => {
   return (
-    <IconButton {...basePropsData} size={'small'}>
+    <IconButton color="inherit" {...basePropsData} size="small">
       <ChevronRight size={15} />
     </IconButton>
   );
@@ -47,7 +48,7 @@ export const SmallNextButton = () => {
 
 export const MediumBackButton = () => {
   return (
-    <IconButton {...basePropsData}>
+    <IconButton color="inherit" {...basePropsData}>
       <ChevronLeft size={20} />
     </IconButton>
   );
@@ -55,7 +56,7 @@ export const MediumBackButton = () => {
 
 export const SmallBackButton = () => {
   return (
-    <IconButton {...basePropsData} size={'small'}>
+    <IconButton color="inherit" {...basePropsData} size="small">
       <ChevronLeft size={15} />
     </IconButton>
   );

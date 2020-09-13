@@ -1,8 +1,7 @@
-import React, { ReactNode } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import React, { ReactNode } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 
-import Header from "./header";
-import "./layout.css";
+import Header from './header';
 
 type LayoutProps = {
   children: ReactNode;
@@ -14,6 +13,28 @@ const Layout = ({ children }: LayoutProps) => {
       site {
         siteMetadata {
           title
+        }
+      }
+      markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
+        developerProfile: frontmatter {
+          lastName
+          isFreelancer
+          firstName
+          email
+          country
+          city
+          socialMedia {
+            facebook
+            github
+            instagram
+            twitter
+          }
+          avatar {
+            publicURL
+          }
+          position
+          cv
+          phone
         }
       }
     }

@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { TestimonialProps } from '.';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: '100%',
     height: '100%',
     borderRadius: 0,
     boxShadow: 'none',
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+
     height: 64,
   },
   media: {
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     borderRadius: 8,
     boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
-    height: 156,
+    minHeight: 156,
     transform: 'translateY(-40px)',
     backgroundColor: theme.palette.background.paper,
   },
@@ -70,7 +69,7 @@ const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ..
     <Card className={classes.card} {...props}>
       <CardContent className={classes.overlay}>
         <CardMedia className={classes.media} image={image}>
-          <CardMedia className={classes.overlayMedia} image={image}></CardMedia>
+          <CardMedia className={classes.overlayMedia} image={image} />
         </CardMedia>
       </CardContent>
       <CardContent className={classes.overlayBox}>
@@ -78,8 +77,8 @@ const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ..
           {description}
         </Typography>
         <CardContent className={classes.labelOverlay}>
-          <Typography color={'textPrimary'} variant="h6">
-            {labelBold + ','}
+          <Typography color="textPrimary" variant="h6">
+            {`${labelBold},`}
           </Typography>
           <Typography className={classes.label} variant="body2">
             {label}

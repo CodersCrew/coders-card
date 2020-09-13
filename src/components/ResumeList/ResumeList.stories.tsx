@@ -1,6 +1,7 @@
 import React from 'react';
-import { ResumeList } from './ResumeList';
+
 import { ResumeListProps } from '.';
+import { ResumeList } from './ResumeList';
 
 export default {
   title: 'ResumeList',

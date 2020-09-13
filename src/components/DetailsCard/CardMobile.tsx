@@ -1,13 +1,12 @@
 import React from 'react';
-import { Box, Card, Typography, CardMedia, makeStyles } from '@material-ui/core/';
 import { Download } from 'react-feather';
-
-import { Button } from '../Button';
-import { DetailsItem } from './DetailsItem';
-import { renderSocialMediaIcon } from './renderSocialMediaIcon';
+import { Box, Card, CardMedia, makeStyles, Typography } from '@material-ui/core/';
 
 import { FC } from '../../typings/components';
+import { Button } from '../Button';
 import { CardProps } from './cardProps';
+import { DetailsItem } from './DetailsItem';
+import { renderSocialMediaIcon } from './renderSocialMediaIcon';
 
 const useStyles = makeStyles((theme) => ({
   card: {

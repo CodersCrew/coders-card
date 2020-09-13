@@ -1,6 +1,7 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { Smile } from 'react-feather';
+import { action } from '@storybook/addon-actions';
+
 import { Button, ButtonProps } from '.';
 
 export default {
@@ -28,7 +29,7 @@ export const WithIcon = (): JSX.Element => {
 };
 export const TextOnlySmall = (): JSX.Element => {
   return (
-    <Button {...basePropsData} size={'small'}>
+    <Button {...basePropsData} size="small">
       Text Only
     </Button>
   );
@@ -36,7 +37,7 @@ export const TextOnlySmall = (): JSX.Element => {
 
 export const WithIconSmall = (): JSX.Element => {
   return (
-    <Button {...basePropsData} size={'small'} startIcon={<Smile size={16} />}>
+    <Button {...basePropsData} size="small" startIcon={<Smile size={16} />}>
       With Icon
     </Button>
   );
