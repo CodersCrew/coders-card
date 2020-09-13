@@ -1,20 +1,21 @@
 import React from 'react';
-
-import {  Formik, Form, Field } from 'formik';
-import { fieldToTextField, TextFieldProps } from 'formik-material-ui';
-import { Container, Box, makeStyles, Card, useTheme, useMediaQuery } from '@material-ui/core';
-import * as Yup from 'yup';
-import { Helmet } from 'react-helmet';
 import { Send } from 'react-feather';
+import { Helmet } from 'react-helmet';
+import { Box, Container, makeStyles, useMediaQuery, useTheme } from '@material-ui/core';
+import { Field, Form, Formik } from 'formik';
+import { fieldToTextField, TextFieldProps } from 'formik-material-ui';
+import * as Yup from 'yup';
 
+import { useDeveloperProfile } from '../../containers/DeveloperProfile';
+import { Button } from '../../components/Button';
 import { DetailsCard } from '../../components/DetailsCard';
+import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/SectionTitle';
 import { TextField } from '../../components/TextField';
-import { Button } from '../../components/Button';
-import { userData, textFieldData } from './data';
+import { navbarData, textFieldData, userData } from './data';
+import { useComponentType } from '../../hooks/useComponentType';
 
 const contactPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
-
 
 function TextFieldWrap(props: TextFieldProps) {
   const {
@@ -143,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'space-between',
     },
   },
- 
+
   buttonWrapper: {
     display: 'flex',
     width: '100%',
@@ -169,13 +170,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const ContactPage = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isDesktop = !isMobile && !isTablet;
+  const developerProfile = useDeveloperProfile();
+  const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
 
   return (
     <Container className={classes.container} maxWidth="lg">
@@ -187,10 +186,24 @@ const ContactPage = () => {
           <DetailsCard type="desktop" {...userData} />
         </Box>
       )}
-      {!isDesktop && <Card className={classes.navbar}>navbar</Card>}
+      {!isDesktop && <Navbar
+          className={classes.navbar}
+          type={componentType}
+          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+          position={developerProfile.position}
+          image={developerProfile.avatar.publicURL}
+          resumeLink={developerProfile.cv}
+        />}
 
       <Box className={classes.main}>
-        {isDesktop && <Card className={classes.navbar}>navbar</Card>}
+        {isDesktop && <Navbar
+          className={classes.navbar}
+          type={componentType}
+          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+          position={developerProfile.position}
+          image={developerProfile.avatar.publicURL}
+          resumeLink={developerProfile.cv}
+        />}
 
         {isMobile && (
           <Box className={classes.detailsCard}>

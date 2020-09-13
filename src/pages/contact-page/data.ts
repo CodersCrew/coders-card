@@ -1,4 +1,5 @@
 import { CardProps } from '../../components/DetailsCard/cardProps';
+import { NavbarProps } from '../../components/Navbar';
 import { TextFieldProps } from '../../components/TextField/TextField';
 import avatar from '../../images/avatar.jpg';
 import project from '../../images/download.jpeg';
@@ -33,4 +34,12 @@ export const userData: CardProps = {
 
 export const textFieldData: TextFieldProps = {
   variant: 'filled',
+};
+
+export const navbarData: NavbarProps = {
+  fullName: 'Jonathan Harwood',
+  position: 'Full stack developer',
+  image:
+    'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=80&q=80',
+  resumeLink: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
 };
