@@ -98,19 +98,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   navbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: contactPageItemShadow,
-    height: 120,
-    width: '100%',
     marginBottom: theme.spacing(2),
+
     [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(3),
     },
+
     [theme.breakpoints.up('lg')]: {
       marginBottom: theme.spacing(7),
-      height: 56,
     },
   },
 
@@ -186,24 +181,28 @@ const ContactPage = () => {
           <DetailsCard type="desktop" {...userData} />
         </Box>
       )}
-      {!isDesktop && <Navbar
+      {!isDesktop && (
+        <Navbar
           className={classes.navbar}
           type={componentType}
           fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
           position={developerProfile.position}
           image={developerProfile.avatar.publicURL}
           resumeLink={developerProfile.cv}
-        />}
+        />
+      )}
 
       <Box className={classes.main}>
-        {isDesktop && <Navbar
-          className={classes.navbar}
-          type={componentType}
-          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-          position={developerProfile.position}
-          image={developerProfile.avatar.publicURL}
-          resumeLink={developerProfile.cv}
-        />}
+        {isDesktop && (
+          <Navbar
+            className={classes.navbar}
+            type={componentType}
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+            position={developerProfile.position}
+            image={developerProfile.avatar.publicURL}
+            resumeLink={developerProfile.cv}
+          />
+        )}
 
         {isMobile && (
           <Box className={classes.detailsCard}>
