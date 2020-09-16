@@ -199,20 +199,9 @@ const ContactPage = () => {
           />
         </Box>
       )}
-      {!isDesktop && (
-        <Navbar
-          className={classes.navbar}
-          type={componentType}
-          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-          position={developerProfile.position}
-          image={developerProfile.avatar.publicURL}
-          resumeLink={developerProfile.cv}
-        />
-      )}
-
       <Box className={classes.main}>
-        {isDesktop && (
-          <Navbar
+        {(isMobile || isTablet) && (
+            <Navbar
             className={classes.navbar}
             type={componentType}
             fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
@@ -220,9 +209,6 @@ const ContactPage = () => {
             image={developerProfile.avatar.publicURL}
             resumeLink={developerProfile.cv}
           />
-        )}
-
-        {isMobile && (
           <Box className={classes.detailsCard}>
             <DetailsCard
               fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
@@ -243,28 +229,6 @@ const ContactPage = () => {
             />
           </Box>
         )}
-        {isTablet && !isMobile && (
-          <Box className={classes.detailsCard}>
-            <DetailsCard
-              fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-              address={`${developerProfile.city}, ${developerProfile.country}`}
-              image={developerProfile.avatar.publicURL}
-              position={developerProfile.position}
-              socialMedia={[
-                { name: 'facebook', link: developerProfile.socialMedia.facebook },
-                { name: 'github', link: developerProfile.socialMedia.github },
-                { name: 'twitter', link: developerProfile.socialMedia.twitter },
-                { name: 'instagram', link: developerProfile.socialMedia.instagram },
-              ]}
-              phone={developerProfile.phone}
-              email={developerProfile.email}
-              isFreelancer={developerProfile.isFreelancer}
-              resumeLink={developerProfile.cv}
-              type={componentType}
-            />
-          </Box>
-        )}
-
         <Box className={classes.mainContent}>
           <Box>
             <SectionTitle className={classes.title}>Contact</SectionTitle>
