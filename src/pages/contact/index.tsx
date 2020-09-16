@@ -199,9 +199,21 @@ const ContactPage = () => {
           />
         </Box>
       )}
+
       <Box className={classes.main}>
+        {isDesktop && (
+          <Navbar
+            className={classes.navbar}
+            type={componentType}
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+            position={developerProfile.position}
+            image={developerProfile.avatar.publicURL}
+            resumeLink={developerProfile.cv}
+          />
+        )}
+
         {(isMobile || isTablet) && (
-          <>
+          <Box>
             <Navbar
               className={classes.navbar}
               type={componentType}
@@ -229,7 +241,7 @@ const ContactPage = () => {
                 type={componentType}
               />
             </Box>
-          </>
+          </Box>
         )}
         <Box className={classes.mainContent}>
           <Box>
