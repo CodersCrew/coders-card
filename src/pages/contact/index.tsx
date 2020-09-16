@@ -12,7 +12,7 @@ import { DetailsCard } from '../../components/DetailsCard';
 import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/SectionTitle';
 import { TextField } from '../../components/TextField';
-import { navbarData, textFieldData, userData } from './data';
+import { navbarData, textFieldData, userData } from '../../views/contact-page/data';
 import { useComponentType } from '../../hooks/useComponentType';
 
 const contactPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
@@ -22,6 +22,7 @@ function TextFieldWrap(props: TextFieldProps) {
     form: { setFieldValue },
     field: { name },
   } = props;
+
   const onChange = React.useCallback(
     (event) => {
       const { value } = event.target;
@@ -69,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   detailsCard: {
-    marginBottom: theme.spacing(2.5),
+    margin: theme.spacing(0, 2.5, 0, 2.5),
     [theme.breakpoints.up('lg')]: {
       height: 668,
       width: 280,
@@ -77,16 +78,19 @@ const useStyles = makeStyles((theme) => ({
       position: 'sticky',
       marginRight: theme.spacing(4),
     },
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-      position: 'sticky',
-    },
   },
 
   mainContent: {
     backgroundColor: theme.palette.background.paper,
     borderRadius: 16,
     padding: theme.spacing(3),
+    [theme.breakpoints.down('lg')]: {
+      margin: theme.spacing(4, 2.5, 4, 2.5),
+    },
+    [theme.breakpoints.down('xs')]: {
+      margin: theme.spacing(4, 0, 0, 0),
+    },
+
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
       flexDirection: 'column',
@@ -98,12 +102,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   navbar: {
-    marginBottom: theme.spacing(2),
-
+    marginBottom: theme.spacing(2.5),
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(3),
     },
-
     [theme.breakpoints.up('lg')]: {
       marginBottom: theme.spacing(7),
     },
@@ -167,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactPage = () => {
   const classes = useStyles();
-  const theme = useTheme();
+
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
 
@@ -178,7 +180,23 @@ const ContactPage = () => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.detailsCard}>
-          <DetailsCard type="desktop" {...userData} />
+          <DetailsCard
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+            address={`${developerProfile.city}, ${developerProfile.country}`}
+            image={developerProfile.avatar.publicURL}
+            position={developerProfile.position}
+            socialMedia={[
+              { name: 'facebook', link: developerProfile.socialMedia.facebook },
+              { name: 'github', link: developerProfile.socialMedia.github },
+              { name: 'twitter', link: developerProfile.socialMedia.twitter },
+              { name: 'instagram', link: developerProfile.socialMedia.instagram },
+            ]}
+            phone={developerProfile.phone}
+            email={developerProfile.email}
+            isFreelancer={developerProfile.isFreelancer}
+            resumeLink={developerProfile.cv}
+            type={componentType}
+          />
         </Box>
       )}
       {!isDesktop && (
@@ -206,12 +224,44 @@ const ContactPage = () => {
 
         {isMobile && (
           <Box className={classes.detailsCard}>
-            <DetailsCard type="mobile" {...userData} />
+            <DetailsCard
+              fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+              address={`${developerProfile.city}, ${developerProfile.country}`}
+              image={developerProfile.avatar.publicURL}
+              position={developerProfile.position}
+              socialMedia={[
+                { name: 'facebook', link: developerProfile.socialMedia.facebook },
+                { name: 'github', link: developerProfile.socialMedia.github },
+                { name: 'twitter', link: developerProfile.socialMedia.twitter },
+                { name: 'instagram', link: developerProfile.socialMedia.instagram },
+              ]}
+              phone={developerProfile.phone}
+              email={developerProfile.email}
+              isFreelancer={developerProfile.isFreelancer}
+              resumeLink={developerProfile.cv}
+              type={componentType}
+            />
           </Box>
         )}
         {isTablet && !isMobile && (
           <Box className={classes.detailsCard}>
-            <DetailsCard type="tablet" {...userData} />
+            <DetailsCard
+              fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+              address={`${developerProfile.city}, ${developerProfile.country}`}
+              image={developerProfile.avatar.publicURL}
+              position={developerProfile.position}
+              socialMedia={[
+                { name: 'facebook', link: developerProfile.socialMedia.facebook },
+                { name: 'github', link: developerProfile.socialMedia.github },
+                { name: 'twitter', link: developerProfile.socialMedia.twitter },
+                { name: 'instagram', link: developerProfile.socialMedia.instagram },
+              ]}
+              phone={developerProfile.phone}
+              email={developerProfile.email}
+              isFreelancer={developerProfile.isFreelancer}
+              resumeLink={developerProfile.cv}
+              type={componentType}
+            />
           </Box>
         )}
 
