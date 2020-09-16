@@ -1,19 +1,19 @@
 import React from 'react';
 import { Send } from 'react-feather';
 import { Helmet } from 'react-helmet';
-import { Box, Container, makeStyles, useMediaQuery, useTheme } from '@material-ui/core';
+import { Box, Container, makeStyles } from '@material-ui/core';
 import { Field, Form, Formik } from 'formik';
 import { fieldToTextField, TextFieldProps } from 'formik-material-ui';
 import * as Yup from 'yup';
 
-import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { Button } from '../../components/Button';
 import { DetailsCard } from '../../components/DetailsCard';
 import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/SectionTitle';
 import { TextField } from '../../components/TextField';
-import { navbarData, textFieldData, userData } from '../../views/contact-page/data';
+import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
+import { textFieldData } from '../../views/contact-page/data';
 
 const contactPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
