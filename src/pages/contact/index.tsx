@@ -33,12 +33,12 @@ function TextFieldWrap(props: TextFieldProps) {
   return <TextField {...fieldToTextField(props)} {...textFieldData} onChange={onChange} />;
 }
 
-interface FormValues {
+export type FormValues = {
   fullName: string;
   email: string;
   title: string;
   messageContent: string;
-}
+};
 
 const initialValues: FormValues = {
   fullName: '',
@@ -48,10 +48,10 @@ const initialValues: FormValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required('Full Name is required field'),
-  email: Yup.string().required('E-mail adress is required field').email(),
-  title: Yup.string().required('Title is required field'),
-  messageContent: Yup.string().required('Message content is required field'),
+  fullName: Yup.string().label().required(),
+  email: Yup.string().label().required().email(),
+  title: Yup.string().label().required(),
+  messageContent: Yup.string().label().required(),
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -252,7 +252,6 @@ const ContactPage = () => {
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   setSubmitting(false);
-                  alert(JSON.stringify(values, null, 2));
                 }, 500);
               }}
             >
