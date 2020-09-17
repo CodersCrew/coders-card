@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { useDeveloperProfile } from '../../containers/DeveloperProfile';
+import { DeveloperProfileGQL, useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { FC } from '../../typings/components';
 import CardDesktop from './CardDesktop';
 import CardMobile from './CardMobile';
-import { CardProps } from './cardProps';
 import CardTablet from './CardTablet';
 
 type CardType = 'mobile' | 'tablet' | 'desktop';
 
-type DetailsCardProps = CardProps & {
+type DetailsCardProps = DeveloperProfileGQL & {
   type: CardType;
 };
 
