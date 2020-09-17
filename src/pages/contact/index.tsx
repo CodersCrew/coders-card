@@ -179,23 +179,7 @@ const ContactPage = () => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.detailsCard}>
-          <DetailsCard
-            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-            address={`${developerProfile.city}, ${developerProfile.country}`}
-            image={developerProfile.avatar.publicURL}
-            position={developerProfile.position}
-            socialMedia={[
-              { name: 'facebook', link: developerProfile.socialMedia.facebook },
-              { name: 'github', link: developerProfile.socialMedia.github },
-              { name: 'twitter', link: developerProfile.socialMedia.twitter },
-              { name: 'instagram', link: developerProfile.socialMedia.instagram },
-            ]}
-            phone={developerProfile.phone}
-            email={developerProfile.email}
-            isFreelancer={developerProfile.isFreelancer}
-            resumeLink={developerProfile.cv}
-            type={componentType}
-          />
+          <DetailsCard type={componentType} />
         </Box>
       )}
 
@@ -221,23 +205,7 @@ const ContactPage = () => {
               resumeLink={developerProfile.cv}
             />
             <Box className={classes.detailsCard}>
-              <DetailsCard
-                fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-                address={`${developerProfile.city}, ${developerProfile.country}`}
-                image={developerProfile.avatar.publicURL}
-                position={developerProfile.position}
-                socialMedia={[
-                  { name: 'facebook', link: developerProfile.socialMedia.facebook },
-                  { name: 'github', link: developerProfile.socialMedia.github },
-                  { name: 'twitter', link: developerProfile.socialMedia.twitter },
-                  { name: 'instagram', link: developerProfile.socialMedia.instagram },
-                ]}
-                phone={developerProfile.phone}
-                email={developerProfile.email}
-                isFreelancer={developerProfile.isFreelancer}
-                resumeLink={developerProfile.cv}
-                type={componentType}
-              />
+              <DetailsCard type={componentType} />
             </Box>
           </Box>
         )}
