@@ -168,9 +168,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactPage = () => {
+  const developerProfile = useDeveloperProfile();
   const classes = useStyles();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
-  const developerProfile = useDeveloperProfile();
 
   return (
     <Container className={classes.container} maxWidth="lg">
