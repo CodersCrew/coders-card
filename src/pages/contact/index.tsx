@@ -33,7 +33,7 @@ function TextFieldWrap(props: TextFieldProps) {
   return <TextField {...fieldToTextField(props)} {...textFieldData} onChange={onChange} />;
 }
 
-export type FormValues = {
+type FormValues = {
   fullName: string;
   email: string;
   title: string;
@@ -169,8 +169,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactPage = () => {
   const classes = useStyles();
-  const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
+  const developerProfile = useDeveloperProfile();
 
   return (
     <Container className={classes.container} maxWidth="lg">
