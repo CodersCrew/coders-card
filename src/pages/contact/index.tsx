@@ -48,10 +48,10 @@ const initialValues: FormValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().label().required(),
-  email: Yup.string().label().required().email(),
-  title: Yup.string().label().required(),
-  messageContent: Yup.string().label().required(),
+  fullName: Yup.string().label('Full Name').required(),
+  email: Yup.string().label('Email').required().email(),
+  title: Yup.string().label('Title').required(),
+  messageContent: Yup.string().label('Message Content ').required(),
 });
 
 const useStyles = makeStyles((theme) => ({
