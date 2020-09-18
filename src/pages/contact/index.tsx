@@ -48,10 +48,10 @@ const initialValues: FormValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().label('Full Name').required(),
-  email: Yup.string().label('Email').required().email(),
-  title: Yup.string().label('Title').required(),
-  messageContent: Yup.string().label('Message Content ').required(),
+  fullName: Yup.string().label('Full Name ').required(),
+  email: Yup.string().label('Email ').required().email(),
+  title: Yup.string().label('Title ').required(),
+  messageContent: Yup.string().label('Message').required(),
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -179,7 +179,23 @@ const ContactPage = () => {
       </Helmet>
       {isDesktop && (
         <Box className={classes.detailsCard}>
-          <DetailsCard type={componentType} />
+          <DetailsCard
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+            address={`${developerProfile.city}, ${developerProfile.country}`}
+            image={developerProfile.avatar.publicURL}
+            position={developerProfile.position}
+            socialMedia={[
+              { name: 'facebook', link: developerProfile.socialMedia.facebook },
+              { name: 'github', link: developerProfile.socialMedia.github },
+              { name: 'twitter', link: developerProfile.socialMedia.twitter },
+              { name: 'instagram', link: developerProfile.socialMedia.instagram },
+            ]}
+            phone={developerProfile.phone}
+            email={developerProfile.email}
+            isFreelancer={developerProfile.isFreelancer}
+            resumeLink={developerProfile.cv}
+            type={componentType}
+          />
         </Box>
       )}
 
@@ -205,7 +221,23 @@ const ContactPage = () => {
               resumeLink={developerProfile.cv}
             />
             <Box className={classes.detailsCard}>
-              <DetailsCard type={componentType} />
+              <DetailsCard
+                fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+                address={`${developerProfile.city}, ${developerProfile.country}`}
+                image={developerProfile.avatar.publicURL}
+                position={developerProfile.position}
+                socialMedia={[
+                  { name: 'facebook', link: developerProfile.socialMedia.facebook },
+                  { name: 'github', link: developerProfile.socialMedia.github },
+                  { name: 'twitter', link: developerProfile.socialMedia.twitter },
+                  { name: 'instagram', link: developerProfile.socialMedia.instagram },
+                ]}
+                phone={developerProfile.phone}
+                email={developerProfile.email}
+                isFreelancer={developerProfile.isFreelancer}
+                resumeLink={developerProfile.cv}
+                type={componentType}
+              />
             </Box>
           </Box>
         )}
