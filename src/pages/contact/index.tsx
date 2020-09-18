@@ -2,8 +2,7 @@ import React from 'react';
 import { Send } from 'react-feather';
 import { Helmet } from 'react-helmet';
 import { Box, Container, makeStyles } from '@material-ui/core';
-import { Field, Form, Formik } from 'formik';
-import { fieldToTextField, TextFieldProps } from 'formik-material-ui';
+import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '../../components/Button';
@@ -17,23 +16,7 @@ import { textFieldData } from '../../views/contact-page/data';
 
 const contactPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
-function TextFieldWrap(props: TextFieldProps) {
-  const {
-    form: { setFieldValue },
-    field: { name },
-  } = props;
-
-  const onChange = React.useCallback(
-    (event) => {
-      const { value } = event.target;
-      setFieldValue(name, value);
-    },
-    [setFieldValue, name],
-  );
-  return <TextField {...fieldToTextField(props)} {...textFieldData} onChange={onChange} />;
-}
-
-type FormValues = {
+export type FormValues = {
   fullName: string;
   email: string;
   title: string;
@@ -48,10 +31,10 @@ const initialValues: FormValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().label('Full Name ').required(),
-  email: Yup.string().label('Email ').required().email(),
-  title: Yup.string().label('Title ').required(),
-  messageContent: Yup.string().label('Message').required(),
+  fullName: Yup.string().required().label('Full Name'),
+  email: Yup.string().required().email().label('Email'),
+  title: Yup.string().required().label('Title'),
+  messageContent: Yup.string().required().label('Message'),
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -168,8 +151,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactPage = () => {
-  const developerProfile = useDeveloperProfile();
   const classes = useStyles();
+  const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
 
   return (
@@ -210,6 +193,7 @@ const ContactPage = () => {
             resumeLink={developerProfile.cv}
           />
         )}
+
         {(isMobile || isTablet) && (
           <Box>
             <Navbar
@@ -257,17 +241,11 @@ const ContactPage = () => {
                 <Form>
                   <Box className={classes.inputs}>
                     <Box className={classes.nameAndEmail}>
-                      <Field component={TextFieldWrap} name="fullName" type="fullName" label="Full name" />
-                      <Field component={TextFieldWrap} name="email" type="email" label="E-mail adress" />
+                      <TextField {...textFieldData} name="fullName" type="input" label="Full name" />
+                      <TextField {...textFieldData} name="email" label="E-mail adress" />
                     </Box>
-                    <Field component={TextFieldWrap} name="title" type="title" label="Title" />
-                    <Field
-                      component={TextFieldWrap}
-                      multiline
-                      name="messageContent"
-                      type="messageContent"
-                      label="Message content"
-                    />
+                    <TextField {...textFieldData} name="title" label="Title" />
+                    <TextField {...textFieldData} multiline name="messageContent" type="area" label="Message content" />
                   </Box>
                   <Box className={classes.buttonWrapper}>
                     <Button
