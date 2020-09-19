@@ -2,26 +2,28 @@ import React from 'react';
 import { Send } from 'react-feather';
 import { Helmet } from 'react-helmet';
 import { Box, Container, makeStyles } from '@material-ui/core';
-import { Form, Formik } from 'formik';
+import { Form, Formik, FormikConfig, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from '../../components/Button';
 import { DetailsCard } from '../../components/DetailsCard';
 import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/SectionTitle';
-import { TextField } from '../../components/TextField';
+import { FormikTextField } from '../../components/TextField';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { textFieldData } from '../../views/contact-page/data';
 
 const contactPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
-export type FormValues = {
+type FormValues = {
   fullName: string;
   email: string;
   title: string;
   messageContent: string;
 };
+
+type FormConfig = FormikConfig<FormValues>;
 
 const initialValues: FormValues = {
   fullName: '',
@@ -31,7 +33,7 @@ const initialValues: FormValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required().label('Full Name'),
+  fullName: Yup.string().required().label('Full name'),
   email: Yup.string().required().email().label('Email'),
   title: Yup.string().required().label('Title'),
   messageContent: Yup.string().required().label('Message'),
@@ -150,11 +152,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ContactPageForm = () => {
+  const classes = useStyles();
+  const { submitForm, isSubmitting } = useFormikContext();
+
+  return (
+    <Form>
+      <Box className={classes.inputs}>
+        <Box className={classes.nameAndEmail}>
+          <FormikTextField {...textFieldData} name="fullName" type="input" label="Full name" />
+          <FormikTextField {...textFieldData} name="email" label="E-mail adress" />
+        </Box>
+        <FormikTextField {...textFieldData} name="title" label="Title" />
+        <FormikTextField {...textFieldData} multiline name="messageContent" type="area" label="Message content" />
+      </Box>
+      <Box className={classes.buttonWrapper}>
+        <Button
+          className={classes.button}
+          color="primary"
+          variant="contained"
+          type="submit"
+          startIcon={<Send size={16} />}
+          disabled={isSubmitting}
+          onClick={submitForm}
+        >
+          send message
+        </Button>
+      </Box>
+    </Form>
+  );
+};
+
 const ContactPage = () => {
   const classes = useStyles();
-
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
+
+  const handleSubmit: FormConfig['onSubmit'] = (values, helpers) => {
+    console.log(values);
+    setTimeout(() => {
+      helpers.setSubmitting(false);
+    }, 500);
+  };
 
   return (
     <Container className={classes.container} maxWidth="lg">
@@ -229,40 +268,8 @@ const ContactPage = () => {
         <Box className={classes.mainContent}>
           <Box>
             <SectionTitle className={classes.title}>Contact</SectionTitle>
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  setSubmitting(false);
-                }, 500);
-              }}
-            >
-              {({ submitForm, isSubmitting }) => (
-                <Form>
-                  <Box className={classes.inputs}>
-                    <Box className={classes.nameAndEmail}>
-                      <TextField {...textFieldData} name="fullName" type="input" label="Full name" />
-                      <TextField {...textFieldData} name="email" label="E-mail adress" />
-                    </Box>
-                    <TextField {...textFieldData} name="title" label="Title" />
-                    <TextField {...textFieldData} multiline name="messageContent" type="area" label="Message content" />
-                  </Box>
-                  <Box className={classes.buttonWrapper}>
-                    <Button
-                      className={classes.button}
-                      color="primary"
-                      variant="contained"
-                      type="submit"
-                      startIcon={<Send size={16} />}
-                      disabled={isSubmitting}
-                      onClick={submitForm}
-                    >
-                      send message
-                    </Button>
-                  </Box>
-                </Form>
-              )}
+            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+              <ContactPageForm />
             </Formik>
           </Box>
         </Box>

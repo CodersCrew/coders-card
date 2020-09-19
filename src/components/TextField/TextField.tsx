@@ -1,8 +1,16 @@
 import React from 'react';
 import { makeStyles, TextField as MuiTextField, TextFieldProps as MuiTextFieldProps } from '@material-ui/core';
-import { ErrorMessage, Field } from 'formik';
+import clsx from 'clsx';
+import { Field } from 'formik';
+import { TextField as FTextField } from 'formik-material-ui';
+
+import { CFC } from '../../typings/components';
 
 export type TextFieldProps = MuiTextFieldProps;
+
+export type FormikTextFieldProps = MuiTextFieldProps & {
+  name: string;
+};
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -27,9 +35,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TextField = (props: TextFieldProps): JSX.Element => {
+export const TextField: CFC<TextFieldProps> = (props) => {
   const classes = useStyles();
-  return (
-    <Field as={MuiTextField} className={classes.textField} {...props} helperText={<ErrorMessage name={props.name} />} />
-  );
+
+  return <MuiTextField {...props} className={clsx(classes.textField, props.className)} />;
+};
+
+export const FormikTextField: CFC<FormikTextFieldProps> = (props) => {
+  const classes = useStyles();
+
+  return <Field component={FTextField} className={clsx(classes.textField, props.className)} {...props} />;
 };
