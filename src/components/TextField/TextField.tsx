@@ -2,7 +2,9 @@ import React from 'react';
 import { makeStyles, TextField as MuiTextField, TextFieldProps as MuiTextFieldProps } from '@material-ui/core';
 import { ErrorMessage, Field } from 'formik';
 
-export type TextFieldProps = MuiTextFieldProps;
+export type TextFieldProps = MuiTextFieldProps & {
+  name: string;
+};
 
 const useStyles = makeStyles((theme) => ({
   textField: {

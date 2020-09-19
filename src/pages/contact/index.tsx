@@ -152,6 +152,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactPage = () => {
   const classes = useStyles();
+
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
 
