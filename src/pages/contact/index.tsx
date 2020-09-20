@@ -32,6 +32,11 @@ const initialValues: FormValues = {
   messageContent: '',
 };
 
+type encodeType = {
+  'form-name': string;
+  values: FormValues;
+};
+
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required().label('Full name'),
   email: Yup.string().required().email().label('Email'),
@@ -157,7 +162,8 @@ const ContactPageForm = () => {
   const { submitForm, isSubmitting } = useFormikContext();
 
   return (
-    <Form>
+    <Form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+      <FormikTextField type="hidden" name="form-name" value="contact" />
       <Box className={classes.inputs}>
         <Box className={classes.nameAndEmail}>
           <FormikTextField {...textFieldData} name="fullName" type="input" label="Full name" />
@@ -189,10 +195,26 @@ const ContactPage = () => {
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
 
   const handleSubmit: FormConfig['onSubmit'] = (values, helpers) => {
-    console.log(values);
     setTimeout(() => {
       helpers.setSubmitting(false);
     }, 500);
+
+    const encode = (data: encodeType) => {
+      return Object.keys(data)
+        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+        .join('&');
+    };
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        values,
+      }),
+    })
+      .then(() => alert('success!'))
+      .catch((error) => alert(error));
   };
 
   return (
