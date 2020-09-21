@@ -157,19 +157,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactPageForm = ({ onSubmitFn }) => {
+const ContactPageForm = () => {
   const classes = useStyles();
   const { submitForm, isSubmitting } = useFormikContext();
 
   return (
-    <Form
-      name="contact"
-      action="/contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      onSubmit={onSubmitFn}
-    >
+    <Form name="contact" action="/contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
       <FormikTextField type="hidden" name="form-name" value="contact" />
       <Box className={classes.inputs}>
         <Box className={classes.nameAndEmail}>
@@ -187,7 +180,7 @@ const ContactPageForm = ({ onSubmitFn }) => {
           type="submit"
           startIcon={<Send size={16} />}
           disabled={isSubmitting}
-          onClick={submitForm}
+          onSubmit={submitForm}
         >
           send message
         </Button>
@@ -297,7 +290,7 @@ const ContactPage = () => {
           <Box>
             <SectionTitle className={classes.title}>Contact</SectionTitle>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-              <ContactPageForm onSubmitFn={handleSubmit} />
+              <ContactPageForm />
             </Formik>
           </Box>
         </Box>
