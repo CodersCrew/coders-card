@@ -162,15 +162,15 @@ const ContactPageForm = () => {
   const { submitForm, isSubmitting } = useFormikContext();
 
   return (
-    <Form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+    <Form name="contact" action="/contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
       <FormikTextField type="hidden" name="form-name" value="contact" />
       <Box className={classes.inputs}>
         <Box className={classes.nameAndEmail}>
-          <FormikTextField {...textFieldData} name="fullName" type="input" label="Full name" />
+          <FormikTextField {...textFieldData} name="fullName" label="Full name" />
           <FormikTextField {...textFieldData} name="email" label="E-mail adress" />
         </Box>
         <FormikTextField {...textFieldData} name="title" label="Title" />
-        <FormikTextField {...textFieldData} multiline name="messageContent" type="area" label="Message content" />
+        <FormikTextField {...textFieldData} multiline name="messageContent" label="Message content" />
       </Box>
       <Box className={classes.buttonWrapper}>
         <Button
@@ -243,7 +243,6 @@ const ContactPage = () => {
           />
         </Box>
       )}
-
       <Box className={classes.main}>
         {isDesktop && (
           <Navbar
