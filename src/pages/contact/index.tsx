@@ -163,7 +163,7 @@ const ContactPageForm = () => {
 
   return (
     <Form name="contact" action="/contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-      <FormikTextField type="hidden" name="form-name" value="contact" />
+      <FormikTextField type="hidden" name="contact" value="contact" />
       <Box className={classes.inputs}>
         <Box className={classes.nameAndEmail}>
           <FormikTextField {...textFieldData} name="fullName" label="Full name" />
