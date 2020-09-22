@@ -1,17 +1,14 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
+import { Box, Card, Container, makeStyles, Typography } from '@material-ui/core';
 import { graphql } from 'gatsby';
-import { Typography, Container, Box, makeStyles, Card } from '@material-ui/core';
-
-import { useComponentType } from '../hooks/useComponentType';
 
 import { DetailsCard } from '../components/DetailsCard';
 import { SectionTitle } from '../components/SectionTitle';
 import { Skill } from '../components/Skill';
 import { Testimonial } from '../components/Testimonial';
-
 import { useDeveloperProfile } from '../containers/DeveloperProfile';
-
+import { useComponentType } from '../hooks/useComponentType';
 import { AboutPageData } from '../views/about/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
@@ -199,7 +196,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Technologies
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.socialMedia.technologies.map((item, index) => (
+                {aboutData.socialMedia.technologies.map((item) => (
                   <Skill key={`${item.technologyName}`} level={item.technologyValue}>
                     {item.technologyName}
                   </Skill>
@@ -209,7 +206,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Tools
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.socialMedia.tools.map((item, index) => (
+                {aboutData.socialMedia.tools.map((item) => (
                   <Skill key={`${item.toolName}`} level={item.toolValue}>
                     {item.toolName}
                   </Skill>
@@ -219,7 +216,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Other skills
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.socialMedia.otherSkills.map((item, index) => (
+                {aboutData.socialMedia.otherSkills.map((item) => (
                   <Skill key={`${item.otherSkillName}`} level={item.otherSkillValue}>
                     {item.otherSkillName}
                   </Skill>
@@ -228,7 +225,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
             </Box>
             <SectionTitle className={classes.title}>Testimonials</SectionTitle>
             <Box className={classes.testimonials}>
-              {aboutData.testimonials.map((item, index) => (
+              {aboutData.testimonials.map((item) => (
                 <Testimonial
                   key={`${item.testimonialName}`}
                   isMobile={isMobile}

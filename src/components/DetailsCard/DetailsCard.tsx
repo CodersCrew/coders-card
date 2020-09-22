@@ -2,7 +2,6 @@ import React from 'react';
 
 import { FC } from '../../typings/components';
 import { ScreenSize } from '../../typings/customization';
-
 import CardDesktop from './CardDesktop';
 import CardMobile from './CardMobile';
 import { CardProps } from './cardProps';
