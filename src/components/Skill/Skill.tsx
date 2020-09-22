@@ -2,7 +2,7 @@ import React from 'react';
 import { Box as MuiBox, BoxProps as MuiBoxProps, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-type LevelRange = 0 | 1 | 2 | 3 | 4 | 5;
+export type LevelRange = 0 | 1 | 2 | 3 | 4 | 5;
 
 export interface SkillProps extends MuiBoxProps {
   level: LevelRange;

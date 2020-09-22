@@ -6,10 +6,10 @@ import CardMobile from './CardMobile';
 import { CardProps } from './cardProps';
 import CardTablet from './CardTablet';
 
-type CardType = 'mobile' | 'tablet' | 'desktop';
+import { ScreenSize } from '../../typings/customization';
 
 type DetailsCardProps = CardProps & {
-  type: CardType;
+  type: ScreenSize;
 };
 
 export const DetailsCard: FC<DetailsCardProps> = ({ type, ...props }) => {

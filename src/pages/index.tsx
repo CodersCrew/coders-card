@@ -1,3 +1,281 @@
-import about from '../views/about';
+import React, { FC } from 'react';
+import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
+import { Typography, Container, Box, makeStyles, Card } from '@material-ui/core';
 
-export default about;
+import { useComponentType } from '../hooks/useComponentType';
+import { useDeveloperProfile } from '../containers/DeveloperProfile';
+
+import { DetailsCard } from '../components/DetailsCard';
+import { SectionTitle } from '../components/SectionTitle';
+import { Skill } from '../components/Skill';
+import { Testimonial } from '../components/Testimonial';
+
+import { AboutPageData } from '../views/about/types';
+
+const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    padding: 0,
+    display: 'grid',
+    gridTemplateAreas: `
+      "navbar"
+      "aside"
+      "main"`,
+    [theme.breakpoints.up('lg')]: {
+      gridTemplateAreas: `
+      "aside navbar"
+      "aside main"`,
+      padding: theme.spacing(8, 2, 0, 2),
+    },
+  },
+  aside: {
+    gridArea: 'aside',
+    display: 'block',
+    width: '100%',
+    height: 488,
+    marginBottom: theme.spacing(2),
+
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+      marginBottom: theme.spacing(4),
+      height: 288,
+    },
+    [theme.breakpoints.up('lg')]: {
+      position: 'sticky',
+      top: theme.spacing(8),
+      marginRight: theme.spacing(4),
+      width: 280,
+      height: 668,
+    },
+  },
+  main: {
+    gridArea: 'main',
+    width: '100%',
+  },
+  mainContent: {
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: 16,
+    marginBottom: theme.spacing(7),
+
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: theme.spacing(7),
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      display: 'flex',
+      flexDirection: 'column',
+      marginBottom: theme.spacing(7),
+      boxShadow: portfolioPageItemShadow,
+    },
+  },
+  navbar: {
+    gridArea: 'navbar',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: portfolioPageItemShadow,
+    borderRadius: 8,
+    height: 120,
+    width: '100%',
+    marginBottom: theme.spacing(2),
+
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: theme.spacing(4),
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      marginBottom: theme.spacing(7),
+      height: 56,
+    },
+  },
+  projectsContainer: {
+    borderRadius: 16,
+    padding: theme.spacing(3),
+
+    [theme.breakpoints.up('lg')]: {
+      width: '100%',
+      padding: theme.spacing(4),
+    },
+  },
+  content: {
+    marginBottom: theme.spacing(6),
+  },
+  skillsHeader: {
+    color: theme.palette.text.secondary,
+    marginBottom: theme.spacing(3),
+  },
+  skills: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridRowGap: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+    gridGap: theme.spacing(5),
+
+    [theme.breakpoints.up('sm')]: {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  },
+  project: {
+    [theme.breakpoints.up('lg')]: {
+      width: 400,
+      height: 224,
+    },
+  },
+  title: {
+    marginBottom: theme.spacing(4),
+
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: theme.spacing(3),
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      margin: theme.spacing(0, 2, 4, 0),
+    },
+  },
+  testimonials: {
+    display: 'grid',
+    justifyContent: 'center',
+    justifyItems: 'center',
+    gridTemplateColumns: '1fr',
+    gridRowGap: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+
+    [theme.breakpoints.up('lg')]: {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+  },
+}));
+
+const About: FC<{ data: AboutPageData }> = ({ data }) => {
+  const aboutData = data.aboutPage.frontmatter;
+  const classes = useStyles();
+  const developerProfile = useDeveloperProfile();
+  const { componentType, isDesktop, isMobile } = useComponentType();
+
+  return (
+    <Container className={classes.container} maxWidth="lg">
+      <Helmet>
+        <title>{aboutData.aboutPageTitle}</title>
+      </Helmet>
+      {isDesktop && (
+        <Box className={classes.aside}>
+          <DetailsCard
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+            address={`${developerProfile.city}, ${developerProfile.country}`}
+            image={developerProfile.avatar.publicURL}
+            position={developerProfile.position}
+            socialMedia={[
+              { name: 'facebook', link: developerProfile.socialMedia.facebook },
+              { name: 'github', link: developerProfile.socialMedia.github },
+              { name: 'twitter', link: developerProfile.socialMedia.twitter },
+              { name: 'instagram', link: developerProfile.socialMedia.instagram },
+            ]}
+            phone={developerProfile.phone}
+            email={developerProfile.email}
+            isFreelancer={developerProfile.isFreelancer}
+            resumeLink={developerProfile.cv}
+            type={componentType}
+          />
+        </Box>
+      )}
+      <Card className={classes.navbar}>navbar</Card>
+      <Box className={classes.main}>
+        <Box className={classes.mainContent}>
+          <Box className={classes.projectsContainer}>
+            <SectionTitle className={classes.title}>About me</SectionTitle>
+            <Box className={classes.content}>{aboutData.description}</Box>
+            <SectionTitle className={classes.title}>My skills</SectionTitle>
+            <Box className={classes.content}>
+              <Typography variant="h6" className={classes.skillsHeader}>
+                Technologies
+              </Typography>
+              <Box className={classes.skills}>
+                {aboutData.socialMedia.technologies.map((item, index) => (
+                  <Skill key={`${item.technologyName} - ${index}`} level={item.technologyValue}>
+                    {item.technologyName}
+                  </Skill>
+                ))}
+              </Box>
+              <Typography variant="h6" className={classes.skillsHeader}>
+                Tools
+              </Typography>
+              <Box className={classes.skills}>
+                {aboutData.socialMedia.tools.map((item, index) => (
+                  <Skill key={`${item.toolName} - ${index}`} level={item.toolValue}>
+                    {item.toolName}
+                  </Skill>
+                ))}
+              </Box>
+              <Typography variant="h6" className={classes.skillsHeader}>
+                Other skills
+              </Typography>
+              <Box className={classes.skills}>
+                {aboutData.socialMedia.otherSkills.map((item, index) => (
+                  <Skill key={`${item.otherSkillName} - ${index}`} level={item.otherSkillValue}>
+                    {item.otherSkillName}
+                  </Skill>
+                ))}
+              </Box>
+            </Box>
+            <SectionTitle className={classes.title}>Testimonials</SectionTitle>
+            <Box className={classes.testimonials}>
+              {aboutData.testimonials.map((item, index) => (
+                <Testimonial
+                  key={`${item.testimonialName} - ${index}`}
+                  isMobile={isMobile}
+                  image={item.testimonialImage.publicURL}
+                  description={item.testimonialText}
+                  labelBold={item.testimonialName}
+                  label={item.testimonialJob}
+                />
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Container>
+  );
+};
+
+export default About;
+
+export const aboutPageQuery = graphql`
+  {
+    aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me/index-1.md/" }) {
+      frontmatter {
+        aboutPageTitle
+        description
+        socialMedia {
+          technologies {
+            technologyName
+            technologyValue
+          }
+          tools {
+            toolName
+            toolValue
+          }
+          otherSkills {
+            otherSkillName
+            otherSkillValue
+          }
+        }
+        testimonials {
+          testimonialText
+          testimonialImage {
+            publicURL
+          }
+          testimonialName
+          testimonialJob
+        }
+      }
+    }
+  }
+`;
