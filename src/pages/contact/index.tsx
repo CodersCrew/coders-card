@@ -210,10 +210,12 @@ const ContactPage = () => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': 'contact',
-        values,
+        ...values,
       }),
     })
-      .then(() => alert('success!'))
+      .then(() => {
+        alert('success!');
+      })
       .catch((error) => alert(error));
   };
 
