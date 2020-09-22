@@ -4,12 +4,13 @@ import { graphql } from 'gatsby';
 import { Typography, Container, Box, makeStyles, Card } from '@material-ui/core';
 
 import { useComponentType } from '../hooks/useComponentType';
-import { useDeveloperProfile } from '../containers/DeveloperProfile';
 
 import { DetailsCard } from '../components/DetailsCard';
 import { SectionTitle } from '../components/SectionTitle';
 import { Skill } from '../components/Skill';
 import { Testimonial } from '../components/Testimonial';
+
+import { useDeveloperProfile } from '../containers/DeveloperProfile';
 
 import { AboutPageData } from '../views/about/types';
 
@@ -199,7 +200,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
               </Typography>
               <Box className={classes.skills}>
                 {aboutData.socialMedia.technologies.map((item, index) => (
-                  <Skill key={`${item.technologyName} - ${index}`} level={item.technologyValue}>
+                  <Skill key={`${item.technologyName}`} level={item.technologyValue}>
                     {item.technologyName}
                   </Skill>
                 ))}
@@ -209,7 +210,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
               </Typography>
               <Box className={classes.skills}>
                 {aboutData.socialMedia.tools.map((item, index) => (
-                  <Skill key={`${item.toolName} - ${index}`} level={item.toolValue}>
+                  <Skill key={`${item.toolName}`} level={item.toolValue}>
                     {item.toolName}
                   </Skill>
                 ))}
@@ -219,7 +220,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
               </Typography>
               <Box className={classes.skills}>
                 {aboutData.socialMedia.otherSkills.map((item, index) => (
-                  <Skill key={`${item.otherSkillName} - ${index}`} level={item.otherSkillValue}>
+                  <Skill key={`${item.otherSkillName}`} level={item.otherSkillValue}>
                     {item.otherSkillName}
                   </Skill>
                 ))}
@@ -229,7 +230,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
             <Box className={classes.testimonials}>
               {aboutData.testimonials.map((item, index) => (
                 <Testimonial
-                  key={`${item.testimonialName} - ${index}`}
+                  key={`${item.testimonialName}`}
                   isMobile={isMobile}
                   image={item.testimonialImage.publicURL}
                   description={item.testimonialText}
