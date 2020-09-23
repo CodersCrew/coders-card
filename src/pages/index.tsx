@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
-import { Box, Card, Container, makeStyles, Typography } from '@material-ui/core';
+import { Box, Container, makeStyles, Typography } from '@material-ui/core';
 import { graphql } from 'gatsby';
 
 import { DetailsCard } from '../components/DetailsCard';
+import { Navbar } from '../components/Navbar';
 import { SectionTitle } from '../components/SectionTitle';
 import { Skill } from '../components/Skill';
 import { Testimonial } from '../components/Testimonial';
@@ -69,23 +70,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   navbar: {
-    gridArea: 'navbar',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: portfolioPageItemShadow,
-    borderRadius: 8,
-    height: 120,
-    width: '100%',
     marginBottom: theme.spacing(2),
 
     [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(3),
     },
 
     [theme.breakpoints.up('lg')]: {
       marginBottom: theme.spacing(7),
-      height: 56,
     },
   },
   projectsContainer: {
@@ -184,7 +176,14 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
           />
         </Box>
       )}
-      <Card className={classes.navbar}>navbar</Card>
+      <Navbar
+        className={classes.navbar}
+        type={componentType}
+        fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+        position={developerProfile.position}
+        image={developerProfile.avatar.publicURL}
+        resumeLink={developerProfile.cv}
+      />
       <Box className={classes.main}>
         <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>
