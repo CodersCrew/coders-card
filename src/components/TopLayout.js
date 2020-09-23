@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
 
-import { ThemeProvider } from '../../src/utils/theme';
-import DeveloperProfileProvider from '../../src/containers/DeveloperProfile';
+import DeveloperProfileProvider from '../containers/DeveloperProfile';
+import { ThemeProvider } from '../utils/theme';
 
 export default function TopLayout(props) {
   const data = useStaticQuery(graphql`
@@ -39,6 +39,7 @@ export default function TopLayout(props) {
   `);
 
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <DeveloperProfileProvider developerProfile={data.markdownRemark.developerProfile}>
       <ThemeProvider>{props.children}</ThemeProvider>
     </DeveloperProfileProvider>
@@ -46,5 +47,5 @@ export default function TopLayout(props) {
 }
 
 TopLayout.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
