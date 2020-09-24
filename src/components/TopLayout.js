@@ -38,8 +38,6 @@ export default function TopLayout(props) {
     }
   `);
 
-  console.log('TopLayout', data);
-
   return (
     // eslint-disable-next-line react/jsx-filename-extension
     <DeveloperProfileProvider developerProfile={data.markdownRemark.developerProfile}>
