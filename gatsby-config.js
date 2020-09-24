@@ -5,7 +5,6 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-top-layout`,
     `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-web-font-loader`,

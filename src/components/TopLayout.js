@@ -7,7 +7,7 @@ import { ThemeProvider } from '../utils/theme';
 
 export default function TopLayout(props) {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query DeveloperQuery {
       site {
         siteMetadata {
           title
@@ -37,6 +37,8 @@ export default function TopLayout(props) {
       }
     }
   `);
+
+  console.log('TopLayout', data);
 
   return (
     // eslint-disable-next-line react/jsx-filename-extension
