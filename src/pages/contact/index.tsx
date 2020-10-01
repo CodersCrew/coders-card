@@ -32,11 +32,6 @@ const initialValues: FormValues = {
   messageContent: '',
 };
 
-type encodeType = {
-  'form-name': string;
-  values: FormValues;
-};
-
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required().label('Full name'),
   email: Yup.string().required().email().label('Email'),
@@ -199,8 +194,9 @@ const ContactPage = () => {
       helpers.setSubmitting(false);
     }, 500);
 
-    const encode = (data: encodeType) => {
+    const encode = (data: Record<string, string>) => {
       return Object.keys(data)
+
         .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
         .join('&');
     };
@@ -213,10 +209,8 @@ const ContactPage = () => {
         ...values,
       }),
     })
-      .then(() => {
-        alert('success!');
-      })
-      .catch((error) => alert(error));
+      .then(console.log)
+      .catch(console.log);
   };
 
   return (
