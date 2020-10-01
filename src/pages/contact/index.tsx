@@ -157,14 +157,15 @@ const ContactPageForm = () => {
   const { submitForm, isSubmitting } = useFormikContext();
 
   return (
-    <Form>
+    <Form name="contact" action="/contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <FormikTextField type="hidden" name="form-name" value="contact" />
       <Box className={classes.inputs}>
         <Box className={classes.nameAndEmail}>
-          <FormikTextField {...textFieldData} name="fullName" type="input" label="Full name" />
+          <FormikTextField {...textFieldData} name="fullName" label="Full name" />
           <FormikTextField {...textFieldData} name="email" label="E-mail adress" />
         </Box>
         <FormikTextField {...textFieldData} name="title" label="Title" />
-        <FormikTextField {...textFieldData} multiline name="messageContent" type="area" label="Message content" />
+        <FormikTextField {...textFieldData} multiline name="messageContent" label="Message content" />
       </Box>
       <Box className={classes.buttonWrapper}>
         <Button
@@ -174,7 +175,7 @@ const ContactPageForm = () => {
           type="submit"
           startIcon={<Send size={16} />}
           disabled={isSubmitting}
-          onClick={submitForm}
+          onSubmit={submitForm}
         >
           send message
         </Button>
@@ -189,10 +190,27 @@ const ContactPage = () => {
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
 
   const handleSubmit: FormConfig['onSubmit'] = (values, helpers) => {
-    console.log(values);
     setTimeout(() => {
       helpers.setSubmitting(false);
     }, 500);
+
+    const encode = (data: Record<string, string>) => {
+      return Object.keys(data)
+
+        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+        .join('&');
+    };
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        ...values,
+      }),
+    })
+      .then(console.log)
+      .catch(console.log);
   };
 
   return (
@@ -221,7 +239,6 @@ const ContactPage = () => {
           />
         </Box>
       )}
-
       <Box className={classes.main}>
         {isDesktop && (
           <Navbar
