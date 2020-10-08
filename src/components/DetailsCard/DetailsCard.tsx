@@ -7,15 +7,12 @@ import CardDesktop from './CardDesktop';
 import CardMobile from './CardMobile';
 import { CardProps } from './cardProps';
 import CardTablet from './CardTablet';
+import { DeveloperProfileGQL } from '../../containers/DeveloperProfile';
 
-type DetailsCardProps = CardProps & {
-  type: ScreenSize;
-};
-
-export const DetailsCard: FC<DetailsCardProps> = ({ type }) => {
+export const DetailsCard: FC<{ type: ScreenSize }> = ({ type }) => {
   const developerProfile = useDeveloperProfile();
 
-  const data = {
+  const data: CardProps = {
     fullName: `${developerProfile.firstName} ${developerProfile.lastName}`,
     address: `${developerProfile.city}, ${developerProfile.country}`,
     image: `${developerProfile.avatar.publicURL}`,

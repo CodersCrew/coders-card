@@ -229,7 +229,7 @@ const ContactPage = () => {
             />
             <Box className={classes.detailsCard}>
               <DetailsCard type={componentType} />
-              {console.log(componentType)}
+              {console.log('componentType', componentType)}
             </Box>
           </Box>
         )}

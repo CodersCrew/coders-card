@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CardDesktop: FC<CardProps> = ({ data }) => {
+const CardDesktop: FC<{ data: CardProps }> = ({ data }) => {
   const classes = useStyles();
   const { fullName, image, position, socialMedia, phone, email, address, isFreelancer, resumeLink }: CardProps = data;
 

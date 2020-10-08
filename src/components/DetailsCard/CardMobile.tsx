@@ -7,6 +7,7 @@ import { Button } from '../Button';
 import { CardProps } from './cardProps';
 import { DetailsItem } from './DetailsItem';
 import { renderSocialMediaIcon } from './renderSocialMediaIcon';
+import { DeveloperProfileGQL } from '../../containers/DeveloperProfile';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -92,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
   },
 }));
-const CardMobile: FC<CardProps> = ({ data }) => {
+const CardMobile: FC<{ data: CardProps }> = ({ data }) => {
   const classes = useStyles();
   const { fullName, image, position, socialMedia, phone, email, address, isFreelancer, resumeLink }: CardProps = data;
 

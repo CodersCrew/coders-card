@@ -5,6 +5,7 @@ import { FC } from '../../typings/components';
 import { CardProps } from './cardProps';
 import { DetailsItem } from './DetailsItem';
 import { renderSocialMediaIcon } from './renderSocialMediaIcon';
+import { DeveloperProfileGQL } from '../../containers/DeveloperProfile';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -70,8 +71,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.success.main,
   },
 }));
-const CardTablet: FC<CardProps> = ({ data }) => {
-  const { fullName, image, position, socialMedia, phone, email, address, isFreelancer }: CardProps = data;
+const CardTablet: FC<{ data: CardProps }> = ({ data }) => {
+  const { fullName, image, position, socialMedia, phone, email, address, isFreelancer, resumeLink }: CardProps = data;
   const classes = useStyles();
 
   return (
