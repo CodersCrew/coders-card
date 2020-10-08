@@ -7,7 +7,6 @@ import { Button } from '../Button';
 import { CardProps } from './cardProps';
 import { DetailsItem } from './DetailsItem';
 import { renderSocialMediaIcon } from './renderSocialMediaIcon';
-import { DeveloperProfileGQL } from '../../containers/DeveloperProfile';
 
 const useStyles = makeStyles((theme) => ({
   card: {
