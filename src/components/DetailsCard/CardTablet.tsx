@@ -70,7 +70,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.success.main,
   },
 }));
-const CardTablet: FC<CardProps> = ({ fullName, image, position, socialMedia, phone, email, address, isFreelancer }) => {
+const CardTablet: FC<{ data: CardProps }> = ({ data }) => {
+  const { fullName, image, position, socialMedia, phone, email, address, isFreelancer }: CardProps = data;
   const classes = useStyles();
 
   return (

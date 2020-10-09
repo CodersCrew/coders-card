@@ -10,6 +10,6 @@ export type CardProps = {
   phone?: string;
   email?: string;
   address?: string;
-  isFreelancer?: boolean;
+  isFreelancer: boolean | string;
   resumeLink?: string;
 };

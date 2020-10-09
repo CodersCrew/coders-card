@@ -92,18 +92,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
   },
 }));
-const CardMobile: FC<CardProps> = ({
-  fullName,
-  image,
-  position,
-  socialMedia,
-  phone,
-  email,
-  address,
-  isFreelancer,
-  resumeLink,
-}) => {
+const CardMobile: FC<{ data: CardProps }> = ({ data }) => {
   const classes = useStyles();
+  const { fullName, image, position, socialMedia, phone, email, address, isFreelancer, resumeLink }: CardProps = data;
 
   return (
     <Card className={classes.card}>

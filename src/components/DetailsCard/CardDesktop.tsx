@@ -117,18 +117,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CardDesktop: FC<CardProps> = ({
-  fullName,
-  image,
-  position,
-  socialMedia,
-  phone,
-  email,
-  address,
-  isFreelancer = false,
-  resumeLink,
-}) => {
+const CardDesktop: FC<{ data: CardProps }> = ({ data }) => {
   const classes = useStyles();
+  const { fullName, image, position, socialMedia, phone, email, address, isFreelancer, resumeLink }: CardProps = data;
 
   return (
     <Box className={classes.wrapper}>
