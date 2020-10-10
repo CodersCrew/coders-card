@@ -34,7 +34,7 @@ collections:
     label: "Developer profile"
     folder: "content/developer-profile"
     create: true
-    slug: "index"
+    slug: "index" 
     media_folder: ""
     public_folder: ""
     path: "{{content}}index"
