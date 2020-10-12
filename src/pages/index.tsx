@@ -206,20 +206,22 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 ))}
               </Box>
             </Box>
-            <SectionTitle className={classes.title}>Testimonials</SectionTitle>
-            {aboutData.testimonials && (
-              <Box className={classes.testimonials}>
-                {aboutData.testimonials.map((item) => (
-                  <Testimonial
-                    key={`${item.testimonialName}`}
-                    isMobile={isMobile}
-                    image={item.testimonialImage.publicURL}
-                    description={item.testimonialText}
-                    labelBold={item.testimonialName}
-                    label={item.testimonialJob}
-                  />
-                ))}
-              </Box>
+            {aboutData.testimonials && aboutData.testimonials?.length > 0 && (
+              <>
+                <SectionTitle className={classes.title}>Testimonials</SectionTitle>
+                <Box className={classes.testimonials}>
+                  {aboutData.testimonials.map((item) => (
+                    <Testimonial
+                      key={`${item.testimonialName}`}
+                      isMobile={isMobile}
+                      image={item.testimonialImage.publicURL}
+                      description={item.testimonialText}
+                      labelBold={item.testimonialName}
+                      label={item.testimonialJob}
+                    />
+                  ))}
+                </Box>
+              </>
             )}
           </Box>
         </Box>

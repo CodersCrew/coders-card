@@ -58,13 +58,5 @@ socialMedia:
       otherSkillValue: 4
     - otherSkillName: Atomic Design
       otherSkillValue: 2
-testimonials:
-  - testimonialText: Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.
-    testimonialImage: MarleneWatson.png
-    testimonialName: Marlene Watson
-    testimonialJob: CEO of Donec
-  - testimonialText: Suspendisse ullamcorper massa nec lectus volutpat malesuada. Proin at nibh dui. Nunc at tincidunt mauris, non sagittis libero. Proin porta id elit sit amet maximus.
-    testimonialImage: GabeMcdonalid.png
-    testimonialName: Gabe Mcdonalid
-    testimonialJob: Marketing specialist in Railroad
+testimonials: []
 ---
