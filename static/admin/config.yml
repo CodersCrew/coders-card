@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: chore/review-information-structure
 
 media_folder: src/images
 public_folder: /img
