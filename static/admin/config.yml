@@ -23,12 +23,12 @@ collections:
         widget: "list"
         required: false
         fields:
-          - { label: "Title", name: "blogTitle", widget: "string", required: false}
-          - { label: "Publish Date", name: "publishDate", widget: "datetime", required: false }
-          - { label: "Label", name: "blogLabel", widget: "string", required: false }
-          - { label: "Description", name: "blogDescription", widget: "string", required: false }
-          - { label: "Body", name: "blogBody", widget: "markdown", required: false }
-          - { label: "Blogpost image", name: "blogImage", widget: "image", required: false }
+          - { label: "Title", name: "blogTitle", widget: "string"}
+          - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+          - { label: "Label", name: "blogLabel", widget: "string" }
+          - { label: "Description", name: "blogDescription", widget: "string" }
+          - { label: "Body", name: "blogBody", widget: "markdown" }
+          - { label: "Blogpost image", name: "blogImage", widget: "image" }
 
   - name: "developer-profile"
     label: "Developer profile"
@@ -100,10 +100,10 @@ collections:
         widget: list
         required: false
         fields:
-          - { label: "Text", name: "testimonialText", widget: "string", required: false }
-          - { label: "Image", name: "testimonialImage", widget: "image", required: false }
-          - { label: "Testimone name", name: "testimonialName", widget: "string", required: false }
-          - { label: "Testimone job position", name: "testimonialJob", widget: "string", required: false }
+          - { label: "Text", name: "testimonialText", widget: "string" }
+          - { label: "Image", name: "testimonialImage", widget: "image" }
+          - { label: "Testimone name", name: "testimonialName", widget: "string" }
+          - { label: "Testimone job position", name: "testimonialJob", widget: "string" }
 
   - name: "resume"
     label: "Resume"

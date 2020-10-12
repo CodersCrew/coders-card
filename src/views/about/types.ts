@@ -19,7 +19,7 @@ export type AboutPageData = {
           otherSkillValue: LevelRange;
         }[];
       };
-      testimonials: {
+      testimonials?: {
         testimonialText: string;
         testimonialImage: {
           publicURL: string;

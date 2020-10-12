@@ -4,17 +4,17 @@ export type ProjectGQL = {
       portfolioPageTitle: string;
       projects: {
         projectLabel: string;
-        projectCode: string;
+        projectCode?: string;
         projectPreviewImage: {
           publicURL: string;
         };
         projectDescription: string;
         projectRole: string;
         projectPreviewNote: string;
-        projectApp: string;
+        projectApp?: string;
         projectStartDate: string;
         projectFinishDate: string;
-        projectMockups: string;
+        projectMockups?: string;
         projectTechnologies: {
           technologyName: string;
         }[];

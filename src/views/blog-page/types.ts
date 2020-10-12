@@ -1,8 +1,8 @@
 export type BlogGQL = {
   markdownRemark: {
     blogPage: {
-      blogPostTitle: string;
-      blogPost: {
+      blogPostTitle?: string;
+      blogPost?: {
         blogTitle: string;
         blogLabel: string;
         blogBody: string;

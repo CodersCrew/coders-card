@@ -1,5 +1,5 @@
 ---
-blogPostTitle: quikad
+blogPostTitle: ""
 blogPost:
   - publishDate: 2020-08-23T10:38:23.615Z
     blogTitle: What Are the React Team Principles?
