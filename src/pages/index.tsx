@@ -175,36 +175,48 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
             <Box className={classes.content}>{aboutData.description}</Box>
             <SectionTitle className={classes.title}>My skills</SectionTitle>
             <Box className={classes.content}>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Technologies
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.technologies?.map((item) => (
-                  <Skill key={`${item.technologyName}`} level={item.technologyValue}>
-                    {item.technologyName}
-                  </Skill>
-                ))}
-              </Box>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Tools
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.tools?.map((item) => (
-                  <Skill key={`${item.toolName}`} level={item.toolValue}>
-                    {item.toolName}
-                  </Skill>
-                ))}
-              </Box>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Other skills
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.otherSkills?.map((item) => (
-                  <Skill key={`${item.otherSkillName}`} level={item.otherSkillValue}>
-                    {item.otherSkillName}
-                  </Skill>
-                ))}
-              </Box>
+              {aboutData.socialMedia.technologies && aboutData.socialMedia.technologies.length > 0 && (
+                <>
+                  <Typography variant="h6" className={classes.skillsHeader}>
+                    Technologies
+                  </Typography>
+                  <Box className={classes.skills}>
+                    {aboutData.socialMedia.technologies?.map((item) => (
+                      <Skill key={`${item.technologyName}`} level={item.technologyValue}>
+                        {item.technologyName}
+                      </Skill>
+                    ))}
+                  </Box>
+                </>
+              )}
+              {aboutData.socialMedia.tools && aboutData.socialMedia.tools.length > 0 && (
+                <>
+                  <Typography variant="h6" className={classes.skillsHeader}>
+                    Tools
+                  </Typography>
+                  <Box className={classes.skills}>
+                    {aboutData.socialMedia.tools?.map((item) => (
+                      <Skill key={`${item.toolName}`} level={item.toolValue}>
+                        {item.toolName}
+                      </Skill>
+                    ))}
+                  </Box>
+                </>
+              )}
+              {aboutData.socialMedia.otherSkills && aboutData.socialMedia.otherSkills.length > 0 && (
+                <>
+                  <Typography variant="h6" className={classes.skillsHeader}>
+                    Other skills
+                  </Typography>
+                  <Box className={classes.skills}>
+                    {aboutData.socialMedia.otherSkills?.map((item) => (
+                      <Skill key={`${item.otherSkillName}`} level={item.otherSkillValue}>
+                        {item.otherSkillName}
+                      </Skill>
+                    ))}
+                  </Box>
+                </>
+              )}
             </Box>
             {aboutData.testimonials && aboutData.testimonials?.length > 0 && (
               <>
