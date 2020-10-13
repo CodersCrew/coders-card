@@ -6,15 +6,15 @@ export type AboutPageData = {
       aboutPageTitle: string;
       description: string;
       socialMedia: {
-        technologies: {
+        technologies?: {
           technologyName: string;
           technologyValue: LevelRange;
         }[];
-        tools: {
+        tools?: {
           toolName: string;
           toolValue: LevelRange;
         }[];
-        otherSkills: {
+        otherSkills?: {
           otherSkillName: string;
           otherSkillValue: LevelRange;
         }[];

@@ -179,7 +179,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Technologies
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.socialMedia.technologies.map((item) => (
+                {aboutData.socialMedia.technologies?.map((item) => (
                   <Skill key={`${item.technologyName}`} level={item.technologyValue}>
                     {item.technologyName}
                   </Skill>
@@ -189,7 +189,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Tools
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.socialMedia.tools.map((item) => (
+                {aboutData.socialMedia.tools?.map((item) => (
                   <Skill key={`${item.toolName}`} level={item.toolValue}>
                     {item.toolName}
                   </Skill>
@@ -199,7 +199,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                 Other skills
               </Typography>
               <Box className={classes.skills}>
-                {aboutData.socialMedia.otherSkills.map((item) => (
+                {aboutData.socialMedia.otherSkills?.map((item) => (
                   <Skill key={`${item.otherSkillName}`} level={item.otherSkillValue}>
                     {item.otherSkillName}
                   </Skill>
