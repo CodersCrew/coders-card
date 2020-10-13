@@ -50,7 +50,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       toolValue: Int
     }
 
-    type MarkdownRemarkFrontmatterSocialMediaOtherSkills {}
+    type MarkdownRemarkFrontmatterSocialMediaOtherSkills {
       otherSkillName: String
       otherSkillValue: Int
     }
