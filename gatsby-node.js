@@ -29,6 +29,31 @@ exports.createSchemaCustomization = ({ actions }) => {
       blogBody: String
       blogImage: File
     }
+
+    type MarkdownRemarkFrontmatterSocialMedia {
+      twitter: String
+      github: String
+      instagram: String
+      facebook: String
+      technologies: [MarkdownRemarkFrontmatterSocialMediaTechnologies]
+      tools: [MarkdownRemarkFrontmatterSocialMediaTools]
+      otherSkills: [MarkdownRemarkFrontmatterSocialMediaOtherSkills]
+    }
+
+    type MarkdownRemarkFrontmatterSocialMediaTechnologies {
+      technologyName: String
+      technologyValue: Int
+    }
+
+    type MarkdownRemarkFrontmatterSocialMediaTools {
+      toolName: String
+      toolValue: Int
+    }
+
+    type MarkdownRemarkFrontmatterSocialMediaOtherSkills {}
+      otherSkillName: String
+      otherSkillValue: Int
+    }
   `;
   createTypes(typeDefs);
 };
