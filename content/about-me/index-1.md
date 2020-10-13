@@ -51,12 +51,6 @@ socialMedia:
       toolValue: 5
     - toolName: Zeplin
       toolValue: 4
-  otherSkills:
-    - otherSkillName: SCRUM
-      otherSkillValue: 3
-    - otherSkillName: RWD
-      otherSkillValue: 4
-    - otherSkillName: Atomic Design
-      otherSkillValue: 2
+  otherSkills: []
 testimonials: []
 ---
