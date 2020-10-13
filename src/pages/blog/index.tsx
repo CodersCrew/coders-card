@@ -123,9 +123,12 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const developerProfile = useDeveloperProfile();
   const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
 
-  if (blogData.blogPost?.length === 0) {
-    navigate('/');
+  if (typeof window !== `undefined`) {
+    if (blogData.blogPost?.length === 0) {
+      navigate('/');
+    }
   }
+
   // no blogpost will have index equal to -1 therefore no blogpost will be selected
   const handleCloseBlogpost = () => {
     setSelectedBlogpost(-1);
