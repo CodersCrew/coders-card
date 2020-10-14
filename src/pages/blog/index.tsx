@@ -124,10 +124,8 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
   const dateFormat = 'DD MMMM YYYY';
 
-  if (typeof window !== `undefined`) {
-    if (blogData.blogPost?.length === 0) {
-      navigate('/');
-    }
+  if (typeof window !== `undefined` && blogData.blogPost?.length === 0) {
+    navigate('/');
   }
 
   // no blogpost will have index equal to -1 therefore no blogpost will be selected

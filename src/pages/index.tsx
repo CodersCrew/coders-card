@@ -150,6 +150,11 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile } = useComponentType();
 
+  const hasTechnologies = aboutData.socialMedia.technologies && aboutData.socialMedia.technologies.length > 0;
+  const hasTools = aboutData.socialMedia.tools && aboutData.socialMedia.tools.length > 0;
+  const hasOtherSkills = aboutData.socialMedia.otherSkills && aboutData.socialMedia.otherSkills.length > 0;
+  const hasTestimonials = aboutData.testimonials && aboutData.testimonials.length > 0;
+
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
@@ -175,7 +180,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
             <Box className={classes.content}>{aboutData.description}</Box>
             <SectionTitle className={classes.title}>My skills</SectionTitle>
             <Box className={classes.content}>
-              {aboutData.socialMedia.technologies && aboutData.socialMedia.technologies.length > 0 && (
+              {hasTechnologies ? (
                 <>
                   <Typography variant="h6" className={classes.skillsHeader}>
                     Technologies
@@ -188,8 +193,8 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                     ))}
                   </Box>
                 </>
-              )}
-              {aboutData.socialMedia.tools && aboutData.socialMedia.tools.length > 0 && (
+              ) : null}
+              {hasTools ? (
                 <>
                   <Typography variant="h6" className={classes.skillsHeader}>
                     Tools
@@ -202,8 +207,8 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                     ))}
                   </Box>
                 </>
-              )}
-              {aboutData.socialMedia.otherSkills && aboutData.socialMedia.otherSkills.length > 0 && (
+              ) : null}
+              {hasOtherSkills ? (
                 <>
                   <Typography variant="h6" className={classes.skillsHeader}>
                     Other skills
@@ -216,13 +221,13 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                     ))}
                   </Box>
                 </>
-              )}
+              ) : null}
             </Box>
-            {aboutData.testimonials && aboutData.testimonials?.length > 0 && (
+            {hasTestimonials ? (
               <>
                 <SectionTitle className={classes.title}>Testimonials</SectionTitle>
                 <Box className={classes.testimonials}>
-                  {aboutData.testimonials.map((item) => (
+                  {aboutData.testimonials?.map((item) => (
                     <Testimonial
                       key={item.testimonialName}
                       isMobile={isMobile}
@@ -234,7 +239,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
                   ))}
                 </Box>
               </>
-            )}
+            ) : null}
           </Box>
         </Box>
       </Box>
