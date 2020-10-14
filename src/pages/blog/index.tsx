@@ -122,6 +122,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const { componentType, isDesktop } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
+  const dateFormat = 'DD MMMM YYYY';
 
   if (typeof window !== `undefined`) {
     if (blogData.blogPost?.length === 0) {
@@ -146,7 +147,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   return (
     <Container className={classes.container}>
       <Helmet>
-        <title>{blogData.blogPostTitle || 'Blog page'}</title>
+        <title>{blogData.blogPostTitle ?? 'Blog page'}</title>
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
@@ -166,33 +167,34 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
           <Box className={classes.blogContainer}>
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
-              {blogData.blogPost !== undefined &&
-                blogData.blogPost.map((blogPost, index) => (
-                  <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
-                    <BlogPost
-                      className={classes.blogPost}
-                      image={blogPost.blogImage.publicURL}
-                      tagName={blogPost.blogLabel}
-                      text={blogPost.blogDescription}
-                      title={blogPost.blogTitle}
-                      date={dayjs(blogPost.publishDate).format('DD MMMM YYYY')}
-                      onClick={() => setSelectedBlogpost(index)}
-                    />
-                    <BlogPostDialog
-                      contentheader={blogPost.blogDescription}
-                      contentmain={blogPost.blogBody}
-                      imgurl={blogPost.blogImage.publicURL}
-                      isOpen={index === selectedBlogpost}
-                      subtitle={dayjs(blogPost.publishDate).format('DD MMMM YYYY')}
-                      tagtitle={blogPost.blogLabel}
-                      title={blogPost.blogTitle}
-                      type={componentType}
-                      handleClose={() => handleCloseBlogpost()}
-                      handlePrev={() => handlePrevBlogpost(index)}
-                      handleNext={() => handleNextBlogpost(index)}
-                    />
-                  </div>
-                ))}
+              {blogData.blogPost !== undefined
+                ? blogData.blogPost.map((blogPost, index) => (
+                    <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
+                      <BlogPost
+                        className={classes.blogPost}
+                        image={blogPost.blogImage.publicURL}
+                        tagName={blogPost.blogLabel}
+                        text={blogPost.blogDescription}
+                        title={blogPost.blogTitle}
+                        date={dayjs(blogPost.publishDate).format(dateFormat)}
+                        onClick={() => setSelectedBlogpost(index)}
+                      />
+                      <BlogPostDialog
+                        contentheader={blogPost.blogDescription}
+                        contentmain={blogPost.blogBody}
+                        imgurl={blogPost.blogImage.publicURL}
+                        isOpen={index === selectedBlogpost}
+                        subtitle={dayjs(blogPost.publishDate).format(dateFormat)}
+                        tagtitle={blogPost.blogLabel}
+                        title={blogPost.blogTitle}
+                        type={componentType}
+                        handleClose={() => handleCloseBlogpost()}
+                        handlePrev={() => handlePrevBlogpost(index)}
+                        handleNext={() => handleNextBlogpost(index)}
+                      />
+                    </div>
+                  ))
+                : null}
             </Box>
           </Box>
         </Box>

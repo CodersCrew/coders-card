@@ -8,7 +8,7 @@ export const projectData = {
     'In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque.',
   label: 'Mobile app',
   onClick: () => {
-    window.alert('project clicked');
+    console.log('project clicked');
   },
 };
 
