@@ -12,6 +12,7 @@ import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
+import { canUseWindow } from '../../utils/canUseWindow';
 import { BlogGQL } from '../../views/blog-page/types';
 
 const useStyles = makeStyles((theme) => ({
@@ -121,25 +122,25 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
   const developerProfile = useDeveloperProfile();
-  const [selectedBlogpost, setSelectedBlogpost] = useState(-1);
+  const [selectedBlogPost, setSelectedBlogPost] = useState(-1);
   const dateFormat = 'DD MMMM YYYY';
 
-  if (typeof window !== `undefined` && blogData.blogPost?.length === 0) {
+  if (canUseWindow && blogData.blogPost?.length === 0) {
     navigate('/');
   }
 
   // no blogpost will have index equal to -1 therefore no blogpost will be selected
-  const handleCloseBlogpost = () => {
-    setSelectedBlogpost(-1);
+  const handleCloseBlogPost = () => {
+    setSelectedBlogPost(-1);
   };
   // if is first blogpost, choose last blogpost
-  const handlePrevBlogpost = (index: number) => {
-    setSelectedBlogpost(index === 0 ? blogData.blogPost!.length - 1 : index - 1);
+  const handlePrevBlogPost = (index: number) => {
+    setSelectedBlogPost(index === 0 ? blogData.blogPost!.length - 1 : index - 1);
   };
 
   // if is last blogpost, choose first blogpost
-  const handleNextBlogpost = (index: number) => {
-    setSelectedBlogpost(index === blogData.blogPost!.length - 1 ? 0 : index + 1);
+  const handleNextBlogPost = (index: number) => {
+    setSelectedBlogPost(index === blogData.blogPost!.length - 1 ? 0 : index + 1);
   };
 
   return (
@@ -165,7 +166,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
           <Box className={classes.blogContainer}>
             <SectionTitle className={classes.title}>Blog</SectionTitle>
             <Box className={classes.blogPosts}>
-              {blogData.blogPost !== undefined
+              {blogData.blogPost
                 ? blogData.blogPost.map((blogPost, index) => (
                     <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
                       <BlogPost
@@ -175,20 +176,20 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
                         text={blogPost.blogDescription}
                         title={blogPost.blogTitle}
                         date={dayjs(blogPost.publishDate).format(dateFormat)}
-                        onClick={() => setSelectedBlogpost(index)}
+                        onClick={() => setSelectedBlogPost(index)}
                       />
                       <BlogPostDialog
                         contentheader={blogPost.blogDescription}
                         contentmain={blogPost.blogBody}
                         imgurl={blogPost.blogImage.publicURL}
-                        isOpen={index === selectedBlogpost}
+                        isOpen={index === selectedBlogPost}
                         subtitle={dayjs(blogPost.publishDate).format(dateFormat)}
                         tagtitle={blogPost.blogLabel}
                         title={blogPost.blogTitle}
                         type={componentType}
-                        handleClose={() => handleCloseBlogpost()}
-                        handlePrev={() => handlePrevBlogpost(index)}
-                        handleNext={() => handleNextBlogpost(index)}
+                        handleClose={handleCloseBlogPost}
+                        handlePrev={() => handlePrevBlogPost(index)}
+                        handleNext={() => handleNextBlogPost(index)}
                       />
                     </div>
                   ))
