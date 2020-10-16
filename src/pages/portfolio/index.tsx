@@ -182,9 +182,9 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                     contentMainRole={project.projectRole}
                     contentHeader={project.projectPreviewNote}
                     tagtitle={project.projectLabel}
-                    mockupsUrl={project.projectMockups}
-                    projectUrl={project.projectApp}
-                    codeUrl={project.projectCode}
+                    mockupsUrl={project.projectMockups ?? ''}
+                    projectUrl={project.projectApp ?? ''}
+                    codeUrl={project.projectCode ?? ''}
                   />
                 </div>
               ))}

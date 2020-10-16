@@ -17,12 +17,13 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "blogPostTitle", widget: "string" }
+      - { label: "Title", name: "blogPostTitle", widget: "string", required: false }
       - label: "Blog post"
         name: "blogPost"
         widget: "list"
+        required: false
         fields:
-          - { label: "Title", name: "blogTitle", widget: "string" }
+          - { label: "Title", name: "blogTitle", widget: "string"}
           - { label: "Publish Date", name: "publishDate", widget: "datetime" }
           - { label: "Label", name: "blogLabel", widget: "string" }
           - { label: "Description", name: "blogDescription", widget: "string" }
@@ -33,7 +34,7 @@ collections:
     label: "Developer profile"
     folder: "content/developer-profile"
     create: true
-    slug: "index"
+    slug: "index" 
     media_folder: ""
     public_folder: ""
     path: "{{content}}index"
@@ -44,7 +45,7 @@ collections:
       - { label: "Last name", name: "lastName", widget: "string" }
       - { label: "Avatar image", name: "avatar", widget: "image" }
       - { label: "Job position", name: "position", widget: "string" }
-      - { label: "Phone number", name: "phone", widget: "string" }
+      - { label: "Phone number", name: "phone", widget: "string", required: false }
       - { label: "Email", name: "email", widget: "string" }
       - { label: "City of residence", name: "city", widget: "string" }
       - { label: "Country of residence", name: "country", widget: "string" }
@@ -97,9 +98,10 @@ collections:
       - label: "Testimonials"
         name: "testimonials"
         widget: list
+        required: false
         fields:
           - { label: "Text", name: "testimonialText", widget: "string" }
-          - { label: "Image", name: "testimonialImage", widget: "image", required: false }
+          - { label: "Image", name: "testimonialImage", widget: "image" }
           - { label: "Testimone name", name: "testimonialName", widget: "string" }
           - { label: "Testimone job position", name: "testimonialJob", widget: "string" }
 
@@ -155,9 +157,9 @@ collections:
           - { label: "Preview image", name: "projectPreviewImage", widget: "image" }
           - { label: "Project description", name: "projectDescription", widget: "markdown" }
           - { label: "My role in the project", name: "projectRole", widget: "markdown" }
-          - { label: "Link to code", name: "projectCode", widget: "string" }
-          - { label: "Link to mockups", name: "projectMockups", widget: "string" }
-          - { label: "Link to application", name: "projectApp", widget: "string" }
+          - { label: "Link to code", name: "projectCode", widget: "string", required: false }
+          - { label: "Link to mockups", name: "projectMockups", widget: "string", required: false }
+          - { label: "Link to application", name: "projectApp", widget: "string", required: false }
           - { label: "Project label (example: Mobile app)", name: "projectLabel", widget: "string" }
           - { label: "Project start date", name: "projectStartDate", widget: "datetime" }
           - { label: "Project finish date", name: "projectFinishDate", widget: "datetime" }

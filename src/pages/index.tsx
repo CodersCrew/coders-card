@@ -150,6 +150,11 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile } = useComponentType();
 
+  const hasTechnologies = aboutData.socialMedia.technologies && aboutData.socialMedia.technologies.length > 0;
+  const hasTools = aboutData.socialMedia.tools && aboutData.socialMedia.tools.length > 0;
+  const hasOtherSkills = aboutData.socialMedia.otherSkills && aboutData.socialMedia.otherSkills.length > 0;
+  const hasTestimonials = aboutData.testimonials && aboutData.testimonials.length > 0;
+
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
@@ -175,50 +180,66 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
             <Box className={classes.content}>{aboutData.description}</Box>
             <SectionTitle className={classes.title}>My skills</SectionTitle>
             <Box className={classes.content}>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Technologies
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.technologies.map((item) => (
-                  <Skill key={`${item.technologyName}`} level={item.technologyValue}>
-                    {item.technologyName}
-                  </Skill>
-                ))}
-              </Box>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Tools
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.tools.map((item) => (
-                  <Skill key={`${item.toolName}`} level={item.toolValue}>
-                    {item.toolName}
-                  </Skill>
-                ))}
-              </Box>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Other skills
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.otherSkills.map((item) => (
-                  <Skill key={`${item.otherSkillName}`} level={item.otherSkillValue}>
-                    {item.otherSkillName}
-                  </Skill>
-                ))}
-              </Box>
+              {hasTechnologies ? (
+                <>
+                  <Typography variant="h6" className={classes.skillsHeader}>
+                    Technologies
+                  </Typography>
+                  <Box className={classes.skills}>
+                    {aboutData.socialMedia.technologies?.map((item) => (
+                      <Skill key={item.technologyName} level={item.technologyValue}>
+                        {item.technologyName}
+                      </Skill>
+                    ))}
+                  </Box>
+                </>
+              ) : null}
+              {hasTools ? (
+                <>
+                  <Typography variant="h6" className={classes.skillsHeader}>
+                    Tools
+                  </Typography>
+                  <Box className={classes.skills}>
+                    {aboutData.socialMedia.tools?.map((item) => (
+                      <Skill key={item.toolName} level={item.toolValue}>
+                        {item.toolName}
+                      </Skill>
+                    ))}
+                  </Box>
+                </>
+              ) : null}
+              {hasOtherSkills ? (
+                <>
+                  <Typography variant="h6" className={classes.skillsHeader}>
+                    Other skills
+                  </Typography>
+                  <Box className={classes.skills}>
+                    {aboutData.socialMedia.otherSkills?.map((item) => (
+                      <Skill key={item.otherSkillName} level={item.otherSkillValue}>
+                        {item.otherSkillName}
+                      </Skill>
+                    ))}
+                  </Box>
+                </>
+              ) : null}
             </Box>
-            <SectionTitle className={classes.title}>Testimonials</SectionTitle>
-            <Box className={classes.testimonials}>
-              {aboutData.testimonials.map((item) => (
-                <Testimonial
-                  key={`${item.testimonialName}`}
-                  isMobile={isMobile}
-                  image={item.testimonialImage.publicURL}
-                  description={item.testimonialText}
-                  labelBold={item.testimonialName}
-                  label={item.testimonialJob}
-                />
-              ))}
-            </Box>
+            {hasTestimonials ? (
+              <>
+                <SectionTitle className={classes.title}>Testimonials</SectionTitle>
+                <Box className={classes.testimonials}>
+                  {aboutData.testimonials?.map((item) => (
+                    <Testimonial
+                      key={item.testimonialName}
+                      isMobile={isMobile}
+                      image={item.testimonialImage.publicURL}
+                      description={item.testimonialText}
+                      labelBold={item.testimonialName}
+                      label={item.testimonialJob}
+                    />
+                  ))}
+                </Box>
+              </>
+            ) : null}
           </Box>
         </Box>
       </Box>

@@ -5,20 +5,20 @@ export type DeveloperProfileGQL = {
   isFreelancer: boolean;
   firstName: string;
   email: string;
-  phone: string;
+  phone?: string;
   country: string;
   city: string;
   avatar: {
     publicURL: string;
   };
   socialMedia: {
-    facebook: string;
-    github: string;
-    instagram: string;
-    twitter: string;
+    facebook?: string;
+    github?: string;
+    instagram?: string;
+    twitter?: string;
   };
   position: string;
-  cv: string;
+  cv?: string;
 };
 
 type DeveloperProfile = DeveloperProfileGQL | null;
