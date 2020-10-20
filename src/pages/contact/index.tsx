@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   detailsCard: {
-    margin: theme.spacing(0, 2.5, 0, 2.5),
+    margin: theme.spacing(0, 3, 0, 3),
     [theme.breakpoints.up('lg')]: {
       height: 668,
       width: 280,
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 16,
     padding: theme.spacing(3),
     [theme.breakpoints.down('lg')]: {
-      margin: theme.spacing(4, 2.5, 4, 2.5),
+      margin: theme.spacing(4, 3, 4, 3),
     },
     [theme.breakpoints.down('xs')]: {
       margin: theme.spacing(4, 0, 0, 0),
@@ -247,7 +247,6 @@ const ContactPage = () => {
             />
             <Box className={classes.detailsCard}>
               <DetailsCard type={componentType} />
-              {console.log('componentType', componentType)}
             </Box>
           </Box>
         )}
