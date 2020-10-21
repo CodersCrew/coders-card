@@ -53,6 +53,16 @@ const useStyles = makeStyles((theme) => ({
     gridArea: 'main',
     width: '100%',
   },
+  detailsCard: {
+    margin: theme.spacing(0, 3, 4, 3),
+    [theme.breakpoints.up('lg')]: {
+      height: 668,
+      width: 280,
+      display: 'block',
+      position: 'sticky',
+      marginRight: theme.spacing(4),
+    },
+  },
   mainContent: {
     backgroundColor: theme.palette.background.paper,
     borderRadius: 16,
@@ -62,10 +72,14 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(7),
     },
 
+    [theme.breakpoints.up('sm')]: {
+      margin: theme.spacing(0, 3, 7, 3),
+    },
+
     [theme.breakpoints.up('lg')]: {
+      margin: theme.spacing(0, 0, 7, 0),
       display: 'flex',
       flexDirection: 'column',
-      marginBottom: theme.spacing(7),
       boxShadow: portfolioPageItemShadow,
     },
   },
@@ -160,19 +174,35 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
       <Helmet>
         <title>{aboutData.aboutPageTitle}</title>
       </Helmet>
-      {isDesktop && (
-        <Box className={classes.aside}>
-          <DetailsCard type={componentType} />
-        </Box>
+      {isDesktop ? (
+        <>
+          <Box className={classes.aside}>
+            <DetailsCard type={componentType} />
+          </Box>
+          <Navbar
+            className={classes.navbar}
+            type={componentType}
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+            position={developerProfile.position}
+            image={developerProfile.avatar.publicURL}
+            resumeLink={developerProfile.cv}
+          />
+        </>
+      ) : (
+        <>
+          <Navbar
+            className={classes.navbar}
+            type={componentType}
+            fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
+            position={developerProfile.position}
+            image={developerProfile.avatar.publicURL}
+            resumeLink={developerProfile.cv}
+          />
+          <Box className={classes.detailsCard}>
+            <DetailsCard type={componentType} />
+          </Box>
+        </>
       )}
-      <Navbar
-        className={classes.navbar}
-        type={componentType}
-        fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-        position={developerProfile.position}
-        image={developerProfile.avatar.publicURL}
-        resumeLink={developerProfile.cv}
-      />
       <Box className={classes.main}>
         <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>
