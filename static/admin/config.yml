@@ -83,18 +83,21 @@ collections:
             widget: "list"
             fields:
               - { label: "Name", name: "technologyName", widget: "string" }
+              - { label: "Value", name: "technologyValue", widget: "number", min: 1, max: 5  }
           - label: "Tools"
             name: "tools"
             required: false
             widget: "list"
             fields:
               - { label: "Name", name: "toolName", widget: "string" }
+              - { label: "Value", name: "toolValue", widget: "number", min: 1, max: 5  }
           - label: "Other skills"
             name: "otherSkills"
             required: false
             widget: "list"
             fields:
               - { label: "Name", name: "otherSkillName", widget: "string" }
+              - { label: "Value", name: "otherSkillValue", widget: "number", min: 1, max: 5  }
       - label: "Testimonials"
         name: "testimonials"
         widget: list
