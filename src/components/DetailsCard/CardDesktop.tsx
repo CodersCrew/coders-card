@@ -135,11 +135,13 @@ const CardDesktop: FC<{ data: CardProps }> = ({ data }) => {
             </Typography>
             {socialMedia && (
               <Box className={classes.iconsWrapper}>
-                {socialMedia.map((media) => (
-                  <a className={classes.link} key={media.name} href={media.link}>
-                    {renderSocialMediaIcon(media.name, classes.icon)}
-                  </a>
-                ))}
+                {socialMedia.map((media) =>
+                  media.link ? (
+                    <a className={classes.link} key={media.name} href={media.link} target="_blank" rel="noreferrer">
+                      {renderSocialMediaIcon(media.name, classes.icon)}
+                    </a>
+                  ) : null,
+                )}
               </Box>
             )}
           </Box>
