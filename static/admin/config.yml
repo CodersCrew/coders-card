@@ -46,7 +46,7 @@ collections:
       - { label: "Avatar image", name: "avatar", widget: "image" }
       - { label: "Job position", name: "position", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
       - { label: "Phone number", name: "phone", widget: "string", required: false }
-      - { label: "Email", name: "email", widget: "string", pattern: ['/^.+@.+\..+$/', "Must be a valid e=mail address"] }
+      - { label: "Email", name: "email", widget: "string", pattern: ['/^.+@.+\..+$/', "Must be a valid email address"] }
       - { label: "City of residence", name: "city", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
       - { label: "Country of residence", name: "country", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
       - { label: "Available for freelance", name: "isFreelancer", widget: "boolean" }
