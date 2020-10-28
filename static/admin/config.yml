@@ -34,7 +34,7 @@ collections:
     label: "Developer profile"
     folder: "content/developer-profile"
     create: true
-    slug: "index" 
+    slug: "index"
     media_folder: ""
     public_folder: ""
     path: "{{content}}index"
@@ -71,8 +71,8 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "aboutPageTitle", widget: "string", default: "About me" }
-      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Title", name: "aboutPageTitle", widget: "string", default: "About me", pattern: ['.{5,60}', "Must have 5-60 characters"] }
+      - { label: "Description", name: "description", widget: "markdown", pattern: ['.{100,3000}', "Must have 100-3000 characters"] }
       - label: "Skills"
         name: "socialMedia"
         widget: "object"
@@ -82,31 +82,31 @@ collections:
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "technologyName", widget: "string" }
+              - { label: "Name", name: "technologyName", widget: "string", pattern: ['.{1,50}', "Must have 1-50 characters"] }
               - { label: "Value", name: "technologyValue", widget: "number", min: 1, max: 5  }
           - label: "Tools"
             name: "tools"
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "toolName", widget: "string" }
+              - { label: "Name", name: "toolName", widget: "string", pattern: ['.{1,50}', "Must have 1-50 characters"] }
               - { label: "Value", name: "toolValue", widget: "number", min: 1, max: 5  }
           - label: "Other skills"
             name: "otherSkills"
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "otherSkillName", widget: "string" }
+              - { label: "Name", name: "otherSkillName", widget: "string", pattern: ['.{1,50}', "Must have 1-50 characters"] }
               - { label: "Value", name: "otherSkillValue", widget: "number", min: 1, max: 5  }
       - label: "Testimonials"
         name: "testimonials"
         widget: list
         required: false
         fields:
-          - { label: "Text", name: "testimonialText", widget: "string" }
+          - { label: "Text", name: "testimonialText", widget: "string", pattern: ['.{30,160}', "Must have 30-160 characters"] }
           - { label: "Image", name: "testimonialImage", widget: "image" }
-          - { label: "Testimone name", name: "testimonialName", widget: "string" }
-          - { label: "Testimone job position", name: "testimonialJob", widget: "string" }
+          - { label: "Testimone name", name: "testimonialName", widget: "string", pattern: ['.{5,40}', "Must have 5-40 characters"] }
+          - { label: "Testimone job position", name: "testimonialJob", widget: "string", pattern: ['.{5,40}', "Must have 5-40 characters"] }
 
   - name: "resume"
     label: "Resume"
