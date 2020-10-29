@@ -14,9 +14,9 @@ export default {
 
 const basePropsData: CardProps = {
   image,
-  title: 'My Awesome Projectpppppppp',
+  title: 'My Awesome Project',
   description:
-    'In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque.',
+    'In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque.',
   label: 'Mobile app',
   onClick: action('onClick'),
 };
