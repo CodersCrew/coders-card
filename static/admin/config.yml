@@ -41,24 +41,24 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "First name", name: "firstName", widget: "string" }
-      - { label: "Last name", name: "lastName", widget: "string" }
+      - { label: "First name", name: "firstName", widget: "string", pattern: ['.{2,20}', "Must have 2-20 characters"] }
+      - { label: "Last name", name: "lastName", widget: "string", pattern: ['.{2,20}', "Must have 2-20 characters"] }
       - { label: "Avatar image", name: "avatar", widget: "image" }
-      - { label: "Job position", name: "position", widget: "string" }
+      - { label: "Job position", name: "position", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
       - { label: "Phone number", name: "phone", widget: "string", required: false }
-      - { label: "Email", name: "email", widget: "string" }
-      - { label: "City of residence", name: "city", widget: "string" }
-      - { label: "Country of residence", name: "country", widget: "string" }
+      - { label: "Email", name: "email", widget: "string", pattern: ['/^.+@.+\..+$/', "Must be a valid email address"] }
+      - { label: "City of residence", name: "city", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
+      - { label: "Country of residence", name: "country", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
       - { label: "Available for freelance", name: "isFreelancer", widget: "boolean" }
-      - { label: "Link to download CV", name: "cv", widget: "string" }
+      - { label: "Link to download CV", name: "cv", widget: "string", pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
       - label: "Social media"
         name: "socialMedia"
         widget: "object"
         fields:
-          - { label: "Twitter profile link", name: "twitter", widget: "string", required: false }
-          - { label: "Github profile link", name: "github", widget: "string", required: false }
-          - { label: "Instagram profile link", name: "instagram", widget: "string", required: false }
-          - { label: "Facebook profile link", name: "facebook", widget: "string", required: false}
+          - { label: "Twitter profile link", name: "twitter", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
+          - { label: "Github profile link", name: "github", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
+          - { label: "Instagram profile link", name: "instagram", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
+          - { label: "Facebook profile link", name: "facebook", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
 
   - name: "about-me"
     label: "About me"
