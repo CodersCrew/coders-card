@@ -163,15 +163,15 @@ collections:
         name: "projects"
         widget: "list"
         fields:
-          - { label: "Project name", name: "projectName", widget: "string" }
-          - { label: "Preview note", name: "projectPreviewNote", widget: "string" }
+          - { label: "Project name", name: "projectName", widget: "string", pattern: ['.{5,25}', "Must have 5-25 characters"] }
+          - { label: "Preview note", name: "projectPreviewNote", widget: "string", pattern: ['.{5,200}', "Must have 5-200 characters"] }
           - { label: "Preview image", name: "projectPreviewImage", widget: "image" }
-          - { label: "Project description", name: "projectDescription", widget: "markdown" }
-          - { label: "My role in the project", name: "projectRole", widget: "markdown" }
-          - { label: "Link to code", name: "projectCode", widget: "string", required: false }
-          - { label: "Link to mockups", name: "projectMockups", widget: "string", required: false }
-          - { label: "Link to application", name: "projectApp", widget: "string", required: false }
-          - { label: "Project label (example: Mobile app)", name: "projectLabel", widget: "string" }
+          - { label: "Project description", name: "projectDescription", widget: "markdown", pattern: ['.{5,400}', "Must have 5-400 characters"] }
+          - { label: "My role in the project", name: "projectRole", widget: "markdown", pattern: ['.{10,370}', "Must have 10-370 characters"] }
+          - { label: "Link to code", name: "projectCode", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"]  }
+          - { label: "Link to mockups", name: "projectMockups", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"]  }
+          - { label: "Link to application", name: "projectApp", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"]  }
+          - { label: "Project label (example: Mobile app)", name: "projectLabel", widget: "string", pattern: ['.{3,20}', "Must have 3-20 characters"] }
           - { label: "Project start date", name: "projectStartDate", widget: "datetime" }
           - { label: "Project finish date", name: "projectFinishDate", widget: "datetime" }
           - label: "Technologies"
