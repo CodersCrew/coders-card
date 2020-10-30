@@ -171,5 +171,3 @@ collections:
             widget: "list"
             fields:
               - { label: "Name", name: "technologyName", widget: "string", pattern: ['.{3,15}', "Must have 3-15 characters"] }
-
-           
