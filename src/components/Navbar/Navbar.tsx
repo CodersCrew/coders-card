@@ -18,13 +18,26 @@ type NavbarBaseProps = BoxProps & {
 
 export type NavbarProps = NavbarBaseProps & { withoutBlogPage?: boolean };
 
-export const Navbar: CFC<NavbarProps> = ({ type, fullName, image, position, resumeLink, ...props }) => {
+export const NavbarComponent: CFC<NavbarProps> = ({
+  withoutBlogPage,
+  type,
+  fullName,
+  image,
+  position,
+  resumeLink,
+  ...props
+}) => {
   const mobileProps = { fullName, image, position };
   const tabletProps = { fullName, image, position, resumeLink };
-  const withoutBlogPage = useBlogPageDoesNotExist();
 
   if (type === 'mobile') return <MobileNavbar {...mobileProps} {...props} withoutBlogPage={withoutBlogPage} />;
   if (type === 'tablet') return <TabletNavbar {...tabletProps} {...props} withoutBlogPage={withoutBlogPage} />;
 
   return <DesktopNavbar {...props} withoutBlogPage={withoutBlogPage} />;
+};
+
+export const Navbar: CFC<NavbarBaseProps> = (props) => {
+  const blogPageDoesntExist = useBlogPageDoesNotExist();
+
+  return <NavbarComponent {...props} withoutBlogPage={blogPageDoesntExist} />;
 };
