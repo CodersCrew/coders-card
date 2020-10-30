@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const DesktopNavbar: CFC<DesktopNavbarProps> = ({ className, ...props }) => {
+export const DesktopNavbar: CFC<DesktopNavbarProps> = ({ className, withoutBlogPage, ...props }) => {
   const classes = useStyles();
 
   return (
     <Box {...props} className={clsx(className, classes.root)}>
       <MenuList variant="menu" className={classes.menu}>
-        {renderNavItems()}
+        {renderNavItems(undefined, withoutBlogPage)}
       </MenuList>
     </Box>
   );

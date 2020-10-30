@@ -36,6 +36,7 @@ export const TabletNavbar: CFC<TabletNavbarProps> = ({
   image,
   position,
   resumeLink,
+  withoutBlogPage,
   ...props
 }) => {
   const classes = useStyles();
@@ -58,7 +59,7 @@ export const TabletNavbar: CFC<TabletNavbarProps> = ({
       </Box>
       <Divider />
       <MenuList className={classes.menu} variant="menu">
-        {renderNavItems()}
+        {renderNavItems(undefined, withoutBlogPage)}
       </MenuList>
     </Box>
   );
