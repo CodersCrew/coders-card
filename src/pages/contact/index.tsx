@@ -3,6 +3,7 @@ import { Send } from 'react-feather';
 import { Helmet } from 'react-helmet';
 import { Box, Container, makeStyles } from '@material-ui/core';
 import { Form, Formik, FormikConfig, useFormikContext } from 'formik';
+import { graphql } from 'gatsby';
 import * as Yup from 'yup';
 
 import { Button } from '../../components/Button';
@@ -12,7 +13,9 @@ import { SectionTitle } from '../../components/SectionTitle';
 import { FormikTextField } from '../../components/TextField';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
+import { FC } from '../../typings/components';
 import { textFieldData } from '../../views/contact-page/data';
+import { ContactGQL } from '../../views/contact-page/types';
 
 const contactPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 
@@ -184,7 +187,8 @@ const ContactPageForm = () => {
   );
 };
 
-const ContactPage = () => {
+const ContactPage: FC<{ data: ContactGQL }> = ({ data }) => {
+  const contactData = data.contactPage.frontmatter;
   const classes = useStyles();
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
@@ -194,10 +198,10 @@ const ContactPage = () => {
       helpers.setSubmitting(false);
     }, 500);
 
-    const encode = (data: Record<string, string>) => {
-      return Object.keys(data)
+    const encode = (record: Record<string, string>) => {
+      return Object.keys(record)
 
-        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(record[key])}`)
         .join('&');
     };
 
@@ -216,7 +220,11 @@ const ContactPage = () => {
   return (
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
-        <title>Contact page</title>
+        <title>{contactData.contactPageTitle}</title>
+        <meta name="description" content={contactData.contactPageDescription} />
+        <meta property="og:title" content={contactData.contactPageTitle} />
+        <meta property="og:description" content={contactData.contactPageDescription} />
+        <meta property="og:image" content={contactData.contactPageImage.publicURL} />
       </Helmet>
       {isDesktop && (
         <Box className={classes.detailsCard}>
@@ -264,3 +272,17 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+
+export const pageQuery = graphql`
+  query ContactPageQuery {
+    contactPage: markdownRemark(fileAbsolutePath: { regex: "/contact/index-1.md/" }) {
+      frontmatter {
+        contactPageTitle
+        contactPageDescription
+        contactPageImage {
+          publicURL
+        }
+      }
+    }
+  }
+`;

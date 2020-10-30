@@ -146,7 +146,11 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   return (
     <Container className={classes.container}>
       <Helmet>
-        <title>{blogData.blogPostTitle ?? 'Blog page'}</title>
+        <title>{blogData.blogPageTitle ?? 'Blog page'}</title>
+        <meta name="description" content={blogData.blogPageDescription} />
+        <meta property="og:title" content={blogData.blogPageTitle ?? 'Blog page'} />
+        <meta property="og:description" content={blogData.blogPageDescription} />
+        <meta property="og:image" content={blogData.blogPageImage.publicURL} />
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
@@ -208,7 +212,11 @@ export const pageQuery = graphql`
   query BlogPage {
     markdownRemark(fileAbsolutePath: { regex: "/blog/index-1.md/" }) {
       blogPage: frontmatter {
-        blogPostTitle
+        blogPageTitle
+        blogPageDescription
+        blogPageImage {
+          publicURL
+        }
         blogPost {
           blogTitle
           blogLabel

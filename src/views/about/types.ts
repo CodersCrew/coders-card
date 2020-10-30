@@ -4,6 +4,10 @@ export type AboutPageData = {
   aboutPage: {
     frontmatter: {
       aboutPageTitle: string;
+      aboutPageDescription: string;
+      aboutPageImage: {
+        publicURL: string;
+      };
       description: string;
       socialMedia: {
         technologies?: {

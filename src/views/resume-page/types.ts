@@ -2,6 +2,10 @@ export type ResumePageData = {
   resumePage: {
     frontmatter: {
       resumePageTitle: string;
+      resumePageDescription: string;
+      resumePageImage: {
+        publicURL: string;
+      };
       workExperience: {
         startJobDate: string;
         finishJobDate: string;
