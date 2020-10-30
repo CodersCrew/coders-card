@@ -39,9 +39,11 @@ const navItems: NavItemConfig[] = [
   },
 ];
 
-export const renderNavItems = (onClick: NavItemProps['onClick'] = () => {}) =>
-  navItems.map((item) => (
-    <NavItem key={item.label} to={item.to} onClick={onClick} icon={item.icon}>
-      {item.label}
-    </NavItem>
-  ));
+export const renderNavItems = (onClick: NavItemProps['onClick'] = () => {}, withoutBlogPage?: boolean) =>
+  navItems.map((item) =>
+    item.to === '/blog' && withoutBlogPage ? null : (
+      <NavItem key={item.label} to={item.to} onClick={onClick} icon={item.icon}>
+        {item.label}
+      </NavItem>
+    ),
+  );

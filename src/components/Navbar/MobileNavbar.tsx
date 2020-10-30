@@ -36,7 +36,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const MobileNavbar: CFC<MobileNavbarProps> = ({ className, fullName, image, position, ...props }) => {
+export const MobileNavbar: CFC<MobileNavbarProps> = ({
+  className,
+  fullName,
+  image,
+  position,
+  withoutBlogPage,
+  ...props
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const classes = useStyles();
 
@@ -71,7 +78,7 @@ export const MobileNavbar: CFC<MobileNavbarProps> = ({ className, fullName, imag
         keepMounted
         variant="menu"
       >
-        {renderNavItems(handleClose)}
+        {renderNavItems(handleClose, withoutBlogPage)}
       </Menu>
     </>
   );
