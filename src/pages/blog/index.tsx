@@ -10,6 +10,7 @@ import { DetailsCard } from '../../components/DetailsCard';
 import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
+import { useBlogPageDoesNotExist } from '../../hooks/useBlogPageDoesNotExist';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { canUseWindow } from '../../utils/canUseWindow';
@@ -119,6 +120,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const blogData = data.markdownRemark.blogPage;
+  const blogPageDoesntExist = useBlogPageDoesNotExist();
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
   const developerProfile = useDeveloperProfile();
@@ -145,13 +147,18 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
 
   return (
     <Container className={classes.container}>
-      <Helmet>
-        <title>{blogData.blogPageTitle ?? 'Blog page'}</title>
-        <meta name="description" content={blogData.blogPageDescription} />
-        <meta property="og:title" content={blogData.blogPageTitle ?? 'Blog page'} />
-        <meta property="og:description" content={blogData.blogPageDescription} />
-        <meta property="og:image" content={blogData.blogPageImage.publicURL} />
-      </Helmet>
+      {blogPageDoesntExist ? null : (
+        <>
+          <Helmet>
+            <title>{blogData.blogPageTitle ?? 'Blog page'}</title>
+            <meta name="description" content={blogData.blogPageDescription} />
+            <meta property="og:title" content={blogData.blogPageTitle ?? 'Blog page'} />
+            <meta property="og:description" content={blogData.blogPageDescription} />
+            <meta property="og:image" content={blogData.blogPageImage.publicURL} />
+          </Helmet>
+        </>
+      )}
+
       {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
