@@ -137,12 +137,16 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   };
   // if is first blogpost, choose last blogpost
   const handlePrevBlogPost = (index: number) => {
-    setSelectedBlogPost(index === 0 ? blogData.blogPost!.length - 1 : index - 1);
+    if (blogData.blogPost) {
+      setSelectedBlogPost(index === 0 ? blogData.blogPost.length - 1 : index - 1);
+    }
   };
 
   // if is last blogpost, choose first blogpost
   const handleNextBlogPost = (index: number) => {
-    setSelectedBlogPost(index === blogData.blogPost!.length - 1 ? 0 : index + 1);
+    if (blogData.blogPost) {
+      setSelectedBlogPost(index === blogData.blogPost.length - 1 ? 0 : index + 1);
+    }
   };
 
   return (
