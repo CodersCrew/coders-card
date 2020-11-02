@@ -1,5 +1,7 @@
 ---
 resumePageTitle: resume page
+resumePageDescription: resume page description
+resumePageImage: background.jpg
 workExperience:
   - startJobDate: February 2020
     finishJobDate: current

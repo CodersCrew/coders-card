@@ -173,6 +173,10 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>{aboutData.aboutPageTitle}</title>
+        <meta name="description" content={aboutData.aboutPageDescription} />
+        <meta property="og:title" content={aboutData.aboutPageTitle} />
+        <meta property="og:description" content={aboutData.aboutPageDescription} />
+        <meta property="og:image" content={aboutData.aboutPageImage.publicURL} />
       </Helmet>
       {isDesktop ? (
         <>
@@ -284,6 +288,10 @@ export const aboutPageQuery = graphql`
     aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me/index-1.md/" }) {
       frontmatter {
         aboutPageTitle
+        aboutPageDescription
+        aboutPageImage {
+          publicURL
+        }
         description
         socialMedia {
           technologies {

@@ -1,5 +1,7 @@
 ---
 portfolioPageTitle: My portfolio page
+portfolioPageDescription: My portfolio page description
+portfolioPageImage: background.jpg
 projects:
   - projectLabel: Mobile app
     projectCode: https://github.com/CodersCrew/CodersCard

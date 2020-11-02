@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
+const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
   const resumeData = data.resumePage.frontmatter;
   const classes = useStyles();
   const developerProfile = useDeveloperProfile();
@@ -103,6 +103,10 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>{resumeData.resumePageTitle}</title>
+        <meta name="description" content={resumeData.resumePageDescription} />
+        <meta property="og:title" content={resumeData.resumePageTitle} />
+        <meta property="og:description" content={resumeData.resumePageDescription} />
+        <meta property="og:image" content={resumeData.resumePageImage.publicURL} />
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
@@ -157,13 +161,17 @@ const IndexPage: FC<{ data: ResumePageData }> = ({ data }) => {
   );
 };
 
-export default IndexPage;
+export default ResumePage;
 
 export const resumePageQuery = graphql`
   {
     resumePage: markdownRemark(fileAbsolutePath: { regex: "/resume/index-1.md/" }) {
       frontmatter {
         resumePageTitle
+        resumePageDescription
+        resumePageImage {
+          publicURL
+        }
         workExperience {
           startJobDate
           finishJobDate

@@ -135,6 +135,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     <Container className={classes.container} maxWidth="lg">
       <Helmet>
         <title>{projectData.portfolioPageTitle}</title>
+        <meta name="description" content={projectData.portfolioPageDescription} />
+        <meta property="og:title" content={projectData.portfolioPageTitle} />
+        <meta property="og:description" content={projectData.portfolioPageDescription} />
+        <meta property="og:image" content={projectData.portfolioPageImage.publicURL} />
       </Helmet>
       {isDesktop && (
         <Box className={classes.aside}>
@@ -203,6 +207,10 @@ export const pageQuery = graphql`
     portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
       frontmatter {
         portfolioPageTitle
+        portfolioPageDescription
+        portfolioPageImage {
+          publicURL
+        }
         projects {
           projectLabel
           projectCode

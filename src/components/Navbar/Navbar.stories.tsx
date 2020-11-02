@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Navbar } from './Navbar';
+import { NavbarComponent } from './Navbar';
 
 export default {
   title: 'Navbar',
-  component: Navbar,
+  component: NavbarComponent,
   excludeStories: /.*Data$/,
 };
 
@@ -17,13 +17,13 @@ const navbarBasePropsData = {
 };
 
 export const Desktop = () => {
-  return <Navbar {...navbarBasePropsData} type="desktop" />;
+  return <NavbarComponent {...navbarBasePropsData} type="desktop" />;
 };
 
 export const Tablet = () => {
-  return <Navbar {...navbarBasePropsData} type="tablet" />;
+  return <NavbarComponent {...navbarBasePropsData} type="tablet" />;
 };
 
 export const Mobile = () => {
-  return <Navbar {...navbarBasePropsData} type="mobile" />;
+  return <NavbarComponent {...navbarBasePropsData} type="mobile" />;
 };
