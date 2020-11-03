@@ -86,7 +86,7 @@ const BlogPostDialogTablet: FC<PortfolioProjectDialogProps> = (props) => {
             <Typography variant="h2" color="textPrimary">
               {props.title}
             </Typography>
-            <Tag label="Mobile app" color="default" />
+            <Tag label={props.tagtitle} color="default" />
           </Box>
           <Typography variant="subtitle2" color="textPrimary">
             {props.subtitle}

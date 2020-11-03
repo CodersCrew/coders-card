@@ -72,7 +72,7 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = (props) => {
           <Typography className={classes.subtitle} variant="subtitle2" color="textPrimary">
             {props.subtitle}
           </Typography>
-          <Tag label="Mobile app" color="primary" />
+          <Tag label={props.tagtitle} color="primary" />
           <Typography className={classes.contentHeader} variant="body1" color="textSecondary">
             {props.contentHeader}
           </Typography>
