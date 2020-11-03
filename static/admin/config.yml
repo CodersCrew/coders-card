@@ -123,11 +123,11 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Page Title", name: "resumPageTitle", widget: "string", pattern: ['.{5,60}', "Must have 5-60 characters"] }
+      - { label: "Page Title", name: "resumePageTitle", widget: "string", pattern: ['.{5,60}', "Must have 5-60 characters"] }
       - { label: "Page Description", name: "resumePageDescription", widget: "string", pattern: ['.{50,160}', "Must have 50-160 characters"] }
       - { label: "Page preview image", name: "resumePageImage", widget: "image" }
       - label: "Work experience"
-        name: "work-experience"
+        name: "workExperience"
         widget: "list"
         fields:
           - { label: "Job title", name: "jobTitle", widget: "string", pattern: ['.{3,50}', "Must have 3-50 characters"] }
