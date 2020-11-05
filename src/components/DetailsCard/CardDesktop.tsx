@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     paddingTop: theme.spacing(14),
     background: 'transparent',
+    minWidth: 280,
   },
   card: {
     background: theme.palette.background.paper,
