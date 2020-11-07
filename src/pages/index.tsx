@@ -94,7 +94,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
         description: aboutData.aboutPageDescription,
         imageUrl: aboutData.aboutPageImage.publicURL,
       }}
-      variant="about"
+      variant="withDetailsCard"
     >
       <Box className={classes.aboutContentContainer}>
         <SectionTitle className={classes.title}>About me</SectionTitle>

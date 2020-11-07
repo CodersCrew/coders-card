@@ -16,7 +16,7 @@ type LayoutProps = {
     imageUrl: string;
   };
   /* eslint-disable react/default-props-match-prop-types, react/require-default-props */
-  variant?: 'default' | 'about';
+  variant?: 'default' | 'withDetailsCard';
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -100,7 +100,7 @@ export const Layout = ({ children, developerProfile, meta, variant = 'default' }
           image={developerProfile.avatar.publicURL}
           resumeLink={developerProfile.cv}
         />
-        {!isDesktop && variant === 'about' ? (
+        {!isDesktop && variant === 'withDetailsCard' ? (
           <Box className={classes.detailsCard}>
             <DetailsCard type={componentType} />
           </Box>
