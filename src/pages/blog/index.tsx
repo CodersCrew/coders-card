@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Box, Container, makeStyles } from '@material-ui/core';
-import dayjs from 'dayjs';
 import { graphql, navigate } from 'gatsby';
 
 import { BlogPostDialog } from '../../components/BlogPost';
@@ -14,6 +13,7 @@ import { useBlogPageDoesNotExist } from '../../hooks/useBlogPageDoesNotExist';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { canUseWindow } from '../../utils/canUseWindow';
+import { formatDate } from '../../utils/date';
 import { BlogGQL } from '../../views/blog-page/types';
 
 const useStyles = makeStyles((theme) => ({
@@ -125,7 +125,6 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const { componentType, isDesktop } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedBlogPost, setSelectedBlogPost] = useState(-1);
-  const dateFormat = 'DD MMMM YYYY';
 
   if (canUseWindow && blogData.blogPost?.length === 0) {
     navigate('/');
@@ -190,7 +189,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
                         tagName={blogPost.blogLabel}
                         text={blogPost.blogDescription}
                         title={blogPost.blogTitle}
-                        date={dayjs(blogPost.publishDate).format(dateFormat)}
+                        date={formatDate(blogPost.publishDate, 'day')}
                         onClick={() => setSelectedBlogPost(index)}
                       />
                       <BlogPostDialog
@@ -198,7 +197,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
                         contentmain={blogPost.blogBody}
                         imgurl={blogPost.blogImage.publicURL}
                         isOpen={index === selectedBlogPost}
-                        subtitle={dayjs(blogPost.publishDate).format(dateFormat)}
+                        subtitle={formatDate(blogPost.publishDate, 'day')}
                         tagtitle={blogPost.blogLabel}
                         title={blogPost.blogTitle}
                         type={componentType}
