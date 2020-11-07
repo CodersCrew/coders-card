@@ -9,7 +9,7 @@ import { ResumeList } from '../../components/ResumeList';
 import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
-import { displayCurrentIfCurrentDate, formatDate } from '../../utils/date';
+import { formatDate } from '../../utils/date';
 import { ResumePageData } from '../../views/resume-page/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
@@ -100,7 +100,7 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile } = useComponentType();
   const formatLabelText = (dateStart: string, dateFinish: string) => {
-    return `${formatDate(dateStart, 'month')} - ${displayCurrentIfCurrentDate(dateFinish, 'month')}`;
+    return `${formatDate(dateStart, 'month')} - ${formatDate(dateFinish, 'month', true)}`;
   };
 
   return (
