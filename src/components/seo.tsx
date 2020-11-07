@@ -1,43 +1,25 @@
 /* eslint-disable react/default-props-match-prop-types, react/require-default-props */
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql, useStaticQuery } from 'gatsby';
 
 type SEOProps = {
   title: string;
   description: string;
+  author: string;
   lang: string;
-  meta: { name: string; content: string }[];
 };
 
-function SEO({ description, lang, meta, title }: SEOProps) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `,
-  );
-
-  const metaDescription = description || site.siteMetadata.description;
-
+function SEO({ description, lang, title, author }: SEOProps) {
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:title`,
@@ -45,7 +27,7 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -57,7 +39,7 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: author,
         },
         {
           name: `twitter:title`,
@@ -65,9 +47,9 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
         },
-      ].concat(meta)}
+      ]}
     />
   );
 }
