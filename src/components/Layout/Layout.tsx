@@ -15,6 +15,8 @@ type LayoutProps = {
     description: string;
     imageUrl: string;
   };
+  /* eslint-disable react/default-props-match-prop-types, react/require-default-props */
+  variant?: 'default' | 'about';
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -68,9 +70,12 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(7),
     },
   },
+  detailsCard: {
+    margin: theme.spacing(0, 3, 4, 3),
+  },
 }));
 
-export const Layout = ({ children, developerProfile, meta }: LayoutProps) => {
+export const Layout = ({ children, developerProfile, meta, variant = 'default' }: LayoutProps) => {
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
 
@@ -81,11 +86,11 @@ export const Layout = ({ children, developerProfile, meta }: LayoutProps) => {
         description={meta.description}
         author={`${developerProfile.firstName} ${developerProfile.lastName}`}
       />
-      {isDesktop && (
+      {isDesktop ? (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
         </Box>
-      )}
+      ) : null}
       <Box className={classes.main}>
         <Navbar
           className={classes.navbar}
@@ -95,6 +100,11 @@ export const Layout = ({ children, developerProfile, meta }: LayoutProps) => {
           image={developerProfile.avatar.publicURL}
           resumeLink={developerProfile.cv}
         />
+        {!isDesktop && variant === 'about' ? (
+          <Box className={classes.detailsCard}>
+            <DetailsCard type={componentType} />
+          </Box>
+        ) : null}
         <Box className={classes.mainContent}>{children}</Box>
       </Box>
     </Container>

@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     borderRadius: 16,
     padding: theme.spacing(4, 4, 2, 4),
+    boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
 
     '& .MuiCardContent-root:last-child': {
       paddingBottom: 0,
