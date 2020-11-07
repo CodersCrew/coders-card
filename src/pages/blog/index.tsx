@@ -1,74 +1,19 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { Box, Container, makeStyles } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import dayjs from 'dayjs';
 import { graphql, navigate } from 'gatsby';
 
 import { BlogPostDialog } from '../../components/BlogPost';
 import { BlogPost } from '../../components/BlogPostComponent';
-import { DetailsCard } from '../../components/DetailsCard';
-import { Navbar } from '../../components/Navbar';
+import { Layout } from '../../components/Layout';
 import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
-import { useBlogPageDoesNotExist } from '../../hooks/useBlogPageDoesNotExist';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { canUseWindow } from '../../utils/canUseWindow';
 import { BlogGQL } from '../../views/blog-page/types';
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: 0,
-    [theme.breakpoints.up('lg')]: {
-      display: 'flex',
-      padding: theme.spacing(8, 2, 0, 2),
-    },
-  },
-  aside: {
-    display: 'none',
-    [theme.breakpoints.up('lg')]: {
-      display: 'block',
-      position: 'sticky',
-      top: theme.spacing(8),
-      height: 668,
-      width: 280,
-      marginRight: theme.spacing(4),
-    },
-  },
-  main: {
-    display: 'flex',
-    flexDirection: 'column',
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-    },
-  },
-  mainContent: {
-    backgroundColor: theme.palette.background.paper,
-    margin: theme.spacing(0, 0, 7, 0),
-
-    [theme.breakpoints.up('sm')]: {
-      margin: theme.spacing(0, 3, 7, 3),
-      borderRadius: 16,
-    },
-
-    [theme.breakpoints.up('lg')]: {
-      display: 'flex',
-      flexDirection: 'column',
-      margin: theme.spacing(0, 0, 7, 0),
-      boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
-    },
-  },
-  navbar: {
-    marginBottom: theme.spacing(2),
-
-    [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(3),
-    },
-
-    [theme.breakpoints.up('lg')]: {
-      marginBottom: theme.spacing(7),
-    },
-  },
   blogContainer: {
     borderRadius: 16,
     padding: theme.spacing(4, 3, 3, 3),
@@ -120,9 +65,8 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const blogData = data.markdownRemark.blogPage;
-  const blogPageDoesntExist = useBlogPageDoesNotExist();
   const classes = useStyles();
-  const { componentType, isDesktop } = useComponentType();
+  const { componentType } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedBlogPost, setSelectedBlogPost] = useState(-1);
   const dateFormat = 'DD MMMM YYYY';
@@ -150,70 +94,48 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   };
 
   return (
-    <Container className={classes.container}>
-      {blogPageDoesntExist ? null : (
-        <>
-          <Helmet>
-            <title>{blogData.blogPageTitle ?? 'Blog page'}</title>
-            <meta name="description" content={blogData.blogPageDescription} />
-            <meta property="og:title" content={blogData.blogPageTitle ?? 'Blog page'} />
-            <meta property="og:description" content={blogData.blogPageDescription} />
-            <meta property="og:image" content={blogData.blogPageImage.publicURL} />
-          </Helmet>
-        </>
-      )}
-
-      {isDesktop && (
-        <Box className={classes.aside}>
-          <DetailsCard type={componentType} />
-        </Box>
-      )}
-      <Box className={classes.main}>
-        <Navbar
-          className={classes.navbar}
-          type={componentType}
-          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-          position={developerProfile.position}
-          image={developerProfile.avatar.publicURL}
-          resumeLink={developerProfile.cv}
-        />
-        <Box className={classes.mainContent}>
-          <Box className={classes.blogContainer}>
-            <SectionTitle className={classes.title}>Blog</SectionTitle>
-            <Box className={classes.blogPosts}>
-              {blogData.blogPost
-                ? blogData.blogPost.map((blogPost, index) => (
-                    <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
-                      <BlogPost
-                        className={classes.blogPost}
-                        image={blogPost.blogImage.publicURL}
-                        tagName={blogPost.blogLabel}
-                        text={blogPost.blogDescription}
-                        title={blogPost.blogTitle}
-                        date={dayjs(blogPost.publishDate).format(dateFormat)}
-                        onClick={() => setSelectedBlogPost(index)}
-                      />
-                      <BlogPostDialog
-                        contentheader={blogPost.blogDescription}
-                        contentmain={blogPost.blogBody}
-                        imgurl={blogPost.blogImage.publicURL}
-                        isOpen={index === selectedBlogPost}
-                        subtitle={dayjs(blogPost.publishDate).format(dateFormat)}
-                        tagtitle={blogPost.blogLabel}
-                        title={blogPost.blogTitle}
-                        type={componentType}
-                        handleClose={handleCloseBlogPost}
-                        handlePrev={() => handlePrevBlogPost(index)}
-                        handleNext={() => handleNextBlogPost(index)}
-                      />
-                    </div>
-                  ))
-                : null}
-            </Box>
-          </Box>
+    <Layout
+      developerProfile={developerProfile}
+      meta={{
+        title: blogData.blogPageTitle ?? 'Blog page',
+        description: blogData.blogPageDescription ?? 'This is a blog page',
+        imageUrl: blogData.blogPageImage.publicURL,
+      }}
+    >
+      <Box className={classes.blogContainer}>
+        <SectionTitle className={classes.title}>Blog</SectionTitle>
+        <Box className={classes.blogPosts}>
+          {blogData.blogPost
+            ? blogData.blogPost.map((blogPost, index) => (
+                <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
+                  <BlogPost
+                    className={classes.blogPost}
+                    image={blogPost.blogImage.publicURL}
+                    tagName={blogPost.blogLabel}
+                    text={blogPost.blogDescription}
+                    title={blogPost.blogTitle}
+                    date={dayjs(blogPost.publishDate).format(dateFormat)}
+                    onClick={() => setSelectedBlogPost(index)}
+                  />
+                  <BlogPostDialog
+                    contentheader={blogPost.blogDescription}
+                    contentmain={blogPost.blogBody}
+                    imgurl={blogPost.blogImage.publicURL}
+                    isOpen={index === selectedBlogPost}
+                    subtitle={dayjs(blogPost.publishDate).format(dateFormat)}
+                    tagtitle={blogPost.blogLabel}
+                    title={blogPost.blogTitle}
+                    type={componentType}
+                    handleClose={handleCloseBlogPost}
+                    handlePrev={() => handlePrevBlogPost(index)}
+                    handleNext={() => handleNextBlogPost(index)}
+                  />
+                </div>
+              ))
+            : null}
         </Box>
       </Box>
-    </Container>
+    </Layout>
   );
 };
 
