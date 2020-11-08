@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, ComponentProps } from 'react';
 import { Helmet } from 'react-helmet';
-import { Box, Container, makeStyles } from '@material-ui/core';
+import { Box, Container, makeStyles, Tabs as MuiTabs } from '@material-ui/core';
 import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
 
@@ -14,8 +14,6 @@ import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { ProjectGQL } from '../../views/portfolio-page/types';
 import { FilterTabs } from '../../components/FilterTabs/FilterTabs';
-
-import { useProjects } from '../../containers/Projects';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 const useStyles = makeStyles((theme) => ({
@@ -115,16 +113,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(3),
     },
+
     [theme.breakpoints.up('lg')]: {
       position: 'absolute',
       zIndex: 1,
-      margin: theme.spacing(3, 2, 2, 2),
+      margin: theme.spacing(0, 2, 4, 2),
     },
   },
   navbarTitles: {
-    zIndex: 2,
     position: 'relative',
-    margin: theme.spacing(1.7, 2, 4, 2),
+    zIndex: 2,
+    margin: theme.spacing(-1.2, 2, 4, 2),
   },
 }));
 
@@ -136,16 +135,25 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
 
-  const projectTypes = (category) =>
-    ({
+  type TabsProps = ComponentProps<typeof MuiTabs>;
+
+  type navbarTypes = {
+    [key: number]: string;
+  };
+
+  const getNavbarTitle = (type: number) => {
+    const title: navbarTypes = {
       0: 'All',
       1: 'Mobile app',
       2: 'Desktop app',
       3: 'Other',
-    }[category]);
-  const projectType = projectTypes(navbarTitle);
+    };
+    return title[type];
+  };
 
-  const handleChange = (event, newValue) => {
+  const projectType = getNavbarTitle(navbarTitle);
+
+  const handleChange: TabsProps['onChange'] = (event, newValue) => {
     setNavbarTitle(newValue);
   };
 

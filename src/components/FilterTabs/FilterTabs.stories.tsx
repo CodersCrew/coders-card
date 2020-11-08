@@ -13,6 +13,6 @@ const baseTabsPropsData: Partial<TabsProps> = {
   textColor: 'primary',
 };
 
-export const BaseFilterTabs = (): JSX.Element => {
-  return <FilterTabs {...baseTabsPropsData} />;
-};
+// export const BaseFilterTabs = (): JSX.Element => {
+//   return <FilterTabs {...baseTabsPropsData} />;
+// };
