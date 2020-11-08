@@ -134,7 +134,8 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const { componentType, isDesktop, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
-  const [test, setstateTest] = useState(0);
+  const [navbarTitle, setNavbarTitle] = useState(0);
+
   const projectTypes = (category) =>
     ({
       0: 'All',
@@ -142,10 +143,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       2: 'Desktop app',
       3: 'Other',
     }[category]);
-  const projectType = projectTypes(test);
+  const projectType = projectTypes(navbarTitle);
 
   const handleChange = (event, newValue) => {
-    setstateTest(newValue);
+    setNavbarTitle(newValue);
   };
 
   // no project will have index equal to -1 therefore no project will be selected
@@ -199,7 +200,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                   indicatorColor={'primary'}
                   textColor={'primary'}
                   handleChange={handleChange}
-                  test={test}
+                  navbarTitle={navbarTitle}
                 />
               )}
             </Box>
