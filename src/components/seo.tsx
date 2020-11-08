@@ -1,4 +1,3 @@
-/* eslint-disable react/default-props-match-prop-types, react/require-default-props */
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -9,7 +8,7 @@ type SEOProps = {
   lang: string;
 };
 
-function SEO({ description, lang, title, author }: SEOProps) {
+function SEO({ description, title, author, lang }: SEOProps) {
   return (
     <Helmet
       htmlAttributes={{
@@ -53,11 +52,5 @@ function SEO({ description, lang, title, author }: SEOProps) {
     />
   );
 }
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-};
 
 export default SEO;

@@ -15,7 +15,6 @@ type LayoutProps = {
     description: string;
     imageUrl: string;
   };
-  /* eslint-disable react/default-props-match-prop-types, react/require-default-props */
   variant?: 'default' | 'withDetailsCard';
 };
 
@@ -82,6 +81,7 @@ export const Layout = ({ children, developerProfile, meta, variant = 'default' }
   return (
     <Container className={classes.container} maxWidth="lg">
       <SEO
+        lang="en"
         title={meta.title}
         description={meta.description}
         author={`${developerProfile.firstName} ${developerProfile.lastName}`}
