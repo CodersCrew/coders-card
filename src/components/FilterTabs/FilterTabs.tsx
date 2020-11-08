@@ -4,11 +4,11 @@ import { Tabs as MuiTabs } from '@material-ui/core';
 import { FilterTab } from '../FilterTab/FilterTab';
 
 export type TabsProps = ComponentProps<typeof MuiTabs>;
-export type BasicFilterTypes = {
+type BasicFilterTypes = {
   handleChange: TabsProps['onChange'];
   navbarTitle: number;
 };
-export type FilterTabsType = TabsProps & BasicFilterTypes;
+type FilterTabsType = TabsProps & BasicFilterTypes;
 
 export const FilterTabs = (props: FilterTabsType) => {
   return (

@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   navbar: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(2.5),
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(3),
     },

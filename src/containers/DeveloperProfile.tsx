@@ -31,6 +31,7 @@ const DeveloperProfileProvider = (props: PropsWithChildren<{ developerProfile: D
 
 export function useDeveloperProfile() {
   const developerProfile = useContext<DeveloperProfile>(Context);
+
   // Non null assertion because the profile comes from markdown file
   // Also we will not have to check if profile is not null on every page
   /* eslint-disable @typescript-eslint/no-non-null-assertion */
