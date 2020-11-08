@@ -132,25 +132,21 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
   const { componentType, isDesktop, isMobile } = useComponentType();
-  const { developerProfile, valueNavBar } = useDeveloperProfile();
+  const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
-  let projectType: string = '';
+  const [test, setstateTest] = useState(0);
+  const projectTypes = (category) =>
+    ({
+      0: 'All',
+      1: 'Mobile app',
+      2: 'Desktop app',
+      3: 'Other',
+    }[category]);
+  const projectType = projectTypes(test);
 
-  switch (valueNavBar) {
-    case 0:
-      projectType = 'All';
-      break;
-    case 1:
-      projectType = 'Mobile app';
-      break;
-    case 2:
-      projectType = 'Desktop app';
-      break;
-    case 3:
-      projectType = 'Other';
-    default:
-      console.log('');
-  }
+  const handleChange = (event, newValue) => {
+    setstateTest(newValue);
+  };
 
   // no project will have index equal to -1 therefore no project will be selected
   const handleCloseProject = () => {
@@ -198,7 +194,13 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
             <Box className={classes.navbarBox}>
               <SectionTitle className={classes.title}>My works</SectionTitle>
               {!isMobile && (
-                <FilterTabs className={classes.navbarTitles} indicatorColor={'primary'} textColor={'primary'} />
+                <FilterTabs
+                  className={classes.navbarTitles}
+                  indicatorColor={'primary'}
+                  textColor={'primary'}
+                  handleChange={handleChange}
+                  test={test}
+                />
               )}
             </Box>
 
