@@ -11,8 +11,10 @@ type BasicFilterTypes = {
 type FilterTabsType = TabsProps & BasicFilterTypes;
 
 export const FilterTabs = (props: FilterTabsType) => {
+  const { handleChange, navbarTitle, ...rest } = props;
+
   return (
-    <MuiTabs {...props} onChange={props.handleChange} value={props.navbarTitle}>
+    <MuiTabs {...rest} onChange={handleChange} value={navbarTitle}>
       <FilterTab label="All" />
       <FilterTab label="Mobile" />
       <FilterTab label="Web" />
