@@ -1,4 +1,4 @@
-import React, { createContext, PropsWithChildren, useContext } from 'react';
+import React, { createContext, PropsWithChildren, useContext, useState } from 'react';
 
 export type DeveloperProfileGQL = {
   lastName: string;
@@ -26,16 +26,26 @@ type DeveloperProfile = DeveloperProfileGQL | null;
 const Context = createContext<DeveloperProfile>(null);
 
 const DeveloperProfileProvider = (props: PropsWithChildren<{ developerProfile: DeveloperProfileGQL }>) => {
-  return <Context.Provider value={props.developerProfile} {...props} />;
+  const [valueNavBar, setValueNavBar] = useState(0);
+
+  return (
+    <Context.Provider
+      value={{
+        developerProfile: props.developerProfile,
+        valueNavBar,
+        setValueNavBar: (currentProjectFilter) => setValueNavBar(currentProjectFilter),
+      }}
+      {...props}
+    />
+  );
 };
 
 export function useDeveloperProfile() {
-  const developerProfile = useContext<DeveloperProfile>(Context);
-
+  const { developerProfile, valueNavBar, setValueNavBar } = useContext<DeveloperProfile>(Context);
   // Non null assertion because the profile comes from markdown file
   // Also we will not have to check if profile is not null on every page
   /* eslint-disable @typescript-eslint/no-non-null-assertion */
-  return developerProfile!;
+  return { developerProfile, valueNavBar, setValueNavBar }!;
 }
 
 export default DeveloperProfileProvider;

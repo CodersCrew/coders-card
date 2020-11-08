@@ -13,6 +13,9 @@ import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { ProjectGQL } from '../../views/portfolio-page/types';
+import { FilterTabs } from '../../components/FilterTabs/FilterTabs';
+
+import { useProjects } from '../../containers/Projects';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
       padding: theme.spacing(8, 2, 0, 2),
+    },
+  },
+  navbarBox: {
+    [theme.breakpoints.up('lg')]: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      position: 'relative',
     },
   },
   aside: {
@@ -99,23 +110,47 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginBottom: theme.spacing(4),
+    width: '100%',
 
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(3),
     },
-
     [theme.breakpoints.up('lg')]: {
-      margin: theme.spacing(0, 2, 4, 2),
+      position: 'absolute',
+      zIndex: 1,
+      margin: theme.spacing(3, 2, 2, 2),
     },
+  },
+  navbarTitles: {
+    zIndex: 2,
+    position: 'relative',
+    margin: theme.spacing(1.7, 2, 4, 2),
   },
 }));
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
-  const { componentType, isDesktop } = useComponentType();
-  const developerProfile = useDeveloperProfile();
+  const { componentType, isDesktop, isMobile } = useComponentType();
+  const { developerProfile, valueNavBar } = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
+  let projectType: string = '';
+
+  switch (valueNavBar) {
+    case 0:
+      projectType = 'All';
+      break;
+    case 1:
+      projectType = 'Mobile app';
+      break;
+    case 2:
+      projectType = 'Desktop app';
+      break;
+    case 3:
+      projectType = 'Other';
+    default:
+      console.log('');
+  }
 
   // no project will have index equal to -1 therefore no project will be selected
   const handleCloseProject = () => {
@@ -130,6 +165,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const handleNextProject = (index: number) => {
     setSelectedProject(index === projectData.projects.length - 1 ? 0 : index + 1);
   };
+
+  const filteredProjects = projectData.projects.filter((element) => {
+    return projectType != 'All' ? element.projectLabel === projectType : ' ';
+  });
 
   return (
     <Container className={classes.container} maxWidth="lg">
@@ -156,9 +195,15 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
         />
         <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>
-            <SectionTitle className={classes.title}>My works</SectionTitle>
+            <Box className={classes.navbarBox}>
+              <SectionTitle className={classes.title}>My works</SectionTitle>
+              {!isMobile && (
+                <FilterTabs className={classes.navbarTitles} indicatorColor={'primary'} textColor={'primary'} />
+              )}
+            </Box>
+
             <Box className={classes.projects}>
-              {projectData.projects.map((project, index) => (
+              {filteredProjects.map((project, index) => (
                 <div key={`${project.projectName}-${project.projectDescription}`}>
                   <PortfolioCard
                     className={classes.project}

@@ -190,7 +190,7 @@ const ContactPageForm = () => {
 const ContactPage: FC<{ data: ContactGQL }> = ({ data }) => {
   const contactData = data.contactPage.frontmatter;
   const classes = useStyles();
-  const developerProfile = useDeveloperProfile();
+  const { developerProfile } = useDeveloperProfile();
   const { componentType, isDesktop, isMobile, isTablet } = useComponentType();
 
   const handleSubmit: FormConfig['onSubmit'] = (values, helpers) => {

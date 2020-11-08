@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
 const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
   const resumeData = data.resumePage.frontmatter;
   const classes = useStyles();
-  const developerProfile = useDeveloperProfile();
+  const { developerProfile } = useDeveloperProfile();
   const { componentType, isDesktop, isMobile } = useComponentType();
 
   return (

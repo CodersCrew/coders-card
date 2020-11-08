@@ -9,7 +9,7 @@ import { CardProps } from './cardProps';
 import CardTablet from './CardTablet';
 
 export const DetailsCard: FC<{ type: ScreenSize }> = ({ type }) => {
-  const developerProfile = useDeveloperProfile();
+  const { developerProfile } = useDeveloperProfile();
 
   const data: CardProps = {
     fullName: `${developerProfile.firstName} ${developerProfile.lastName}`,

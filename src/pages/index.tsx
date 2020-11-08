@@ -161,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
 const About: FC<{ data: AboutPageData }> = ({ data }) => {
   const aboutData = data.aboutPage.frontmatter;
   const classes = useStyles();
-  const developerProfile = useDeveloperProfile();
+  const { developerProfile } = useDeveloperProfile();
   const { componentType, isDesktop, isMobile } = useComponentType();
 
   const hasTechnologies = aboutData.socialMedia.technologies && aboutData.socialMedia.technologies.length > 0;

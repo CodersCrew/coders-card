@@ -123,7 +123,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   const blogPageDoesntExist = useBlogPageDoesNotExist();
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
-  const developerProfile = useDeveloperProfile();
+  const { developerProfile, valueNavBar } = useDeveloperProfile();
   const [selectedBlogPost, setSelectedBlogPost] = useState(-1);
   const dateFormat = 'DD MMMM YYYY';
 

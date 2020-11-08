@@ -5,6 +5,7 @@ export type TabProps = MuiTabProps;
 
 const useStyles = makeStyles((theme) => ({
   tab: {
+    minWidth: '95px',
     '&.MuiTab-textColorPrimary': {
       color: theme.palette.secondary,
     },
