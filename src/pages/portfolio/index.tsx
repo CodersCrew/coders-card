@@ -1,6 +1,6 @@
-import React, { useState, ComponentProps } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Box, Container, makeStyles, Tabs as MuiTabs } from '@material-ui/core';
+import { Box, Container, makeStyles } from '@material-ui/core';
 import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
 
