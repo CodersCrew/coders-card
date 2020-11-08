@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
 
 import { DetailsCard } from '../../components/DetailsCard';
+import { FilterTabs, TabsProps } from '../../components/FilterTabs/FilterTabs';
 import { Navbar } from '../../components/Navbar';
 import { PortfolioCard } from '../../components/PortfolioCard';
 import { PortfolioProjectDialog } from '../../components/PortfolioProject';
@@ -13,7 +14,6 @@ import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { ProjectGQL } from '../../views/portfolio-page/types';
-import { FilterTabs, TabsProps } from '../../components/FilterTabs/FilterTabs';
 import { ProjectLabel } from './type';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
@@ -172,7 +172,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   };
 
   const filteredProjects = projectData.projects.filter((project) => {
-    return projectType != ProjectLabel.ALL ? project.projectLabel === projectType : ' ';
+    return projectType !== ProjectLabel.ALL ? project.projectLabel === projectType : ' ';
   });
 
   return (
@@ -205,8 +205,8 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
               {!isMobile && (
                 <FilterTabs
                   className={classes.navbarTitles}
-                  indicatorColor={'primary'}
-                  textColor={'primary'}
+                  indicatorColor="primary"
+                  textColor="primary"
                   handleChange={handleChange}
                   navbarTitle={navbarTitle}
                 />

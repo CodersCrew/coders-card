@@ -1,4 +1,4 @@
-import React, { ComponentProps, useState } from 'react';
+import React, { ComponentProps } from 'react';
 import { Tabs as MuiTabs } from '@material-ui/core';
 
 import { FilterTab } from '../FilterTab/FilterTab';
