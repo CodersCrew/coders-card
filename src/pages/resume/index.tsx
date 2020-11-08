@@ -9,6 +9,7 @@ import { ResumeList } from '../../components/ResumeList';
 import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
+import { formatDate } from '../../utils/date';
 import { ResumePageData } from '../../views/resume-page/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
@@ -98,6 +99,9 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
   const classes = useStyles();
   const developerProfile = useDeveloperProfile();
   const { componentType, isDesktop, isMobile } = useComponentType();
+  const formatLabelText = (dateStart: string, dateFinish: string) => {
+    return `${formatDate(dateStart, 'month')} - ${formatDate(dateFinish, 'month', true)}`;
+  };
 
   return (
     <Container className={classes.container} maxWidth="lg">
@@ -131,7 +135,7 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
                   <Divider className={classes.divider} orientation="vertical" />
                   <ResumeList
                     isMobile={isMobile}
-                    labelText={`${item.startJobDate} - ${item.finishJobDate}`}
+                    labelText={formatLabelText(item.startJobDate, item.finishJobDate)}
                     headerText={item.jobTitle}
                     title={item.companyName}
                     description={item.jobDescription}
@@ -146,7 +150,7 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
                 <Divider className={classes.divider} orientation="vertical" />
                 <ResumeList
                   isMobile={isMobile}
-                  labelText={`${item.startSchoolDate} - ${item.finishSchoolDate}`}
+                  labelText={formatLabelText(item.startSchoolDate, item.finishSchoolDate)}
                   headerText={item.course}
                   title={item.schoolName}
                   description={item.educationDescription}

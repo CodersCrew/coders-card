@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Box, Container, makeStyles } from '@material-ui/core';
-import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
 
 import { DetailsCard } from '../../components/DetailsCard';
@@ -12,6 +11,7 @@ import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
+import { formatDate } from '../../utils/date';
 import { ProjectGQL } from '../../views/portfolio-page/types';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
@@ -179,9 +179,9 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                     tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
                     imgurl={project.projectPreviewImage.publicURL}
                     subtitle={`
-                      ${dayjs(project.projectStartDate).format('YYYY-MM-DD')}
+                      ${formatDate(project.projectStartDate, 'day')}
                       -
-                      ${dayjs(project.projectFinishDate).format('YYYY-MM-DD')}`}
+                      ${formatDate(project.projectFinishDate, 'day', true)}`}
                     contentMainDescription={project.projectDescription}
                     contentMainRole={project.projectRole}
                     contentHeader={project.projectPreviewNote}
