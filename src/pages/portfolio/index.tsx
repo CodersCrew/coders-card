@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box, makeStyles } from '@material-ui/core';
-import dayjs from 'dayjs';
 import { graphql } from 'gatsby';
 
 import { Layout } from '../../components/Layout';
@@ -10,6 +9,7 @@ import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
+import { formatDate } from '../../utils/date';
 import { ProjectGQL } from '../../views/portfolio-page/types';
 
 const useStyles = makeStyles((theme) => ({
@@ -111,9 +111,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                 tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
                 imgurl={project.projectPreviewImage.publicURL}
                 subtitle={`
-                      ${dayjs(project.projectStartDate).format('YYYY-MM-DD')}
-                      -
-                      ${dayjs(project.projectFinishDate).format('YYYY-MM-DD')}`}
+                  ${formatDate(project.projectStartDate, 'day')}
+                  -
+                  ${formatDate(project.projectFinishDate, 'day', true)}
+                `}
                 contentMainDescription={project.projectDescription}
                 contentMainRole={project.projectRole}
                 contentHeader={project.projectPreviewNote}

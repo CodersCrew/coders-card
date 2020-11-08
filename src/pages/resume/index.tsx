@@ -7,6 +7,7 @@ import { ResumeList } from '../../components/ResumeList';
 import { SectionTitle } from '../../components/SectionTitle';
 import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
+import { formatDate } from '../../utils/date';
 import { ResumePageData } from '../../views/resume-page/types';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +45,9 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
   const classes = useStyles();
   const developerProfile = useDeveloperProfile();
   const { isMobile } = useComponentType();
+  const formatLabelText = (dateStart: string, dateFinish: string) => {
+    return `${formatDate(dateStart, 'month')} - ${formatDate(dateFinish, 'month', true)}`;
+  };
 
   return (
     <Layout
@@ -62,7 +66,7 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
               <Divider className={classes.divider} orientation="vertical" />
               <ResumeList
                 isMobile={isMobile}
-                labelText={`${item.startJobDate} - ${item.finishJobDate}`}
+                labelText={formatLabelText(item.startJobDate, item.finishJobDate)}
                 headerText={item.jobTitle}
                 title={item.companyName}
                 description={item.jobDescription}
@@ -77,7 +81,7 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
             <Divider className={classes.divider} orientation="vertical" />
             <ResumeList
               isMobile={isMobile}
-              labelText={`${item.startSchoolDate} - ${item.finishSchoolDate}`}
+              labelText={formatLabelText(item.startSchoolDate, item.finishSchoolDate)}
               headerText={item.course}
               title={item.schoolName}
               description={item.educationDescription}
