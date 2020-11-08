@@ -137,12 +137,8 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
 
-  type navbarTypes = {
-    [key: number]: string;
-  };
-
   const getNavbarTitle = (type: number) => {
-    const title: navbarTypes = {
+    const title: Record<number, string> = {
       0: ProjectLabel.ALL,
       1: ProjectLabel.MOBILEAPP,
       2: ProjectLabel.DESKTOPAPP,
