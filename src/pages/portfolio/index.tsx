@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   navbarBox: {
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('sm')]: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -110,14 +110,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: theme.spacing(4),
     width: '100%',
+    zIndex: 1,
 
     [theme.breakpoints.up('sm')]: {
+      position: 'absolute',
       marginBottom: theme.spacing(3),
     },
 
     [theme.breakpoints.up('lg')]: {
       position: 'absolute',
-      zIndex: 1,
       margin: theme.spacing(0, 2, 4, 2),
     },
   },
