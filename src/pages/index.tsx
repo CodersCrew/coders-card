@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import { Box, makeStyles, Typography } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
 
 import { Layout } from '../components/Layout';
 import { SectionTitle } from '../components/SectionTitle';
-import { Skill } from '../components/Skill';
-import { Testimonial } from '../components/Testimonial';
+import { LevelRange } from '../components/Skill';
+import { SkillsSection } from '../components/SkillsSection';
+import { TestimonialsSection } from '../components/TestimonialsSection';
 import { useDeveloperProfile } from '../containers/DeveloperProfile';
-import { useComponentType } from '../hooks/useComponentType';
 import { AboutPageData } from '../views/about/types';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,33 +23,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     marginBottom: theme.spacing(6),
   },
-  skillsHeader: {
-    color: theme.palette.text.secondary,
-    marginBottom: theme.spacing(3),
-  },
-  skills: {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridRowGap: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    gridGap: theme.spacing(5),
-
-    [theme.breakpoints.up('sm')]: {
-      gridTemplateColumns: 'repeat(3, 1fr)',
-    },
-
-    [theme.breakpoints.up('lg')]: {
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  },
-  project: {
-    [theme.breakpoints.up('lg')]: {
-      width: 400,
-      height: 224,
-    },
-  },
   title: {
     marginBottom: theme.spacing(4),
 
@@ -61,30 +34,22 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(0, 2, 4, 0),
     },
   },
-  testimonials: {
-    display: 'grid',
-    justifyContent: 'center',
-    justifyItems: 'center',
-    gridTemplateColumns: '1fr',
-    gridRowGap: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-
-    [theme.breakpoints.up('lg')]: {
-      gridTemplateColumns: 'repeat(2, 1fr)',
-    },
-  },
 }));
 
 const About: FC<{ data: AboutPageData }> = ({ data }) => {
   const aboutData = data.aboutPage.frontmatter;
   const classes = useStyles();
   const developerProfile = useDeveloperProfile();
-  const { isMobile } = useComponentType();
 
-  const hasTechnologies = aboutData.socialMedia.technologies && aboutData.socialMedia.technologies.length > 0;
-  const hasTools = aboutData.socialMedia.tools && aboutData.socialMedia.tools.length > 0;
-  const hasOtherSkills = aboutData.socialMedia.otherSkills && aboutData.socialMedia.otherSkills.length > 0;
-  const hasTestimonials = aboutData.testimonials && aboutData.testimonials.length > 0;
+  type DynamicSkill = {
+    [key: string]: string | LevelRange;
+  };
+
+  const skillMapper = (skillName: string, skills?: DynamicSkill[]) =>
+    skills?.map((skill) => ({
+      name: skill[`${skillName}Name`] as string,
+      value: skill[`${skillName}Value`] as LevelRange,
+    }));
 
   return (
     <Layout
@@ -101,66 +66,23 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
         <Box className={classes.content}>{aboutData.description}</Box>
         <SectionTitle className={classes.title}>My skills</SectionTitle>
         <Box className={classes.content}>
-          {hasTechnologies ? (
-            <>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Technologies
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.technologies?.map((item) => (
-                  <Skill key={item.technologyName} level={item.technologyValue}>
-                    {item.technologyName}
-                  </Skill>
-                ))}
-              </Box>
-            </>
-          ) : null}
-          {hasTools ? (
-            <>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Tools
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.tools?.map((item) => (
-                  <Skill key={item.toolName} level={item.toolValue}>
-                    {item.toolName}
-                  </Skill>
-                ))}
-              </Box>
-            </>
-          ) : null}
-          {hasOtherSkills ? (
-            <>
-              <Typography variant="h6" className={classes.skillsHeader}>
-                Other skills
-              </Typography>
-              <Box className={classes.skills}>
-                {aboutData.socialMedia.otherSkills?.map((item) => (
-                  <Skill key={item.otherSkillName} level={item.otherSkillValue}>
-                    {item.otherSkillName}
-                  </Skill>
-                ))}
-              </Box>
-            </>
-          ) : null}
+          <SkillsSection
+            title="Technologies"
+            skills={skillMapper('technology', aboutData.socialMedia.technologies)}
+            renderCondition={!!aboutData.socialMedia.technologies?.length}
+          />
+          <SkillsSection
+            title="Tools"
+            skills={skillMapper('tool', aboutData.socialMedia.tools)}
+            renderCondition={!!aboutData.socialMedia.tools?.length}
+          />
+          <SkillsSection
+            title="Other skills"
+            skills={skillMapper('otherSkill', aboutData.socialMedia.otherSkills)}
+            renderCondition={!!aboutData.socialMedia.otherSkills?.length}
+          />
         </Box>
-        {hasTestimonials ? (
-          <>
-            <SectionTitle className={classes.title}>Testimonials</SectionTitle>
-            <Box className={classes.testimonials}>
-              {aboutData.testimonials?.map((item) => (
-                <Testimonial
-                  key={item.testimonialName}
-                  isMobile={isMobile}
-                  image={item.testimonialImage.publicURL}
-                  description={item.testimonialText}
-                  labelBold={item.testimonialName}
-                  label={item.testimonialJob}
-                />
-              ))}
-            </Box>
-          </>
-        ) : null}
+        <TestimonialsSection testimonials={aboutData.testimonials} />
       </Box>
     </Layout>
   );

@@ -1,3 +1,14 @@
+export type BlogPostType = {
+  blogTitle: string;
+  blogLabel: string;
+  blogBody: string;
+  blogDescription: string;
+  blogImage: {
+    publicURL: string;
+  };
+  publishDate: string;
+};
+
 export type BlogGQL = {
   markdownRemark: {
     blogPage: {
@@ -6,16 +17,7 @@ export type BlogGQL = {
       blogPageImage: {
         publicURL: string;
       };
-      blogPost?: {
-        blogTitle: string;
-        blogLabel: string;
-        blogBody: string;
-        blogDescription: string;
-        blogImage: {
-          publicURL: string;
-        };
-        publishDate: string;
-      }[];
+      blogPost?: BlogPostType[];
     };
   };
 };

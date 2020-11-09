@@ -11,7 +11,7 @@ import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { canUseWindow } from '../../utils/canUseWindow';
 import { formatDate } from '../../utils/date';
-import { BlogGQL } from '../../views/blog-page/types';
+import { BlogGQL, BlogPostType } from '../../views/blog-page/types';
 
 const useStyles = makeStyles((theme) => ({
   blogContainer: {
@@ -92,6 +92,33 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
     }
   };
 
+  const renderBlogPost = (blogPost: BlogPostType, index: number) => (
+    <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
+      <BlogPost
+        className={classes.blogPost}
+        image={blogPost.blogImage.publicURL}
+        tagName={blogPost.blogLabel}
+        text={blogPost.blogDescription}
+        title={blogPost.blogTitle}
+        date={formatDate(blogPost.publishDate, 'day')}
+        onClick={() => setSelectedBlogPost(index)}
+      />
+      <BlogPostDialog
+        contentheader={blogPost.blogDescription}
+        contentmain={blogPost.blogBody}
+        imgurl={blogPost.blogImage.publicURL}
+        isOpen={index === selectedBlogPost}
+        subtitle={formatDate(blogPost.publishDate, 'day')}
+        tagtitle={blogPost.blogLabel}
+        title={blogPost.blogTitle}
+        type={componentType}
+        handleClose={handleCloseBlogPost}
+        handlePrev={() => handlePrevBlogPost(index)}
+        handleNext={() => handleNextBlogPost(index)}
+      />
+    </div>
+  );
+
   return (
     <Layout
       developerProfile={developerProfile}
@@ -103,36 +130,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
     >
       <Box className={classes.blogContainer}>
         <SectionTitle className={classes.title}>Blog</SectionTitle>
-        <Box className={classes.blogPosts}>
-          {blogData.blogPost
-            ? blogData.blogPost.map((blogPost, index) => (
-                <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
-                  <BlogPost
-                    className={classes.blogPost}
-                    image={blogPost.blogImage.publicURL}
-                    tagName={blogPost.blogLabel}
-                    text={blogPost.blogDescription}
-                    title={blogPost.blogTitle}
-                    date={formatDate(blogPost.publishDate, 'day')}
-                    onClick={() => setSelectedBlogPost(index)}
-                  />
-                  <BlogPostDialog
-                    contentheader={blogPost.blogDescription}
-                    contentmain={blogPost.blogBody}
-                    imgurl={blogPost.blogImage.publicURL}
-                    isOpen={index === selectedBlogPost}
-                    subtitle={formatDate(blogPost.publishDate, 'day')}
-                    tagtitle={blogPost.blogLabel}
-                    title={blogPost.blogTitle}
-                    type={componentType}
-                    handleClose={handleCloseBlogPost}
-                    handlePrev={() => handlePrevBlogPost(index)}
-                    handleNext={() => handleNextBlogPost(index)}
-                  />
-                </div>
-              ))
-            : null}
-        </Box>
+        <Box className={classes.blogPosts}>{blogData.blogPost ? blogData.blogPost.map(renderBlogPost) : null}</Box>
       </Box>
     </Layout>
   );

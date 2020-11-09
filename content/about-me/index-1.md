@@ -53,6 +53,10 @@ socialMedia:
       toolValue: 5
     - toolName: Zeplin
       toolValue: 4
-  otherSkills: []
+  otherSkills:
+    - otherSkillName: Czytanie
+      otherSkillValue: 2
+    - otherSkillName: Pisanie
+      otherSkillValue: 1
 testimonials: []
 ---
