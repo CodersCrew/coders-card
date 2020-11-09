@@ -15,14 +15,17 @@ const baseTabsPropsData: Partial<FilterTabsType> = {
 };
 
 export const BaseFilterTabs = (): JSX.Element => {
-  return <></>;
+  return (
+    <>
+      <FilterTabs
+        {...baseTabsPropsData}
+        handleChange={() => {
+          console.log('');
+        }}
+        navbarTitle={0}
+        projectLabelsTitles={['test1', 'test2']}
+      />
+      ;
+    </>
+  );
 };
-
-<FilterTabs
-  {...baseTabsPropsData}
-  handleChange={() => {
-    console.log('');
-  }}
-  navbarTitle={0}
-  projectLabelsTitles={['test1', 'test2']}
-/>;

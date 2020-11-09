@@ -14,7 +14,6 @@ import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { ProjectGQL } from '../../views/portfolio-page/types';
-import { ProjectLabel } from './type';
 
 const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 const useStyles = makeStyles((theme) => ({
@@ -130,24 +129,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
-  const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
+  const defaultLabel = 'All';
+  const projectData = data.portfolioPage.frontmatter;
+  const projectLabels = projectData.projects;
   const { componentType, isDesktop, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
+  const projectLabelsTitles = [defaultLabel, ...new Set(projectLabels.map((project) => project.projectLabel))];
 
   const getNavbarTitle = (type: number) => {
-    const title: Record<number, string> = {
-      0: ProjectLabel.ALL,
-      1: ProjectLabel.MOBILEAPP,
-      2: ProjectLabel.DESKTOPAPP,
-      3: ProjectLabel.OTHER,
-    };
+    const title: Record<number, string> = { ...projectLabelsTitles };
     return title[type];
   };
 
   const projectType = getNavbarTitle(navbarTitle);
+
+  const filteredProjects = projectLabels.filter((project) => {
+    return projectType !== defaultLabel ? project.projectLabel === projectType : ' ';
+  });
 
   const handleChange: TabsProps['onChange'] = (event, newValue) => {
     setNavbarTitle(newValue);
@@ -157,6 +158,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const handleCloseProject = () => {
     setSelectedProject(-1);
   };
+
   // if is first project, choose last project
   const handlePreviousProject = (index: number) => {
     setSelectedProject(index === 0 ? projectData.projects.length - 1 : index - 1);
@@ -166,10 +168,6 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const handleNextProject = (index: number) => {
     setSelectedProject(index === projectData.projects.length - 1 ? 0 : index + 1);
   };
-
-  const filteredProjects = projectData.projects.filter((project) => {
-    return projectType !== ProjectLabel.ALL ? project.projectLabel === projectType : ' ';
-  });
 
   return (
     <Container className={classes.container} maxWidth="lg">
@@ -205,10 +203,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                   textColor="primary"
                   handleChange={handleChange}
                   navbarTitle={navbarTitle}
+                  projectLabelsTitles={projectLabelsTitles}
                 />
               )}
             </Box>
-
             <Box className={classes.projects}>
               {filteredProjects.map((project, index) => (
                 <div key={`${project.projectName}-${project.projectDescription}`}>
