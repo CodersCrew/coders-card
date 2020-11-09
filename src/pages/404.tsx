@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     navigate('/');
   }, []);
 
-  return null;
+  return <div />;
 };
 
 export default NotFoundPage;
