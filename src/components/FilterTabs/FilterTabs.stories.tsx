@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { FilterTabs, TabsProps } from '.';
+import { FilterTabs } from '.';
+import { FilterTabsType } from './FilterTabs';
 
 export default {
   title: 'FilterTabs',
@@ -8,19 +9,20 @@ export default {
   excludeStories: /.*Data$/,
 };
 
-const baseTabsPropsData: Partial<TabsProps> = {
+const baseTabsPropsData: Partial<FilterTabsType> = {
   indicatorColor: 'primary',
   textColor: 'primary',
 };
 
 export const BaseFilterTabs = (): JSX.Element => {
-  return (
-    <FilterTabs
-      {...baseTabsPropsData}
-      handleChange={() => {
-        console.log('');
-      }}
-      navbarTitle={0}
-    />
-  );
+  return <></>;
 };
+
+<FilterTabs
+  {...baseTabsPropsData}
+  handleChange={() => {
+    console.log('');
+  }}
+  navbarTitle={0}
+  projectLabelsTitles={['test1', 'test2']}
+/>;
