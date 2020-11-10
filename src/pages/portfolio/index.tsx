@@ -112,7 +112,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   };
 
   const renderProject = (project: ProjectType, index: number) => (
-    <div key={`${project.projectName}-${project.projectDescription}`}>
+    <Box key={`${project.projectName}-${project.projectDescription}`}>
       <PortfolioCard
         className={classes.project}
         type={componentType}
@@ -144,7 +144,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
         projectUrl={project.projectApp ?? ''}
         codeUrl={project.projectCode ?? ''}
       />
-    </div>
+    </Box>
   );
 
   return (
