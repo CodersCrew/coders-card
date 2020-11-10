@@ -14,7 +14,7 @@ import { formatDate } from '../../utils/date';
 import { ProjectGQL, ProjectType } from '../../views/portfolio-page/types';
 
 const useStyles = makeStyles((theme) => ({
-  navbarBox: {
+  titleBox: {
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       flexDirection: 'row',
@@ -162,7 +162,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       }}
     >
       <Box className={classes.projectsContainer}>
-        <Box className={classes.navbarBox}>
+        <Box className={classes.titleBox}>
           <SectionTitle className={classes.title}>My works</SectionTitle>
           {!isMobile && (
             <FilterTabs
