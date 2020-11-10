@@ -23,7 +23,7 @@ export const BaseFilterTabs = (): JSX.Element => {
           console.log('');
         }}
         navbarTitle={0}
-        projectLabelsTitles={['test1', 'test2']}
+        projectLabels={['test1', 'test2']}
       />
       ;
     </>

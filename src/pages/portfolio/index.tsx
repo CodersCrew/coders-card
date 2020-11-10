@@ -130,24 +130,24 @@ const useStyles = makeStyles((theme) => ({
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
-  const defaultLabel = 'All';
+  const defaultType = 'All';
   const projectData = data.portfolioPage.frontmatter;
-  const projectLabels = projectData.projects;
+  const { projects } = projectData;
   const { componentType, isDesktop, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
-  const projectLabelsTitles = [defaultLabel, ...new Set(projectLabels.map((project) => project.projectLabel))];
+  const projectLabels = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
 
   const getNavbarTitle = (type: number) => {
-    const title: Record<number, string> = { ...projectLabelsTitles };
+    const title: Record<number, string> = { ...projectLabels };
     return title[type];
   };
 
   const projectType = getNavbarTitle(navbarTitle);
 
-  const filteredProjects = projectLabels.filter((project) => {
-    return projectType !== defaultLabel ? project.projectLabel === projectType : ' ';
+  const filteredProjects = projects.filter((project) => {
+    return projectType !== defaultType ? project.projectLabel === projectType : ' ';
   });
 
   const handleChange: TabsProps['onChange'] = (event, newValue) => {
@@ -203,7 +203,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
                   textColor="primary"
                   handleChange={handleChange}
                   navbarTitle={navbarTitle}
-                  projectLabelsTitles={projectLabelsTitles}
+                  projectLabels={projectLabels}
                 />
               )}
             </Box>

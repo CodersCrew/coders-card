@@ -7,16 +7,16 @@ export type TabsProps = ComponentProps<typeof MuiTabs>;
 type BasicFilterTypes = {
   handleChange: TabsProps['onChange'];
   navbarTitle: number;
-  projectLabelsTitles: Array<string>;
+  projectLabels: Array<string>;
 };
 export type FilterTabsType = TabsProps & BasicFilterTypes;
 
 export const FilterTabs = (props: FilterTabsType) => {
-  const { projectLabelsTitles, navbarTitle, handleChange, ...rest } = props;
+  const { projectLabels, navbarTitle, handleChange, ...rest } = props;
 
   return (
     <MuiTabs {...rest} onChange={handleChange} value={navbarTitle}>
-      {projectLabelsTitles.map((projectLabel) => (
+      {projectLabels.map((projectLabel) => (
         <FilterTab key={projectLabel} label={projectLabel} />
       ))}
     </MuiTabs>
