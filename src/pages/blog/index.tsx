@@ -15,13 +15,7 @@ import { BlogGQL, BlogPostType } from '../../views/blog-page/types';
 
 const useStyles = makeStyles((theme) => ({
   blogContainer: {
-    borderRadius: 16,
-    padding: theme.spacing(4, 3, 3, 3),
-
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-      padding: theme.spacing(4),
-    },
+    width: '100%',
   },
   blogPosts: {
     display: 'grid',
@@ -40,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
+    width: '100%',
     marginBottom: theme.spacing(4),
 
     [theme.breakpoints.up('sm')]: {

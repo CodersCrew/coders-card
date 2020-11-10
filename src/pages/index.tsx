@@ -12,18 +12,13 @@ import { AboutPageData } from '../views/about/types';
 
 const useStyles = makeStyles((theme) => ({
   aboutContentContainer: {
-    borderRadius: 16,
-    padding: theme.spacing(3),
-
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-      padding: theme.spacing(4),
-    },
+    width: '100%',
   },
   content: {
     marginBottom: theme.spacing(6),
   },
   title: {
+    width: '100%',
     marginBottom: theme.spacing(4),
 
     [theme.breakpoints.up('sm')]: {

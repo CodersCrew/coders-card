@@ -39,13 +39,7 @@ const validationSchema = Yup.object().shape({
 
 const useStyles = makeStyles((theme) => ({
   contactContainer: {
-    borderRadius: 16,
-    padding: theme.spacing(4, 3, 3, 3),
-
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-      padding: theme.spacing(4),
-    },
+    width: '100%',
   },
   inputs: {
     display: 'grid',
@@ -89,12 +83,13 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
   },
   title: {
+    width: '100%',
     marginBottom: theme.spacing(4),
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(3),
     },
     [theme.breakpoints.up('lg')]: {
-      margin: theme.spacing(0, 2, 4, 2),
+      margin: theme.spacing(0, 2, 4, 0),
     },
   },
 }));
