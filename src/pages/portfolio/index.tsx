@@ -4,6 +4,7 @@ import { Box, Container, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
 
 import { DetailsCard } from '../../components/DetailsCard';
+import { FilterTabs, TabsProps } from '../../components/FilterTabs/FilterTabs';
 import { Navbar } from '../../components/Navbar';
 import { PortfolioCard } from '../../components/PortfolioCard';
 import { PortfolioProjectDialog } from '../../components/PortfolioProject';
@@ -21,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
       padding: theme.spacing(8, 2, 0, 2),
+    },
+  },
+  navbarBox: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      position: 'relative',
     },
   },
   aside: {
@@ -99,28 +108,57 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginBottom: theme.spacing(4),
+    width: '100%',
+    zIndex: 1,
 
     [theme.breakpoints.up('sm')]: {
+      position: 'absolute',
       marginBottom: theme.spacing(3),
     },
 
     [theme.breakpoints.up('lg')]: {
+      position: 'absolute',
       margin: theme.spacing(0, 2, 4, 2),
     },
+  },
+  navbarTitles: {
+    position: 'relative',
+    zIndex: 2,
+    margin: theme.spacing(-1.2, 2, 4, 2),
   },
 }));
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
-  const projectData = data.portfolioPage.frontmatter;
   const classes = useStyles();
-  const { componentType, isDesktop } = useComponentType();
+  const defaultType = 'All';
+  const projectData = data.portfolioPage.frontmatter;
+  const { projects } = projectData;
+  const { componentType, isDesktop, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
+  const [navbarTitle, setNavbarTitle] = useState(0);
+  const projectLabels = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
+
+  const getNavbarTitle = (type: number) => {
+    const title: Record<number, string> = { ...projectLabels };
+    return title[type];
+  };
+
+  const projectType = getNavbarTitle(navbarTitle);
+
+  const filteredProjects = projects.filter((project) => {
+    return projectType !== defaultType ? project.projectLabel === projectType : ' ';
+  });
+
+  const handleChange: TabsProps['onChange'] = (event, newValue) => {
+    setNavbarTitle(newValue);
+  };
 
   // no project will have index equal to -1 therefore no project will be selected
   const handleCloseProject = () => {
     setSelectedProject(-1);
   };
+
   // if is first project, choose last project
   const handlePreviousProject = (index: number) => {
     setSelectedProject(index === 0 ? projectData.projects.length - 1 : index - 1);
@@ -156,9 +194,21 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
         />
         <Box className={classes.mainContent}>
           <Box className={classes.projectsContainer}>
-            <SectionTitle className={classes.title}>My works</SectionTitle>
+            <Box className={classes.navbarBox}>
+              <SectionTitle className={classes.title}>My works</SectionTitle>
+              {!isMobile && (
+                <FilterTabs
+                  className={classes.navbarTitles}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  handleChange={handleChange}
+                  navbarTitle={navbarTitle}
+                  projectLabels={projectLabels}
+                />
+              )}
+            </Box>
             <Box className={classes.projects}>
-              {projectData.projects.map((project, index) => (
+              {filteredProjects.map((project, index) => (
                 <div key={`${project.projectName}-${project.projectDescription}`}>
                   <PortfolioCard
                     className={classes.project}
