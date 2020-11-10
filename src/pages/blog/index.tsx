@@ -93,7 +93,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   };
 
   const renderBlogPost = (blogPost: BlogPostType, index: number) => (
-    <div key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
+    <Box key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
       <BlogPost
         className={classes.blogPost}
         image={blogPost.blogImage.publicURL}
@@ -116,7 +116,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
         handlePrev={() => handlePrevBlogPost(index)}
         handleNext={() => handleNextBlogPost(index)}
       />
-    </div>
+    </Box>
   );
 
   return (

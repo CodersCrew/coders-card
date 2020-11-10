@@ -1,3 +1,22 @@
+export type ProjectType = {
+  projectLabel: string;
+  projectCode?: string;
+  projectPreviewImage: {
+    publicURL: string;
+  };
+  projectDescription: string;
+  projectRole: string;
+  projectPreviewNote: string;
+  projectApp?: string;
+  projectStartDate: string;
+  projectFinishDate: string;
+  projectMockups?: string;
+  projectTechnologies: {
+    technologyName: string;
+  }[];
+  projectName: string;
+};
+
 export type ProjectGQL = {
   portfolioPage: {
     frontmatter: {
@@ -6,24 +25,7 @@ export type ProjectGQL = {
       portfolioPageImage: {
         publicURL: string;
       };
-      projects: {
-        projectLabel: string;
-        projectCode?: string;
-        projectPreviewImage: {
-          publicURL: string;
-        };
-        projectDescription: string;
-        projectRole: string;
-        projectPreviewNote: string;
-        projectApp?: string;
-        projectStartDate: string;
-        projectFinishDate: string;
-        projectMockups?: string;
-        projectTechnologies: {
-          technologyName: string;
-        }[];
-        projectName: string;
-      }[];
+      projects: ProjectType[];
     };
   };
 };
