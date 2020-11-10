@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { Box, Container, makeStyles } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
 
-import { DetailsCard } from '../../components/DetailsCard';
 import { FilterTabs, TabsProps } from '../../components/FilterTabs/FilterTabs';
-import { Navbar } from '../../components/Navbar';
+import { Layout } from '../../components/Layout';
 import { PortfolioCard } from '../../components/PortfolioCard';
 import { PortfolioProjectDialog } from '../../components/PortfolioProject';
 import { SectionTitle } from '../../components/SectionTitle';
@@ -13,66 +11,15 @@ import { useDeveloperProfile } from '../../containers/DeveloperProfile';
 import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { formatDate } from '../../utils/date';
-import { ProjectGQL } from '../../views/portfolio-page/types';
+import { ProjectGQL, ProjectType } from '../../views/portfolio-page/types';
 
-const portfolioPageItemShadow = '0 40px 50px 0 rgba(103, 118, 128, 0.1)';
 const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: 0,
-    [theme.breakpoints.up('lg')]: {
-      display: 'flex',
-      padding: theme.spacing(8, 2, 0, 2),
-    },
-  },
-  navbarBox: {
+  titleBox: {
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       position: 'relative',
-    },
-  },
-  aside: {
-    display: 'none',
-    [theme.breakpoints.up('lg')]: {
-      display: 'block',
-      position: 'sticky',
-      top: theme.spacing(8),
-      height: 668,
-      width: 280,
-      marginRight: theme.spacing(4),
-    },
-  },
-  main: {
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-    },
-  },
-  mainContent: {
-    backgroundColor: theme.palette.background.paper,
-    borderRadius: 16,
-    margin: theme.spacing(0, 0, 7, 0),
-
-    [theme.breakpoints.up('sm')]: {
-      margin: theme.spacing(0, 3, 7, 3),
-    },
-
-    [theme.breakpoints.up('lg')]: {
-      display: 'flex',
-      flexDirection: 'column',
-      margin: theme.spacing(0, 0, 7, 0),
-      boxShadow: portfolioPageItemShadow,
-    },
-  },
-  navbar: {
-    marginBottom: theme.spacing(2),
-
-    [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(3),
-    },
-
-    [theme.breakpoints.up('lg')]: {
-      marginBottom: theme.spacing(7),
     },
   },
   projectsContainer: {
@@ -133,7 +80,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const defaultType = 'All';
   const projectData = data.portfolioPage.frontmatter;
   const { projects } = projectData;
-  const { componentType, isDesktop, isMobile } = useComponentType();
+  const { componentType, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
@@ -169,84 +116,68 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     setSelectedProject(index === projectData.projects.length - 1 ? 0 : index + 1);
   };
 
+  const renderProject = (project: ProjectType, index: number) => (
+    <Box key={`${project.projectName}-${project.projectDescription}`}>
+      <PortfolioCard
+        className={classes.project}
+        type={componentType}
+        title={project.projectName}
+        label={project.projectLabel}
+        description={project.projectDescription}
+        image={project.projectPreviewImage.publicURL}
+        onClick={() => setSelectedProject(index)}
+      />
+      <PortfolioProjectDialog
+        type={componentType}
+        handleClose={() => handleCloseProject()}
+        handlePrev={() => handlePreviousProject(index)}
+        handleNext={() => handleNextProject(index)}
+        isOpen={index === selectedProject}
+        title={project.projectName}
+        tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
+        imgurl={project.projectPreviewImage.publicURL}
+        subtitle={`${formatDate(project.projectStartDate, 'day')} - ${formatDate(
+          project.projectFinishDate,
+          'day',
+          true,
+        )}`}
+        contentMainDescription={project.projectDescription}
+        contentMainRole={project.projectRole}
+        contentHeader={project.projectPreviewNote}
+        tagtitle={project.projectLabel}
+        mockupsUrl={project.projectMockups ?? ''}
+        projectUrl={project.projectApp ?? ''}
+        codeUrl={project.projectCode ?? ''}
+      />
+    </Box>
+  );
+
   return (
-    <Container className={classes.container} maxWidth="lg">
-      <Helmet>
-        <title>{projectData.portfolioPageTitle}</title>
-        <meta name="description" content={projectData.portfolioPageDescription} />
-        <meta property="og:title" content={projectData.portfolioPageTitle} />
-        <meta property="og:description" content={projectData.portfolioPageDescription} />
-        <meta property="og:image" content={projectData.portfolioPageImage.publicURL} />
-      </Helmet>
-      {isDesktop && (
-        <Box className={classes.aside}>
-          <DetailsCard type={componentType} />
+    <Layout
+      developerProfile={developerProfile}
+      meta={{
+        title: projectData.portfolioPageTitle,
+        description: projectData.portfolioPageDescription,
+        imageUrl: projectData.portfolioPageImage.publicURL,
+      }}
+    >
+      <Box className={classes.projectsContainer}>
+        <Box className={classes.titleBox}>
+          <SectionTitle className={classes.title}>My works</SectionTitle>
+          {!isMobile && (
+            <FilterTabs
+              className={classes.navbarTitles}
+              indicatorColor="primary"
+              textColor="primary"
+              handleChange={handleChange}
+              navbarTitle={navbarTitle}
+              projectLabels={projectLabels}
+            />
+          )}
         </Box>
-      )}
-      <Box className={classes.main}>
-        <Navbar
-          className={classes.navbar}
-          type={componentType}
-          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-          position={developerProfile.position}
-          image={developerProfile.avatar.publicURL}
-          resumeLink={developerProfile.cv}
-        />
-        <Box className={classes.mainContent}>
-          <Box className={classes.projectsContainer}>
-            <Box className={classes.navbarBox}>
-              <SectionTitle className={classes.title}>My works</SectionTitle>
-              {!isMobile && (
-                <FilterTabs
-                  className={classes.navbarTitles}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  handleChange={handleChange}
-                  navbarTitle={navbarTitle}
-                  projectLabels={projectLabels}
-                />
-              )}
-            </Box>
-            <Box className={classes.projects}>
-              {filteredProjects.map((project, index) => (
-                <div key={`${project.projectName}-${project.projectDescription}`}>
-                  <PortfolioCard
-                    className={classes.project}
-                    type={componentType}
-                    title={project.projectName}
-                    label={project.projectLabel}
-                    description={project.projectDescription}
-                    image={project.projectPreviewImage.publicURL}
-                    onClick={() => setSelectedProject(index)}
-                  />
-                  <PortfolioProjectDialog
-                    type={componentType}
-                    handleClose={() => handleCloseProject()}
-                    handlePrev={() => handlePreviousProject(index)}
-                    handleNext={() => handleNextProject(index)}
-                    isOpen={index === selectedProject}
-                    title={project.projectName}
-                    tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
-                    imgurl={project.projectPreviewImage.publicURL}
-                    subtitle={`
-                      ${formatDate(project.projectStartDate, 'day')}
-                      -
-                      ${formatDate(project.projectFinishDate, 'day', true)}`}
-                    contentMainDescription={project.projectDescription}
-                    contentMainRole={project.projectRole}
-                    contentHeader={project.projectPreviewNote}
-                    tagtitle={project.projectLabel}
-                    mockupsUrl={project.projectMockups ?? ''}
-                    projectUrl={project.projectApp ?? ''}
-                    codeUrl={project.projectCode ?? ''}
-                  />
-                </div>
-              ))}
-            </Box>
-          </Box>
-        </Box>
+        <Box className={classes.projects}>{filteredProjects.map(renderProject)}</Box>
       </Box>
-    </Container>
+    </Layout>
   );
 };
 

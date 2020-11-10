@@ -13,9 +13,6 @@ export const useBlogPageDoesNotExist = (): boolean => {
               blogLabel
               blogBody
               blogDescription
-              blogImage {
-                publicURL
-              }
               publishDate
             }
           }

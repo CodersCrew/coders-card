@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     borderRadius: 16,
     padding: theme.spacing(0),
+    boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
   },
   content: {
     height: '100%',

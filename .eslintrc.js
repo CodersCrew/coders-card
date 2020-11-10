@@ -34,6 +34,7 @@ module.exports = {
     'react/jsx-indent': 0, // conflicts with prettier
     'react/jsx-wrap-multilines': 0, // conflicts with prettier
     'react/destructuring-assignment': 0, // in many cases we want to destructure part of the props
+    'react/require-default-props': 0, // we have a case where we want to set a default value to an optional prop when it has explicit prop types
     '@typescript-eslint/explicit-module-boundary-types': 0, // in many cases TS knows return type of the function so we don't need to specify it explicitly
     '@typescript-eslint/no-unused-vars': [2, { argsIgnorePattern: '^_' }],
     'simple-import-sort/sort': 2, // treat unsorted imports as lint errors

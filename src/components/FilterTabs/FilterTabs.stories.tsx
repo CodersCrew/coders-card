@@ -25,7 +25,6 @@ export const BaseFilterTabs = (): JSX.Element => {
         navbarTitle={0}
         projectLabels={['test1', 'test2']}
       />
-      ;
     </>
   );
 };
