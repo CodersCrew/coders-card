@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     borderRadius: 8,
-    boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+    boxShadow: theme.shadows[4],
   },
   action: {
     display: 'flex',

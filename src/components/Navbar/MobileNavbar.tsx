@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     padding: theme.spacing(1, 2),
     backgroundColor: theme.palette.background.paper,
-    boxShadow: '0 6px 16px 0 rgba(0, 0, 0, 0.1)',
+    boxShadow: theme.shadows[3],
     overflow: 'hidden',
   },
   image: {

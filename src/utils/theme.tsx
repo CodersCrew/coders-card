@@ -97,6 +97,15 @@ const themeOptions: ThemeOptions = {
       textTransform: 'none',
     },
   },
+  shadows: [
+    'none',
+    '0px 0px 0px 0px rgba(0,0,0,0.2)',
+    '0 6px 16px 0 rgba(0, 0, 0, 0.1)',
+    '0px 10px 40px -10px rgba(0,0,0,0.2)',
+    '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+    '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+    '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
+  ],
 };
 
 const theme = createMuiTheme(themeOptions);

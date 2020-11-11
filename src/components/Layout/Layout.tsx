@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       margin: theme.spacing(0, 0, 7, 0),
-      boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+      boxShadow: theme.shadows[5],
     },
   },
   navbar: {

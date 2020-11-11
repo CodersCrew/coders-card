@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     width: 158,
     height: 40,
     borderRadius: 8,
-    boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
+    boxShadow: theme.shadows[6],
   },
   title: {
     marginBottom: theme.spacing(4),
