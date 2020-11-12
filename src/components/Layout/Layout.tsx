@@ -77,9 +77,9 @@ const useStyles = makeStyles((theme) => ({
 export const Layout = ({ children, developerProfile, meta, variant = 'default' }: LayoutProps) => {
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
-  const html = document.querySelector('html').style;
-  html.width = '100vw';
-  html.overflowX = 'hidden';
+  const html = document.querySelector('html') as HTMLElement;
+  html.style.width = '100vw';
+  html.style.overflowX = 'hidden';
 
   return (
     <Container className={classes.container} maxWidth="lg">
