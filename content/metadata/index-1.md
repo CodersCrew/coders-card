@@ -1,0 +1,3 @@
+---
+metadataFavicon: favicon.png
+---
