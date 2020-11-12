@@ -23,13 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   projectsContainer: {
-    borderRadius: 16,
-    padding: theme.spacing(3),
-
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-      padding: theme.spacing(4),
-    },
+    width: '100%',
   },
   projects: {
     display: 'grid',
@@ -44,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
       gridTemplateColumns: '400px 400px',
       alignItems: 'center',
       justifyContent: 'center',
-      gridGap: theme.spacing(5),
+      gridRowGap: theme.spacing(5),
+      gridColumnGap: theme.spacing(9),
     },
   },
   project: {
@@ -65,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.up('lg')]: {
       position: 'absolute',
-      margin: theme.spacing(0, 2, 4, 2),
+      margin: theme.spacing(0, 0, 4, 0),
     },
   },
   navbarTitles: {

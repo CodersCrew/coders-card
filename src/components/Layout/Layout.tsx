@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     borderRadius: 16,
     margin: theme.spacing(0, 0, 7, 0),
+    padding: theme.spacing(3, 3, 4, 3),
 
     [theme.breakpoints.up('sm')]: {
       margin: theme.spacing(0, 3, 7, 3),
@@ -55,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       margin: theme.spacing(0, 0, 7, 0),
+      padding: theme.spacing(4),
       boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
     },
   },

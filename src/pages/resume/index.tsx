@@ -12,14 +12,11 @@ import { ResumePageData } from '../../views/resume-page/types';
 
 const useStyles = makeStyles((theme) => ({
   resumePageContainer: {
-    borderRadius: 16,
-    padding: theme.spacing(3),
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-      padding: theme.spacing(4),
-    },
+    width: '100%',
   },
   title: {
+    width: '100%',
+
     marginBottom: theme.spacing(4),
 
     [theme.breakpoints.up('sm')]: {
