@@ -18,7 +18,7 @@ function SEO({ description, title, author, lang }: SEOProps) {
     query {
       meta: markdownRemark(fileAbsolutePath: { regex: "/metadata/index-1.md/" }) {
         frontmatter {
-          favicon {
+          metadataFavicon {
             publicURL
           }
         }
