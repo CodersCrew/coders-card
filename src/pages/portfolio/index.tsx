@@ -97,6 +97,19 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     return projectType !== defaultType ? project.projectLabel === projectType : ' ';
   });
 
+  const initialProjectCategory = projectLabels.map((projectLabel) => ({ [projectLabel]: [] }));
+
+  const initialProjectCategoryObject = [...initialProjectCategory].reduce(
+    (accObj, currObj) => Object.assign(accObj, currObj),
+    {},
+  );
+
+  const groupedProjects = projects.reduce((acc, project) => {
+    return { ...acc, [project.projectLabel]: [...acc[project.projectLabel], project] };
+  }, initialProjectCategoryObject);
+
+  if (Object.keys(groupedProjects).length > 1) console.log('more than 1');
+
   const handleChange: TabsProps['onChange'] = (event, newValue) => {
     setNavbarTitle(newValue);
   };
