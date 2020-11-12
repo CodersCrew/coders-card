@@ -10,7 +10,7 @@ type SEOProps = {
 };
 
 function SEO({ description, title, author, lang }: SEOProps) {
-  const data = useStaticQuery(graphql`
+  const data: { meta: { frontmatter: { metadataFavicon: { publicURL: string } } } } = useStaticQuery(graphql`
     query {
       meta: markdownRemark(fileAbsolutePath: { regex: "/metadata/index-1.md/" }) {
         frontmatter {
