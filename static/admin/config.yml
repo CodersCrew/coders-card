@@ -17,19 +17,50 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Page Title", name: "blogPageTitle", widget: "string", required: false, pattern: ['.{5,60}', "Must have 5-60 characters"] }
-      - { label: "Page Description", name: "blogPageDescription", widget: "string", pattern: ['.{50,160}', "Must have 50-160 characters"] }
+      - {
+          label: "Page Title",
+          name: "blogPageTitle",
+          widget: "string",
+          required: false,
+          pattern: [".{5,60}", "Must have 5-60 characters"],
+        }
+      - {
+          label: "Page Description",
+          name: "blogPageDescription",
+          widget: "string",
+          pattern: [".{50,160}", "Must have 50-160 characters"],
+        }
       - { label: "Page preview image", name: "blogPageImage", widget: "image" }
       - label: "Blog post"
         name: "blogPost"
         widget: "list"
         required: false
         fields:
-          - { label: "Title", name: "blogTitle", widget: "string", pattern: ['.{5,60}', "Must have 5-60 characters"] }
+          - {
+              label: "Title",
+              name: "blogTitle",
+              widget: "string",
+              pattern: [".{5,60}", "Must have 5-60 characters"],
+            }
           - { label: "Publish Date", name: "publishDate", widget: "datetime" }
-          - { label: "Label", name: "blogLabel", widget: "string", pattern: ['.{3,20}', "Must have 3-20 characters"] }
-          - { label: "Description", name: "blogDescription", widget: "string", pattern: ['.{20,250}', "Must have 20-250 characters"] }
-          - { label: "Body", name: "blogBody", widget: "markdown", pattern: ['.{100,3000}', "Must have 100-3000 characters"] }
+          - {
+              label: "Label",
+              name: "blogLabel",
+              widget: "string",
+              pattern: [".{3,20}", "Must have 3-20 characters"],
+            }
+          - {
+              label: "Description",
+              name: "blogDescription",
+              widget: "string",
+              pattern: [".{20,250}", "Must have 20-250 characters"],
+            }
+          - {
+              label: "Body",
+              name: "blogBody",
+              widget: "markdown",
+              pattern: [".{100,3000}", "Must have 100-3000 characters"],
+            }
           - { label: "Blogpost image", name: "blogImage", widget: "image" }
 
   - name: "developer-profile"
@@ -43,24 +74,112 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "First name", name: "firstName", widget: "string", pattern: ['.{2,20}', "Must have 2-20 characters"] }
-      - { label: "Last name", name: "lastName", widget: "string", pattern: ['.{2,20}', "Must have 2-20 characters"] }
+      - {
+          label: "First name",
+          name: "firstName",
+          widget: "string",
+          pattern: [".{2,20}", "Must have 2-20 characters"],
+        }
+      - {
+          label: "Last name",
+          name: "lastName",
+          widget: "string",
+          pattern: [".{2,20}", "Must have 2-20 characters"],
+        }
       - { label: "Avatar image", name: "avatar", widget: "image" }
-      - { label: "Job position", name: "position", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
-      - { label: "Phone number", name: "phone", widget: "string", required: false }
-      - { label: "Email", name: "email", widget: "string", pattern: ['.{1,255}', "Must be a valid email address"] }
-      - { label: "City of residence", name: "city", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
-      - { label: "Country of residence", name: "country", widget: "string", pattern: ['.{2,30}', "Must have 2-30 characters"] }
-      - { label: "Available for freelance", name: "isFreelancer", widget: "boolean" }
-      - { label: "Link to download CV", name: "cv", widget: "string", pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
+      - {
+          label: "Job position",
+          name: "position",
+          widget: "string",
+          pattern: [".{2,30}", "Must have 2-30 characters"],
+        }
+      - {
+          label: "Phone number",
+          name: "phone",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Email",
+          name: "email",
+          widget: "string",
+          pattern: [".{1,255}", "Must be a valid email address"],
+        }
+      - {
+          label: "City of residence",
+          name: "city",
+          widget: "string",
+          pattern: [".{2,30}", "Must have 2-30 characters"],
+        }
+      - {
+          label: "Country of residence",
+          name: "country",
+          widget: "string",
+          pattern: [".{2,30}", "Must have 2-30 characters"],
+        }
+      - {
+          label: "Available for freelance",
+          name: "isFreelancer",
+          widget: "boolean",
+        }
+      - {
+          label: "Link to download CV",
+          name: "cv",
+          widget: "string",
+          pattern:
+            [
+              'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+              "Must be a valid URL",
+            ],
+        }
       - label: "Social media"
         name: "socialMedia"
         widget: "object"
         fields:
-          - { label: "Twitter profile link", name: "twitter", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
-          - { label: "Github profile link", name: "github", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
-          - { label: "Instagram profile link", name: "instagram", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
-          - { label: "Facebook profile link", name: "facebook", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"] }
+          - {
+              label: "Twitter profile link",
+              name: "twitter",
+              widget: "string",
+              required: false,
+              pattern:
+                [
+                  'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                  "Must be a valid URL",
+                ],
+            }
+          - {
+              label: "Github profile link",
+              name: "github",
+              widget: "string",
+              required: false,
+              pattern:
+                [
+                  'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                  "Must be a valid URL",
+                ],
+            }
+          - {
+              label: "Instagram profile link",
+              name: "instagram",
+              widget: "string",
+              required: false,
+              pattern:
+                [
+                  'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                  "Must be a valid URL",
+                ],
+            }
+          - {
+              label: "Facebook profile link",
+              name: "facebook",
+              widget: "string",
+              required: false,
+              pattern:
+                [
+                  'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                  "Must be a valid URL",
+                ],
+            }
 
   - name: "about-me"
     label: "About me"
@@ -73,10 +192,26 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Page Title", name: "aboutPageTitle", widget: "string", default: "About me", pattern: ['.{5,60}', "Must have 5-60 characters"] }
-      - { label: "Page Description", name: "aboutPageDescription", widget: "string", pattern: ['.{50,160}', "Must have 50-160 characters"] }
+      - {
+          label: "Page Title",
+          name: "aboutPageTitle",
+          widget: "string",
+          default: "About me",
+          pattern: [".{5,60}", "Must have 5-60 characters"],
+        }
+      - {
+          label: "Page Description",
+          name: "aboutPageDescription",
+          widget: "string",
+          pattern: [".{50,160}", "Must have 50-160 characters"],
+        }
       - { label: "Page preview image", name: "aboutPageImage", widget: "image" }
-      - { label: "Description", name: "description", widget: "markdown", pattern: ['.{100,3000}', "Must have 100-3000 characters"] }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "markdown",
+          pattern: [".{100,3000}", "Must have 100-3000 characters"],
+        }
       - label: "Skills"
         name: "socialMedia"
         widget: "object"
@@ -86,31 +221,79 @@ collections:
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "technologyName", widget: "string", pattern: ['.{1,50}', "Must have 1-50 characters"] }
-              - { label: "Value", name: "technologyValue", widget: "number", min: 1, max: 5  }
+              - {
+                  label: "Name",
+                  name: "technologyName",
+                  widget: "string",
+                  pattern: [".{1,50}", "Must have 1-50 characters"],
+                }
+              - {
+                  label: "Value",
+                  name: "technologyValue",
+                  widget: "number",
+                  min: 1,
+                  max: 5,
+                }
           - label: "Tools"
             name: "tools"
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "toolName", widget: "string", pattern: ['.{1,50}', "Must have 1-50 characters"] }
-              - { label: "Value", name: "toolValue", widget: "number", min: 1, max: 5  }
+              - {
+                  label: "Name",
+                  name: "toolName",
+                  widget: "string",
+                  pattern: [".{1,50}", "Must have 1-50 characters"],
+                }
+              - {
+                  label: "Value",
+                  name: "toolValue",
+                  widget: "number",
+                  min: 1,
+                  max: 5,
+                }
           - label: "Other skills"
             name: "otherSkills"
             required: false
             widget: "list"
             fields:
-              - { label: "Name", name: "otherSkillName", widget: "string", pattern: ['.{1,50}', "Must have 1-50 characters"] }
-              - { label: "Value", name: "otherSkillValue", widget: "number", min: 1, max: 5  }
+              - {
+                  label: "Name",
+                  name: "otherSkillName",
+                  widget: "string",
+                  pattern: [".{1,50}", "Must have 1-50 characters"],
+                }
+              - {
+                  label: "Value",
+                  name: "otherSkillValue",
+                  widget: "number",
+                  min: 1,
+                  max: 5,
+                }
       - label: "Testimonials"
         name: "testimonials"
         widget: list
         required: false
         fields:
-          - { label: "Text", name: "testimonialText", widget: "string", pattern: ['.{30,160}', "Must have 30-160 characters"] }
+          - {
+              label: "Text",
+              name: "testimonialText",
+              widget: "string",
+              pattern: [".{30,160}", "Must have 30-160 characters"],
+            }
           - { label: "Image", name: "testimonialImage", widget: "image" }
-          - { label: "Testimone name", name: "testimonialName", widget: "string", pattern: ['.{5,40}', "Must have 5-40 characters"] }
-          - { label: "Testimone job position", name: "testimonialJob", widget: "string", pattern: ['.{5,40}', "Must have 5-40 characters"] }
+          - {
+              label: "Testimone name",
+              name: "testimonialName",
+              widget: "string",
+              pattern: [".{5,40}", "Must have 5-40 characters"],
+            }
+          - {
+              label: "Testimone job position",
+              name: "testimonialJob",
+              widget: "string",
+              pattern: [".{5,40}", "Must have 5-40 characters"],
+            }
 
   - name: "resume"
     label: "Resume"
@@ -123,27 +306,75 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Page Title", name: "resumePageTitle", widget: "string", pattern: ['.{5,60}', "Must have 5-60 characters"] }
-      - { label: "Page Description", name: "resumePageDescription", widget: "string", pattern: ['.{50,160}', "Must have 50-160 characters"] }
-      - { label: "Page preview image", name: "resumePageImage", widget: "image" }
+      - {
+          label: "Page Title",
+          name: "resumePageTitle",
+          widget: "string",
+          pattern: [".{5,60}", "Must have 5-60 characters"],
+        }
+      - {
+          label: "Page Description",
+          name: "resumePageDescription",
+          widget: "string",
+          pattern: [".{50,160}", "Must have 50-160 characters"],
+        }
+      - {
+          label: "Page preview image",
+          name: "resumePageImage",
+          widget: "image",
+        }
       - label: "Work experience"
         name: "workExperience"
         widget: "list"
         fields:
-          - { label: "Job title", name: "jobTitle", widget: "string", pattern: ['.{3,50}', "Must have 3-50 characters"] }
-          - { label: "Company name", name: "companyName", widget: "string", pattern: ['.{3,20}', "Must have 3-20 characters"] }
-          - { label: "Job description", name: "jobDescription", widget: "string", pattern: ['.{80,400}', "Must have 80-400 characters"] }
+          - {
+              label: "Job title",
+              name: "jobTitle",
+              widget: "string",
+              pattern: [".{3,50}", "Must have 3-50 characters"],
+            }
+          - {
+              label: "Company name",
+              name: "companyName",
+              widget: "string",
+              pattern: [".{3,20}", "Must have 3-20 characters"],
+            }
+          - {
+              label: "Job description",
+              name: "jobDescription",
+              widget: "string",
+              pattern: [".{80,400}", "Must have 80-400 characters"],
+            }
           - { label: "Start date", name: "startJobDate", widget: "datetime" }
           - { label: "Finish date", name: "finishJobDate", widget: "datetime" }
       - label: "Education"
         name: "education"
         widget: "list"
         fields:
-          - { label: "School/University name", name: "schoolName", widget: "string", pattern: ['.{9}', "Must have at least 9 characters"] }
-          - { label: "Course/Degree", name: "course", widget: "string", pattern: ['.{5,100}', "Must have 5-100 characters"] }
-          - { label: "Education description", name: "educationDescription", widget: "string", pattern: ['.{80,400}', "Must have 80-400 characters"] }
+          - {
+              label: "School/University name",
+              name: "schoolName",
+              widget: "string",
+              pattern: [".{9}", "Must have at least 9 characters"],
+            }
+          - {
+              label: "Course/Degree",
+              name: "course",
+              widget: "string",
+              pattern: [".{5,100}", "Must have 5-100 characters"],
+            }
+          - {
+              label: "Education description",
+              name: "educationDescription",
+              widget: "string",
+              pattern: [".{80,400}", "Must have 80-400 characters"],
+            }
           - { label: "Start date", name: "startSchoolDate", widget: "datetime" }
-          - { label: "Finish date", name: "finishSchoolDate", widget: "datetime" }
+          - {
+              label: "Finish date",
+              name: "finishSchoolDate",
+              widget: "datetime",
+            }
 
   - name: "portfolio"
     label: "Portfolio"
@@ -156,24 +387,105 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Page Title", name: "portfolioPageTitle", widget: "string", pattern: ['.{5,60}', "Must have 5-60 characters"] }
-      - { label: "Page Description", name: "portfolioPageDescription", widget: "string", pattern: ['.{50,160}', "Must have 50-160 characters"] }
-      - { label: "Page preview image", name: "portfolioPageImage", widget: "image" }
+      - {
+          label: "Page Title",
+          name: "portfolioPageTitle",
+          widget: "string",
+          pattern: [".{5,60}", "Must have 5-60 characters"],
+        }
+      - {
+          label: "Page Description",
+          name: "portfolioPageDescription",
+          widget: "string",
+          pattern: [".{50,160}", "Must have 50-160 characters"],
+        }
+      - {
+          label: "Page preview image",
+          name: "portfolioPageImage",
+          widget: "image",
+        }
       - label: "Projects"
         name: "projects"
         widget: "list"
         fields:
-          - { label: "Project name", name: "projectName", widget: "string", pattern: ['.{5,25}', "Must have 5-25 characters"] }
-          - { label: "Preview note", name: "projectPreviewNote", widget: "string", pattern: ['.{5,200}', "Must have 5-200 characters"] }
-          - { label: "Preview image", name: "projectPreviewImage", widget: "image" }
-          - { label: "Project description", name: "projectDescription", widget: "markdown", pattern: ['.{5,400}', "Must have 5-400 characters"] }
-          - { label: "My role in the project", name: "projectRole", widget: "markdown", pattern: ['.{10,370}', "Must have 10-370 characters"] }
-          - { label: "Link to code", name: "projectCode", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"]  }
-          - { label: "Link to mockups", name: "projectMockups", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"]  }
-          - { label: "Link to application", name: "projectApp", widget: "string", required: false, pattern: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', "Must be a valid URL"]  }
-          - { label: "Project label (example: Mobile app)", name: "projectLabel", widget: "string", pattern: ['.{3,20}', "Must have 3-20 characters"] }
-          - { label: "Project start date", name: "projectStartDate", widget: "datetime" }
-          - { label: "Project finish date", name: "projectFinishDate", widget: "datetime" }
+          - {
+              label: "Project name",
+              name: "projectName",
+              widget: "string",
+              pattern: [".{5,25}", "Must have 5-25 characters"],
+            }
+          - {
+              label: "Preview note",
+              name: "projectPreviewNote",
+              widget: "string",
+              pattern: [".{5,200}", "Must have 5-200 characters"],
+            }
+          - {
+              label: "Preview image",
+              name: "projectPreviewImage",
+              widget: "image",
+            }
+          - {
+              label: "Project description",
+              name: "projectDescription",
+              widget: "markdown",
+              pattern: [".{5,400}", "Must have 5-400 characters"],
+            }
+          - {
+              label: "My role in the project",
+              name: "projectRole",
+              widget: "markdown",
+              pattern: [".{10,370}", "Must have 10-370 characters"],
+            }
+          - {
+              label: "Link to code",
+              name: "projectCode",
+              widget: "string",
+              required: false,
+              pattern:
+                [
+                  'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                  "Must be a valid URL",
+                ],
+            }
+          - {
+              label: "Link to mockups",
+              name: "projectMockups",
+              widget: "string",
+              required: false,
+              pattern:
+                [
+                  'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                  "Must be a valid URL",
+                ],
+            }
+          - {
+              label: "Link to application",
+              name: "projectApp",
+              widget: "string",
+              required: false,
+              pattern:
+                [
+                  'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                  "Must be a valid URL",
+                ],
+            }
+          - {
+              label: "Project label (example: Mobile app)",
+              name: "projectLabel",
+              widget: "string",
+              pattern: [".{3,20}", "Must have 3-20 characters"],
+            }
+          - {
+              label: "Project start date",
+              name: "projectStartDate",
+              widget: "datetime",
+            }
+          - {
+              label: "Project finish date",
+              name: "projectFinishDate",
+              widget: "datetime",
+            }
           - label: "Technologies"
             name: "projectTechnologies"
             widget: "list"
@@ -191,8 +503,32 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Page Title", name: "contactPageTitle", widget: "string", pattern: ['.{5,60}', "Must have 5-60 characters"] }
-      - { label: "Page Description", name: "contactPageDescription", widget: "string", pattern: ['.{50,160}', "Must have 50-160 characters"] }
-      - { label: "Page preview image", name: "contactPageImage", widget: "image" }
-
-
+      - {
+          label: "Page Title",
+          name: "contactPageTitle",
+          widget: "string",
+          pattern: [".{5,60}", "Must have 5-60 characters"],
+        }
+      - {
+          label: "Page Description",
+          name: "contactPageDescription",
+          widget: "string",
+          pattern: [".{50,160}", "Must have 50-160 characters"],
+        }
+      - {
+          label: "Page preview image",
+          name: "contactPageImage",
+          widget: "image",
+        }
+  - name: "metadata"
+    label: "Metadata"
+    folder: "content/metadata"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{content}}index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Favicon", name: "metadataFavicon", widget: "image" }

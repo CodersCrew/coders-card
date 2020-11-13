@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { graphql, useStaticQuery } from 'gatsby';
 
 type SEOProps = {
   title: string;
@@ -9,6 +10,18 @@ type SEOProps = {
 };
 
 function SEO({ description, title, author, lang }: SEOProps) {
+  const data: { meta: { frontmatter: { metadataFavicon: { publicURL: string } } } } = useStaticQuery(graphql`
+    query {
+      meta: markdownRemark(fileAbsolutePath: { regex: "/metadata/index-1.md/" }) {
+        frontmatter {
+          metadataFavicon {
+            publicURL
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <Helmet
       htmlAttributes={{
@@ -49,7 +62,11 @@ function SEO({ description, title, author, lang }: SEOProps) {
           content: description,
         },
       ]}
-    />
+    >
+      <link rel="icon" type="image/png" sizes="16x16" href={data.meta.frontmatter.metadataFavicon.publicURL} />
+      <link rel="icon" type="image/png" sizes="16x16" href={data.meta.frontmatter.metadataFavicon.publicURL} />
+      <link rel="icon" type="image/png" sizes="32x32" href={data.meta.frontmatter.metadataFavicon.publicURL} />
+    </Helmet>
   );
 }
 
