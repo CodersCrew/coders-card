@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 'auto',
   },
-  wrapper: { boxShadow: '0px 0px 0px 0px rgba(0,0,0,0.2)' },
+  wrapper: { boxShadow: theme.shadows[1] },
   textHeader: { marginBottom: theme.spacing(0.5) },
   subtitle: { margin: theme.spacing(0.5, 0, 1, 0) },
   contentHeader: { margin: theme.spacing(2, 0, 2) },

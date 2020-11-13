@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',
     borderRadius: 0,
-    boxShadow: 'none',
+    boxShadow: theme.shadows[0],
     backgroundColor: 'transparent',
   },
   overlay: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   overlayBox: {
     padding: 0,
     borderRadius: 8,
-    boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+    boxShadow: theme.shadows[4],
     minHeight: 156,
     transform: 'translateY(-40px)',
     backgroundColor: theme.palette.background.paper,

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: theme.palette.background.paper,
     borderRadius: 8,
-    boxShadow: '0 6px 16px 0 rgba(0, 0, 0, 0.1)',
+    boxShadow: theme.shadows[3],
     overflow: 'hidden',
   },
   menu: {

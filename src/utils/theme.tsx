@@ -2,6 +2,7 @@ import React from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme, { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+import { Shadows } from '@material-ui/core/styles/shadows';
 
 import { FC } from '../typings/components';
 
@@ -97,6 +98,16 @@ const themeOptions: ThemeOptions = {
       textTransform: 'none',
     },
   },
+  shadows: [
+    'none',
+    '0px 0px 0px 0px rgba(0,0,0,0.2)',
+    '0 6px 16px 0 rgba(0, 0, 0, 0.1)',
+    '0px 10px 40px -10px rgba(0,0,0,0.2)',
+    '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+    '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+    '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
+    ...[...Array(18)].map((_) => `none`),
+  ] as Shadows,
 };
 
 const theme = createMuiTheme(themeOptions);

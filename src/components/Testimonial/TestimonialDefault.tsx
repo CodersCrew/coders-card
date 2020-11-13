@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',
     borderRadius: 0,
-    boxShadow: 'none',
+    boxShadow: theme.shadows[0],
     backgroundColor: 'transparent',
   },
   overlay: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     padding: 0,
     backgroundColor: theme.palette.background.paper,
-    boxShadow: '0 8px 20px 0 rgba(68, 86, 108, 0.1)',
+    boxShadow: theme.shadows[4],
   },
   overlayLabel: {
     display: 'flex',

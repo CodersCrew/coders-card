@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     background: theme.palette.background.paper,
-    boxShadow: '0 40px 50px 0 rgba(103, 118, 128, 0.1)',
+    boxShadow: theme.shadows[5],
     borderRadius: 16,
     height: '100%',
     width: '100%',
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     width: 200,
     height: 200,
     borderRadius: 16,
-    boxShadow: '0px 10px 40px -10px rgba(0,0,0,0.2)',
+    boxShadow: theme.shadows[3],
   },
   content: {
     display: 'flex',
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
     width: 158,
     height: 40,
     borderRadius: 8,
-    boxShadow: '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
+    boxShadow: theme.shadows[6],
   },
   resetAnchorStyle: {
     textDecoration: 'none',
