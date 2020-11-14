@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
 
@@ -78,37 +78,86 @@ const useStyles = makeStyles((theme) => ({
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
   const defaultType = 'All';
+  const extraType = 'Other';
+  const countMaxCategory = 1;
   const projectData = data.portfolioPage.frontmatter;
   const { projects } = projectData;
   const { componentType, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
-  const projectLabels = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
+  const projectLabels: string[] = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
+  const segregatedProjects: string[] = [];
+  const sortedLabelsProjects: string[] = [];
+  const [allProjects, setAllProjects] = useState(projects);
 
   const getNavbarTitle = (type: number) => {
     const title: Record<number, string> = { ...projectLabels };
     return title[type];
   };
 
+  // if user add more than 5 category
+  if (projectLabels.length > countMaxCategory) {
+    projectLabels.push(extraType);
+  }
   const projectType = getNavbarTitle(navbarTitle);
 
-  const filteredProjects = projects.filter((project) => {
+  // filter all project depending on their label
+  const filteredProjects = allProjects.filter((project) => {
     return projectType !== defaultType ? project.projectLabel === projectType : ' ';
   });
 
-  const initialProjectCategory = projectLabels.map((projectLabel) => ({ [projectLabel]: [] }));
+  if (projectLabels.length > countMaxCategory) {
+    // create initial array with all projects
+    const initialProjectsCategory: Record<string, Array<ProjectType>>[] = projectLabels.map((projectLabel) => ({
+      [projectLabel]: [],
+    }));
 
-  const initialProjectCategoryObject = [...initialProjectCategory].reduce(
-    (accObj, currObj) => Object.assign(accObj, currObj),
-    {},
-  );
+    // add all projects to All label array
+    projects.map((project) =>
+      Object.keys(initialProjectsCategory[0]).map((allLabel) => initialProjectsCategory[0][allLabel].push(project)),
+    );
 
-  const groupedProjects = projects.reduce((acc, project) => {
-    return { ...acc, [project.projectLabel]: [...acc[project.projectLabel], project] };
-  }, initialProjectCategoryObject);
+    // create object with all label
+    const projectCategory = [...initialProjectsCategory].reduce(
+      (accObj, currObj) => Object.assign(accObj, currObj),
+      {},
+    );
 
-  if (Object.keys(groupedProjects).length > 1) console.log('more than 1');
+    console.log(projectCategory);
+    // grouped projects
+    const groupedProjects = projects.reduce((acc, project) => {
+      return {
+        ...acc,
+        [project.projectLabel]: [...acc[project.projectLabel], project],
+      };
+    }, projectCategory);
+
+    Object.entries(groupedProjects).map((project) => segregatedProjects.push([project[0], ...project[1]]));
+
+    const sortedProjects = segregatedProjects
+      .sort((currentProject, nextProject) => currentProject - nextProject)
+      .map((projectLabel) => sortedLabelsProjects.push(projectLabel[0]));
+
+    console.log(sortedLabelsProjects);
+    const labelsFromMaximumCategory = sortedProjects.slice(1);
+
+    // remember to change Mobile app to dynamic variable!!!!!
+
+    // const newProjects = allProjects.map((project) =>
+    //   project.projectLabel === labelsFromMaximumCategory.map((label) => label)
+    //     ? { ...project, projectLabel: extraType }
+    //     : project,
+    // );
+
+    const newProjects = allProjects.map((project) =>
+      project.projectLabel === ('Mobile app' || 'Desktop app') ? { ...project, projectLabel: extraType } : project,
+    );
+
+    useEffect(() => {
+      setAllProjects(newProjects);
+    }, []);
+  }
 
   const handleChange: TabsProps['onChange'] = (event, newValue) => {
     setNavbarTitle(newValue);
