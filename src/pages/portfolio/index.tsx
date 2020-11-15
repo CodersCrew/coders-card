@@ -104,39 +104,40 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   });
 
   if (labelsUpdated.length - 1 > numberOfMaxLabels) {
-    const groupedProjects = _.groupBy(projects, 'projectLabel');
+    const groupedProjects: Record<string, ProjectType[]> = _.groupBy(projects, 'projectLabel');
     const labelsToDelete: Array<string> = [];
 
     // orderby number of projects
-    const sortedProjectsCollection = Object.entries(groupedProjects)
+    const sortedProjectsCollection: ProjectType[][] = Object.entries(groupedProjects)
+      // .map((projectArray) => projectArray.splice(1, 2))
       .map((project) => [project, ...project[1]])
       .sort((currentProjects, nextProjects) => {
         return nextProjects.length - currentProjects.length;
       });
-
+    console.log(sortedProjectsCollection);
     // delete first element-label from array
     sortedProjectsCollection.map((arrayProject) => arrayProject.shift());
 
     // update labels to other categories
-    const updateProjects = sortedProjectsCollection.map((projectCollections, index) =>
+    const updateProjects: Array<Array<ProjectType>> = sortedProjectsCollection.map((projectCollections, index) =>
       index > numberOfMaxLabels - 1
         ? projectCollections.map(
-            (project) =>
-              labelsToDelete.push(project.projectLabel) && {
+            (project) => (
+              labelsToDelete.push(project.projectLabel),
+              {
                 ...project,
                 projectLabel: extraType,
-              },
+              }
+            ),
           )
         : projectCollections,
     );
-
     // update state with projects
-    const merged: Array<ProjectType> = [].concat.apply(...updateProjects);
-    console.log('merged', merged);
-    const res = labelsUpdated.filter((label) => !labelsToDelete.includes(label));
+    const mergedProjects: Array<ProjectType> = updateProjects.flat(1);
+    const currentLabels = labelsUpdated.filter((label) => !labelsToDelete.includes(label));
     useEffect(() => {
-      setLabelsUpdated([...res, extraType]);
-      setProjectUpdated(merged);
+      setLabelsUpdated([...currentLabels, extraType]);
+      setProjectUpdated(mergedProjects);
     }, []);
   }
 
