@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
+import * as _ from 'lodash';
 
 import { FilterTabs, TabsProps } from '../../components/FilterTabs/FilterTabs';
 import { Layout } from '../../components/Layout';
@@ -79,83 +80,63 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
   const defaultType = 'All';
   const extraType = 'Other';
-  const countMaxCategory = 1;
+  const numberOfMaxLabels = 1;
   const projectData = data.portfolioPage.frontmatter;
   const { projects } = projectData;
   const { componentType, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
-  const projectLabels: string[] = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
-  const segregatedProjects: string[] = [];
-  const sortedLabelsProjects: string[] = [];
-  const [allProjects, setAllProjects] = useState(projects);
+  const projectsLabels: string[] = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
+  const [projectsUpdated, setProjectUpdated] = useState(projects);
+  const [labelsUpdated, setLabelsUpdated] = useState(projectsLabels);
 
   const getNavbarTitle = (type: number) => {
-    const title: Record<number, string> = { ...projectLabels };
+    const title: Record<number, string> = { ...labelsUpdated };
     return title[type];
   };
 
-  // if user add more than 5 category
-  if (projectLabels.length > countMaxCategory) {
-    projectLabels.push(extraType);
-  }
   const projectType = getNavbarTitle(navbarTitle);
 
   // filter all project depending on their label
-  const filteredProjects = allProjects.filter((project) => {
+  const filteredProjects = projectsUpdated.filter((project) => {
     return projectType !== defaultType ? project.projectLabel === projectType : ' ';
   });
 
-  if (projectLabels.length > countMaxCategory) {
-    // create initial array with all projects
-    const initialProjectsCategory: Record<string, Array<ProjectType>>[] = projectLabels.map((projectLabel) => ({
-      [projectLabel]: [],
-    }));
+  if (labelsUpdated.length - 1 > numberOfMaxLabels) {
+    const groupedProjects = _.groupBy(projects, 'projectLabel');
+    const labelsToDelete: Array<string> = [];
 
-    // add all projects to All label array
-    projects.map((project) =>
-      Object.keys(initialProjectsCategory[0]).map((allLabel) => initialProjectsCategory[0][allLabel].push(project)),
+    // orderby number of projects
+    const sortedProjectsCollection = Object.entries(groupedProjects)
+      .map((project) => [project, ...project[1]])
+      .sort((currentProjects, nextProjects) => {
+        return nextProjects.length - currentProjects.length;
+      });
+
+    // delete first element-label from array
+    sortedProjectsCollection.map((arrayProject) => arrayProject.shift());
+
+    // update labels to other categories
+    const updateProjects = sortedProjectsCollection.map((projectCollections, index) =>
+      index > numberOfMaxLabels - 1
+        ? projectCollections.map(
+            (project) =>
+              labelsToDelete.push(project.projectLabel) && {
+                ...project,
+                projectLabel: extraType,
+              },
+          )
+        : projectCollections,
     );
 
-    // create object with all label
-    const projectCategory = [...initialProjectsCategory].reduce(
-      (accObj, currObj) => Object.assign(accObj, currObj),
-      {},
-    );
-
-    console.log(projectCategory);
-    // grouped projects
-    const groupedProjects = projects.reduce((acc, project) => {
-      return {
-        ...acc,
-        [project.projectLabel]: [...acc[project.projectLabel], project],
-      };
-    }, projectCategory);
-
-    Object.entries(groupedProjects).map((project) => segregatedProjects.push([project[0], ...project[1]]));
-
-    const sortedProjects = segregatedProjects
-      .sort((currentProject, nextProject) => currentProject - nextProject)
-      .map((projectLabel) => sortedLabelsProjects.push(projectLabel[0]));
-
-    console.log(sortedLabelsProjects);
-    const labelsFromMaximumCategory = sortedProjects.slice(1);
-
-    // remember to change Mobile app to dynamic variable!!!!!
-
-    // const newProjects = allProjects.map((project) =>
-    //   project.projectLabel === labelsFromMaximumCategory.map((label) => label)
-    //     ? { ...project, projectLabel: extraType }
-    //     : project,
-    // );
-
-    const newProjects = allProjects.map((project) =>
-      project.projectLabel === ('Mobile app' || 'Desktop app') ? { ...project, projectLabel: extraType } : project,
-    );
-
+    // update state with projects
+    const merged: Array<ProjectType> = [].concat.apply(...updateProjects);
+    console.log('merged', merged);
+    const res = labelsUpdated.filter((label) => !labelsToDelete.includes(label));
     useEffect(() => {
-      setAllProjects(newProjects);
+      setLabelsUpdated([...res, extraType]);
+      setProjectUpdated(merged);
     }, []);
   }
 
@@ -233,7 +214,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
               textColor="primary"
               handleChange={handleChange}
               navbarTitle={navbarTitle}
-              projectLabels={projectLabels}
+              projectLabels={labelsUpdated}
             />
           )}
         </Box>
