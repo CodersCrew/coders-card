@@ -89,7 +89,7 @@ const compareLengthOfProjects = (
   shorterLengthGroupedObjectsByLabel: GroupedObjectsByLabelType,
 ): number => {
   return (
-    shorterLengthGroupedObjectsByLabel.projectProperties.length -
+    shorterLengthGroupedObjectsByLabel.projectProperties.length,
     longerLengthGroupedObjectsByLabel.projectProperties.length
   );
 };
@@ -132,11 +132,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const [navbarTitle, setNavbarTitle] = useState(0);
 
   const sortedGroupsOfProjects = getTabsData(projects);
-  const projectsLabels: string[] = sortedGroupsOfProjects.map((object) => object.projectLabel);
-  const projectLabelsWithAll = [defaultType, ...projectsLabels];
+  const projectsLabels: string[] = [defaultType, ...sortedGroupsOfProjects.map((object) => object.projectLabel)];
 
   const getNavbarTitle = (type: number) => {
-    const title: Record<number, string> = { ...projectLabelsWithAll };
+    const title: Record<number, string> = { ...projectsLabels };
     return title[type];
   };
 
@@ -224,7 +223,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
               textColor="primary"
               handleChange={handleChange}
               navbarTitle={navbarTitle}
-              projectLabels={projectLabelsWithAll}
+              projectLabels={projectsLabels}
             />
           )}
         </Box>
