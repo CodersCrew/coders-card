@@ -104,7 +104,6 @@ const getTabsData = (projects: ProjectType[]) => {
   if (tabLabelsNumber <= numberOfMaxLabels) {
     return groupedTabsProjects;
   }
-
   // Return sorted categories due to the quantity of the projects in categories
   const sortedGroupedTabsProjects = groupedTabsProjects.sort(compareLengthOfProjects);
   // Get projects which have own tabs
