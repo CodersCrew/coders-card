@@ -89,7 +89,7 @@ const compareLengthOfProjects = (
   shorterLengthGroupedObjectsByLabel: GroupedObjectsByLabelType,
 ): number => {
   return (
-    shorterLengthGroupedObjectsByLabel.projectProperties.length,
+    shorterLengthGroupedObjectsByLabel.projectProperties.length -
     longerLengthGroupedObjectsByLabel.projectProperties.length
   );
 };
@@ -123,7 +123,7 @@ const getTabsData = (projects: ProjectType[]) => {
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
-  const defaultType = 'All';
+  const defaultNavbarTitle = 'All';
   const projectData = data.portfolioPage.frontmatter;
   const { projects } = projectData;
   const { componentType, isMobile } = useComponentType();
@@ -132,7 +132,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const [navbarTitle, setNavbarTitle] = useState(0);
 
   const sortedGroupsOfProjects = getTabsData(projects);
-  const projectsLabels: string[] = [defaultType, ...sortedGroupsOfProjects.map((object) => object.projectLabel)];
+  const projectsLabels: string[] = [defaultNavbarTitle, ...sortedGroupsOfProjects.map((object) => object.projectLabel)];
 
   const getNavbarTitle = (type: number) => {
     const title: Record<number, string> = { ...projectsLabels };
@@ -144,7 +144,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   // filter all projects depending on their label
   const filteredProjects = sortedGroupsOfProjects
     .filter((project) => {
-      return tabLabelTitle !== defaultType ? project.projectLabel === tabLabelTitle : ' ';
+      return tabLabelTitle !== defaultNavbarTitle ? project.projectLabel === tabLabelTitle : ' ';
     })
     .map((project) => project.projectProperties)
     .flat(1);
