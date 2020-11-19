@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
 import * as _ from 'lodash';
@@ -76,70 +76,79 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const numberOfMaxLabels = 3;
+const OtherLabel = 'More';
+
+type GroupedObjectsByLabelType = {
+  projectLabel: string;
+  projectProperties: ProjectType[];
+};
+
+const compareLengthOfProjects = (
+  longerLengthGroupedObjectsByLabel: GroupedObjectsByLabelType,
+  shorterLengthGroupedObjectsByLabel: GroupedObjectsByLabelType,
+): number => {
+  return (
+    shorterLengthGroupedObjectsByLabel.projectProperties.length -
+    longerLengthGroupedObjectsByLabel.projectProperties.length
+  );
+};
+
+const getTabsData = (projects: ProjectType[]) => {
+  const groupedProjects: Record<string, ProjectType[]> = _.groupBy(projects, 'projectLabel');
+  const tabLabelsNumber = Object.keys(groupedProjects).length;
+  const groupedTabsProjects = Object.entries(groupedProjects).map((groupOfProjects) => {
+    const [projectLabel, projectProperties] = groupOfProjects;
+    return { projectLabel, projectProperties };
+  });
+  if (tabLabelsNumber <= numberOfMaxLabels) {
+    return groupedTabsProjects;
+  }
+
+  // Return sorted categories due to the quantity of the projects in categories
+  const sortedGroupedTabsProjects = groupedTabsProjects.sort(compareLengthOfProjects);
+  // Get projects which have own tabs
+  const GroupByBasicProject = sortedGroupedTabsProjects.slice(0, numberOfMaxLabels);
+  // Get projects which have More tab
+  const GroupByOtherProject = sortedGroupedTabsProjects.slice(numberOfMaxLabels, sortedGroupedTabsProjects.length);
+
+  const OtherGroupOfProjects = GroupByOtherProject.reduce(
+    (acc, currentGroupProjects) => {
+      return { ...acc, projectProperties: [...currentGroupProjects.projectProperties, ...acc.projectProperties] };
+    },
+    { projectLabel: OtherLabel, projectProperties: [] },
+  );
+  return [...GroupByBasicProject, OtherGroupOfProjects];
+};
+
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
   const defaultType = 'All';
-  const extraType = 'Other';
-  const numberOfMaxLabels = 1;
   const projectData = data.portfolioPage.frontmatter;
   const { projects } = projectData;
   const { componentType, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
-  const projectsLabels: string[] = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
-  const [projectsUpdated, setProjectUpdated] = useState(projects);
-  const [labelsUpdated, setLabelsUpdated] = useState(projectsLabels);
+
+  const sortedGroupsOfProjects = getTabsData(projects);
+  const projectsLabels: string[] = sortedGroupsOfProjects.map((object) => object.projectLabel);
+  const projectLabelsWithAll = [defaultType, ...projectsLabels];
 
   const getNavbarTitle = (type: number) => {
-    const title: Record<number, string> = { ...labelsUpdated };
+    const title: Record<number, string> = { ...projectLabelsWithAll };
     return title[type];
   };
 
-  const projectType = getNavbarTitle(navbarTitle);
+  const tabLabelTitle = getNavbarTitle(navbarTitle);
 
-  // filter all project depending on their label
-  const filteredProjects = projectsUpdated.filter((project) => {
-    return projectType !== defaultType ? project.projectLabel === projectType : ' ';
-  });
-
-  if (labelsUpdated.length - 1 > numberOfMaxLabels) {
-    const groupedProjects: Record<string, ProjectType[]> = _.groupBy(projects, 'projectLabel');
-    const labelsToDelete: Array<string> = [];
-
-    // orderby number of projects
-    const sortedProjectsCollection: ProjectType[][] = Object.entries(groupedProjects)
-      // .map((projectArray) => projectArray.splice(1, 2))
-      .map((project) => [project, ...project[1]])
-      .sort((currentProjects, nextProjects) => {
-        return nextProjects.length - currentProjects.length;
-      });
-    console.log(sortedProjectsCollection);
-    // delete first element-label from array
-    sortedProjectsCollection.map((arrayProject) => arrayProject.shift());
-
-    // update labels to other categories
-    const updateProjects: Array<Array<ProjectType>> = sortedProjectsCollection.map((projectCollections, index) =>
-      index > numberOfMaxLabels - 1
-        ? projectCollections.map(
-            (project) => (
-              labelsToDelete.push(project.projectLabel),
-              {
-                ...project,
-                projectLabel: extraType,
-              }
-            ),
-          )
-        : projectCollections,
-    );
-    // update state with projects
-    const mergedProjects: Array<ProjectType> = updateProjects.flat(1);
-    const currentLabels = labelsUpdated.filter((label) => !labelsToDelete.includes(label));
-    useEffect(() => {
-      setLabelsUpdated([...currentLabels, extraType]);
-      setProjectUpdated(mergedProjects);
-    }, []);
-  }
+  // filter all projects depending on their label
+  const filteredProjects = sortedGroupsOfProjects
+    .filter((project) => {
+      return tabLabelTitle !== defaultType ? project.projectLabel === tabLabelTitle : ' ';
+    })
+    .map((project) => project.projectProperties)
+    .flat(1);
 
   const handleChange: TabsProps['onChange'] = (event, newValue) => {
     setNavbarTitle(newValue);
@@ -215,7 +224,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
               textColor="primary"
               handleChange={handleChange}
               navbarTitle={navbarTitle}
-              projectLabels={labelsUpdated}
+              projectLabels={projectLabelsWithAll}
             />
           )}
         </Box>
