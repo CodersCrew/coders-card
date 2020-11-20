@@ -106,20 +106,18 @@ const getTabsData = (projects: ProjectType[]) => {
   }
   // Return sorted categories due to the quantity of the projects in categories
   const sortedGroupedTabsProjects = groupedTabsProjects.sort(compareLengthOfProjects);
-
   // Get projects which have own tabs
-  const GroupByBasicTab = sortedGroupedTabsProjects.slice(0, numberOfMaxTabs);
-
+  const groupByBasicTab = sortedGroupedTabsProjects.slice(0, numberOfMaxTabs);
   // Get projects which have Other tab
-  const GroupByOtherTab = sortedGroupedTabsProjects.slice(numberOfMaxTabs, sortedGroupedTabsProjects.length);
+  const groupByOtherTab = sortedGroupedTabsProjects.slice(numberOfMaxTabs, sortedGroupedTabsProjects.length);
 
-  const OtherGroupOfProjects = GroupByOtherTab.reduce(
+  const otherGroupOfProjects = groupByOtherTab.reduce(
     (acc, currentGroupProjects) => {
       return { ...acc, projectProperties: [...currentGroupProjects.projectProperties, ...acc.projectProperties] };
     },
     { projectLabel: OtherLabel, projectProperties: [] },
   );
-  return [...GroupByBasicTab, OtherGroupOfProjects];
+  return [...groupByBasicTab, otherGroupOfProjects];
 };
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
@@ -131,7 +129,6 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
-
   const sortedGroupsOfProjects = getTabsData(projects);
   const projectsLabels: string[] = [defaultNavbarTitle, ...sortedGroupsOfProjects.map((object) => object.projectLabel)];
 
@@ -139,7 +136,6 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     const title: Record<number, string> = { ...projectsLabels };
     return title[type];
   };
-
   const tabLabelTitle = getNavbarTitle(navbarTitle);
 
   // filter all projects depending on their label
