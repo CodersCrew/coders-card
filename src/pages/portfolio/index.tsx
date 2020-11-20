@@ -76,21 +76,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const numberOfMaxLabels = 3;
+const numberOfMaxTabs = 3;
 const OtherLabel = 'More';
 
-type GroupedObjectsByLabelType = {
+type GroupedProjectsByLabelType = {
   projectLabel: string;
   projectProperties: ProjectType[];
 };
 
 const compareLengthOfProjects = (
-  longerLengthGroupedObjectsByLabel: GroupedObjectsByLabelType,
-  shorterLengthGroupedObjectsByLabel: GroupedObjectsByLabelType,
+  longerLengthGroupedProjectsByLabel: GroupedProjectsByLabelType,
+  shorterLengthGroupedProjectsByLabel: GroupedProjectsByLabelType,
 ): number => {
   return (
-    shorterLengthGroupedObjectsByLabel.projectProperties.length -
-    longerLengthGroupedObjectsByLabel.projectProperties.length
+    shorterLengthGroupedProjectsByLabel.projectProperties.length -
+    longerLengthGroupedProjectsByLabel.projectProperties.length
   );
 };
 
@@ -101,23 +101,25 @@ const getTabsData = (projects: ProjectType[]) => {
     const [projectLabel, projectProperties] = groupOfProjects;
     return { projectLabel, projectProperties };
   });
-  if (tabLabelsNumber <= numberOfMaxLabels) {
+  if (tabLabelsNumber <= numberOfMaxTabs) {
     return groupedTabsProjects;
   }
   // Return sorted categories due to the quantity of the projects in categories
   const sortedGroupedTabsProjects = groupedTabsProjects.sort(compareLengthOfProjects);
-  // Get projects which have own tabs
-  const GroupByBasicProject = sortedGroupedTabsProjects.slice(0, numberOfMaxLabels);
-  // Get projects which have More tab
-  const GroupByOtherProject = sortedGroupedTabsProjects.slice(numberOfMaxLabels, sortedGroupedTabsProjects.length);
 
-  const OtherGroupOfProjects = GroupByOtherProject.reduce(
+  // Get projects which have own tabs
+  const GroupByBasicTab = sortedGroupedTabsProjects.slice(0, numberOfMaxTabs);
+
+  // Get projects which have Other tab
+  const GroupByOtherTab = sortedGroupedTabsProjects.slice(numberOfMaxTabs, sortedGroupedTabsProjects.length);
+
+  const OtherGroupOfProjects = GroupByOtherTab.reduce(
     (acc, currentGroupProjects) => {
       return { ...acc, projectProperties: [...currentGroupProjects.projectProperties, ...acc.projectProperties] };
     },
     { projectLabel: OtherLabel, projectProperties: [] },
   );
-  return [...GroupByBasicProject, OtherGroupOfProjects];
+  return [...GroupByBasicTab, OtherGroupOfProjects];
 };
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
