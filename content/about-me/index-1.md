@@ -58,5 +58,14 @@ socialMedia:
       otherSkillValue: 2
     - otherSkillName: Pisanie
       otherSkillValue: 1
-testimonials: []
+testimonials: 
+  - testimonialText: testimonialText
+    testimonialName: testimonialName
+    testimonialJob: testimonialJob
+    testimonialImage: GabeMcdonalid.png
+
+  - testimonialText: testimonialText
+    testimonialName: testimonialName
+    testimonialJob: testimonialJob
+    testimonialImage: GabeMcdonalid.png
 ---
