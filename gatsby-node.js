@@ -4,14 +4,14 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
     }
-    type Frontmatter {
+    type Frontmatter @infer {
       blogPost: [MarkdownRemarkFrontmatterBlogPost]
       testimonials: [MarkdownRemarkFrontmatterTestimonial]
     }
 
     type MarkdownRemarkFrontmatterTestimonial {
       testimonialText: String
-      testimonialImage: File
+      testimonialImage: File @fileByRelativePath
       testimonialName: String
       testimonialJob: String
     }
@@ -27,7 +27,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       blogLabel: String
       blogDescription: String
       blogBody: String
-      blogImage: File
+      blogImage: File @fileByRelativePath
     }
 
     type MarkdownRemarkFrontmatterSocialMedia {
