@@ -3,10 +3,10 @@ import { LevelRange } from '../../components/Skill';
 export type AboutPageData = {
   aboutPage: {
     frontmatter: {
-      aboutPageTitle: string;
-      aboutPageDescription: string;
-      aboutPageImage: {
-        publicURL: string;
+      aboutPageTitle?: string;
+      aboutPageDescription?: string;
+      aboutPageImage?: {
+        publicURL?: string;
       };
       description: string;
       socialMedia: {

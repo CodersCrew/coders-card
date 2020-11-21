@@ -3,43 +3,76 @@ import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
 type SEOProps = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  image?: string;
   author: string;
-  lang: string;
 };
 
-function SEO({ description, title, author, lang }: SEOProps) {
-  const data: { meta: { frontmatter: { metadataFavicon: { publicURL: string } } } } = useStaticQuery(graphql`
+type MetadataGQL = {
+  meta: {
+    frontmatter: {
+      defaultPageTitle: string;
+      defaultPageDescription: string;
+      defaultPageImage: {
+        publicURL: string;
+      };
+      favicon: {
+        publicURL: string;
+      };
+      websiteLanguage: string;
+    };
+  };
+};
+
+function SEO({ description, title, image, author }: SEOProps) {
+  const {
+    meta: { frontmatter: metadata },
+  }: MetadataGQL = useStaticQuery(graphql`
     query {
       meta: markdownRemark(fileAbsolutePath: { regex: "/metadata/index-1.md/" }) {
         frontmatter {
-          metadataFavicon {
+          defaultPageTitle
+          defaultPageDescription
+          defaultPageImage {
             publicURL
           }
+          favicon {
+            publicURL
+          }
+          websiteLanguage
         }
       }
     }
   `);
 
+  const pageDescription = description ?? metadata.defaultPageDescription;
+  const pageTitle = title ?? metadata.defaultPageTitle;
+  const pagePreviewImage = image ?? metadata.defaultPageImage.publicURL;
+  const websiteLanguage = metadata.websiteLanguage ?? 'en';
+
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: websiteLanguage,
       }}
-      title={title}
+      title={pageTitle}
       meta={[
         {
           name: `description`,
-          content: description,
+          content: pageDescription,
         },
         {
           property: `og:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           property: `og:description`,
-          content: description,
+          content: pageDescription,
+        },
+        {
+          property: 'og:image',
+          content: pagePreviewImage,
         },
         {
           property: `og:type`,
@@ -50,22 +83,26 @@ function SEO({ description, title, author, lang }: SEOProps) {
           content: `summary`,
         },
         {
+          name: `twitter:image`,
+          content: pagePreviewImage,
+        },
+        {
           name: `twitter:creator`,
           content: author,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           name: `twitter:description`,
-          content: description,
+          content: pageDescription,
         },
       ]}
     >
-      <link rel="icon" type="image/png" sizes="16x16" href={data.meta.frontmatter.metadataFavicon.publicURL} />
-      <link rel="icon" type="image/png" sizes="16x16" href={data.meta.frontmatter.metadataFavicon.publicURL} />
-      <link rel="icon" type="image/png" sizes="32x32" href={data.meta.frontmatter.metadataFavicon.publicURL} />
+      <link rel="icon" type="image/png" sizes="16x16" href={metadata.favicon.publicURL} />
+      <link rel="icon" type="image/png" sizes="16x16" href={metadata.favicon.publicURL} />
+      <link rel="icon" type="image/png" sizes="32x32" href={metadata.favicon.publicURL} />
     </Helmet>
   );
 }

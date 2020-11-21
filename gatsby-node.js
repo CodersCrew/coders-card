@@ -5,6 +5,21 @@ exports.createSchemaCustomization = ({ actions }) => {
       frontmatter: Frontmatter
     }
     type Frontmatter @infer {
+      aboutPageTitle: String
+      blogPageTitle: String
+      resumePageTitle: String
+      portfolioPageTitle: String
+      contactPageTitle: String
+      aboutPageDescription: String
+      blogPageDescription: String
+      resumePageDescription: String
+      portfolioPageDescription: String
+      contactPageDescription: String
+      aboutPageImage: File @fileByRelativePath
+      blogPageImage: File @fileByRelativePath
+      resumePageImage: File @fileByRelativePath
+      portfolioPageImage: File @fileByRelativePath
+      contactPageImage: File @fileByRelativePath
       blogPost: [MarkdownRemarkFrontmatterBlogPost]
       testimonials: [MarkdownRemarkFrontmatterTestimonial]
     }

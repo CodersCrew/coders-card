@@ -28,9 +28,15 @@ collections:
           label: "Page Description",
           name: "blogPageDescription",
           widget: "string",
+          required: false,
           pattern: [".{50,160}", "Must have 50-160 characters"],
         }
-      - { label: "Page preview image", name: "blogPageImage", widget: "image" }
+      - {
+          label: "Page preview image",
+          name: "blogPageImage",
+          widget: "image",
+          required: false,
+        }
       - label: "Blog post"
         name: "blogPost"
         widget: "list"
@@ -196,16 +202,22 @@ collections:
           label: "Page Title",
           name: "aboutPageTitle",
           widget: "string",
-          default: "About me",
+          required: false,
           pattern: [".{5,60}", "Must have 5-60 characters"],
         }
       - {
           label: "Page Description",
           name: "aboutPageDescription",
           widget: "string",
+          required: false,
           pattern: [".{50,160}", "Must have 50-160 characters"],
         }
-      - { label: "Page preview image", name: "aboutPageImage", widget: "image" }
+      - {
+          label: "Page preview image",
+          name: "aboutPageImage",
+          widget: "image",
+          required: false,
+        }
       - {
           label: "Description",
           name: "description",
@@ -310,18 +322,21 @@ collections:
           label: "Page Title",
           name: "resumePageTitle",
           widget: "string",
+          required: false,
           pattern: [".{5,60}", "Must have 5-60 characters"],
         }
       - {
           label: "Page Description",
           name: "resumePageDescription",
           widget: "string",
+          required: false,
           pattern: [".{50,160}", "Must have 50-160 characters"],
         }
       - {
           label: "Page preview image",
           name: "resumePageImage",
           widget: "image",
+          required: false,
         }
       - label: "Work experience"
         name: "workExperience"
@@ -391,18 +406,21 @@ collections:
           label: "Page Title",
           name: "portfolioPageTitle",
           widget: "string",
+          required: false,
           pattern: [".{5,60}", "Must have 5-60 characters"],
         }
       - {
           label: "Page Description",
           name: "portfolioPageDescription",
           widget: "string",
+          required: false,
           pattern: [".{50,160}", "Must have 50-160 characters"],
         }
       - {
           label: "Page preview image",
           name: "portfolioPageImage",
           widget: "image",
+          required: false,
         }
       - label: "Projects"
         name: "projects"
@@ -507,18 +525,21 @@ collections:
           label: "Page Title",
           name: "contactPageTitle",
           widget: "string",
+          required: false,
           pattern: [".{5,60}", "Must have 5-60 characters"],
         }
       - {
           label: "Page Description",
           name: "contactPageDescription",
           widget: "string",
+          required: false,
           pattern: [".{50,160}", "Must have 50-160 characters"],
         }
       - {
           label: "Page preview image",
           name: "contactPageImage",
           widget: "image",
+          required: false,
         }
   - name: "metadata"
     label: "Metadata"
@@ -548,9 +569,13 @@ collections:
           name: "defaultPageImage",
           widget: "image",
         }
-      - { label: "Favicon", name: "metadataFavicon", widget: "image" }
-# TODO
-# make metadata on ALL PAGES optional and only default as required
-# apply in seo component
-# modify pages to validate if metadata is present, if not use default (SEO xomponent)
-# add more open graph properties if you wind any
+      - {
+          label: "Favicon - small icon visible in bookmarks and browser tabs",
+          name: "favicon",
+          widget: "image",
+        }
+      - {
+          label: "Website language code (ex. 'en', 'pl'",
+          name: "websiteLanguage",
+          widget: "string",
+        }

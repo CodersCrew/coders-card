@@ -1,9 +1,7 @@
 ---
-blogPageTitle: Blog page title
-blogPageDescription: "Blog page description Blog page description Blog page
-  description Blog page description Blog page description Blog page description
-  Blog page description "
-blogPageImage: background.jpg
+blogPageTitle:
+blogPageDescription:
+blogPageImage:
 blogPost:
   - blogTitle: Blog Post Title
     blogLabel: Blog Post Label
