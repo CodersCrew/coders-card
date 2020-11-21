@@ -575,7 +575,8 @@ collections:
           widget: "image",
         }
       - {
-          label: "Website language code (ex. 'en', 'pl'",
+          label: "Website language code (ex. 'en', 'pl')",
           name: "websiteLanguage",
           widget: "string",
+          pattern: ["^[a-z]{2}", "Must have exactly 2 lower-case characters"],
         }
