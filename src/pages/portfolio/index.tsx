@@ -153,7 +153,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
       meta={{
         title: projectData.portfolioPageTitle,
         description: projectData.portfolioPageDescription,
-        imageUrl: projectData.portfolioPageImage.publicURL,
+        imageUrl: projectData.portfolioPageImage?.publicURL,
       }}
     >
       <Box className={classes.projectsContainer}>

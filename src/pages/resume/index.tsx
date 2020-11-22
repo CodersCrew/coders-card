@@ -52,7 +52,7 @@ const ResumePage: FC<{ data: ResumePageData }> = ({ data }) => {
       meta={{
         title: resumeData.resumePageTitle,
         description: resumeData.resumePageDescription,
-        imageUrl: resumeData.resumePageImage.publicURL,
+        imageUrl: resumeData.resumePageImage?.publicURL,
       }}
     >
       <Box className={classes.resumePageContainer}>

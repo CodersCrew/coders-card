@@ -161,7 +161,7 @@ const ContactPage: FC<{ data: ContactGQL }> = ({ data }) => {
       meta={{
         title: contactData.contactPageTitle,
         description: contactData.contactPageDescription,
-        imageUrl: contactData.contactPageImage.publicURL,
+        imageUrl: contactData.contactPageImage?.publicURL,
       }}
       variant="withDetailsCard"
     >

@@ -20,10 +20,10 @@ export type ProjectType = {
 export type ProjectGQL = {
   portfolioPage: {
     frontmatter: {
-      portfolioPageTitle: string;
-      portfolioPageDescription: string;
-      portfolioPageImage: {
-        publicURL: string;
+      portfolioPageTitle?: string;
+      portfolioPageDescription?: string;
+      portfolioPageImage?: {
+        publicURL?: string;
       };
       projects: ProjectType[];
     };

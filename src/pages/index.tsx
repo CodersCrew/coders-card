@@ -52,7 +52,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
       meta={{
         title: aboutData.aboutPageTitle,
         description: aboutData.aboutPageDescription,
-        imageUrl: aboutData.aboutPageImage.publicURL,
+        imageUrl: aboutData.aboutPageImage?.publicURL,
       }}
       variant="withDetailsCard"
     >

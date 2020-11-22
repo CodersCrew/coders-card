@@ -118,9 +118,9 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
     <Layout
       developerProfile={developerProfile}
       meta={{
-        title: blogData.blogPageTitle ?? 'Blog page',
-        description: blogData.blogPageDescription ?? 'This is a blog page',
-        imageUrl: blogData.blogPageImage.publicURL,
+        title: blogData.blogPageTitle,
+        description: blogData.blogPageDescription,
+        imageUrl: blogData.blogPageImage?.publicURL,
       }}
     >
       <Box className={classes.blogContainer}>

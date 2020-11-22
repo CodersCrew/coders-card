@@ -11,9 +11,9 @@ type LayoutProps = {
   children: ReactNode;
   developerProfile: DeveloperProfileGQL;
   meta: {
-    title: string;
-    description: string;
-    imageUrl: string;
+    title?: string;
+    description?: string;
+    imageUrl?: string;
   };
   variant?: 'default' | 'withDetailsCard';
 };
@@ -83,7 +83,6 @@ export const Layout = ({ children, developerProfile, meta, variant = 'default' }
   return (
     <Container className={classes.container} maxWidth="lg">
       <SEO
-        lang="en"
         title={meta.title}
         description={meta.description}
         author={`${developerProfile.firstName} ${developerProfile.lastName}`}

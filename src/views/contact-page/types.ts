@@ -1,10 +1,10 @@
 export type ContactGQL = {
   contactPage: {
     frontmatter: {
-      contactPageTitle: string;
-      contactPageDescription: string;
-      contactPageImage: {
-        publicURL: string;
+      contactPageTitle?: string;
+      contactPageDescription?: string;
+      contactPageImage?: {
+        publicURL?: string;
       };
     };
   };
