@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 import { graphql } from 'gatsby';
-import * as _ from 'lodash';
 
 import { FilterTabs, TabsProps } from '../../components/FilterTabs/FilterTabs';
 import { Layout } from '../../components/Layout';
@@ -13,6 +12,7 @@ import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { formatDate } from '../../utils/date';
 import { ProjectGQL, ProjectType } from '../../views/portfolio-page/types';
+import { getTabsData } from './utils';
 
 const useStyles = makeStyles((theme) => ({
   titleBox: {
@@ -76,72 +76,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const numberOfMaxTabs = 3;
-const OtherLabel = 'More';
-
-type GroupedProjectsByLabelType = {
-  projectLabel: string;
-  projectProperties: ProjectType[];
-};
-
-const compareLengthOfProjects = (
-  longerLengthGroupedProjectsByLabel: GroupedProjectsByLabelType,
-  shorterLengthGroupedProjectsByLabel: GroupedProjectsByLabelType,
-): number => {
-  return (
-    shorterLengthGroupedProjectsByLabel.projectProperties.length -
-    longerLengthGroupedProjectsByLabel.projectProperties.length
-  );
-};
-
-const getTabsData = (projects: ProjectType[]) => {
-  const groupedProjects: Record<string, ProjectType[]> = _.groupBy(projects, 'projectLabel');
-  const tabLabelsNumber = Object.keys(groupedProjects).length;
-  const groupedTabsProjects = Object.entries(groupedProjects).map((groupOfProjects) => {
-    const [projectLabel, projectProperties] = groupOfProjects;
-    return { projectLabel, projectProperties };
-  });
-  if (tabLabelsNumber <= numberOfMaxTabs) {
-    return groupedTabsProjects;
-  }
-  // Return sorted categories due to the quantity of the projects in categories
-  const sortedGroupedTabsProjects = groupedTabsProjects.sort(compareLengthOfProjects);
-  // Get projects which have own tabs
-  const groupByBasicTab = sortedGroupedTabsProjects.slice(0, numberOfMaxTabs);
-  // Get projects which have Other tab
-  const groupByOtherTab = sortedGroupedTabsProjects.slice(numberOfMaxTabs, sortedGroupedTabsProjects.length);
-
-  const otherGroupOfProjects = groupByOtherTab.reduce(
-    (acc, currentGroupProjects) => {
-      return { ...acc, projectProperties: [...currentGroupProjects.projectProperties, ...acc.projectProperties] };
-    },
-    { projectLabel: OtherLabel, projectProperties: [] },
-  );
-  return [...groupByBasicTab, otherGroupOfProjects];
-};
+const maxNumberOfTabs = 3;
+const otherLabel = 'More';
+const defaultNavbarTitle = 'All';
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
-  const defaultNavbarTitle = 'All';
   const projectData = data.portfolioPage.frontmatter;
   const { projects } = projectData;
   const { componentType, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarTitle, setNavbarTitle] = useState(0);
-  const sortedGroupsOfProjects = getTabsData(projects);
+  const sortedGroupsOfProjects = getTabsData(projects, maxNumberOfTabs, otherLabel);
   const projectsLabels: string[] = [defaultNavbarTitle, ...sortedGroupsOfProjects.map((object) => object.projectLabel)];
-
+  console.log(selectedProject);
   const getNavbarTitle = (type: number) => {
-    const title: Record<number, string> = { ...projectsLabels };
+    const title = projectsLabels;
     return title[type];
   };
+
   const tabLabelTitle = getNavbarTitle(navbarTitle);
 
   // filter all projects depending on their label
   const filteredProjects = sortedGroupsOfProjects
     .filter((project) => {
-      return tabLabelTitle !== defaultNavbarTitle ? project.projectLabel === tabLabelTitle : ' ';
+      return tabLabelTitle !== defaultNavbarTitle ? project.projectLabel === tabLabelTitle : project;
     })
     .map((project) => project.projectProperties)
     .flat(1);
@@ -155,14 +115,16 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     setSelectedProject(-1);
   };
 
-  // if is first project, choose last project
+  // if is first label, choose last label
   const handlePreviousProject = (index: number) => {
-    setSelectedProject(index === 0 ? projectData.projects.length - 1 : index - 1);
+    if (index > 0) setSelectedProject(index - 1);
+    setNavbarTitle(navbarTitle === 0 ? projectsLabels.length - 1 : navbarTitle - 1);
   };
 
-  // if is last project, choose first project
+  // if is last label, choose first label
   const handleNextProject = (index: number) => {
-    setSelectedProject(index === projectData.projects.length - 1 ? 0 : index + 1);
+    if (index < filteredProjects.length) setSelectedProject(index + 1);
+    setNavbarTitle(navbarTitle === projectsLabels.length - 1 ? 0 : navbarTitle + 1);
   };
 
   const renderProject = (project: ProjectType, index: number) => (
@@ -181,7 +143,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
         handleClose={() => handleCloseProject()}
         handlePrev={() => handlePreviousProject(index)}
         handleNext={() => handleNextProject(index)}
-        isOpen={index === selectedProject}
+        isOpen={selectedProject !== -1}
         title={project.projectName}
         tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
         imgurl={project.projectPreviewImage.publicURL}
