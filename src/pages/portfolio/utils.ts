@@ -1,5 +1,9 @@
 import { ProjectType } from '../../views/portfolio-page/types';
 
+const maxNumberOfTabs = 3;
+const otherLabel = 'More';
+const allLabel = 'All';
+
 type GroupedProjectsByLabelType = {
   projectLabel: string;
   projectProperties: ProjectType[];
@@ -15,44 +19,45 @@ const compareLengthOfProjects = (
   );
 };
 
-// const groupBy = (arr: ProjectType[], key: string) =>
-//   arr.reduce((acc, project) => {
-//     const property: string = project[key];
-//     if (property in acc) {
-//       return { ...acc, [property]: acc[property].concat(project) };
-//     }
-//     return { ...acc, [property]: [project] };
-//   }, {} as { [key: string]: ProjectType[] });
+const groupBy = (projects: ProjectType[]) => {
+  return projects.reduce((groupedProjects, project) => {
+    // eslint-disable-next-line no-param-reassign
+    (groupedProjects[project.projectLabel] = groupedProjects[project.projectLabel] || []).push(project);
+    return groupedProjects;
+  }, {} as { [key: string]: ProjectType[] });
+};
 
-const groupBy = <T>(arr: T[], fn: (x: T) => string) =>
-  arr.map(typeof fn === 'function' ? fn : (val) => val[fn]).reduce((acc, val, i) => {
-    acc[val] = (acc[val] || []).concat(arr[i]);
-    return acc;
-  }, {} as { [key: string]: T[] });
-
-export const getTabsData = (projects: ProjectType[], maxNumberOftabs: number, OtherLabel: string) => {
-  const groupedProjects = groupBy(projects, 'projectLabel');
+export const getTabsData = (projects: ProjectType[]) => {
+  const groupedProjects = groupBy(projects);
   const tabLabelsNumber = Object.keys(groupedProjects).length;
   const groupedTabsProjects = Object.entries(groupedProjects).map((groupOfProjects) => {
     const [projectLabel, projectProperties] = groupOfProjects;
     return { projectLabel, projectProperties };
   });
-  if (tabLabelsNumber <= maxNumberOftabs) {
-    return groupedTabsProjects;
+
+  const allGroupOfProjects = groupedTabsProjects.reduce(
+    (acc, currentGroupProjects) => {
+      return { ...acc, projectProperties: [...currentGroupProjects.projectProperties, ...acc.projectProperties] };
+    },
+    { projectLabel: allLabel, projectProperties: [] },
+  );
+
+  if (tabLabelsNumber <= maxNumberOfTabs) {
+    const allProjects = [allGroupOfProjects, ...groupedTabsProjects];
+    return allProjects;
   }
   // Return sorted categories due to the quantity of the projects in categories
   const sortedGroupedTabsProjects = groupedTabsProjects.sort(compareLengthOfProjects);
   // Get projects which have own tabs
-  const groupByBasicTab = sortedGroupedTabsProjects.slice(0, maxNumberOftabs);
+  const groupByBasicTab = sortedGroupedTabsProjects.slice(0, maxNumberOfTabs);
   // Get projects which have Other tab
-  const groupByOtherTab = sortedGroupedTabsProjects.slice(maxNumberOftabs, sortedGroupedTabsProjects.length);
+  const groupByOtherTab = sortedGroupedTabsProjects.slice(maxNumberOfTabs, sortedGroupedTabsProjects.length);
 
   const otherGroupOfProjects = groupByOtherTab.reduce(
     (acc, currentGroupProjects) => {
       return { ...acc, projectProperties: [...currentGroupProjects.projectProperties, ...acc.projectProperties] };
     },
-    { projectLabel: OtherLabel, projectProperties: [] },
+    { projectLabel: otherLabel, projectProperties: [] },
   );
-
-  return [...groupByBasicTab, otherGroupOfProjects];
+  return [allGroupOfProjects, ...groupByBasicTab, otherGroupOfProjects];
 };

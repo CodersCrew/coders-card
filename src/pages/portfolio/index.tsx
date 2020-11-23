@@ -76,10 +76,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const maxNumberOfTabs = 3;
-const otherLabel = 'More';
-const defaultNavbarTitle = 'All';
-
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
   const projectData = data.portfolioPage.frontmatter;
@@ -87,27 +83,39 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const { componentType, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
-  const [navbarTitle, setNavbarTitle] = useState(0);
-  const sortedGroupsOfProjects = getTabsData(projects, maxNumberOfTabs, otherLabel);
-  const projectsLabels: string[] = [defaultNavbarTitle, ...sortedGroupsOfProjects.map((object) => object.projectLabel)];
-  console.log(selectedProject);
+  const [navbarNumberTitle, setNavbarNumberTitle] = useState(0);
+  const sortedGroupsOfProjects = getTabsData(projects);
+  const projectsLabels: string[] = [...sortedGroupsOfProjects.map((object) => object.projectLabel)];
   const getNavbarTitle = (type: number) => {
     const title = projectsLabels;
     return title[type];
   };
-
-  const tabLabelTitle = getNavbarTitle(navbarTitle);
+  const tabLabelTitle = getNavbarTitle(navbarNumberTitle);
 
   // filter all projects depending on their label
   const filteredProjects = sortedGroupsOfProjects
     .filter((project) => {
-      return tabLabelTitle !== defaultNavbarTitle ? project.projectLabel === tabLabelTitle : project;
+      return project.projectLabel === tabLabelTitle;
     })
     .map((project) => project.projectProperties)
     .flat(1);
 
   const handleChange: TabsProps['onChange'] = (event, newValue) => {
-    setNavbarTitle(newValue);
+    setNavbarNumberTitle(newValue);
+  };
+
+  const previousNavbarTitle = () => {
+    setNavbarNumberTitle(navbarNumberTitle === 0 ? projectsLabels.length - 1 : navbarNumberTitle - 1);
+    setSelectedProject(
+      navbarNumberTitle === 0
+        ? sortedGroupsOfProjects[projectsLabels.length - 1].projectProperties.length - 1
+        : sortedGroupsOfProjects[navbarNumberTitle - 1].projectProperties.length - 1,
+    );
+  };
+
+  const nextNavbarTitle = () => {
+    setNavbarNumberTitle(navbarNumberTitle === projectsLabels.length - 1 ? 0 : navbarNumberTitle + 1);
+    setSelectedProject(0);
   };
 
   // no project will have index equal to -1 therefore no project will be selected
@@ -117,14 +125,14 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
 
   // if is first label, choose last label
   const handlePreviousProject = (index: number) => {
-    if (index > 0) setSelectedProject(index - 1);
-    setNavbarTitle(navbarTitle === 0 ? projectsLabels.length - 1 : navbarTitle - 1);
+    return index === 0 ? previousNavbarTitle() : setSelectedProject(index - 1);
   };
 
   // if is last label, choose first label
   const handleNextProject = (index: number) => {
-    if (index < filteredProjects.length) setSelectedProject(index + 1);
-    setNavbarTitle(navbarTitle === projectsLabels.length - 1 ? 0 : navbarTitle + 1);
+    return index < sortedGroupsOfProjects[navbarNumberTitle].projectProperties.length - 1
+      ? setSelectedProject(index + 1)
+      : nextNavbarTitle();
   };
 
   const renderProject = (project: ProjectType, index: number) => (
@@ -143,7 +151,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
         handleClose={() => handleCloseProject()}
         handlePrev={() => handlePreviousProject(index)}
         handleNext={() => handleNextProject(index)}
-        isOpen={selectedProject !== -1}
+        isOpen={index === selectedProject}
         title={project.projectName}
         tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
         imgurl={project.projectPreviewImage.publicURL}
@@ -181,7 +189,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
               indicatorColor="primary"
               textColor="primary"
               handleChange={handleChange}
-              navbarTitle={navbarTitle}
+              navbarTitle={navbarNumberTitle}
               projectLabels={projectsLabels}
             />
           )}
