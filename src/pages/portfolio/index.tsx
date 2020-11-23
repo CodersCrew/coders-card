@@ -123,12 +123,12 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     setSelectedProject(-1);
   };
 
-  // if is first label, choose last label
+  // choose last project or if is first label, choose last label
   const handlePreviousProject = (index: number) => {
     return index === 0 ? previousNavbarTitle() : setSelectedProject(index - 1);
   };
 
-  // if is last label, choose first label
+  // choose next project or if is last label, choose first label
   const handleNextProject = (index: number) => {
     return index < sortedGroupsOfProjects[navbarNumberTitle].projectProperties.length - 1
       ? setSelectedProject(index + 1)
