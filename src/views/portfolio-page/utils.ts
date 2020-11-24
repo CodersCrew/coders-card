@@ -19,7 +19,7 @@ const compareLengthOfProjects = (
   );
 };
 
-const groupBy = (projects: ProjectType[]) => {
+const groupByProjectLabel = (projects: ProjectType[]) => {
   return projects.reduce<{ [key: string]: ProjectType[] }>((groupedProjects, project) => {
     // eslint-disable-next-line no-param-reassign
     (groupedProjects[project.projectLabel] = groupedProjects[project.projectLabel] || []).push(project);
@@ -28,7 +28,7 @@ const groupBy = (projects: ProjectType[]) => {
 };
 
 export const getTabsData = (projects: ProjectType[]) => {
-  const groupedProjects = groupBy(projects);
+  const groupedProjects = groupByProjectLabel(projects);
   const tabLabelsNumber = Object.keys(groupedProjects).length;
   const groupedTabsProjects = Object.entries(groupedProjects).map((groupOfProjects) => {
     const [projectLabel, projectProperties] = groupOfProjects;
