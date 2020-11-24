@@ -1,6 +1,6 @@
 import { ProjectType } from './types';
 
-const maxNumberOfTabs = 3;
+const maxNumberOfTabs = 2;
 const otherLabel = 'More';
 const allLabel = 'All';
 
