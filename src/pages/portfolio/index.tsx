@@ -12,7 +12,7 @@ import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { formatDate } from '../../utils/date';
 import { ProjectGQL, ProjectType } from '../../views/portfolio-page/types';
-import { getTabsData } from './utils';
+import { getTabsData } from '../../views/portfolio-page/utils';
 
 const useStyles = makeStyles((theme) => ({
   titleBox: {
@@ -87,13 +87,11 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const sortedGroupsOfProjects = getTabsData(projects);
   const projectsLabels: string[] = [...sortedGroupsOfProjects.map((object) => object.projectLabel)];
   const getNavbarTitle = (type: number) => {
-    const title = projectsLabels;
-    return title[type];
+    return projectsLabels[type];
   };
   const tabLabelTitle = getNavbarTitle(navbarNumberTitle);
 
-  // filter all projects depending on their label
-  const filteredProjects = sortedGroupsOfProjects
+  const projectsFilteredByLabel = sortedGroupsOfProjects
     .filter((project) => {
       return project.projectLabel === tabLabelTitle;
     })
@@ -123,12 +121,10 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     setSelectedProject(-1);
   };
 
-  // choose previous project or if is first label, choose last label
   const handlePreviousProject = (index: number) => {
     return index === 0 ? previousNavbarTitle() : setSelectedProject(index - 1);
   };
 
-  // choose next project or if is last label, choose first label
   const handleNextProject = (index: number) => {
     return index < sortedGroupsOfProjects[navbarNumberTitle].projectProperties.length - 1
       ? setSelectedProject(index + 1)
@@ -194,7 +190,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
             />
           )}
         </Box>
-        <Box className={classes.projects}>{filteredProjects.map(renderProject)}</Box>
+        <Box className={classes.projects}>{projectsFilteredByLabel.map(renderProject)}</Box>
       </Box>
     </Layout>
   );

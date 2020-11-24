@@ -1,4 +1,4 @@
-import { ProjectType } from '../../views/portfolio-page/types';
+import { ProjectType } from './types';
 
 const maxNumberOfTabs = 3;
 const otherLabel = 'More';
@@ -20,11 +20,11 @@ const compareLengthOfProjects = (
 };
 
 const groupBy = (projects: ProjectType[]) => {
-  return projects.reduce((groupedProjects, project) => {
+  return projects.reduce<{ [key: string]: ProjectType[] }>((groupedProjects, project) => {
     // eslint-disable-next-line no-param-reassign
     (groupedProjects[project.projectLabel] = groupedProjects[project.projectLabel] || []).push(project);
     return groupedProjects;
-  }, {} as { [key: string]: ProjectType[] });
+  }, {});
 };
 
 export const getTabsData = (projects: ProjectType[]) => {
