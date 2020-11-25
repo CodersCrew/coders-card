@@ -12,6 +12,7 @@ import { useComponentType } from '../../hooks/useComponentType';
 import { FC } from '../../typings/components';
 import { formatDate } from '../../utils/date';
 import { ProjectGQL, ProjectType } from '../../views/portfolio-page/types';
+import { getTabsData } from '../../views/portfolio-page/utils';
 
 const useStyles = makeStyles((theme) => ({
   titleBox: {
@@ -72,28 +73,42 @@ const useStyles = makeStyles((theme) => ({
 
 const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   const classes = useStyles();
-  const defaultType = 'All';
   const projectData = data.portfolioPage.frontmatter;
   const { projects } = projectData;
   const { componentType, isMobile } = useComponentType();
   const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
-  const [navbarTitle, setNavbarTitle] = useState(0);
-  const projectLabels = [defaultType, ...new Set(projects.map((project) => project.projectLabel))];
-
+  const [navbarNumberTitle, setNavbarNumberTitle] = useState(0);
+  const sortedGroupsOfProjects = getTabsData(projects);
+  const projectsLabels: string[] = [...sortedGroupsOfProjects.map((object) => object.projectLabel)];
   const getNavbarTitle = (type: number) => {
-    const title: Record<number, string> = { ...projectLabels };
-    return title[type];
+    return projectsLabels[type];
   };
+  const tabLabelTitle = getNavbarTitle(navbarNumberTitle);
 
-  const projectType = getNavbarTitle(navbarTitle);
-
-  const filteredProjects = projects.filter((project) => {
-    return projectType !== defaultType ? project.projectLabel === projectType : ' ';
-  });
+  const projectsFilteredByLabel = sortedGroupsOfProjects
+    .filter((project) => {
+      return project.projectLabel === tabLabelTitle;
+    })
+    .map((project) => project.projectProperties)
+    .flat(1);
 
   const handleChange: TabsProps['onChange'] = (event, newValue) => {
-    setNavbarTitle(newValue);
+    setNavbarNumberTitle(newValue);
+  };
+
+  const previousNavbarTitle = () => {
+    setNavbarNumberTitle(navbarNumberTitle === 0 ? projectsLabels.length - 1 : navbarNumberTitle - 1);
+    setSelectedProject(
+      navbarNumberTitle === 0
+        ? sortedGroupsOfProjects[projectsLabels.length - 1].projectProperties.length - 1
+        : sortedGroupsOfProjects[navbarNumberTitle - 1].projectProperties.length - 1,
+    );
+  };
+
+  const nextNavbarTitle = () => {
+    setNavbarNumberTitle(navbarNumberTitle === projectsLabels.length - 1 ? 0 : navbarNumberTitle + 1);
+    setSelectedProject(0);
   };
 
   // no project will have index equal to -1 therefore no project will be selected
@@ -101,14 +116,14 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
     setSelectedProject(-1);
   };
 
-  // if is first project, choose last project
   const handlePreviousProject = (index: number) => {
-    setSelectedProject(index === 0 ? projectData.projects.length - 1 : index - 1);
+    return index === 0 ? previousNavbarTitle() : setSelectedProject(index - 1);
   };
 
-  // if is last project, choose first project
   const handleNextProject = (index: number) => {
-    setSelectedProject(index === projectData.projects.length - 1 ? 0 : index + 1);
+    return index < sortedGroupsOfProjects[navbarNumberTitle].projectProperties.length - 1
+      ? setSelectedProject(index + 1)
+      : nextNavbarTitle();
   };
 
   const renderProject = (project: ProjectType, index: number) => (
@@ -165,12 +180,12 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
               indicatorColor="primary"
               textColor="primary"
               handleChange={handleChange}
-              navbarTitle={navbarTitle}
-              projectLabels={projectLabels}
+              navbarTitle={navbarNumberTitle}
+              projectLabels={projectsLabels}
             />
           )}
         </Box>
-        <Box className={classes.projects}>{filteredProjects.map(renderProject)}</Box>
+        <Box className={classes.projects}>{projectsFilteredByLabel.map(renderProject)}</Box>
       </Box>
     </Layout>
   );
