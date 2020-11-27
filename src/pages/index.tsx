@@ -58,7 +58,7 @@ const About: FC<{ data: AboutPageData }> = ({ data }) => {
     >
       <Box className={classes.aboutContentContainer}>
         <SectionTitle className={classes.title}>About me</SectionTitle>
-        <Box className={classes.content}>{aboutData.description}</Box>
+        <Box className={classes.content} dangerouslySetInnerHTML={{ __html: aboutData.description }} />
         <SectionTitle className={classes.title}>My skills</SectionTitle>
         <Box className={classes.content}>
           <SkillsSection

@@ -1,3 +1,13 @@
+const remark = require('remark');
+const remarkHTML = require('remark-html');
+
+exports.onCreateNode = ({ node }) => {
+  if (node.frontmatter) {
+    const markdown = node.frontmatter.description;
+    node.frontmatter.description = remark().use(remarkHTML).processSync(markdown).toString();
+    return node;
+  }
+};
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `

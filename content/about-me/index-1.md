@@ -2,7 +2,7 @@
 aboutPageTitle:
 aboutPageDescription:
 aboutPageImage:
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+description: Lorem **ipsum** dolor sit amet, consectetur adipiscing elit. Fusce
   iaculis ultricies eros, ac iaculis eros maximus nec. Phasellus vitae mi felis.
   Curabitur iaculis nunc laoreet eleifend tincidunt. Aliquam nec lectus varius,
   mattis sapien nec, tristique elit. Suspendisse id sem sit amet mi tempus
