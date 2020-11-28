@@ -33,6 +33,8 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
+        icon: `${__dirname}/src/images/gatsby-icon.png`,
+        include_favicon: false, // exclude favicons
       },
     },
     `gatsby-plugin-netlify-cms`,
