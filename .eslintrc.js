@@ -25,6 +25,7 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
+    'no-param-reassign': 0,
     'sort-imports': 0, // turned of as we're using simple-import-sort for sorting
     'no-use-before-define': 0,
     'spaced-comment': [2, 'always', { markers: ['/'] }], // modified to allow TS references with triple brackets

@@ -68,9 +68,11 @@ const CardMobile: FC<Props> = ({ title, label, description, image, onClick, clas
           <Typography className={classes.title} variant="h4">
             {title}
           </Typography>
-          <Typography className={classes.description} variant="body2">
-            {description}
-          </Typography>
+          <Typography
+            className={classes.description}
+            variant="body2"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </CardContent>
       </CardActionArea>
     </Card>

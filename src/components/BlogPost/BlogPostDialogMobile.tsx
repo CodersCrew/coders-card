@@ -62,9 +62,7 @@ const BlogPostDialogMobile: FC<BlogPostDialogProps> = (props) => {
         </Box>
         <Box p={4}>
           {' '}
-          <Typography variant="body2" color="textSecondary">
-            {props.contentmain}
-          </Typography>
+          <Typography variant="body2" color="textSecondary" dangerouslySetInnerHTML={{ __html: props.contentmain }} />
         </Box>
       </Dialog>
     </Box>
