@@ -1,7 +1,7 @@
 ---
-resumePageTitle: Title
-resumePageDescription: Description
-resumePageImage: null
+resumePageTitle:
+resumePageDescription:
+resumePageImage:
 workExperience:
   - startJobDate: 2019-11-02T20:06:48.583Z
     finishJobDate: 2020-11-01T20:06:48.592Z
@@ -18,6 +18,7 @@ workExperience:
     jobTitle: Junior front-end developer
     companyName: Google
     jobDescription: In tristique vulputate augue vel egestas. Quisque ac imperdiet tortor, at lacinia ex. Duis vel ex hendrerit, commodo odio sed, aliquam enim. Ut arcu nulla, tincidunt eget arcu eget, molestie vulputate nisi. Nunc malesuada leo et est iaculis facilisis. Fusce eu urna ut magna malesuada fringilla.
+
 education:
   - startSchoolDate: 2020-10-02T20:11:46.025Z
     finishSchoolDate: 2020-11-02T20:12:59.850Z

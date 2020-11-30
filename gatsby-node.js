@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign*/
 const remark = require('remark');
 const remarkHTML = require('remark-html');
 
@@ -9,7 +10,6 @@ exports.onCreateNode = ({ node }) => {
   if (node.frontmatter) {
     if (node.frontmatter.description) {
       const markdown = node.frontmatter.description;
-      // eslint-disable-next-line no-param-reassign
       node.frontmatter.description = convertMarkdown(markdown);
       return node;
     }
@@ -17,7 +17,6 @@ exports.onCreateNode = ({ node }) => {
     if (node.frontmatter.blogPost) {
       node.frontmatter.blogPost.forEach((post) => {
         const markdown = post.blogBody;
-        // eslint-disable-next-line no-param-reassign
         post.blogBody = convertMarkdown(markdown);
       });
       return node;
@@ -27,9 +26,7 @@ exports.onCreateNode = ({ node }) => {
       node.frontmatter.projects.forEach((project) => {
         const markdownDescription = project.projectDescription;
         const markdownRole = project.projectRole;
-        // eslint-disable-next-line no-param-reassign
         project.projectDescription = convertMarkdown(markdownDescription);
-        // eslint-disable-next-line no-param-reassign
         project.projectRole = convertMarkdown(markdownRole);
       });
       return node;
