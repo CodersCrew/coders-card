@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: feature/Support-markdown
+  branch: master
 
 media_folder: src/images
 public_folder: /img

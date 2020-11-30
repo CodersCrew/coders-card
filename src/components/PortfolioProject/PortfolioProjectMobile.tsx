@@ -107,15 +107,21 @@ const BlogPostDialogMobile: FC<PortfolioProjectDialogProps> = (props) => {
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           Project description
         </Typography>
-        <Typography className={classes.content} variant="body2" color="textSecondary">
-          {props.contentMainDescription}
-        </Typography>
+        <Typography
+          className={classes.content}
+          variant="body2"
+          color="textSecondary"
+          dangerouslySetInnerHTML={{ __html: props.contentMainDescription }}
+        />
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           My role
         </Typography>
-        <Typography className={classes.content} variant="body2" color="textSecondary">
-          {props.contentMainRole}
-        </Typography>
+        <Typography
+          className={classes.content}
+          variant="body2"
+          color="textSecondary"
+          dangerouslySetInnerHTML={{ __html: props.contentMainRole }}
+        />
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           Technologies
         </Typography>

@@ -1,12 +1,41 @@
 const remark = require('remark');
 const remarkHTML = require('remark-html');
 
+const convertMarkdown = (markdown) => {
+  return remark().use(remarkHTML).processSync(markdown).toString();
+};
+
 exports.onCreateNode = ({ node }) => {
   if (node.frontmatter) {
-    const markdown = node.frontmatter.description;
-    node.frontmatter.description = remark().use(remarkHTML).processSync(markdown).toString();
-    return node;
+    if (node.frontmatter.description) {
+      const markdown = node.frontmatter.description;
+      // eslint-disable-next-line no-param-reassign
+      node.frontmatter.description = convertMarkdown(markdown);
+      return node;
+    }
+
+    if (node.frontmatter.blogPost) {
+      node.frontmatter.blogPost.forEach((post) => {
+        const markdown = post.blogBody;
+        // eslint-disable-next-line no-param-reassign
+        post.blogBody = convertMarkdown(markdown);
+      });
+      return node;
+    }
+
+    if (node.frontmatter.projects) {
+      node.frontmatter.projects.forEach((project) => {
+        const markdownDescription = project.projectDescription;
+        const markdownRole = project.projectRole;
+        // eslint-disable-next-line no-param-reassign
+        project.projectDescription = convertMarkdown(markdownDescription);
+        // eslint-disable-next-line no-param-reassign
+        project.projectRole = convertMarkdown(markdownRole);
+      });
+      return node;
+    }
   }
+  return node;
 };
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
