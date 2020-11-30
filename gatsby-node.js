@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign*/
 const remark = require('remark');
 const remarkHTML = require('remark-html');
 
