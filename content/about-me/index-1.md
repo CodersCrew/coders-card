@@ -59,11 +59,11 @@ socialMedia:
     - otherSkillName: Pisanie
       otherSkillValue: 1
 testimonials:
-  - testimonialText: "testimonialText"
+  - testimonialText: testimonialText
     testimonialName: testimonialName
     testimonialJob: testimonialJob
     testimonialImage: GabeMcdonalid.png
-  - testimonialText: "testimonialText"
+  - testimonialText: testimonialText
     testimonialName: testimonialName
     testimonialJob: testimonialJob
     testimonialImage: GabeMcdonalid.png
