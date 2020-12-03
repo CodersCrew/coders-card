@@ -11,9 +11,11 @@ This documentation will walk you through setting up a portfolio website with Cod
 
 1. Fork [CodersCard](https://github.com/CodersCrew/CodersCard) to your account.
 
+![Fork repository](./images/fork.png)
+
 2. Go to [your Netlify account](https://app.netlify.com/) and click on the **New site from Git** button.
 
-3. Complete a quick 3-step process to setup your website.
+3. In Netlify, complete a quick 3-step process to setup your website.
 
 - Choose GiHub for Continuous Development, then Authorize Netlify and it will get you to the second step.
 
@@ -40,7 +42,7 @@ The deploy can take a couple of minutes, please wait patiently and once it is do
 After you finished the Setup section, you can now populate the website with your own content.
 In order to do so, you have to complete the following steps.
 
-1. Navigate to **Site settings** and select the **Identity** tab.
+1. Go to [your Netlify account]((https://app.netlify.com/)) and navigate to **Site settings**, then select the **Identity** tab.
 
 2. Scroll all the way to the bottom, where you find the **Services** section, there click **Enable Git Gateway**
 
