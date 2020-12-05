@@ -127,7 +127,7 @@ const PortfolioPage: FC<{ data: ProjectGQL }> = ({ data }) => {
   };
 
   const renderProject = (project: ProjectType, index: number) => (
-    <Box key={`${project.projectName}-${project.projectDescription}-${index}`}>
+    <Box key={`${project.projectName}-${project.projectDescription}`}>
       <PortfolioCard
         className={classes.project}
         type={componentType}

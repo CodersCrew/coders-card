@@ -88,7 +88,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   };
 
   const renderBlogPost = (blogPost: BlogPostType, index: number) => (
-    <Box key={`${blogPost.blogTitle}-${blogPost.blogDescription}-${index}`}>
+    <Box key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
       <BlogPost
         className={classes.blogPost}
         image={blogPost.blogImage.publicURL}
