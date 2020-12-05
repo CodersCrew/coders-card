@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       gridTemplateColumns: '400px 400px',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       gridGap: theme.spacing(5),
     },
   },
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.up('lg')]: {
-      margin: theme.spacing(0, 2, 4, 2),
+      margin: theme.spacing(0, 0, 4, 0),
     },
   },
   blogPost: {
@@ -88,7 +88,7 @@ const BlogPage: FC<{ data: BlogGQL }> = ({ data }) => {
   };
 
   const renderBlogPost = (blogPost: BlogPostType, index: number) => (
-    <Box key={`${blogPost.blogTitle}-${blogPost.blogDescription}`}>
+    <Box key={`${blogPost.blogTitle}-${blogPost.blogDescription}-${index}`}>
       <BlogPost
         className={classes.blogPost}
         image={blogPost.blogImage.publicURL}

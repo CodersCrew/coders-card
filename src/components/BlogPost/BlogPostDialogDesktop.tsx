@@ -42,7 +42,7 @@ const BlogPostDialogDesktop: FC<BlogPostDialogProps> = (props) => {
   return (
     <Box display="inline-block">
       <Dialog className={classes.wrapper} open={props.isOpen} onClose={props.handleClose}>
-        <Box position="absolute" left="620px">
+        <Box position="absolute" left="530px">
           <Box mb={5}>
             <IconButton onClick={props.handleClose} size="small">
               <X size={30} />
