@@ -1,5 +1,5 @@
 <h3 align="center">
-  ⚠️ We are constantly improving this project and planning to release it in October 2020.
+  ⚠️ We are constantly improving this project and planning to release it in January 2021.
 </h3>
 
 <h3 align="center">
