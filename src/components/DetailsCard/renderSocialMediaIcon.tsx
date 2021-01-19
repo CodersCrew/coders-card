@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Facebook, GitHub, Instagram, Twitter } from 'react-feather';
 
-import { SocialMediaName } from './cardProps';
+import type { SocialMediaName } from './DetailsCard.types';
 
 const socialMediaIcons = {
   facebook: Facebook,

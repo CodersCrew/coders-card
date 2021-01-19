@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { SectionTitle } from '.';
+import { SectionTitle } from './SectionTitle';
 
 export default {
   title: 'SectionTitle',
   component: SectionTitle,
-  excludeStories: /.*Data$/,
 };
 
 export const SectionTitleExample = () => {

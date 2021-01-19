@@ -5,7 +5,6 @@ import { NavbarComponent } from './Navbar';
 export default {
   title: 'Navbar',
   component: NavbarComponent,
-  excludeStories: /.*Data$/,
 };
 
 const navbarBasePropsData = {

@@ -6,7 +6,6 @@ import { TextField, TextFieldProps } from '.';
 export default {
   title: 'TextField',
   component: 'TextField',
-  excludeStories: /.*Data$/,
   decorators: [withFormik],
 };
 const basePropsData: Partial<TextFieldProps> = {
@@ -15,9 +14,9 @@ const basePropsData: Partial<TextFieldProps> = {
   name: 'name',
 };
 
-export const BaseInput = (): JSX.Element => {
+export const BaseInput = () => {
   return <TextField {...basePropsData} />;
 };
-export const AreaInput = (): JSX.Element => {
+export const AreaInput = () => {
   return <TextField multiline {...basePropsData} />;
 };

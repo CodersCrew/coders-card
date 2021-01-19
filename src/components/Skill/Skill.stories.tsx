@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { Skill } from '.';
+import { Skill } from './Skill';
 
 export default {
   title: 'Skill',
   component: Skill,
-  excludeStories: /.*Data$/,
 };
 
 export const NoSkill = () => {

@@ -1,19 +1,12 @@
 import React from 'react';
 
-import { FC } from '../../typings/components';
-import CardDesktop from './CardDesktop';
-import CardMobile from './CardMobile';
-import { CardProps } from './cardProps';
-import CardTablet from './CardTablet';
+import type { PortfolioCardProps } from './PortfolioCard.types';
+import { PortfolioCardDesktop } from './PortfolioCardDesktop';
+import { PortfolioCardMobile } from './PortfolioCardMobile';
+import { PortfolioCardTablet } from './PortfolioCardTablet';
 
-type CardType = 'mobile' | 'tablet' | 'desktop';
-
-interface PortfolioCardProps extends CardProps {
-  type: CardType;
-}
-
-export const PortfolioCard: FC<PortfolioCardProps> = ({ type, ...props }) => {
-  if (type === 'desktop') return <CardDesktop {...props} />;
-  if (type === 'tablet') return <CardTablet {...props} />;
-  return <CardMobile {...props} />;
+export const PortfolioCard = ({ type, ...props }: PortfolioCardProps) => {
+  if (type === 'desktop') return <PortfolioCardDesktop {...props} />;
+  if (type === 'tablet') return <PortfolioCardTablet {...props} />;
+  return <PortfolioCardMobile {...props} />;
 };

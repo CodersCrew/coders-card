@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { Tag } from '.';
+import { Tag } from './Tag';
 
 export default {
   title: 'Tag',
   component: Tag,
-  excludeStories: /.*Data$/,
 };
 
 export const DefaultTag = () => {

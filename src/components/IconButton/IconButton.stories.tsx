@@ -2,12 +2,11 @@ import React from 'react';
 import { ChevronLeft, ChevronRight, X } from 'react-feather';
 import { action } from '@storybook/addon-actions';
 
-import { IconButton, IconButtonProps } from '.';
+import { IconButton, IconButtonProps } from './IconButton';
 
 export default {
   title: 'IconButton',
   component: IconButton,
-  excludeStories: /.*Data$/,
 };
 
 const basePropsData: Partial<IconButtonProps> = {

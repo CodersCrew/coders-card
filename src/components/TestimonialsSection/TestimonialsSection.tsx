@@ -1,10 +1,9 @@
 import React from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 
-import { useComponentType } from '../../hooks/useComponentType';
-import { FC } from '../../typings/components';
-import { SectionTitle } from '../SectionTitle';
-import { Testimonial } from '../Testimonial/Testimonial';
+import { SectionTitle } from '@/components/SectionTitle';
+import { Testimonial } from '@/components/Testimonial';
+import { useComponentType } from '@/hooks/useComponentType';
 
 export type TestimonialsSectionProps = {
   testimonials?: {
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TestimonialsSection: FC<TestimonialsSectionProps> = ({ testimonials }) => {
+export const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
   const classes = useStyles();
   const { isMobile } = useComponentType();
 

@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 
+type DateFormat = 'day' | 'month';
+
 const dateFormatMonth = 'MMMM YYYY';
 const dateFormatDay = 'DD MMMM YYYY';
-
-type DateFormat = 'day' | 'month';
 
 const isCurrentMonth = (date: string) => {
   const currentMonth = dayjs().format(dateFormatMonth);

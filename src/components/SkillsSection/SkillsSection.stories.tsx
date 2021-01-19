@@ -1,12 +1,11 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import { SkillsSection, SkillsSectionProps } from '.';
+import { SkillsSection, SkillsSectionProps } from './SkillsSection';
 
 export default {
   title: 'SkillsSection',
   component: SkillsSection,
-  excludeStories: /.*Data$/,
 };
 
 const basePropsData = (title: string): SkillsSectionProps => ({

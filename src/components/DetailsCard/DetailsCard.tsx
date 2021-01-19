@@ -1,17 +1,16 @@
 import React from 'react';
 
-import { useDeveloperProfile } from '../../containers/DeveloperProfile';
-import { FC } from '../../typings/components';
-import { ScreenSize } from '../../typings/customization';
-import CardDesktop from './CardDesktop';
-import CardMobile from './CardMobile';
-import { CardProps } from './cardProps';
-import CardTablet from './CardTablet';
+import { useDeveloperProfile } from '@/hooks/useDeveloperProfile';
 
-export const DetailsCard: FC<{ type: ScreenSize }> = ({ type }) => {
+import type { DetailsCardProps, DetailsCardVariantProps } from './DetailsCard.types';
+import { DetailsCardDesktop } from './DetailsCardDesktop';
+import { DetailsCardMobile } from './DetailsCardMobile';
+import { DetailsCardTablet } from './DetailsCardTablet';
+
+export const DetailsCard = ({ type }: DetailsCardProps) => {
   const developerProfile = useDeveloperProfile();
 
-  const data: CardProps = {
+  const props: DetailsCardVariantProps = {
     fullName: `${developerProfile.firstName} ${developerProfile.lastName}`,
     address: `${developerProfile.city}, ${developerProfile.country}`,
     image: `${developerProfile.avatar.publicURL}`,
@@ -28,7 +27,7 @@ export const DetailsCard: FC<{ type: ScreenSize }> = ({ type }) => {
     resumeLink: `${developerProfile.cv}`,
   };
 
-  if (type === 'desktop') return <CardDesktop data={data} />;
-  if (type === 'tablet') return <CardTablet data={data} />;
-  return <CardMobile data={data} />;
+  if (type === 'desktop') return <DetailsCardDesktop {...props} />;
+  if (type === 'tablet') return <DetailsCardTablet {...props} />;
+  return <DetailsCardMobile {...props} />;
 };

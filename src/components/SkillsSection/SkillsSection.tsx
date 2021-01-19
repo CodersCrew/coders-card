@@ -1,9 +1,7 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Box, makeStyles, Typography } from '@material-ui/core';
 
-import { FC } from '../../typings/components';
-import { LevelRange, Skill } from '../Skill/Skill';
+import { LevelRange, Skill } from '@/components/Skill';
 
 export type SkillsSectionProps = {
   title: string;
@@ -38,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SkillsSection: FC<SkillsSectionProps> = ({ title, skills, renderCondition }) => {
+export const SkillsSection = ({ title, skills, renderCondition }: SkillsSectionProps) => {
   const classes = useStyles();
 
   return (

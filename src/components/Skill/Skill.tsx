@@ -1,13 +1,12 @@
 import React from 'react';
-import { Box as MuiBox, BoxProps as MuiBoxProps, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Box as MuiBox, BoxProps as MuiBoxProps, makeStyles, Typography } from '@material-ui/core';
 
 export type LevelRange = 0 | 1 | 2 | 3 | 4 | 5;
 
-export interface SkillProps extends MuiBoxProps {
+export type SkillProps = MuiBoxProps & {
   level: LevelRange;
   children: string;
-}
+};
 
 const useStyles = makeStyles((theme) => {
   const { palette } = theme;
@@ -37,11 +36,11 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export const Skill: React.FC<SkillProps> = ({ children, level, ...rest }) => {
+export const Skill = ({ children, level, ...props }: SkillProps) => {
   const classes = useStyles();
 
   return (
-    <MuiBox {...rest} className={classes.root}>
+    <MuiBox {...props} className={classes.root}>
       <Typography variant="subtitle2" gutterBottom>
         {children}
       </Typography>

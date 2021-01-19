@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, Tab as MuiTab, TabProps as MuiTabProps } from '@material-ui/core';
 
-export type TabProps = MuiTabProps;
+export type FilterTabProps = MuiTabProps;
 
 const useStyles = makeStyles((theme) => ({
   tab: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const FilterTab = (props: TabProps) => {
+export const FilterTab = (props: FilterTabProps) => {
   const classes = useStyles();
 
   return <MuiTab label="All" className={classes.tab} {...props} />;

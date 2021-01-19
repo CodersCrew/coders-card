@@ -16,5 +16,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const IconButton = (props: IconButtonProps) => {
   const classes = useStyles();
+
   return <MuiIconButton className={classes.muiIconButton} {...props} />;
 };

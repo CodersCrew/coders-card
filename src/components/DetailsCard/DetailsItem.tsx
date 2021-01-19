@@ -2,8 +2,6 @@ import React from 'react';
 import { Check, Download, Mail, MapPin, Phone } from 'react-feather';
 import { Box, makeStyles, Typography } from '@material-ui/core/';
 
-import { FC } from '../../typings/components';
-
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: 'flex',
@@ -20,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
 
 type DetailItemIcon = 'map-pin' | 'check' | 'download' | 'phone' | 'mail';
 
-type Props = { label: string; icon: DetailItemIcon; className?: string; isLink?: boolean; href?: string };
+type DetailsItemProps = { label: string; icon: DetailItemIcon; className?: string; isLink?: boolean; href?: string };
 
-export const DetailsItem: FC<Props> = ({ label, icon, className = '', isLink = false, href }) => {
+export const DetailsItem = ({ label, icon, className = '', isLink = false, href }: DetailsItemProps) => {
   const classes = useStyles();
   const renderIcon = () => {
     if (icon === 'map-pin') return <MapPin className={classes.icon} />;

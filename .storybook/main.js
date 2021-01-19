@@ -1,3 +1,6 @@
+const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   addons: ['@storybook/addon-actions', '@storybook/addon-a11y/register', '@storybook/addon-viewport/register'],
@@ -17,7 +20,6 @@ module.exports = {
     config.module.rules[0].use[0].options.plugins = [
       // use @babel/plugin-proposal-class-properties for class arrow functions
       require.resolve('@babel/plugin-proposal-class-properties'),
-
       // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
       require.resolve('babel-plugin-remove-graphql-queries'),
     ];
@@ -39,6 +41,15 @@ module.exports = {
     });
 
     config.resolve.extensions.push('.ts', '.tsx');
+
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@/components': path.resolve(__dirname, '..', 'src', 'components'),
+      '@/hooks': path.resolve(__dirname, '..', 'src', 'hooks'),
+      '@/pages': path.resolve(__dirname, '..', 'src', 'pages'),
+      '@/typings': path.resolve(__dirname, '..', 'src', 'typings'),
+      '@/utils': path.resolve(__dirname, '..', 'src', 'utils'),
+    };
 
     return config;
   },

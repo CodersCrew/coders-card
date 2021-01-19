@@ -1,30 +1,25 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 
-import { FilterTabs } from '.';
-import { FilterTabsType } from './FilterTabs';
+import { FilterTabs, FilterTabsProps } from './FilterTabs';
 
 export default {
   title: 'FilterTabs',
   component: FilterTabs,
-  excludeStories: /.*Data$/,
 };
 
-const baseTabsPropsData: Partial<FilterTabsType> = {
+const baseTabsPropsData: Partial<FilterTabsProps> = {
   indicatorColor: 'primary',
   textColor: 'primary',
 };
 
-export const BaseFilterTabs = (): JSX.Element => {
+export const BaseFilterTabs = () => {
   return (
-    <>
-      <FilterTabs
-        {...baseTabsPropsData}
-        handleChange={() => {
-          console.log('');
-        }}
-        navbarTitle={0}
-        projectLabels={['test1', 'test2']}
-      />
-    </>
+    <FilterTabs
+      {...baseTabsPropsData}
+      handleChange={action('handleChange')}
+      navbarTitle={0}
+      projectLabels={['test1', 'test2']}
+    />
   );
 };

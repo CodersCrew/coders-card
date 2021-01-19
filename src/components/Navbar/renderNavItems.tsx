@@ -2,7 +2,8 @@
 import React from 'react';
 import { FileText, Folder, MessageCircle, Type, User } from 'react-feather';
 
-import { FeatherIcon } from '../../typings/components';
+import type { FeatherIcon } from '@/typings';
+
 import { NavItem, NavItemProps } from '../NavItem';
 
 type NavItemConfig = {

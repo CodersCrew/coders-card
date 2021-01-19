@@ -10,14 +10,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '4px',
     height: '24px',
     color: theme.palette.text.white,
+
     '&.MuiChip-colorSecondary': {
       backgroundColor: theme.palette.success.main,
     },
+
     '&.MuiChip-colorPrimary': {
       backgroundColor: theme.palette.text.secondary,
     },
   },
 }));
+
 export const Tag = (props: TagProps) => {
   const classes = useStyles();
 

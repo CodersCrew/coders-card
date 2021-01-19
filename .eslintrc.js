@@ -1,98 +1,90 @@
 const path = require('path');
 
+const configPath = path.resolve(__dirname, 'tsconfig.eslint.json');
+
 module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+  },
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    project: configPath,
+    ecmaFeatures: { jsx: true },
+  },
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'prettier', 'simple-import-sort'],
   extends: [
-    'airbnb',
+    'eslint:recommended',
+    'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
+    'prettier/react',
+    'plugin:react-hooks/recommended',
   ],
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'jest', 'prettier', 'simple-import-sort'],
-  env: {
-    browser: true,
-    jest: true,
-  },
-  parserOptions: {
-    ecmaVersion: 2020,
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
   rules: {
-    'no-console': 0,
-    'no-param-reassign': 0,
-    'sort-imports': 0, // turned of as we're using simple-import-sort for sorting
-    'no-use-before-define': 0,
-    'spaced-comment': [2, 'always', { markers: ['/'] }], // modified to allow TS references with triple brackets
-    'react/jsx-filename-extension': [2, { extensions: ['.ts', '.tsx'] }], // reduces allowed extensions to typescript ones
-    'react/jsx-curly-newline': 0, // conflicts with prettier
-    'react/jsx-one-expression-per-line': 0, // conflicts with prettier
-    'react/jsx-indent': 0, // conflicts with prettier
-    'react/jsx-wrap-multilines': 0, // conflicts with prettier
-    'react/destructuring-assignment': 0, // in many cases we want to destructure part of the props
-    'react/require-default-props': 0, // we have a case where we want to set a default value to an optional prop when it has explicit prop types
-    '@typescript-eslint/explicit-module-boundary-types': 0, // in many cases TS knows return type of the function so we don't need to specify it explicitly
+    complexity: [2, 11],
+    'sort-imports': 0,
+    'spaced-comment': [2, 'always', { markers: ['/'] }],
+    'class-methods-use-this': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-unused-vars': [2, { argsIgnorePattern: '^_' }],
-    'simple-import-sort/sort': 2, // treat unsorted imports as lint errors
-    'import/order': 0, // turned of as we're using simple-import-sort for sorting
-    'import/no-cycle': 0,
-    'import/prefer-default-export': 0, // we're using default exports only for pages
-    'import/no-extraneous-dependencies': [
-      2,
-      { devDependencies: ['**/*.test.tsx', '**/*.stories.tsx', 'craco.config.js', '**/test/*'] }, // files where dev dependencies imports are allowed
-    ],
-    'import/extensions': [
-      2,
-      'ignorePackages',
-      {
-        js: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
-    'simple-import-sort/sort': [
+    '@typescript-eslint/array-type': 2,
+    '@typescript-eslint/prefer-enum-initializers': 2,
+    'import/order': 0,
+    'import/prefer-default-export': 0,
+    'simple-import-sort/imports': [
       2,
       {
         groups: [
-          ['^\\u0000'], // Side effect imports.
-          ['^react', '^@?\\w'], // Packages. `react` related packages come first.
-          ['^[^.]'], // Absolute imports (mostly written as `@/foo`). Anything that does not start with a dot.
-          ['^\\.'], // Relative imports. Anything that starts with a dot.
+          ['^\\u0000'], // side effect imports.
+          ['^react', '^@?\\w'], // packages from node_modules. react related packages come first.
+          ['^[^.]'], // absolute imports (mostly written as `@/foo`). Anything that does not start with a dot.
+          ['^\\.'], // relative imports. Anything that starts with a dot.
         ],
       },
     ],
   },
   overrides: [
     {
-      files: ['*.tsx'], // files with components
+      files: ['*.tsx'],
       rules: {
+        'react/destructuring-assignment': 0,
         'react/jsx-props-no-spreading': 0,
+        'react/no-unescaped-entities': 0,
         'react/prop-types': 0,
+        'react/require-default-props': 0,
       },
     },
     {
-      files: ['*.js'], // mostly files with configs like the current one
+      files: ['*.test.(ts|tsx)', '*.stories.tsx', 'setupTests.ts'],
       rules: {
+        'import/no-extraneous-dependencies': 0,
+      },
+    },
+    {
+      files: ['*.js'],
+      rules: {
+        'import/no-extraneous-dependencies': 0,
         '@typescript-eslint/no-var-requires': 0,
+        '@typescript-eslint/no-unsafe-assignment': 0,
+        '@typescript-eslint/no-unsafe-call': 0,
       },
     },
   ],
   settings: {
-    react: {
-      version: 'detect',
-    },
+    react: { version: 'detect' },
     'import/resolver': {
       node: {
-        paths: [path.resolve(__dirname)],
+        paths: ['src'],
         extensions: ['.js', '.ts', '.tsx'],
       },
       typescript: {
-        project: path.resolve(__dirname, 'tsconfig.json'),
+        project: configPath,
       },
     },
   },

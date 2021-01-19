@@ -4,8 +4,6 @@ import clsx from 'clsx';
 import { Field } from 'formik';
 import { TextField as FTextField } from 'formik-material-ui';
 
-import { CFC } from '../../typings/components';
-
 export type TextFieldProps = MuiTextFieldProps;
 
 export type FormikTextFieldProps = MuiTextFieldProps & {
@@ -35,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TextField: CFC<TextFieldProps> = (props) => {
+export const TextField = (props: TextFieldProps) => {
   const classes = useStyles();
 
   return <MuiTextField {...props} className={clsx(classes.textField, props.className)} />;
 };
 
-export const FormikTextField: CFC<FormikTextFieldProps> = (props) => {
+export const FormikTextField = (props: FormikTextFieldProps) => {
   const classes = useStyles();
 
   return <Field component={FTextField} className={clsx(classes.textField, props.className)} {...props} />;

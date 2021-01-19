@@ -1,5 +1,7 @@
+/* eslint-disable no-param-reassign */
 const remark = require('remark');
 const remarkHTML = require('remark-html');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const convertMarkdown = (markdown) => {
   return remark().use(remarkHTML).processSync(markdown).toString();
@@ -33,6 +35,7 @@ exports.onCreateNode = ({ node }) => {
   }
   return node;
 };
+
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
@@ -105,5 +108,14 @@ exports.createSchemaCustomization = ({ actions }) => {
       otherSkillValue: Int
     }
   `;
+
   createTypes(typeDefs);
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      plugins: [new TsconfigPathsPlugin()],
+    },
+  });
 };
