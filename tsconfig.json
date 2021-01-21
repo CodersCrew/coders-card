@@ -15,13 +15,13 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/pages/*": ["pages/*"],
       "@/typings": ["typings"],
       "@/utils/*": ["utils/*"],
+      "@/views/*": ["views/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5",
+    "target": "es5"
   }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BoxProps } from '@material-ui/core';
 
-import { useBlogQuery } from '@/pages/blog/Blog.query';
 import { ScreenSize } from '@/typings';
+import { useBlogQuery } from '@/views/blog/Blog.query';
 
 import { NavbarDesktop } from './NavbarDesktop';
 import { NavbarMobile } from './NavbarMobile';
