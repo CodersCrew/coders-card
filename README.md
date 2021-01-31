@@ -1,8 +1,4 @@
 <h3 align="center">
-  ⚠️ We are constantly improving this project and planning to release it in January 2021.
-</h3>
-
-<h3 align="center">
 Navigate to <a href="https://github.com/CodersCrew/CodersCard/tree/master/docs/setup-guide.md" target="_blank">setup docs</a> to find out how to setup your own portfolio website with CodersCard!
 </h3>
 
