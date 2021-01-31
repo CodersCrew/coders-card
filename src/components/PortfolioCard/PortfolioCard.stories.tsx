@@ -2,7 +2,8 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import { action } from '@storybook/addon-actions';
 
-import image from '../../images/download.jpeg';
+import image from '@/images/download.jpeg';
+
 import { PortfolioCard } from './PortfolioCard';
 import type { PortfolioCardProps } from './PortfolioCard.types';
 

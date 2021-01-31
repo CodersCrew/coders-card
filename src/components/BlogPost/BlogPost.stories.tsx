@@ -1,7 +1,8 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import image from '../../images/blogpost-image.jpg';
+import image from '@/images/blogpost-image.jpg';
+
 import { BlogPost } from './BlogPost';
 
 export default {

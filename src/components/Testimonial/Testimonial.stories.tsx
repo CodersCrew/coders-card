@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import image from '../../images/MarleneWatson.png';
+import image from '@/images/MarleneWatson.png';
+
 import { Testimonial } from './Testimonial';
 import type { TestimonialVariantProps } from './Testimonial.types';
 

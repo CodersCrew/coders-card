@@ -46,6 +46,7 @@ module.exports = {
       ...(config.resolve.alias || {}),
       '@/components': path.resolve(__dirname, '..', 'src', 'components'),
       '@/hooks': path.resolve(__dirname, '..', 'src', 'hooks'),
+      '@/images': path.resolve(__dirname, '..', 'src', 'images'),
       '@/typings': path.resolve(__dirname, '..', 'src', 'typings'),
       '@/utils': path.resolve(__dirname, '..', 'src', 'utils'),
       '@/views': path.resolve(__dirname, '..', 'src', 'views'),
