@@ -1,21 +1,17 @@
 import React, { ComponentProps } from 'react';
 import { Tabs as MuiTabs } from '@material-ui/core';
 
-import { FilterTab } from '../FilterTab/FilterTab';
+import { FilterTab } from '@/components/FilterTab';
 
-export type TabsProps = ComponentProps<typeof MuiTabs>;
-type BasicFilterTypes = {
-  handleChange: TabsProps['onChange'];
+export type FilterTabsProps = ComponentProps<typeof MuiTabs> & {
+  handleChange: FilterTabsProps['onChange'];
   navbarTitle: number;
-  projectLabels: Array<string>;
+  projectLabels: string[];
 };
-export type FilterTabsType = TabsProps & BasicFilterTypes;
 
-export const FilterTabs = (props: FilterTabsType) => {
-  const { projectLabels, navbarTitle, handleChange, ...rest } = props;
-
+export const FilterTabs = ({ projectLabels, navbarTitle, handleChange, ...props }: FilterTabsProps) => {
   return (
-    <MuiTabs {...rest} onChange={handleChange} value={navbarTitle}>
+    <MuiTabs {...props} onChange={handleChange} value={navbarTitle}>
       {projectLabels.map((projectLabel) => (
         <FilterTab key={projectLabel} label={projectLabel} />
       ))}

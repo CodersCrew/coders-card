@@ -1,14 +1,14 @@
 import React from 'react';
 import { BoxProps } from '@material-ui/core';
 
-import { useBlogPageDoesNotExist } from '../../hooks/useBlogPageDoesNotExist';
-import { CFC } from '../../typings/components';
-import { ScreenSize } from '../../typings/customization';
-import { DesktopNavbar } from './DesktopNavbar';
-import { MobileNavbar } from './MobileNavbar';
-import { TabletNavbar } from './TabletNavbar';
+import { ScreenSize } from '@/typings';
+import { useBlogQuery } from '@/views/blog/Blog.query';
 
-type NavbarBaseProps = BoxProps & {
+import { NavbarDesktop } from './NavbarDesktop';
+import { NavbarMobile } from './NavbarMobile';
+import { NavbarTablet } from './NavbarTablet';
+
+export type NavbarProps = BoxProps & {
   type: ScreenSize;
   fullName: string;
   image: string;
@@ -16,9 +16,7 @@ type NavbarBaseProps = BoxProps & {
   resumeLink?: string;
 };
 
-export type NavbarProps = NavbarBaseProps & { withoutBlogPage?: boolean };
-
-export const NavbarComponent: CFC<NavbarProps> = ({
+export const NavbarComponent = ({
   withoutBlogPage,
   type,
   fullName,
@@ -26,18 +24,19 @@ export const NavbarComponent: CFC<NavbarProps> = ({
   position,
   resumeLink,
   ...props
-}) => {
+}: NavbarProps & { withoutBlogPage: boolean }) => {
   const mobileProps = { fullName, image, position };
   const tabletProps = { fullName, image, position, resumeLink };
 
-  if (type === 'mobile') return <MobileNavbar {...mobileProps} {...props} withoutBlogPage={withoutBlogPage} />;
-  if (type === 'tablet') return <TabletNavbar {...tabletProps} {...props} withoutBlogPage={withoutBlogPage} />;
+  if (type === 'mobile') return <NavbarMobile {...mobileProps} {...props} withoutBlogPage={withoutBlogPage} />;
+  if (type === 'tablet') return <NavbarTablet {...tabletProps} {...props} withoutBlogPage={withoutBlogPage} />;
 
-  return <DesktopNavbar {...props} withoutBlogPage={withoutBlogPage} />;
+  return <NavbarDesktop {...props} withoutBlogPage={withoutBlogPage} />;
 };
 
-export const Navbar: CFC<NavbarBaseProps> = (props) => {
-  const blogPageDoesntExist = useBlogPageDoesNotExist();
+export const Navbar = (props: NavbarProps) => {
+  const blogData = useBlogQuery();
+  const withoutBlogPage = blogData.blogPost?.length === 0;
 
-  return <NavbarComponent {...props} withoutBlogPage={blogPageDoesntExist} />;
+  return <NavbarComponent {...props} withoutBlogPage={withoutBlogPage} />;
 };

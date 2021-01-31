@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SectionTitle = (props: SectionTitleProps) => {
+export const SectionTitle = ({ children, ...props }: SectionTitleProps) => {
   const classes = useStyles();
   return (
     <Typography variant="h3">
       <Box className={classes.sectionTitle} {...props}>
-        {props.children}
+        {children}
         <div className={classes.divider} />
       </Box>
     </Typography>

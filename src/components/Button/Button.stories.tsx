@@ -2,12 +2,11 @@ import React from 'react';
 import { Smile } from 'react-feather';
 import { action } from '@storybook/addon-actions';
 
-import { Button, ButtonProps } from '.';
+import { Button, ButtonProps } from './Button';
 
 export default {
   title: 'Button',
   component: Button,
-  excludeStories: /.*Data$/,
 };
 
 const basePropsData: Partial<ButtonProps> = {
@@ -16,18 +15,18 @@ const basePropsData: Partial<ButtonProps> = {
   onClick: action('onClick'),
 };
 
-export const TextOnly = (): JSX.Element => {
+export const TextOnly = () => {
   return <Button {...basePropsData}>Text Only</Button>;
 };
 
-export const WithIcon = (): JSX.Element => {
+export const WithIcon = () => {
   return (
     <Button {...basePropsData} startIcon={<Smile size={16} />}>
       With Icon
     </Button>
   );
 };
-export const TextOnlySmall = (): JSX.Element => {
+export const TextOnlySmall = () => {
   return (
     <Button {...basePropsData} size="small">
       Text Only
@@ -35,7 +34,7 @@ export const TextOnlySmall = (): JSX.Element => {
   );
 };
 
-export const WithIconSmall = (): JSX.Element => {
+export const WithIconSmall = () => {
   return (
     <Button {...basePropsData} size="small" startIcon={<Smile size={16} />}>
       With Icon

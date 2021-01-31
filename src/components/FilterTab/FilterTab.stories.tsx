@@ -1,15 +1,12 @@
 import React from 'react';
 
-import { FilterTab, TabProps } from '.';
+import { FilterTab } from './FilterTab';
 
 export default {
   title: 'FilterTab',
   component: FilterTab,
-  excludeStories: /.*Data$/,
 };
 
-const baseTabPropsData: Partial<TabProps> = {};
-
-export const BaseFilterTab = (): JSX.Element => {
-  return <FilterTab {...baseTabPropsData} />;
+export const BaseFilterTab = () => {
+  return <FilterTab />;
 };

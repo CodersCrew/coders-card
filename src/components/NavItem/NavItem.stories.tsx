@@ -7,7 +7,6 @@ import { NavItem } from './NavItem';
 export default {
   title: 'NavItem',
   component: NavItem,
-  excludeStories: /.*Data$/,
 };
 
 export const Default = () => {

@@ -1,0 +1,58 @@
+import { makeStyles } from '@material-ui/core';
+
+export const usePortfolioStyles = makeStyles((theme) => ({
+  titleBox: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      position: 'relative',
+    },
+  },
+  projectsContainer: {
+    width: '100%',
+  },
+  projects: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridRowGap: theme.spacing(4),
+
+    [theme.breakpoints.up('sm')]: {
+      gridRowGap: theme.spacing(3),
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      gridTemplateColumns: '400px 400px',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gridRowGap: theme.spacing(5),
+      gridColumnGap: theme.spacing(9),
+    },
+  },
+  project: {
+    [theme.breakpoints.up('lg')]: {
+      width: 400,
+      height: 224,
+    },
+  },
+  title: {
+    marginBottom: theme.spacing(4),
+    width: '100%',
+    zIndex: 1,
+
+    [theme.breakpoints.up('sm')]: {
+      position: 'absolute',
+      marginBottom: theme.spacing(3),
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      position: 'absolute',
+      margin: theme.spacing(0, 0, 4, 0),
+    },
+  },
+  navbarTitles: {
+    position: 'relative',
+    zIndex: 2,
+    margin: theme.spacing(-1.2, 2, 4, 2),
+  },
+}));

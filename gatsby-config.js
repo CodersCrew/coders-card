@@ -5,12 +5,18 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-material-ui`,
     {
-      resolve: `gatsby-plugin-web-font-loader`,
+      resolve: `gatsby-theme-material-ui`,
       options: {
-        google: {
-          families: ['Inter:400,400i,500,700'],
+        webFontsConfig: {
+          fonts: {
+            google: [
+              {
+                family: `Inter`,
+                variants: [`400`, `400i`, `500`, '700'],
+              },
+            ],
+          },
         },
       },
     },
@@ -47,8 +53,5 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };

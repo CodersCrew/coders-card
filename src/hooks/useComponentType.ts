@@ -1,6 +1,6 @@
 import { useMediaQuery, useTheme } from '@material-ui/core';
 
-import { ScreenSize } from '../typings/customization';
+import { ScreenSize } from '@/typings';
 
 const getComponentType = (isMobile: boolean, isTablet: boolean): ScreenSize => {
   if (isMobile) return 'mobile';

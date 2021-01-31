@@ -1,16 +1,17 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import image from '../../images/MarleneWatson.png';
-import { Testimonial, TestimonialProps } from '.';
+import image from '@/images/MarleneWatson.png';
+
+import { Testimonial } from './Testimonial';
+import type { TestimonialVariantProps } from './Testimonial.types';
 
 export default {
   title: 'Testimonial',
   component: Testimonial,
-  excludeStories: /.*Data$/,
 };
 
-const basePropsData: TestimonialProps = {
+const basePropsData: TestimonialVariantProps = {
   image,
   description:
     'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',

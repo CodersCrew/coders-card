@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import image from '../../images/MarleneWatson.png';
-import { TestimonialsSection, TestimonialsSectionProps } from '.';
+import image from '@/images/MarleneWatson.png';
+
+import { TestimonialsSection, TestimonialsSectionProps } from './TestimonialsSection';
 
 export default {
   title: 'TestimonialsSection',
   component: TestimonialsSection,
-  excludeStories: /.*Data$/,
 };
 
 const basePropsData: TestimonialsSectionProps = {

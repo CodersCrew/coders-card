@@ -3,7 +3,7 @@ import { makeStyles, MenuItem, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import { GatsbyLinkProps, Link } from 'gatsby';
 
-import { FeatherIcon } from '../../typings/components';
+import { FeatherIcon } from '@/typings';
 
 export type NavItemProps = ComponentProps<typeof MenuItem> & {
   to: GatsbyLinkProps<unknown>['to'];

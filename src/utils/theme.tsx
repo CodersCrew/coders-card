@@ -1,10 +1,6 @@
-import React from 'react';
-import { CssBaseline } from '@material-ui/core';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import createMuiTheme, { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
-import { Shadows } from '@material-ui/core/styles/shadows';
-
-import { FC } from '../typings/components';
+import React, { FC } from 'react';
+import { createMuiTheme, CssBaseline, ThemeOptions, ThemeProvider as MuiThemeProvider } from '@material-ui/core';
+import type { Shadows } from '@material-ui/core/styles/shadows';
 
 const themeOptions: ThemeOptions = {
   palette: {
@@ -108,9 +104,20 @@ const themeOptions: ThemeOptions = {
     '0 2px 4px 0 rgba(47, 84, 235, 0.15), 0 8px 16px 0 rgba(47, 84, 235, 0.15)',
     ...[...Array(18)].map((_) => `none`),
   ] as Shadows,
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          width: '100vw',
+          height: '100vh',
+          overflowX: 'hidden',
+        },
+      },
+    },
+  },
 };
 
-const theme = createMuiTheme(themeOptions);
+export const theme = createMuiTheme(themeOptions);
 
 export const ThemeProvider: FC = ({ children }) => (
   <MuiThemeProvider theme={theme}>

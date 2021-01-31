@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
-import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { Card, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
 
-import { TestimonialProps } from '.';
+import type { TestimonialVariantProps } from './Testimonial.types';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -61,10 +60,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type Props = TestimonialProps;
-
-const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ...props }) => {
+export const TestimonialMobile = ({ label, labelBold, description, image, ...props }: TestimonialVariantProps) => {
   const classes = useStyles();
+
   return (
     <Card className={classes.card} {...props}>
       <CardContent className={classes.overlay}>
@@ -88,5 +86,3 @@ const TestimonialMobile: FC<Props> = ({ label, labelBold, description, image, ..
     </Card>
   );
 };
-
-export default TestimonialMobile;

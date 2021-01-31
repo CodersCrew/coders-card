@@ -2,17 +2,17 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import { action } from '@storybook/addon-actions';
 
-import image from '../../images/download.jpeg';
-import { PortfolioCard } from '.';
-import { CardProps } from './cardProps';
+import image from '@/images/download.jpeg';
+
+import { PortfolioCard } from './PortfolioCard';
+import type { PortfolioCardProps } from './PortfolioCard.types';
 
 export default {
   title: 'PortfolioCard',
   component: PortfolioCard,
-  excludeStories: /.*Data$/,
 };
 
-const basePropsData: CardProps = {
+const basePropsData: Omit<PortfolioCardProps, 'type'> = {
   image,
   title: 'My Awesome Project',
   description:
