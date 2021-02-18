@@ -30,7 +30,7 @@ const themeOptions: ThemeOptions = {
     divider: '#dfdfdf',
   },
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: 'Roboto, sans-serif',
     h1: {
       fontSize: 32,
       lineHeight: '42px',

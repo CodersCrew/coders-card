@@ -12,7 +12,7 @@ module.exports = {
           fonts: {
             google: [
               {
-                family: `Inter`,
+                family: `Roboto`,
                 variants: [`400`, `400i`, `500`, '700'],
               },
             ],
