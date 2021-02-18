@@ -36,7 +36,7 @@ export const NavbarComponent = ({
 
 export const Navbar = (props: NavbarProps) => {
   const blogData = useBlogQuery();
-  const withoutBlogPage = blogData.blogPost?.length === 0;
+  const withoutBlogPage = !blogData.blogPost?.length;
 
   return <NavbarComponent {...props} withoutBlogPage={withoutBlogPage} />;
 };
