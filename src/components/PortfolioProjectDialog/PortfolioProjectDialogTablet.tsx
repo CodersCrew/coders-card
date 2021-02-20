@@ -78,33 +78,39 @@ export const PortfolioProjectDialogTablet = (props: PortfolioProjectDialogVarian
             {props.contentHeader}
           </Typography>
           <Box display="flex">
-            <Button
-              href={props.codeUrl}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              startIcon={<Code size={16} />}
-            >
-              See code
-            </Button>
-            <Button
-              href={props.mockupsUrl}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              startIcon={<Image size={16} />}
-            >
-              See mockups
-            </Button>
-            <Button
-              href={props.projectUrl}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              startIcon={<ExternalLink size={16} />}
-            >
-              Open the app
-            </Button>
+            {props.codeUrl ? (
+              <Button
+                href={props.codeUrl}
+                className={classes.button}
+                color="primary"
+                variant="contained"
+                startIcon={<Code size={16} />}
+              >
+                See code
+              </Button>
+            ) : null}
+            {props.mockupsUrl ? (
+              <Button
+                href={props.mockupsUrl}
+                className={classes.button}
+                color="primary"
+                variant="contained"
+                startIcon={<Image size={16} />}
+              >
+                See mockups
+              </Button>
+            ) : null}
+            {props.projectUrl ? (
+              <Button
+                href={props.projectUrl}
+                className={classes.button}
+                color="primary"
+                variant="contained"
+                startIcon={<ExternalLink size={16} />}
+              >
+                Open the app
+              </Button>
+            ) : null}
           </Box>
         </Box>
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">

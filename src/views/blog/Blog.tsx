@@ -22,7 +22,7 @@ export const Blog = () => {
   const developerProfile = useDeveloperProfile();
   const [selectedBlogPost, setSelectedBlogPost] = useState(-1);
 
-  if (isBrowser && data.blogPost?.length === 0) {
+  if (isBrowser && !data.blogPost?.length) {
     navigate('/');
   }
 
