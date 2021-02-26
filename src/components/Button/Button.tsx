@@ -2,7 +2,10 @@ import React from 'react';
 import { Button as MuiButton, ButtonProps as MuiButtonProps, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
-export type ButtonProps = MuiButtonProps;
+export type ButtonProps = MuiButtonProps & {
+  rel?: string;
+  target?: string;
+};
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -18,3 +21,10 @@ export const Button = ({ className, ...props }: ButtonProps) => {
 
   return <MuiButton className={clsx(classes.button, className)} {...props} />;
 };
+
+const defaultButtonProps: ButtonProps = {
+  rel: 'noopener noreferrer',
+  target: '_blank',
+};
+
+Button.defaultProps = defaultButtonProps;
