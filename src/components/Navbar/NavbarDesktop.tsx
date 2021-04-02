@@ -5,9 +5,7 @@ import clsx from 'clsx';
 import type { NavbarProps } from './Navbar';
 import { renderNavItems } from './renderNavItems';
 
-type NavbarDesktopProps = Omit<NavbarProps, 'type' | 'fullName' | 'image' | 'position' | 'resumeLink'> & {
-  withoutBlogPage: boolean;
-};
+type NavbarDesktopProps = Omit<NavbarProps, 'type' | 'fullName' | 'image' | 'position' | 'resumeLink'>;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavbarDesktop = ({ className, withoutBlogPage, ...props }: NavbarDesktopProps) => {
+export const NavbarDesktop = ({ className, ...props }: NavbarDesktopProps) => {
   const classes = useStyles();
 
   return (
     <Box {...props} className={clsx(className, classes.root)}>
       <MenuList variant="menu" className={classes.menu}>
-        {renderNavItems(undefined, withoutBlogPage)}
+        {renderNavItems()}
       </MenuList>
     </Box>
   );

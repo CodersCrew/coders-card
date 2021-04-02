@@ -55,13 +55,13 @@ Wait a couple of seconds, it will take some time to initialize. Once it is ready
 
 ![CMS preview](./images/cms-view.png)
 
-As you can see, there are 7 collections, **Blog** collection is optional and the rest are obligatory.
+As you can see, there are 6 collections
 
-Now, click on the big, empty rectangle on the blog tab, it will get you to the blog collection where you can add the data to your blog. If you don't want to have a Blog page on your website, navigate to blog collection and remove the predefined blog posts with the `x` icon. If there are no blog posts, the blog page will not be included in your portfolio.
+Now, click on the big, empty rectangle on the about tab, it will get you to the about collection where you can add the data to your about page.
 
-![Blog collection](./images/blog-collection.png)
+![About collection](./images/about-collection.png)
 
-Now go through all the collections and replace the predefined information with your real information that you want to have included on your website. After you are done filling in information in any of the 7 collections, remember to press the **Publish** button and then the **Publish now ->** option, this will trigger another build of your website and in a couple of minutes, it will be populated with new data.
+Now go through all the collections and replace the predefined information with your real information that you want to have included on your website. After you are done filling in information in any of the 6 collections, remember to press the **Publish** button and then the **Publish now ->** option, this will trigger another build of your website and in a couple of minutes, it will be populated with new data.
 
 ![Publish](./images/publish.png)
 
@@ -74,10 +74,6 @@ On these pictures below, you can find about what each collection represents on t
 ### About me
 
 ![About me](./images/about-me.png)
-
-### Blog
-
-![Blog](./images/blog.png)
 
 ### Portfolio
 ![Portfolio](./images/portfolio.png)

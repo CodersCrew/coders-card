@@ -2,7 +2,6 @@ import React from 'react';
 import { BoxProps } from '@material-ui/core';
 
 import { ScreenSize } from '@/typings';
-import { useBlogQuery } from '@/views/blog/Blog.query';
 
 import { NavbarDesktop } from './NavbarDesktop';
 import { NavbarMobile } from './NavbarMobile';
@@ -16,27 +15,12 @@ export type NavbarProps = BoxProps & {
   resumeLink?: string;
 };
 
-export const NavbarComponent = ({
-  withoutBlogPage,
-  type,
-  fullName,
-  image,
-  position,
-  resumeLink,
-  ...props
-}: NavbarProps & { withoutBlogPage: boolean }) => {
+export const Navbar = ({ type, fullName, image, position, resumeLink, ...props }: NavbarProps) => {
   const mobileProps = { fullName, image, position };
   const tabletProps = { fullName, image, position, resumeLink };
 
-  if (type === 'mobile') return <NavbarMobile {...mobileProps} {...props} withoutBlogPage={withoutBlogPage} />;
-  if (type === 'tablet') return <NavbarTablet {...tabletProps} {...props} withoutBlogPage={withoutBlogPage} />;
+  if (type === 'mobile') return <NavbarMobile {...mobileProps} {...props} />;
+  if (type === 'tablet') return <NavbarTablet {...tabletProps} {...props} />;
 
-  return <NavbarDesktop {...props} withoutBlogPage={withoutBlogPage} />;
-};
-
-export const Navbar = (props: NavbarProps) => {
-  const blogData = useBlogQuery();
-  const withoutBlogPage = !blogData.blogPost?.length;
-
-  return <NavbarComponent {...props} withoutBlogPage={withoutBlogPage} />;
+  return <NavbarDesktop {...props} />;
 };

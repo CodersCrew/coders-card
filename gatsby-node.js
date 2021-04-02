@@ -15,14 +15,6 @@ exports.onCreateNode = ({ node }) => {
       return node;
     }
 
-    if (node.frontmatter.blogPost) {
-      node.frontmatter.blogPost.forEach((post) => {
-        const markdown = post.blogBody;
-        post.blogBody = convertMarkdown(markdown);
-      });
-      return node;
-    }
-
     if (node.frontmatter.projects) {
       node.frontmatter.projects.forEach((project) => {
         const markdownDescription = project.projectDescription;
@@ -44,21 +36,17 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     type Frontmatter @infer {
       aboutPageTitle: String
-      blogPageTitle: String
       resumePageTitle: String
       portfolioPageTitle: String
       contactPageTitle: String
       aboutPageDescription: String
-      blogPageDescription: String
       resumePageDescription: String
       portfolioPageDescription: String
       contactPageDescription: String
       aboutPageImage: File @fileByRelativePath
-      blogPageImage: File @fileByRelativePath
       resumePageImage: File @fileByRelativePath
       portfolioPageImage: File @fileByRelativePath
       contactPageImage: File @fileByRelativePath
-      blogPost: [MarkdownRemarkFrontmatterBlogPost]
       testimonials: [MarkdownRemarkFrontmatterTestimonial]
     }
 
@@ -67,20 +55,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       testimonialImage: File @fileByRelativePath
       testimonialName: String
       testimonialJob: String
-    }
-
-    type MarkdownRemarkFrontmatterBlogPost {
-      publishDate(
-        difference: String
-        formatString: String
-        fromNow: Boolean
-        locale: String
-      ): Date
-      blogTitle: String
-      blogLabel: String
-      blogDescription: String
-      blogBody: String
-      blogImage: File @fileByRelativePath
     }
 
     type MarkdownRemarkFrontmatterSocialMedia {
