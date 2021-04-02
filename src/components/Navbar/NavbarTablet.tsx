@@ -8,9 +8,7 @@ import { Button } from '@/components/Button';
 import type { NavbarProps } from './Navbar';
 import { renderNavItems } from './renderNavItems';
 
-type NavbarTabletProps = Omit<NavbarProps, 'type'> & {
-  withoutBlogPage: boolean;
-};
+type NavbarTabletProps = Omit<NavbarProps, 'type'>;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,15 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavbarTablet = ({
-  className,
-  fullName,
-  image,
-  position,
-  resumeLink,
-  withoutBlogPage,
-  ...props
-}: NavbarTabletProps) => {
+export const NavbarTablet = ({ className, fullName, image, position, resumeLink, ...props }: NavbarTabletProps) => {
   const classes = useStyles();
 
   return (
@@ -61,7 +51,7 @@ export const NavbarTablet = ({
       </Box>
       <Divider />
       <MenuList className={classes.menu} variant="menu">
-        {renderNavItems(undefined, withoutBlogPage)}
+        {renderNavItems(undefined)}
       </MenuList>
     </Box>
   );

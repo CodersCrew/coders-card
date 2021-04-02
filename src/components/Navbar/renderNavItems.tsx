@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
-import { FileText, Folder, MessageCircle, Type, User } from 'react-feather';
+import { FileText, Folder, MessageCircle, User } from 'react-feather';
 
 import type { FeatherIcon } from '@/typings';
 
@@ -29,22 +29,15 @@ const navItems: NavItemConfig[] = [
     label: 'Portfolio',
   },
   {
-    to: '/blog',
-    icon: Type,
-    label: 'Blog',
-  },
-  {
     to: '/contact',
     icon: MessageCircle,
     label: 'Contact',
   },
 ];
 
-export const renderNavItems = (onClick: NavItemProps['onClick'] = () => {}, withoutBlogPage?: boolean) =>
-  navItems.map((item) =>
-    item.to === '/blog' && withoutBlogPage ? null : (
-      <NavItem key={item.label} to={item.to} onClick={onClick} icon={item.icon}>
-        {item.label}
-      </NavItem>
-    ),
-  );
+export const renderNavItems = (onClick: NavItemProps['onClick'] = () => {}) =>
+  navItems.map((item) => (
+    <NavItem key={item.label} to={item.to} onClick={onClick} icon={item.icon}>
+      {item.label}
+    </NavItem>
+  ));

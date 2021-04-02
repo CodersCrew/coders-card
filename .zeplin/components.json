@@ -16,7 +16,6 @@
         "branch": "master"
     },
     "components": [
-        { "path": "src/components/BlogPost/BlogPost.tsx", "zeplinNames": ["blogpost-card"] },
         { "path": "src/components/Button/Button.tsx", "zeplinNames": ["button"] },
         { "path": "src/components/FilterTab/FilterTab.tsx", "zeplinNames": ["filter-tag"] },
         { "path": "src/components/IconButton/IconButton.tsx", "zeplinNames": ["icon-button/normal", "icon-button/small"] },

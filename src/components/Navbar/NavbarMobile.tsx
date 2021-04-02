@@ -6,9 +6,7 @@ import clsx from 'clsx';
 import type { NavbarProps } from './Navbar';
 import { renderNavItems } from './renderNavItems';
 
-type NavbarMobileProps = Omit<NavbarProps, 'type' | 'resumeLink'> & {
-  withoutBlogPage: boolean;
-};
+type NavbarMobileProps = Omit<NavbarProps, 'type' | 'resumeLink'>;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,14 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavbarMobile = ({
-  className,
-  fullName,
-  image,
-  position,
-  withoutBlogPage,
-  ...props
-}: NavbarMobileProps) => {
+export const NavbarMobile = ({ className, fullName, image, position, ...props }: NavbarMobileProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const classes = useStyles();
 
@@ -79,7 +70,7 @@ export const NavbarMobile = ({
         keepMounted
         variant="menu"
       >
-        {renderNavItems(handleClose, withoutBlogPage)}
+        {renderNavItems(handleClose)}
       </Menu>
     </>
   );
