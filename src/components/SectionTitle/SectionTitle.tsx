@@ -1,27 +1,31 @@
 import React from 'react';
-import { Box, BoxProps, makeStyles, Typography } from '@material-ui/core';
+import useMeasure from 'react-use/esm/useMeasure';
+import { Box, BoxProps, Divider, makeStyles, Typography } from '@material-ui/core';
 
 export type SectionTitleProps = BoxProps;
 
 const useStyles = makeStyles((theme) => ({
-  sectionTitle: {
-    color: theme.palette.text.primary,
+  title: {
+    display: 'inline-block',
   },
   divider: {
     height: 2,
-    marginTop: theme.spacing(1.5),
-    background: `linear-gradient(left, ${theme.palette.primary.main} 0%, ${theme.palette.primary.main} 64px, ${theme.palette.divider} 64px, ${theme.palette.divider} 100%)`,
+    marginTop: theme.spacing(1.25),
   },
 }));
 
 export const SectionTitle = ({ children, ...props }: SectionTitleProps) => {
+  const [textRef, { width: textWidth }] = useMeasure();
   const classes = useStyles();
+
   return (
-    <Typography variant="h3">
-      <Box className={classes.sectionTitle} {...props}>
+    <Box {...props}>
+      <Typography className={classes.title} variant="h3" color="textPrimary" innerRef={textRef}>
         {children}
-        <div className={classes.divider} />
-      </Box>
-    </Typography>
+      </Typography>
+      <Divider component="div" className={classes.divider}>
+        <Box height={2} bgcolor="primary.main" width={textWidth} />
+      </Divider>
+    </Box>
   );
 };

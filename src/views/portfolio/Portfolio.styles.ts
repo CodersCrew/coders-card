@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 export const usePortfolioStyles = makeStyles((theme) => ({
   titleBox: {
+    position: 'relative',
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       flexDirection: 'row',
@@ -41,17 +42,16 @@ export const usePortfolioStyles = makeStyles((theme) => ({
     zIndex: 1,
 
     [theme.breakpoints.up('sm')]: {
-      position: 'absolute',
       marginBottom: theme.spacing(3),
     },
 
     [theme.breakpoints.up('lg')]: {
-      position: 'absolute',
       margin: theme.spacing(0, 0, 4, 0),
     },
   },
   navbarTitles: {
-    position: 'relative',
+    position: 'absolute',
+    right: 0,
     zIndex: 2,
     margin: theme.spacing(-1.2, 2, 4, 2),
   },
