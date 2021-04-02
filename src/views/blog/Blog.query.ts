@@ -29,7 +29,7 @@ type QueryResult = {
 export const useBlogQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     query BlogPage {
-      markdownRemark(fileAbsolutePath: { regex: "/blog/index-1.md/" }) {
+      markdownRemark(fileAbsolutePath: { regex: "/blog/index.md/" }) {
         blogPage: frontmatter {
           blogPageTitle
           blogPageDescription
