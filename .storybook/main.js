@@ -2,8 +2,11 @@ const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: ['../src/**/*.stories.tsx'],
-  addons: ['@storybook/addon-actions', '@storybook/addon-a11y/register', '@storybook/addon-viewport/register'],
+  addons: ['@storybook/addon-actions', '@storybook/addon-a11y', '@storybook/addon-viewport'],
   webpackFinal: async (config) => {
     // Transpile Gatsby module because Gatsby includes un-transpiled ES6 code.
     config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/];
