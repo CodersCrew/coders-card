@@ -27,7 +27,7 @@ export const NavbarDesktop = ({ className, ...props }: NavbarDesktopProps) => {
   return (
     <Box {...props} className={clsx(className, classes.root)}>
       <MenuList variant="menu" className={classes.menu}>
-        {renderNavItems(undefined)}
+        {renderNavItems()}
       </MenuList>
     </Box>
   );

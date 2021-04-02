@@ -35,7 +35,7 @@ const navItems: NavItemConfig[] = [
   },
 ];
 
-export const renderNavItems = (onClick: NavItemProps['onClick'] = () => {}) =>
+export const renderNavItems = (onClick?: NavItemProps['onClick']) =>
   navItems.map((item) => (
     <NavItem key={item.label} to={item.to} onClick={onClick} icon={item.icon}>
       {item.label}

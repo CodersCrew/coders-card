@@ -51,7 +51,7 @@ export const NavbarTablet = ({ className, fullName, image, position, resumeLink,
       </Box>
       <Divider />
       <MenuList className={classes.menu} variant="menu">
-        {renderNavItems(undefined)}
+        {renderNavItems()}
       </MenuList>
     </Box>
   );

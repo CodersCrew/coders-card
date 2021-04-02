@@ -15,7 +15,7 @@ export type NavbarProps = BoxProps & {
   resumeLink?: string;
 };
 
-export const NavbarComponent = ({ type, fullName, image, position, resumeLink, ...props }: NavbarProps) => {
+export const Navbar = ({ type, fullName, image, position, resumeLink, ...props }: NavbarProps) => {
   const mobileProps = { fullName, image, position };
   const tabletProps = { fullName, image, position, resumeLink };
 
@@ -23,8 +23,4 @@ export const NavbarComponent = ({ type, fullName, image, position, resumeLink, .
   if (type === 'tablet') return <NavbarTablet {...tabletProps} {...props} />;
 
   return <NavbarDesktop {...props} />;
-};
-
-export const Navbar = (props: NavbarProps) => {
-  return <NavbarComponent {...props} />;
 };
