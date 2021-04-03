@@ -11,7 +11,6 @@ import { renderSocialMediaIcon } from './renderSocialMediaIcon';
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: 'relative',
-    height: '100%',
     width: '100%',
     paddingTop: theme.spacing(14),
     background: 'transparent',
@@ -48,18 +47,17 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   basicInfo: {
+    padding: theme.spacing(2, 3, 3, 3),
     background: 'transparent',
-    height: '100%',
   },
   moreInfo: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'flex-start',
     background: theme.palette.background.light,
-    padding: theme.spacing(3),
-    minHeight: 268,
+    padding: theme.spacing(3, 3, 5, 3),
     width: '100%',
+    height: '100%',
   },
   detailsItem: {
     marginBottom: theme.spacing(2),
@@ -68,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.success.main,
   },
   name: {
-    paddingTop: theme.spacing(2),
     textAlign: 'center',
     wordWrap: 'break-word',
   },
@@ -104,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '100%',
     justifyContent: 'center',
-    paddingTop: theme.spacing(1.5),
+    marginTop: theme.spacing(2),
   },
   button: {
     width: 158,
