@@ -17,11 +17,6 @@ type Education = {
 };
 
 type ResumeData = {
-  resumePageTitle?: string;
-  resumePageDescription?: string;
-  resumePageImage?: {
-    publicURL?: string;
-  };
   workExperience: WorkExperience[];
   education: Education[];
 };
@@ -37,11 +32,6 @@ export const useResumeQuery = () => {
     {
       resumePage: markdownRemark(fileAbsolutePath: { regex: "/resume.md/" }) {
         frontmatter {
-          resumePageTitle
-          resumePageDescription
-          resumePageImage {
-            publicURL
-          }
           workExperience {
             startJobDate
             finishJobDate

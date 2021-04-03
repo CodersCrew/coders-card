@@ -1,7 +1,4 @@
 ---
-resumePageTitle:
-resumePageDescription:
-resumePageImage:
 workExperience:
   - startJobDate: 2019-11-02T20:06:48.583Z
     finishJobDate: 2020-11-01T20:06:48.592Z

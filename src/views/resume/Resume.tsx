@@ -5,7 +5,6 @@ import { Layout } from '@/components/Layout';
 import { ResumeItem } from '@/components/ResumeItem';
 import { SectionTitle } from '@/components/SectionTitle';
 import { useComponentType } from '@/hooks/useComponentType';
-import { useDeveloperProfile } from '@/hooks/useDeveloperProfile';
 import { formatDate } from '@/utils/date';
 
 import { useResumeQuery } from './Resume.query';
@@ -14,7 +13,6 @@ import { useResumeStyles } from './Resume.styles';
 export const Resume = () => {
   const data = useResumeQuery();
   const classes = useResumeStyles();
-  const developerProfile = useDeveloperProfile();
   const { isMobile } = useComponentType();
 
   const formatLabelText = (dateStart: string, dateFinish: string) => {
@@ -22,14 +20,7 @@ export const Resume = () => {
   };
 
   return (
-    <Layout
-      developerProfile={developerProfile}
-      meta={{
-        title: data.resumePageTitle,
-        description: data.resumePageDescription,
-        imageUrl: data.resumePageImage?.publicURL,
-      }}
-    >
+    <Layout>
       <Box className={classes.resumePageContainer}>
         <SectionTitle className={classes.title}>Work Experience</SectionTitle>
         <Box className={classes.project}>

@@ -27,11 +27,6 @@ type Testimonial = {
 };
 
 type AboutData = {
-  aboutPageTitle?: string;
-  aboutPageDescription?: string;
-  aboutPageImage?: {
-    publicURL?: string;
-  };
   description: string;
   socialMedia: {
     technologies?: Technology[];
@@ -52,11 +47,6 @@ export const useAboutQuery = () => {
     {
       aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me.md/" }) {
         frontmatter {
-          aboutPageTitle
-          aboutPageDescription
-          aboutPageImage {
-            publicURL
-          }
           description
           socialMedia {
             technologies {

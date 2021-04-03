@@ -7,7 +7,6 @@ import { PortfolioCard } from '@/components/PortfolioCard';
 import { PortfolioProjectDialog } from '@/components/PortfolioProjectDialog';
 import { SectionTitle } from '@/components/SectionTitle';
 import { useComponentType } from '@/hooks/useComponentType';
-import { useDeveloperProfile } from '@/hooks/useDeveloperProfile';
 import { formatDate } from '@/utils/date';
 
 import { Project, usePortfolioQuery } from './Portfolio.query';
@@ -18,7 +17,6 @@ export const Portfolio = () => {
   const classes = usePortfolioStyles();
   const data = usePortfolioQuery();
   const { componentType, isMobile } = useComponentType();
-  const developerProfile = useDeveloperProfile();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarNumberTitle, setNavbarNumberTitle] = useState(0);
 
@@ -106,14 +104,7 @@ export const Portfolio = () => {
   );
 
   return (
-    <Layout
-      developerProfile={developerProfile}
-      meta={{
-        title: data.portfolioPageTitle,
-        description: data.portfolioPageDescription,
-        imageUrl: data.portfolioPageImage?.publicURL,
-      }}
-    >
+    <Layout>
       <Box className={classes.projectsContainer}>
         <Box className={classes.titleBox}>
           <SectionTitle className={classes.title}>My works</SectionTitle>

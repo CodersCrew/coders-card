@@ -20,11 +20,6 @@ export type Project = {
 };
 
 export type PortfolioData = {
-  portfolioPageTitle?: string;
-  portfolioPageDescription?: string;
-  portfolioPageImage?: {
-    publicURL?: string;
-  };
   projects: Project[];
 };
 
@@ -39,11 +34,6 @@ export const usePortfolioQuery = () => {
     query IndexPageQuery {
       portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio.md/" }) {
         frontmatter {
-          portfolioPageTitle
-          portfolioPageDescription
-          portfolioPageImage {
-            publicURL
-          }
           projects {
             projectName
             projectLabel

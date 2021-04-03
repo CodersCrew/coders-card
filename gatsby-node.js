@@ -28,31 +28,6 @@ exports.onCreateNode = ({ node }) => {
   return node;
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
-  const typeDefs = `
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
-    }
-    type Frontmatter @infer {
-      aboutPageTitle: String
-      resumePageTitle: String
-      portfolioPageTitle: String
-      contactPageTitle: String
-      aboutPageDescription: String
-      resumePageDescription: String
-      portfolioPageDescription: String
-      contactPageDescription: String
-      aboutPageImage: File @fileByRelativePath
-      resumePageImage: File @fileByRelativePath
-      portfolioPageImage: File @fileByRelativePath
-      contactPageImage: File @fileByRelativePath
-    }
-  `;
-
-  createTypes(typeDefs);
-};
-
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {

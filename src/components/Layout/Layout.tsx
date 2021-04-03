@@ -2,19 +2,14 @@ import React, { ReactNode } from 'react';
 import { Box, Container, makeStyles } from '@material-ui/core';
 
 import { DetailsCard } from '@/components/DetailsCard';
-import { Head } from '@/components/Head';
 import { Navbar } from '@/components/Navbar';
 import { useComponentType } from '@/hooks/useComponentType';
-import { DeveloperProfileData } from '@/hooks/useDeveloperProfile';
+import { useDeveloperProfile } from '@/hooks/useDeveloperProfile';
+
+import { Head } from './Head';
 
 export type LayoutProps = {
   children: ReactNode;
-  developerProfile: DeveloperProfileData;
-  meta: {
-    title?: string;
-    description?: string;
-    imageUrl?: string;
-  };
   variant?: 'default' | 'withDetailsCard';
 };
 
@@ -76,22 +71,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Layout = ({ children, meta, developerProfile, variant = 'default' }: LayoutProps) => {
+export const Layout = ({ children, variant = 'default' }: LayoutProps) => {
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
+  const developerProfile = useDeveloperProfile();
 
   return (
     <Container className={classes.container} maxWidth="lg">
-      <Head
-        title={meta.title}
-        description={meta.description}
-        author={`${developerProfile.firstName} ${developerProfile.lastName}`}
-      />
-      {isDesktop ? (
+      <Head />
+      {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
         </Box>
-      ) : null}
+      )}
       <Box className={classes.main}>
         <Navbar
           className={classes.navbar}
@@ -101,11 +93,11 @@ export const Layout = ({ children, meta, developerProfile, variant = 'default' }
           image={developerProfile.avatar.publicURL}
           resumeLink={developerProfile.cv}
         />
-        {!isDesktop && variant === 'withDetailsCard' ? (
+        {!isDesktop && variant === 'withDetailsCard' && (
           <Box className={classes.detailsCard}>
             <DetailsCard type={componentType} />
           </Box>
-        ) : null}
+        )}
         <Box className={classes.mainContent}>{children}</Box>
       </Box>
     </Container>

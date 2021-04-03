@@ -6,7 +6,6 @@ import { SectionTitle } from '@/components/SectionTitle';
 import { LevelRange } from '@/components/Skill';
 import { SkillsSection } from '@/components/SkillsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
-import { useDeveloperProfile } from '@/hooks/useDeveloperProfile';
 
 import { useAboutQuery } from './About.query';
 import { useAboutStyles } from './About.styles';
@@ -22,18 +21,9 @@ const skillMapper = (skillName: string, skills?: DynamicSkill[]) =>
 export const About = () => {
   const data = useAboutQuery();
   const classes = useAboutStyles();
-  const developerProfile = useDeveloperProfile();
 
   return (
-    <Layout
-      developerProfile={developerProfile}
-      meta={{
-        title: data.aboutPageTitle,
-        description: data.aboutPageDescription,
-        imageUrl: data.aboutPageImage?.publicURL,
-      }}
-      variant="withDetailsCard"
-    >
+    <Layout variant="withDetailsCard">
       <Box className={classes.aboutContentContainer}>
         <SectionTitle className={classes.title}>About me</SectionTitle>
         <Box className={classes.content} dangerouslySetInnerHTML={{ __html: data.description }} />

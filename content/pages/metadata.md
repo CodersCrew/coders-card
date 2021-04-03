@@ -1,7 +1,7 @@
 ---
-defaultPageTitle: Default page title
-defaultPageDescription: Default page description
-defaultPageImage: ../images/screenshot-2020-11-12-at-22.10.49.png
+title: Default page title
+description: Default page description
+image: ../images/screenshot-2020-11-12-at-22.10.49.png
 favicon: ../images/screenshot-2020-11-12-at-22.10.49.png
-websiteLanguage: en
+language: en
 ---

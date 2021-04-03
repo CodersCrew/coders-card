@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export type DeveloperProfileData = {
+export type DeveloperData = {
   lastName: string;
   isFreelancer: boolean;
   firstName: string;
@@ -23,7 +23,7 @@ export type DeveloperProfileData = {
 
 type QueryResult = {
   markdownRemark: {
-    developerProfile: DeveloperProfileData;
+    developer: DeveloperData;
   };
 };
 
@@ -35,11 +35,11 @@ export const useDeveloperProfile = () => {
           title
         }
       }
-      markdownRemark(fileAbsolutePath: { regex: "pages/developer-profile.md/" }) {
-        developerProfile: frontmatter {
+      markdownRemark(fileAbsolutePath: { regex: "pages/developer.md/" }) {
+        developer: frontmatter {
+          firstName
           lastName
           isFreelancer
-          firstName
           email
           country
           city
@@ -60,5 +60,5 @@ export const useDeveloperProfile = () => {
     }
   `);
 
-  return result.markdownRemark.developerProfile;
+  return result.markdownRemark.developer;
 };

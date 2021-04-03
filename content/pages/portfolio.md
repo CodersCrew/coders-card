@@ -1,7 +1,4 @@
 ---
-portfolioPageTitle: null
-portfolioPageDescription: null
-portfolioPageImage: null
 projects:
   - projectPreviewNote: Preview note. Keep it short, there is plenty to read after you click me
     projectTechnologies:
