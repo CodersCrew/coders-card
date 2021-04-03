@@ -20,14 +20,16 @@ export const usePortfolioQuery = () => {
           projects {
             name
             label
-            code
             description
             role
             previewNote
-            app
             startDate
             finishDate
-            mockups
+            buttons {
+              name
+              icon
+              url
+            }
             previewImage {
               publicURL
             }

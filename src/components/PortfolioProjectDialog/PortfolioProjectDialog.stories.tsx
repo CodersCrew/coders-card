@@ -2,16 +2,14 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { PortfolioProjectDialog } from './PortfolioProjectDialog';
+import type { PortfolioProjectDialogVariantProps } from './PortfolioProjectDialog.types';
 
 export default {
   title: 'PortfolioProjectDialog',
   component: PortfolioProjectDialog,
 };
 
-const basePropsData = {
-  projectUrl: 'https://github.com/CodersCrew/CodersCard',
-  codeUrl: 'https://github.com/CodersCrew/CodersCard',
-  mockupsUrl: 'https://github.com/CodersCrew/CodersCard',
+const basePropsData: PortfolioProjectDialogVariantProps = {
   title: 'My Awesome Project',
   subtitle: 'March 2020 - current',
   tagTitle: 'Mobile app',
@@ -23,19 +21,25 @@ const basePropsData = {
   contentMainRole:
     'Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales. Vestibulum ut dui laoreet, consequat mi a, aliquam quam. Vivamus ac felis non lectus dapibus pulvinar. Nulla imperdiet maximus mi vel lacinia. Sed sagittis velit sed arcu hendrerit sollicitudin. Quisque faucibus bibendum egestas.',
   tags: [{ name: 'Redux' }, { name: 'React' }, { name: 'TypeScript' }],
+  buttons: [
+    { name: 'See mockups', icon: 'figma', url: 'https://figma.com' },
+    { name: 'Read the code', icon: 'github', url: 'https://github.com' },
+    { name: 'Try demo app', icon: 'external-link', url: 'https://google.com' },
+  ],
   handleClose: action('handleClose'),
   handleNext: action('handleNext'),
   handlePrev: action('handlePrev'),
+  isOpen: true,
 };
 
 export const Desktop = () => {
-  return <PortfolioProjectDialog type="desktop" isOpen {...basePropsData} />;
+  return <PortfolioProjectDialog type="desktop" {...basePropsData} />;
 };
 
 export const Tablet = () => {
-  return <PortfolioProjectDialog type="tablet" isOpen {...basePropsData} />;
+  return <PortfolioProjectDialog type="tablet" {...basePropsData} />;
 };
 
 export const Mobile = () => {
-  return <PortfolioProjectDialog type="mobile" isOpen {...basePropsData} />;
+  return <PortfolioProjectDialog type="mobile" {...basePropsData} />;
 };

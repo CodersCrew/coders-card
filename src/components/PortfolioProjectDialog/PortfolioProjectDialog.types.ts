@@ -1,4 +1,4 @@
-import { ScreenSize } from '@/typings';
+import type { ProjectButton, ScreenSize } from '@/typings';
 
 export type PortfolioProjectDialogProps = {
   title: string;
@@ -9,14 +9,12 @@ export type PortfolioProjectDialogProps = {
   contentMainDescription: string;
   contentMainRole: string;
   isOpen: boolean;
-  codeUrl: string;
-  mockupsUrl: string;
-  projectUrl: string;
   handleClose: () => void;
   handleNext: () => void;
   handlePrev: () => void;
   tags: { name: string }[];
   type: ScreenSize;
+  buttons: ProjectButton[];
 };
 
 export type PortfolioProjectDialogVariantProps = Omit<PortfolioProjectDialogProps, 'type'>;

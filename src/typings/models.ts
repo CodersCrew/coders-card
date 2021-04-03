@@ -16,23 +16,27 @@ export type Testimonial = {
   authorJob: string;
 };
 
-type ProjectTechnology = {
+export type ProjectTechnology = {
   name: string;
 };
 
+export type ProjectButton = {
+  name: string;
+  icon: string;
+  url: string;
+};
+
 export type Project = {
+  name: string;
   label: string;
-  code?: string;
   previewImage: Image;
   description: string;
   role: string;
   previewNote: string;
-  app?: string;
   startDate: string;
   finishDate: string;
-  mockups?: string;
   technologies: ProjectTechnology[];
-  name: string;
+  buttons: ProjectButton[];
 };
 
 export type WorkExperience = {

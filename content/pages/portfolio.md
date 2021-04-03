@@ -1,17 +1,24 @@
 ---
 projects:
-  - app: https://github.com/CodersCrew/CodersCard
-    finishDate: 2020-08-23T10:45:41.772Z
+  - finishDate: 2020-08-23T10:45:41.772Z
+    buttons:
+      - name: See mockups
+        icon: figma
+        url: https://figma.com
+      - name: Read the code
+        icon: github
+        url: https://github.com
+      - name: Try demo app
+        icon: external-link
+        url: https://google.com
     technologies:
       - name: React
       - name: Redux
       - name: TypeScript
     name: My Awesome Project 1
-    code: https://github.com/CodersCrew/CodersCard
-    mockups: https://github.com/CodersCrew/CodersCard
     startDate: 2020-07-23T10:45:41.756Z
     previewImage: ../images/background.jpg
-    label: Desktop
+    label: Mobile
     role: Role. In vel tellus ac quam elementum vulputate. Proin quis eros in elit
       luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui
       efficitur, a pellentesque.
@@ -19,15 +26,22 @@ projects:
     description: Description. In vel tellus ac quam elementum vulputate. Proin quis
       eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a
       dui efficitur, a pellentesque.
-  - app: https://github.com/CodersCrew/CodersCard
-    finishDate: 2020-11-23T10:45:41.772Z
+  - finishDate: 2020-11-23T10:45:41.772Z
+    buttons:
+      - name: Mockups
+        icon: dribbble
+        url: https://figma.com
+      - name: Code
+        icon: code
+        url: https://github.com
+      - name: Demo app
+        icon: globe
+        url: https://google.com
     technologies:
       - name: React
       - name: Redux
       - name: TypeScript
     name: My Awesome Project 2
-    code: https://github.com/CodersCrew/CodersCard
-    mockups: https://github.com/CodersCrew/CodersCard
     startDate: 2020-08-23T10:45:41.756Z
     previewImage: ../images/background.jpg
     label: Desktop

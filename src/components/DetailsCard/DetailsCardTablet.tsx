@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core/';
+import { Box, Card, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
 
 import type { DetailsCardVariantProps } from './DetailsCard.types';
 import { DetailsItem } from './DetailsItem';

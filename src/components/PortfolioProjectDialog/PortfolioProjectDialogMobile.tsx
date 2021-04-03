@@ -1,9 +1,10 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Code, ExternalLink, Image, X } from 'react-feather';
-import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
+import { ChevronLeft, ChevronRight, X } from 'react-feather';
+import { Box, Dialog, makeStyles, Typography } from '@material-ui/core';
 
 import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
+import { StaticIcon } from '@/components/StaticIcon';
 import { Tag } from '@/components/Tag';
 
 import type { PortfolioProjectDialogVariantProps } from './PortfolioProjectDialog.types';
@@ -66,51 +67,21 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
           </IconButton>
         </Box>
         <img className={classes.img} src={props.imageUrl} alt={props.title} />
-        <Box bgcolor="background.light" p={3}>
-          <Typography className={classes.textHeader} variant="h4" color="textPrimary">
-            {props.title}
-          </Typography>
-          <Typography className={classes.subtitle} variant="subtitle2" color="textPrimary">
-            {props.subtitle}
-          </Typography>
-          <Tag label={props.tagTitle} color="primary" />
-          <Typography className={classes.contentHeader} variant="body1" color="textSecondary">
-            {props.contentHeader}
-          </Typography>
-          {props.codeUrl ? (
-            <Button
-              href={props.codeUrl}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              startIcon={<Code size={16} />}
-            >
-              See code
-            </Button>
-          ) : null}
-          {props.mockupsUrl ? (
-            <Button
-              href={props.mockupsUrl}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              startIcon={<Image size={16} />}
-            >
-              See mockups
-            </Button>
-          ) : null}
-          {props.projectUrl ? (
-            <Button
-              href={props.projectUrl}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              startIcon={<ExternalLink size={16} />}
-            >
-              Open the app
-            </Button>
-          ) : null}
-        </Box>
+        {props.buttons.length > 0 && (
+          <Box display="flex">
+            {props.buttons.map(({ name, icon, url }) => (
+              <Button
+                href={url}
+                className={classes.button}
+                color="primary"
+                variant="contained"
+                startIcon={<StaticIcon icon={icon} size={16} />}
+              >
+                {name}
+              </Button>
+            ))}
+          </Box>
+        )}
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           Project description
         </Typography>

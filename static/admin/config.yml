@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-local_backend: true
+  branch: master
 
 media_folder: "content/images"
 public_folder: "../images"
@@ -313,39 +313,38 @@ collections:
                   widget: "markdown",
                   pattern: [".{10,370}", "Must have 10-370 characters"],
                 }
-              - {
-                  label: "Link to code",
-                  name: "code",
-                  widget: "string",
-                  required: false,
-                  pattern:
-                    [
-                      'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
-                      "Must be a valid URL",
-                    ],
-                }
-              - {
-                  label: "Link to mockups",
-                  name: "mockups",
-                  widget: "string",
-                  required: false,
-                  pattern:
-                    [
-                      'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
-                      "Must be a valid URL",
-                    ],
-                }
-              - {
-                  label: "Link to application",
-                  name: "app",
-                  widget: "string",
-                  required: false,
-                  pattern:
-                    [
-                      'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
-                      "Must be a valid URL",
-                    ],
-                }
+              - label: "Link buttons"
+                name: "buttons"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - {
+                      label: "Icon",
+                      name: "icon",
+                      widget: "select",
+                      options:
+                        [
+                          "code",
+                          "codepen",
+                          "codesandbox",
+                          "dribbble",
+                          "external-link",
+                          "figma",
+                          "github",
+                          "globe",
+                          "image",
+                        ],
+                    }
+                  - {
+                      label: "URL",
+                      name: "url",
+                      widget: "string",
+                      pattern:
+                        [
+                          'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                          "You need to provide a valid URL",
+                        ],
+                    }
               - {
                   label: "Project label",
                   name: "label",

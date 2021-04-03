@@ -23,16 +23,12 @@ export const Portfolio = () => {
 
   const sortedGroupsOfProjects = getTabsData(data.projects);
   const projectsLabels: string[] = [...sortedGroupsOfProjects.map((object) => object.projectLabel)];
-  const getNavbarTitle = (type: number) => {
-    return projectsLabels[type];
-  };
+  const getNavbarTitle = (type: number) => projectsLabels[type];
   const tabLabelTitle = getNavbarTitle(navbarNumberTitle);
 
   const projectsFilteredByLabel = sortedGroupsOfProjects
-    .filter((project) => {
-      return project.projectLabel === tabLabelTitle;
-    })
-    .map((project) => project.projectProperties)
+    .filter(({ projectLabel }) => projectLabel === tabLabelTitle)
+    .map(({ projectProperties }) => projectProperties)
     .flat(1);
 
   const handleChange: FilterTabsProps['onChange'] = (event, newValue) => {
@@ -93,9 +89,7 @@ export const Portfolio = () => {
         contentMainRole={project.role}
         contentHeader={project.previewNote}
         tagTitle={project.label}
-        mockupsUrl={project.mockups ?? ''}
-        projectUrl={project.app ?? ''}
-        codeUrl={project.code ?? ''}
+        buttons={project.buttons}
       />
     </Box>
   );
