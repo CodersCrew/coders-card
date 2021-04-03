@@ -1,16 +1,14 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
+import type { Image } from '@/typings';
+
 type HeadData = {
   meta: {
     frontmatter: {
       title: string;
       description: string;
-      image: {
-        publicURL: string;
-      };
-      favicon: {
-        publicURL: string;
-      };
+      image: Image;
+      favicon: Image;
       language: string;
     };
   };

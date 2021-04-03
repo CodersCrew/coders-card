@@ -166,63 +166,34 @@ collections:
               pattern: [".{100,3000}", "Must have 100-3000 characters"],
             }
           - label: "Skills"
-            name: "socialMedia"
-            widget: "object"
+            name: "skills"
+            widget: "list"
             fields:
-              - label: "Technologies"
-                name: "technologies"
-                required: false
-                widget: "list"
-                fields:
-                  - {
-                      label: "Name",
-                      name: "technologyName",
-                      widget: "string",
-                      pattern: [".{1,50}", "Must have 1-50 characters"],
-                    }
-                  - {
-                      label: "Value",
-                      name: "technologyValue",
-                      widget: "number",
-                      min: 1,
-                      max: 5,
-                    }
-              - label: "Tools"
-                name: "tools"
-                required: false
-                widget: "list"
-                fields:
-                  - {
-                      label: "Name",
-                      name: "toolName",
-                      widget: "string",
-                      pattern: [".{1,50}", "Must have 1-50 characters"],
-                    }
-                  - {
-                      label: "Value",
-                      name: "toolValue",
-                      widget: "number",
-                      min: 1,
-                      max: 5,
-                    }
-              - label: "Other skills"
-                name: "otherSkills"
-                required: false
-                widget: "list"
-                fields:
-                  - {
-                      label: "Name",
-                      name: "otherSkillName",
-                      widget: "string",
-                      pattern: [".{1,50}", "Must have 1-50 characters"],
-                    }
-                  - {
-                      label: "Value",
-                      name: "otherSkillValue",
-                      widget: "number",
-                      min: 1,
-                      max: 5,
-                    }
+              - {
+                  label: "Name",
+                  name: "skillName",
+                  widget: "string",
+                  pattern: [".{1,50}", "Must have 1-50 characters"],
+                }
+              - {
+                  label: "Category",
+                  name: "skillCategory",
+                  widget: "select",
+                  options: ["Technologies", "Tools", "Other"],
+                }
+              - {
+                  label: "Icon",
+                  name: "skillIcon",
+                  widget: "image",
+                  required: false,
+                }
+              - {
+                  label: "Value",
+                  name: "skillValue",
+                  widget: "number",
+                  min: 1,
+                  max: 5,
+                }
           - label: "Testimonials"
             name: "testimonials"
             widget: list

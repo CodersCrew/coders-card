@@ -1,23 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export type Project = {
-  projectLabel: string;
-  projectCode?: string;
-  projectPreviewImage: {
-    publicURL: string;
-  };
-  projectDescription: string;
-  projectRole: string;
-  projectPreviewNote: string;
-  projectApp?: string;
-  projectStartDate: string;
-  projectFinishDate: string;
-  projectMockups?: string;
-  projectTechnologies: {
-    technologyName: string;
-  }[];
-  projectName: string;
-};
+import type { Project } from '@/typings';
 
 export type PortfolioData = {
   projects: Project[];

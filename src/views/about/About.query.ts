@@ -1,38 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-import type { LevelRange } from '@/components/Skill';
-
-type Technology = {
-  technologyName: string;
-  technologyValue: LevelRange;
-};
-
-type Tool = {
-  toolName: string;
-  toolValue: LevelRange;
-};
-
-type Skill = {
-  otherSkillName: string;
-  otherSkillValue: LevelRange;
-};
-
-type Testimonial = {
-  testimonialText: string;
-  testimonialImage: {
-    publicURL: string;
-  };
-  testimonialName: string;
-  testimonialJob: string;
-};
+import type { Skill, Testimonial } from '@/typings';
 
 type AboutData = {
   description: string;
-  socialMedia: {
-    technologies?: Technology[];
-    tools?: Tool[];
-    otherSkills?: Skill[];
-  };
+  skills: Skill[];
   testimonials?: Testimonial[];
 };
 
@@ -48,19 +20,13 @@ export const useAboutQuery = () => {
       aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me.md/" }) {
         frontmatter {
           description
-          socialMedia {
-            technologies {
-              technologyName
-              technologyValue
+          skills {
+            skillName
+            skillCategory
+            skillIcon {
+              publicURL
             }
-            tools {
-              toolName
-              toolValue
-            }
-            otherSkills {
-              otherSkillName
-              otherSkillValue
-            }
+            skillValue
           }
           testimonials {
             testimonialText

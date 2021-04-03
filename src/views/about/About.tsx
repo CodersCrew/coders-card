@@ -3,24 +3,21 @@ import { Box } from '@material-ui/core';
 
 import { Layout } from '@/components/Layout';
 import { SectionTitle } from '@/components/SectionTitle';
-import { LevelRange } from '@/components/Skill';
 import { SkillsSection } from '@/components/SkillsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
+import type { Skill } from '@/typings';
 
 import { useAboutQuery } from './About.query';
 import { useAboutStyles } from './About.styles';
 
-type DynamicSkill = Record<string, string | LevelRange>;
-
-const skillMapper = (skillName: string, skills?: DynamicSkill[]) =>
-  skills?.map((skill) => ({
-    name: skill[`${skillName}Name`] as string,
-    value: skill[`${skillName}Value`] as LevelRange,
-  }));
-
 export const About = () => {
   const data = useAboutQuery();
   const classes = useAboutStyles();
+
+  const categorizedSkills = data.skills.reduce<Record<string, Skill[]>>((skills, skill) => {
+    const key = skill.skillCategory;
+    return skills[key] ? { ...skills, [key]: [...skills[key], skill] } : { ...skills, [key]: [skill] };
+  }, {});
 
   return (
     <Layout variant="withDetailsCard">
@@ -29,21 +26,9 @@ export const About = () => {
         <Box className={classes.content} dangerouslySetInnerHTML={{ __html: data.description }} />
         <SectionTitle className={classes.title}>My skills</SectionTitle>
         <Box className={classes.content}>
-          <SkillsSection
-            title="Technologies"
-            skills={skillMapper('technology', data.socialMedia.technologies)}
-            renderCondition={!!data.socialMedia.technologies?.length}
-          />
-          <SkillsSection
-            title="Tools"
-            skills={skillMapper('tool', data.socialMedia.tools)}
-            renderCondition={!!data.socialMedia.tools?.length}
-          />
-          <SkillsSection
-            title="Other skills"
-            skills={skillMapper('otherSkill', data.socialMedia.otherSkills)}
-            renderCondition={!!data.socialMedia.otherSkills?.length}
-          />
+          {Object.keys(categorizedSkills).map((skillSectionTitle) => (
+            <SkillsSection title={skillSectionTitle} skills={categorizedSkills[skillSectionTitle]} />
+          ))}
         </Box>
         <TestimonialsSection testimonials={data.testimonials} />
       </Box>

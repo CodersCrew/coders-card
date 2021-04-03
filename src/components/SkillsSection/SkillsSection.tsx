@@ -1,15 +1,12 @@
 import React from 'react';
 import { Box, makeStyles, Typography } from '@material-ui/core';
 
-import { LevelRange, Skill } from '@/components/Skill';
+import { Skill } from '@/components/Skill';
+import type { Skill as SkillType } from '@/typings';
 
 export type SkillsSectionProps = {
   title: string;
-  skills?: {
-    name: string;
-    value: LevelRange;
-  }[];
-  renderCondition: boolean;
+  skills: SkillType[];
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -36,25 +33,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SkillsSection = ({ title, skills, renderCondition }: SkillsSectionProps) => {
+export const SkillsSection = ({ title, skills }: SkillsSectionProps) => {
   const classes = useStyles();
 
   return (
     <>
-      {renderCondition ? (
-        <>
-          <Typography variant="h6" className={classes.skillsHeader}>
-            {title}
-          </Typography>
-          <Box className={classes.skills}>
-            {skills?.map((skill) => (
-              <Skill key={skill.name} level={skill.value}>
-                {skill.name}
-              </Skill>
-            ))}
-          </Box>
-        </>
-      ) : null}
+      <Typography variant="h6" className={classes.skillsHeader}>
+        {title}
+      </Typography>
+      <Box className={classes.skills}>
+        {skills.map((skill) => (
+          <Skill key={skill.skillName} skill={skill} />
+        ))}
+      </Box>
     </>
   );
 };

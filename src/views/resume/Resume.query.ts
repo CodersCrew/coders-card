@@ -1,20 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-type WorkExperience = {
-  startJobDate: string;
-  finishJobDate: string;
-  jobTitle: string;
-  companyName: string;
-  jobDescription: string;
-};
-
-type Education = {
-  startSchoolDate: string;
-  finishSchoolDate: string;
-  schoolName: string;
-  course: string;
-  educationDescription: string;
-};
+import type { Education, WorkExperience } from '@/typings';
 
 type ResumeData = {
   workExperience: WorkExperience[];
