@@ -1,8 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import image from '@/images/MarleneWatson.png';
-
 import { Testimonial } from './Testimonial';
 import type { TestimonialVariantProps } from './Testimonial.types';
 
@@ -12,7 +10,7 @@ export default {
 };
 
 const basePropsData: TestimonialVariantProps = {
-  image,
+  image: 'https://i.pravatar.cc/300',
   description:
     'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
   labelBold: 'Marlene Watson',

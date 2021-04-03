@@ -17,7 +17,7 @@ type QueryResult = {
 export const useContactQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     query ContactPageQuery {
-      contactPage: markdownRemark(fileAbsolutePath: { regex: "/contact/index-1.md/" }) {
+      contactPage: markdownRemark(fileAbsolutePath: { regex: "/contact.md/" }) {
         frontmatter {
           contactPageTitle
           contactPageDescription

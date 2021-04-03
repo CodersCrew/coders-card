@@ -37,7 +37,7 @@ type QueryResult = {
 export const usePortfolioQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     query IndexPageQuery {
-      portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
+      portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio.md/" }) {
         frontmatter {
           portfolioPageTitle
           portfolioPageDescription
@@ -45,6 +45,7 @@ export const usePortfolioQuery = () => {
             publicURL
           }
           projects {
+            projectName
             projectLabel
             projectCode
             projectDescription
@@ -60,7 +61,6 @@ export const usePortfolioQuery = () => {
             projectTechnologies {
               technologyName
             }
-            projectName
           }
         }
       }

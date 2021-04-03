@@ -35,7 +35,7 @@ type QueryResult = {
 export const useResumeQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     {
-      resumePage: markdownRemark(fileAbsolutePath: { regex: "/resume/index-1.md/" }) {
+      resumePage: markdownRemark(fileAbsolutePath: { regex: "/resume.md/" }) {
         frontmatter {
           resumePageTitle
           resumePageDescription

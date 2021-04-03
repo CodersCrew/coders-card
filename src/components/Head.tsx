@@ -30,7 +30,7 @@ export const Head = ({ description, title, image, author }: HeadProps) => {
     meta: { frontmatter: metadata },
   }: HeadData = useStaticQuery(graphql`
     query {
-      meta: markdownRemark(fileAbsolutePath: { regex: "/metadata/index-1.md/" }) {
+      meta: markdownRemark(fileAbsolutePath: { regex: "/metadata.md/" }) {
         frontmatter {
           defaultPageTitle
           defaultPageDescription

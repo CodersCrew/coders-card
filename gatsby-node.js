@@ -47,39 +47,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       resumePageImage: File @fileByRelativePath
       portfolioPageImage: File @fileByRelativePath
       contactPageImage: File @fileByRelativePath
-      testimonials: [MarkdownRemarkFrontmatterTestimonial]
-    }
-
-    type MarkdownRemarkFrontmatterTestimonial {
-      testimonialText: String
-      testimonialImage: File @fileByRelativePath
-      testimonialName: String
-      testimonialJob: String
-    }
-
-    type MarkdownRemarkFrontmatterSocialMedia {
-      twitter: String
-      github: String
-      instagram: String
-      facebook: String
-      technologies: [MarkdownRemarkFrontmatterSocialMediaTechnologies]
-      tools: [MarkdownRemarkFrontmatterSocialMediaTools]
-      otherSkills: [MarkdownRemarkFrontmatterSocialMediaOtherSkills]
-    }
-
-    type MarkdownRemarkFrontmatterSocialMediaTechnologies {
-      technologyName: String
-      technologyValue: Int
-    }
-
-    type MarkdownRemarkFrontmatterSocialMediaTools {
-      toolName: String
-      toolValue: Int
-    }
-
-    type MarkdownRemarkFrontmatterSocialMediaOtherSkills {
-      otherSkillName: String
-      otherSkillValue: Int
     }
   `;
 

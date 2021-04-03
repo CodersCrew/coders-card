@@ -50,7 +50,7 @@ type QueryResult = {
 export const useAboutQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     {
-      aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me/index-1.md/" }) {
+      aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me.md/" }) {
         frontmatter {
           aboutPageTitle
           aboutPageDescription

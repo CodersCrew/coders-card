@@ -35,7 +35,7 @@ export const useDeveloperProfile = () => {
           title
         }
       }
-      markdownRemark(fileAbsolutePath: { regex: "/developer-profile/index-1.md/" }) {
+      markdownRemark(fileAbsolutePath: { regex: "pages/developer-profile.md/" }) {
         developerProfile: frontmatter {
           lastName
           isFreelancer

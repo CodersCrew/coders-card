@@ -1,8 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import image from '@/images/MarleneWatson.png';
-
 import { TestimonialsSection, TestimonialsSectionProps } from './TestimonialsSection';
 
 export default {
@@ -13,14 +11,14 @@ export default {
 const basePropsData: TestimonialsSectionProps = {
   testimonials: [
     {
-      testimonialImage: { publicURL: image },
+      testimonialImage: { publicURL: 'https://i.pravatar.cc/300' },
       testimonialText:
         'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
       testimonialName: 'Marlene Watson',
       testimonialJob: 'CEO of Donec',
     },
     {
-      testimonialImage: { publicURL: image },
+      testimonialImage: { publicURL: 'https://i.pravatar.cc/300' },
       testimonialText:
         'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
       testimonialName: 'Marlene Watson',
