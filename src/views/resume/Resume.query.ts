@@ -19,18 +19,18 @@ export const useResumeQuery = () => {
       resumePage: markdownRemark(fileAbsolutePath: { regex: "/resume.md/" }) {
         frontmatter {
           workExperience {
-            startJobDate
-            finishJobDate
-            jobTitle
-            companyName
+            jobName
             jobDescription
+            companyName
+            startDate
+            finishDate
           }
           education {
-            startSchoolDate
-            finishSchoolDate
             schoolName
             course
-            educationDescription
+            description
+            startDate
+            finishDate
           }
         }
       }

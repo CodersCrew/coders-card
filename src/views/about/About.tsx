@@ -11,26 +11,27 @@ import { useAboutQuery } from './About.query';
 import { useAboutStyles } from './About.styles';
 
 export const About = () => {
-  const data = useAboutQuery();
+  const { description, skills, testimonials } = useAboutQuery();
   const classes = useAboutStyles();
 
-  const categorizedSkills = data.skills.reduce<Record<string, Skill[]>>((skills, skill) => {
-    const key = skill.skillCategory;
-    return skills[key] ? { ...skills, [key]: [...skills[key], skill] } : { ...skills, [key]: [skill] };
+  const categorizedSkills = skills.reduce<Record<string, Skill[]>>((acc, skill) => {
+    const { category } = skill;
+
+    return acc[category] ? { ...acc, [category]: [...acc[category], skill] } : { ...acc, [category]: [skill] };
   }, {});
 
   return (
     <Layout variant="withDetailsCard">
       <Box className={classes.aboutContentContainer}>
         <SectionTitle className={classes.title}>About me</SectionTitle>
-        <Box className={classes.content} dangerouslySetInnerHTML={{ __html: data.description }} />
+        <Box className={classes.content} dangerouslySetInnerHTML={{ __html: description }} />
         <SectionTitle className={classes.title}>My skills</SectionTitle>
         <Box className={classes.content}>
           {Object.keys(categorizedSkills).map((skillSectionTitle) => (
             <SkillsSection title={skillSectionTitle} skills={categorizedSkills[skillSectionTitle]} />
           ))}
         </Box>
-        <TestimonialsSection testimonials={data.testimonials} />
+        {testimonials?.length ? <TestimonialsSection testimonials={testimonials} /> : null}
       </Box>
     </Layout>
   );

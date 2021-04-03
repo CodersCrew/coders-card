@@ -21,20 +21,20 @@ export const useAboutQuery = () => {
         frontmatter {
           description
           skills {
-            skillName
-            skillCategory
-            skillIcon {
+            name
+            category
+            icon {
               publicURL
             }
-            skillValue
+            value
           }
           testimonials {
-            testimonialText
-            testimonialImage {
+            content
+            authorImage {
               publicURL
             }
-            testimonialName
-            testimonialJob
+            authorName
+            authorJob
           }
         }
       }

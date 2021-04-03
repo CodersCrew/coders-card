@@ -10,11 +10,11 @@ export default {
 };
 
 const basePropsData: TestimonialVariantProps = {
-  image: 'https://i.pravatar.cc/300',
-  description:
+  authorImage: 'https://i.pravatar.cc/300',
+  content:
     'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
-  labelBold: 'Marlene Watson',
-  label: 'CEO of Donec',
+  authorName: 'Marlene Watson',
+  authorJob: 'CEO of Donec',
 };
 
 export const Default = () => {

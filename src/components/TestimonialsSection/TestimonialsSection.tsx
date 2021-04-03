@@ -4,14 +4,10 @@ import { Box, makeStyles } from '@material-ui/core';
 import { SectionTitle } from '@/components/SectionTitle';
 import { Testimonial } from '@/components/Testimonial';
 import { useComponentType } from '@/hooks/useComponentType';
+import type { Testimonial as TestimonialType } from '@/typings';
 
 export type TestimonialsSectionProps = {
-  testimonials?: {
-    testimonialImage: { publicURL: string };
-    testimonialName: string;
-    testimonialText: string;
-    testimonialJob: string;
-  }[];
+  testimonials: TestimonialType[];
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -46,23 +42,17 @@ export const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) 
 
   return (
     <>
-      {testimonials?.length ? (
-        <>
-          <SectionTitle className={classes.title}>Testimonials</SectionTitle>
-          <Box className={classes.testimonials}>
-            {testimonials?.map((testimonial) => (
-              <Testimonial
-                key={testimonial.testimonialName}
-                isMobile={isMobile}
-                image={testimonial.testimonialImage.publicURL}
-                description={testimonial.testimonialText}
-                labelBold={testimonial.testimonialName}
-                label={testimonial.testimonialJob}
-              />
-            ))}
-          </Box>
-        </>
-      ) : null}
+      <SectionTitle className={classes.title}>Testimonials</SectionTitle>
+      <Box className={classes.testimonials}>
+        {testimonials.map((testimonial) => (
+          <Testimonial
+            key={testimonial.content}
+            isMobile={isMobile}
+            {...testimonial}
+            authorImage={testimonial.authorImage.publicURL}
+          />
+        ))}
+      </Box>
     </>
   );
 };

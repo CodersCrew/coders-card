@@ -18,21 +18,21 @@ export const usePortfolioQuery = () => {
       portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio.md/" }) {
         frontmatter {
           projects {
-            projectName
-            projectLabel
-            projectCode
-            projectDescription
-            projectRole
-            projectPreviewNote
-            projectApp
-            projectStartDate
-            projectFinishDate
-            projectMockups
-            projectPreviewImage {
+            name
+            label
+            code
+            description
+            role
+            previewNote
+            app
+            startDate
+            finishDate
+            mockups
+            previewImage {
               publicURL
             }
-            projectTechnologies {
-              technologyName
+            technologies {
+              name
             }
           }
         }

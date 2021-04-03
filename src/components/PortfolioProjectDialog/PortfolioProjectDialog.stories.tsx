@@ -14,10 +14,10 @@ const basePropsData = {
   mockupsUrl: 'https://github.com/CodersCrew/CodersCard',
   title: 'My Awesome Project',
   subtitle: 'March 2020 - current',
-  tagtitle: 'Mobile app',
+  tagTitle: 'Mobile app',
   contentHeader:
     'In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque.',
-  imgurl: 'https://source.unsplash.com/1600x900/daily?nature',
+  imageUrl: 'https://source.unsplash.com/1600x900/daily?nature',
   contentMainDescription:
     'Nullam vel eros non arcu feugiat lobortis. Quisque a ultrices neque. Maecenas a ultrices sapien, sit amet aliquam est. Nunc porttitor lorem purus, non venenatis magna suscipit a. Nullam pellentesque, lacus a accumsan pretium, justo massa commodo nulla, ut vulputate elit justo eget neque. Donec aliquet dui quis nisi mattis, nec ultricies nulla elementum. Aenean in nisl eget metus elementum aliquam.',
   contentMainRole:

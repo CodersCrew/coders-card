@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translateY(-40px)',
     backgroundColor: theme.palette.background.paper,
   },
-  description: {
+  content: {
     color: theme.palette.text.secondary,
     margin: theme.spacing(1.5),
     textAlign: 'center',
@@ -60,26 +60,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TestimonialMobile = ({ label, labelBold, description, image, ...props }: TestimonialVariantProps) => {
+export const TestimonialMobile = ({
+  content,
+  authorImage,
+  authorJob,
+  authorName,
+  ...props
+}: TestimonialVariantProps) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.card} {...props}>
       <CardContent className={classes.overlay}>
-        <CardMedia className={classes.media} image={image}>
-          <CardMedia className={classes.overlayMedia} image={image} />
+        <CardMedia className={classes.media} image={authorImage}>
+          <CardMedia className={classes.overlayMedia} image={authorImage} />
         </CardMedia>
       </CardContent>
       <CardContent className={classes.overlayBox}>
-        <Typography className={classes.description} variant="body2">
-          {description}
+        <Typography className={classes.content} variant="body2">
+          {content}
         </Typography>
         <CardContent className={classes.labelOverlay}>
           <Typography color="textPrimary" variant="h6">
-            {`${labelBold},`}
+            {authorName},
           </Typography>
           <Typography className={classes.label} variant="body2">
-            {label}
+            {authorJob}
           </Typography>
         </CardContent>
       </CardContent>

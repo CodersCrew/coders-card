@@ -65,7 +65,7 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
             <X size={20} />
           </IconButton>
         </Box>
-        <img className={classes.img} src={props.imgurl} alt={props.title} />
+        <img className={classes.img} src={props.imageUrl} alt={props.title} />
         <Box bgcolor="background.light" p={3}>
           <Typography className={classes.textHeader} variant="h4" color="textPrimary">
             {props.title}
@@ -73,7 +73,7 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
           <Typography className={classes.subtitle} variant="subtitle2" color="textPrimary">
             {props.subtitle}
           </Typography>
-          <Tag label={props.tagtitle} color="primary" />
+          <Tag label={props.tagTitle} color="primary" />
           <Typography className={classes.contentHeader} variant="body1" color="textSecondary">
             {props.contentHeader}
           </Typography>

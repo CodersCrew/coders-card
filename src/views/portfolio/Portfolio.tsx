@@ -7,9 +7,10 @@ import { PortfolioCard } from '@/components/PortfolioCard';
 import { PortfolioProjectDialog } from '@/components/PortfolioProjectDialog';
 import { SectionTitle } from '@/components/SectionTitle';
 import { useComponentType } from '@/hooks/useComponentType';
+import { Project } from '@/typings';
 import { formatDate } from '@/utils/date';
 
-import { Project, usePortfolioQuery } from './Portfolio.query';
+import { usePortfolioQuery } from './Portfolio.query';
 import { usePortfolioStyles } from './Portfolio.styles';
 import { getTabsData } from './Portfolio.utils';
 
@@ -68,14 +69,14 @@ export const Portfolio = () => {
   };
 
   const renderProject = (project: Project, index: number) => (
-    <Box key={`${project.projectName}-${project.projectDescription}`}>
+    <Box key={`${project.name}-${project.description}`}>
       <PortfolioCard
         className={classes.project}
         type={componentType}
-        title={project.projectName}
-        label={project.projectLabel}
-        description={project.projectDescription}
-        image={project.projectPreviewImage.publicURL}
+        title={project.name}
+        label={project.label}
+        description={project.description}
+        image={project.previewImage.publicURL}
         onClick={() => setSelectedProject(index)}
       />
       <PortfolioProjectDialog
@@ -84,21 +85,17 @@ export const Portfolio = () => {
         handlePrev={() => handlePreviousProject(index)}
         handleNext={() => handleNextProject(index)}
         isOpen={index === selectedProject}
-        title={project.projectName}
-        tags={project.projectTechnologies.map((technology) => ({ name: technology.technologyName }))}
-        imgurl={project.projectPreviewImage.publicURL}
-        subtitle={`${formatDate(project.projectStartDate, 'day')} - ${formatDate(
-          project.projectFinishDate,
-          'day',
-          true,
-        )}`}
-        contentMainDescription={project.projectDescription}
-        contentMainRole={project.projectRole}
-        contentHeader={project.projectPreviewNote}
-        tagtitle={project.projectLabel}
-        mockupsUrl={project.projectMockups ?? ''}
-        projectUrl={project.projectApp ?? ''}
-        codeUrl={project.projectCode ?? ''}
+        title={project.name}
+        tags={project.technologies.map((technology) => ({ name: technology.name }))}
+        imageUrl={project.previewImage.publicURL}
+        subtitle={`${formatDate(project.startDate, 'day')} - ${formatDate(project.finishDate, 'day', true)}`}
+        contentMainDescription={project.description}
+        contentMainRole={project.role}
+        contentHeader={project.previewNote}
+        tagTitle={project.label}
+        mockupsUrl={project.mockups ?? ''}
+        projectUrl={project.app ?? ''}
+        codeUrl={project.code ?? ''}
       />
     </Box>
   );

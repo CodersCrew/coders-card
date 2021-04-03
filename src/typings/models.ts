@@ -2,51 +2,51 @@ export type Image = {
   publicURL: string;
 };
 
-export type LevelRange = 0 | 1 | 2 | 3 | 4 | 5;
-
 export type Skill = {
-  skillName: string;
-  skillCategory: string;
-  skillIcon?: Image;
-  skillValue: LevelRange;
+  name: string;
+  category: string;
+  icon?: Image;
+  value: 1 | 2 | 3 | 4 | 5;
 };
 
 export type Testimonial = {
-  testimonialText: string;
-  testimonialImage: Image;
-  testimonialName: string;
-  testimonialJob: string;
+  content: string;
+  authorImage: Image;
+  authorName: string;
+  authorJob: string;
+};
+
+type ProjectTechnology = {
+  name: string;
 };
 
 export type Project = {
-  projectLabel: string;
-  projectCode?: string;
-  projectPreviewImage: Image;
-  projectDescription: string;
-  projectRole: string;
-  projectPreviewNote: string;
-  projectApp?: string;
-  projectStartDate: string;
-  projectFinishDate: string;
-  projectMockups?: string;
-  projectTechnologies: {
-    technologyName: string;
-  }[];
-  projectName: string;
+  label: string;
+  code?: string;
+  previewImage: Image;
+  description: string;
+  role: string;
+  previewNote: string;
+  app?: string;
+  startDate: string;
+  finishDate: string;
+  mockups?: string;
+  technologies: ProjectTechnology[];
+  name: string;
 };
 
 export type WorkExperience = {
-  startJobDate: string;
-  finishJobDate: string;
-  jobTitle: string;
-  companyName: string;
+  jobName: string;
   jobDescription: string;
+  companyName: string;
+  startDate: string;
+  finishDate: string;
 };
 
 export type Education = {
-  startSchoolDate: string;
-  finishSchoolDate: string;
   schoolName: string;
   course: string;
-  educationDescription: string;
+  description: string;
+  startDate: string;
+  finishDate: string;
 };

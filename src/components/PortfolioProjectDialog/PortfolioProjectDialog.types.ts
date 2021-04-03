@@ -3,9 +3,9 @@ import { ScreenSize } from '@/typings';
 export type PortfolioProjectDialogProps = {
   title: string;
   subtitle: string;
-  tagtitle: string;
+  tagTitle: string;
   contentHeader: string;
-  imgurl: string;
+  imageUrl: string;
   contentMainDescription: string;
   contentMainRole: string;
   isOpen: boolean;

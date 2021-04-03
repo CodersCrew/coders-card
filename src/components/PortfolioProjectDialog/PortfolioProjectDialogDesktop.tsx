@@ -90,13 +90,13 @@ export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVaria
             <ChevronRight size={30} />
           </IconButton>
         </Box>
-        <img className={classes.img} src={props.imgurl} alt={props.title} />
+        <img className={classes.img} src={props.imageUrl} alt={props.title} />
         <Box bgcolor="background.light" p={4}>
           <Box className={classes.headerTitle}>
             <Typography variant="h2" color="textPrimary">
               {props.title}
             </Typography>
-            <Tag label={props.tagtitle} color="default" />
+            <Tag label={props.tagTitle} color="default" />
           </Box>
           <Typography variant="subtitle2" color="textPrimary">
             {props.subtitle}

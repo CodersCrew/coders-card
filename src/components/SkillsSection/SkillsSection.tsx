@@ -42,8 +42,8 @@ export const SkillsSection = ({ title, skills }: SkillsSectionProps) => {
         {title}
       </Typography>
       <Box className={classes.skills}>
-        {skills.map((skill) => (
-          <Skill key={skill.skillName} skill={skill} />
+        {skills.map(({ name, icon, value }) => (
+          <Skill key={name} name={name} icon={icon?.publicURL} value={value} />
         ))}
       </Box>
     </>

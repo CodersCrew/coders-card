@@ -171,25 +171,25 @@ collections:
             fields:
               - {
                   label: "Name",
-                  name: "skillName",
+                  name: "name",
                   widget: "string",
                   pattern: [".{1,50}", "Must have 1-50 characters"],
                 }
               - {
                   label: "Category",
-                  name: "skillCategory",
+                  name: "category",
                   widget: "select",
                   options: ["Technologies", "Tools", "Other"],
                 }
               - {
                   label: "Icon",
-                  name: "skillIcon",
+                  name: "icon",
                   widget: "image",
                   required: false,
                 }
               - {
                   label: "Value",
-                  name: "skillValue",
+                  name: "value",
                   widget: "number",
                   min: 1,
                   max: 5,
@@ -200,21 +200,25 @@ collections:
             required: false
             fields:
               - {
-                  label: "Text",
-                  name: "testimonialText",
+                  label: "Testimonial content",
+                  name: "content",
                   widget: "string",
                   pattern: [".{30,160}", "Must have 30-160 characters"],
                 }
-              - { label: "Image", name: "testimonialImage", widget: "image" }
               - {
-                  label: "Testimone name",
-                  name: "testimonialName",
+                  label: "Testimonial author image",
+                  name: "authorImage",
+                  widget: "image",
+                }
+              - {
+                  label: "Testimonial author full name",
+                  name: "authorName",
                   widget: "string",
                   pattern: [".{5,40}", "Must have 5-40 characters"],
                 }
               - {
-                  label: "Testimone job position",
-                  name: "testimonialJob",
+                  label: "Testimonial author job position",
+                  name: "authorJob",
                   widget: "string",
                   pattern: [".{5,40}", "Must have 5-40 characters"],
                 }
@@ -229,15 +233,9 @@ collections:
             fields:
               - {
                   label: "Job title",
-                  name: "jobTitle",
+                  name: "jobName",
                   widget: "string",
                   pattern: [".{3,50}", "Must have 3-50 characters"],
-                }
-              - {
-                  label: "Company name",
-                  name: "companyName",
-                  widget: "string",
-                  pattern: [".{3,20}", "Must have 3-20 characters"],
                 }
               - {
                   label: "Job description",
@@ -246,15 +244,13 @@ collections:
                   pattern: [".{80,400}", "Must have 80-400 characters"],
                 }
               - {
-                  label: "Start date",
-                  name: "startJobDate",
-                  widget: "datetime",
+                  label: "Company name",
+                  name: "companyName",
+                  widget: "string",
+                  pattern: [".{3,20}", "Must have 3-20 characters"],
                 }
-              - {
-                  label: "Finish date",
-                  name: "finishJobDate",
-                  widget: "datetime",
-                }
+              - { label: "Start date", name: "startDate", widget: "datetime" }
+              - { label: "Finish date", name: "finishDate", widget: "datetime" }
           - label: "Education"
             name: "education"
             widget: "list"
@@ -273,20 +269,12 @@ collections:
                 }
               - {
                   label: "Education description",
-                  name: "educationDescription",
+                  name: "description",
                   widget: "string",
                   pattern: [".{80,400}", "Must have 80-400 characters"],
                 }
-              - {
-                  label: "Start date",
-                  name: "startSchoolDate",
-                  widget: "datetime",
-                }
-              - {
-                  label: "Finish date",
-                  name: "finishSchoolDate",
-                  widget: "datetime",
-                }
+              - { label: "Start date", name: "startDate", widget: "datetime" }
+              - { label: "Finish date", name: "finishDate", widget: "datetime" }
 
       - name: "portfolio"
         label: "Portfolio"
@@ -298,36 +286,36 @@ collections:
             fields:
               - {
                   label: "Project name",
-                  name: "projectName",
+                  name: "name",
                   widget: "string",
                   pattern: [".{5,25}", "Must have 5-25 characters"],
                 }
               - {
                   label: "Preview note",
-                  name: "projectPreviewNote",
+                  name: "previewNote",
                   widget: "string",
                   pattern: [".{5,200}", "Must have 5-200 characters"],
                 }
               - {
                   label: "Preview image",
-                  name: "projectPreviewImage",
+                  name: "previewImage",
                   widget: "image",
                 }
               - {
                   label: "Project description",
-                  name: "projectDescription",
+                  name: "description",
                   widget: "markdown",
                   pattern: [".{5,400}", "Must have 5-400 characters"],
                 }
               - {
                   label: "My role in the project",
-                  name: "projectRole",
+                  name: "role",
                   widget: "markdown",
                   pattern: [".{10,370}", "Must have 10-370 characters"],
                 }
               - {
                   label: "Link to code",
-                  name: "projectCode",
+                  name: "code",
                   widget: "string",
                   required: false,
                   pattern:
@@ -338,7 +326,7 @@ collections:
                 }
               - {
                   label: "Link to mockups",
-                  name: "projectMockups",
+                  name: "mockups",
                   widget: "string",
                   required: false,
                   pattern:
@@ -349,7 +337,7 @@ collections:
                 }
               - {
                   label: "Link to application",
-                  name: "projectApp",
+                  name: "app",
                   widget: "string",
                   required: false,
                   pattern:
@@ -359,23 +347,23 @@ collections:
                     ],
                 }
               - {
-                  label: "Project label (example: Mobile app)",
-                  name: "projectLabel",
-                  widget: "string",
-                  pattern: [".{3,20}", "Must have 3-20 characters"],
+                  label: "Project label",
+                  name: "label",
+                  widget: "select",
+                  options: ["Desktop", "Mobile"],
                 }
               - {
                   label: "Project start date",
-                  name: "projectStartDate",
+                  name: "startDate",
                   widget: "datetime",
                 }
               - {
                   label: "Project finish date",
-                  name: "projectFinishDate",
+                  name: "finishDate",
                   widget: "datetime",
                 }
               - label: "Technologies"
-                name: "projectTechnologies"
+                name: "technologies"
                 widget: "list"
                 fields:
-                  - { label: "Name", name: "technologyName", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }

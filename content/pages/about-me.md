@@ -12,80 +12,80 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
   Etiam accumsan felis non ipsum vulputate gravida. Etiam elementum vitae nisl a
   aliquam.
 skills:
-  - skillName: HTML
-    skillCategory: Technologies
-    skillIcon: ../images/html5.svg
-    skillValue: 5
-  - skillName: CSS
-    skillCategory: Technologies
-    skillIcon: ../images/css3.svg
-    skillValue: 5
-  - skillName: JavaScript
-    skillCategory: Technologies
-    skillIcon: ../images/javascript.svg
-    skillValue: 5
-  - skillName: TypeScript
-    skillCategory: Technologies
-    skillIcon: ../images/typescript.svg
-    skillValue: 5
-  - skillName: React.js
-    skillCategory: Technologies
-    skillIcon: ../images/react.svg
-    skillValue: 5
-  - skillName: SASS
-    skillCategory: Technologies
-    skillIcon: ../images/sass.svg
-    skillValue: 5
-  - skillName: Node.js
-    skillCategory: Technologies
-    skillIcon: ../images/nodejs.svg
-    skillValue: 5
-  - skillName: Express
-    skillCategory: Technologies
-    skillIcon: ../images/express.svg
-    skillValue: 5
-  - skillName: PostgreSQL
-    skillCategory: Technologies
-    skillIcon: ../images/postgresql.svg
-    skillValue: 5
-  - skillName: MongoDB
-    skillCategory: Technologies
-    skillIcon: ../images/mongodb.svg
-    skillValue: 5
-  - skillName: Docker
-    skillCategory: Tools
-    skillIcon: ../images/docker.svg
-    skillValue: 5
-  - skillName: Gatsby
-    skillCategory: Tools
-    skillIcon: ../images/gatsby.svg
-    skillValue: 5
-  - skillName: Git
-    skillCategory: Tools
-    skillIcon: ../images/git.svg
-    skillValue: 5
-  - skillName: Heroku
-    skillCategory: Tools
-    skillIcon: ../images/heroku.svg
-    skillValue: 5
-  - skillName: Webpack
-    skillCategory: Tools
-    skillIcon: ../images/webpack.svg
-    skillValue: 5
-  - skillName: Polish - native
-    skillCategory: Other
-    skillValue: 5
-  - skillName: English (C1)
-    skillCategory: Other
-    skillValue: 4
+  - name: HTML
+    category: Technologies
+    icon: ../images/html5.svg
+    value: 5
+  - name: CSS
+    category: Technologies
+    icon: ../images/css3.svg
+    value: 5
+  - name: JavaScript
+    category: Technologies
+    icon: ../images/javascript.svg
+    value: 5
+  - name: TypeScript
+    category: Technologies
+    icon: ../images/typescript.svg
+    value: 5
+  - name: React.js
+    category: Technologies
+    icon: ../images/react.svg
+    value: 5
+  - name: SASS
+    category: Technologies
+    icon: ../images/sass.svg
+    value: 5
+  - name: Node.js
+    category: Technologies
+    icon: ../images/nodejs.svg
+    value: 5
+  - name: Express
+    category: Technologies
+    icon: ../images/express.svg
+    value: 5
+  - name: PostgreSQL
+    category: Technologies
+    icon: ../images/postgresql.svg
+    value: 5
+  - name: MongoDB
+    category: Technologies
+    icon: ../images/mongodb.svg
+    value: 5
+  - name: Docker
+    category: Tools
+    icon: ../images/docker.svg
+    value: 5
+  - name: Gatsby
+    category: Tools
+    icon: ../images/gatsby.svg
+    value: 5
+  - name: Git
+    category: Tools
+    icon: ../images/git.svg
+    value: 5
+  - name: Heroku
+    category: Tools
+    icon: ../images/heroku.svg
+    value: 5
+  - name: Webpack
+    category: Tools
+    icon: ../images/webpack.svg
+    value: 5
+  - name: Polish - native
+    category: Other
+    value: 5
+  - name: English (C1)
+    category: Other
+    value: 4
 testimonials:
-  - testimonialText: testimonialText
-    testimonialName: testimonialName
-    testimonialJob: testimonialJob
-    testimonialImage: ../images/GabeMcdonalid.png
+  - content: testimonialText
+    authorImage: ../images/GabeMcdonalid.png
+    authorName: testimonialName
+    authorJob: testimonialJob
 
-  - testimonialText: testimonialText
-    testimonialName: testimonialName
-    testimonialJob: testimonialJob
-    testimonialImage: ../images/GabeMcdonalid.png
+  - content: testimonialText
+    authorImage: ../images/GabeMcdonalid.png
+    authorName: testimonialName
+    authorJob: testimonialJob
 ---

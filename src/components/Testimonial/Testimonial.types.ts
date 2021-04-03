@@ -1,8 +1,8 @@
 export type TestimonialProps = {
-  image: string;
-  label: string;
-  labelBold: string;
-  description: string;
+  content: string;
+  authorImage: string;
+  authorName: string;
+  authorJob: string;
   isMobile: boolean;
 };
 
