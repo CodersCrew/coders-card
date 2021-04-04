@@ -55,13 +55,13 @@ Wait a couple of seconds, it will take some time to initialize. Once it is ready
 
 ![CMS preview](./images/cms-view.png)
 
-As you can see, there are 6 collections
+As you can see, there are 2 collections.
 
-Now, click on the big, empty rectangle on the about tab, it will get you to the about collection where you can add the data to your about page.
+Now, click on the "Developer profile" card, it will get you to the editor where you can change the basic data about you. The data will be displayed on the card at the right side of every page.
 
-![About collection](./images/about-collection.png)
+![About collection](./images/developer-collection.png)
 
-Now go through all the collections and replace the predefined information with your real information that you want to have included on your website. After you are done filling in information in any of the 6 collections, remember to press the **Publish** button and then the **Publish now ->** option, this will trigger another build of your website and in a couple of minutes, it will be populated with new data.
+Now go through all the collections and replace the predefined information with your real information that you want to have included on your website. After you are done filling in information in a particular collection, remember to press the **Publish** button and then the **Publish now ->** option, this will trigger another build of your website and in a couple of minutes, it will be populated with new data.
 
 ![Publish](./images/publish.png)
 
@@ -81,12 +81,8 @@ On these pictures below, you can find about what each collection represents on t
 ### Resume
 ![Resume](./images/resume.png)
 
-### Contact
+### Site metadata
 
-Contact collection has only fields for metadata, it is not visible to the user on the website.
+This is a special collection where you should provide an obligatory portion of metadata for your portfolio.
 
-### Metadata
-
-This is a special collection. While filling in your information, you could have noticed that it is possible to specify metadata per page, but these fields were optional. If you didn't specify metada per page, here is a obligatory portion of metadata that has to be specified, and will be applied to every page as a fallback.
-
-After you fill in all your information, and publish your changes every time, you should see that your website has been updated, and you have your own, custom, portfolio website! 🎉
+After you fill in all your information and publish your changes every time, you should see that your website has been updated, and you have your custom portfolio website! 🎉
