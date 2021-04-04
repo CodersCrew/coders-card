@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Code, ExternalLink, Image, X } from 'react-feather';
-import { Box, Dialog, makeStyles, Typography } from '@material-ui/core/';
+import { Box, Dialog, DialogProps, makeStyles, Typography } from '@material-ui/core';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { Tag } from '@/components/Tag';
-import { getDialogWrapperStyles } from '@/utils/styles';
 
 import type { PortfolioProjectDialogVariantProps } from './PortfolioProjectDialog.types';
 
+const CONTROLS_TOP_SPACE = 16;
+
 const useStyles = makeStyles((theme) => ({
-  wrapper: getDialogWrapperStyles(theme),
+  wrapper: {
+    overflowY: 'auto',
+
+    '& .MuiDialog-paper': { overflowY: 'inherit' },
+
+    '& .MuiBackdrop-root': { backgroundColor: fade(theme.palette.text.primary, 0.8) },
+
+    '& .MuiPaper-rounded': { borderRadius: 16, margin: theme.spacing(4, 8) },
+
+    '&::-webkit-scrollbar': { width: '0.5em' },
+
+    '&::-webkit-scrollbar-thumb': { backgroundColor: fade(theme.palette.text.primary, 0.8) },
+
+    '& .MuiDialog-container': { height: 'auto' },
+  },
+  controls: {
+    position: 'absolute',
+    right: -60,
+    transition: 'transform 0.3s',
+  },
   tags: {
     display: 'flex',
     justifyContent: 'start',
@@ -43,11 +64,18 @@ const useStyles = makeStyles((theme) => ({
 
 export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVariantProps) => {
   const classes = useStyles();
+  const [dialogScroll, setDialogScroll] = useState(0);
+
+  const controlsTransform = `translateY(${Math.max(dialogScroll - CONTROLS_TOP_SPACE, 0)}px)`;
+
+  const handleScroll: DialogProps['onScroll'] = (e) => {
+    setDialogScroll((e.target as HTMLElement).scrollTop);
+  };
 
   return (
     <Box display="inline-block">
-      <Dialog className={classes.wrapper} open={props.isOpen} onClose={props.handleClose}>
-        <Box position="absolute" left="620px">
+      <Dialog className={classes.wrapper} open={props.isOpen} onClose={props.handleClose} onScroll={handleScroll}>
+        <Box className={classes.controls} style={{ transform: controlsTransform }}>
           <Box mb={5}>
             <IconButton onClick={props.handleClose} size="small">
               <X size={30} />
