@@ -3,10 +3,8 @@ import { Box, Container, makeStyles } from '@material-ui/core';
 
 import { DetailsCard } from '@/components/DetailsCard';
 import { Navbar } from '@/components/Navbar';
+import { developer } from '@/data/developer';
 import { useComponentType } from '@/hooks/useComponentType';
-import { useDeveloperProfile } from '@/hooks/useDeveloperProfile';
-
-import { Head } from './Head';
 
 export type LayoutProps = {
   children: ReactNode;
@@ -74,11 +72,9 @@ const useStyles = makeStyles((theme) => ({
 export const Layout = ({ children, variant = 'default' }: LayoutProps) => {
   const classes = useStyles();
   const { componentType, isDesktop } = useComponentType();
-  const developerProfile = useDeveloperProfile();
 
   return (
     <Container className={classes.container} maxWidth="lg">
-      <Head />
       {isDesktop && (
         <Box className={classes.aside}>
           <DetailsCard type={componentType} />
@@ -88,10 +84,10 @@ export const Layout = ({ children, variant = 'default' }: LayoutProps) => {
         <Navbar
           className={classes.navbar}
           type={componentType}
-          fullName={`${developerProfile.firstName} ${developerProfile.lastName}`}
-          position={developerProfile.position}
-          image={developerProfile.avatar.publicURL}
-          resumeLink={developerProfile.cv}
+          fullName={`${developer.firstName} ${developer.lastName}`}
+          position={developer.position}
+          image={developer.avatar}
+          resumeLink={developer.cv}
         />
         {!isDesktop && variant === 'withDetailsCard' && (
           <Box className={classes.detailsCard}>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 
-import { useHeadQuery } from './Head.query';
+import { developer } from '@/data/developer';
+import { metadata } from '@/data/metadata';
 
 type MetaTag = {
   name?: string;
@@ -9,12 +9,8 @@ type MetaTag = {
   property?: string;
 };
 
-export const Head = () => {
-  const { meta, developer } = useHeadQuery();
-
-  const { title, description } = meta;
-  const image = meta.image.publicURL;
-  const lang = meta.language ?? 'en';
+export const PageHead = () => {
+  const { title, description, image, favicon } = metadata;
   const author = `${developer.firstName} ${developer.lastName}`.trim();
 
   const metaTags = [
@@ -61,10 +57,14 @@ export const Head = () => {
   ].filter(Boolean) as MetaTag[];
 
   return (
-    <Helmet htmlAttributes={{ lang }} title={title} meta={metaTags}>
-      <link rel="icon" type="image/png" sizes="16x16" href={meta.favicon.publicURL} />
-      <link rel="icon" type="image/png" sizes="16x16" href={meta.favicon.publicURL} />
-      <link rel="icon" type="image/png" sizes="32x32" href={meta.favicon.publicURL} />
-    </Helmet>
+    <Head>
+      <title>{title}</title>
+      <link rel="icon" type="image/png" sizes="16x16" href={favicon} />
+      <link rel="icon" type="image/png" sizes="16x16" href={favicon} />
+      <link rel="icon" type="image/png" sizes="32x32" href={favicon} />
+      {metaTags.map((metaTag) => (
+        <meta key={metaTag.name || metaTag.property} {...metaTag} />
+      ))}
+    </Head>
   );
 };

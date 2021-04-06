@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: "content/images"
-public_folder: "../images"
+media_folder: public/uploads
+public_folder: uploads
 
 collections:
   - label: "General"
@@ -13,7 +13,7 @@ collections:
     files:
       - name: "developer"
         label: "Developer profile"
-        file: "content/pages/developer.md"
+        file: "content/developer.md"
         fields:
           - {
               label: "First name",
@@ -123,7 +123,7 @@ collections:
                 }
       - name: "metadata"
         label: "Site metadata"
-        file: "content/pages/metadata.md"
+        file: "content/metadata.md"
         fields:
           - {
               label: "Page title",
@@ -157,7 +157,7 @@ collections:
     files:
       - name: "about-me"
         label: "About me"
-        file: "content/pages/about-me.md"
+        file: "content/about-me.md"
         fields:
           - {
               label: "Description",
@@ -225,7 +225,7 @@ collections:
 
       - name: "resume"
         label: "Resume"
-        file: "content/pages/resume.md"
+        file: "content/resume.md"
         fields:
           - label: "Work experience"
             name: "workExperience"
@@ -278,7 +278,7 @@ collections:
 
       - name: "portfolio"
         label: "Portfolio"
-        file: "content/pages/portfolio.md"
+        file: "content/portfolio.md"
         fields:
           - label: "Projects"
             name: "projects"

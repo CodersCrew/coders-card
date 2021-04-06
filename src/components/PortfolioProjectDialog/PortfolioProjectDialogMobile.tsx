@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'react-feather';
 import { Box, Dialog, makeStyles, Typography } from '@material-ui/core';
+import marked from 'marked';
 
 import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
@@ -48,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
 export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVariantProps) => {
   const classes = useStyles();
 
+  const description = useMemo(() => marked(props.contentMainDescription), [props.contentMainDescription]);
+  const role = useMemo(() => marked(props.contentMainRole), [props.contentMainRole]);
+
   return (
     <Box display="inline-block">
       <Dialog className={classes.wrapper} fullScreen open={props.isOpen}>
@@ -71,6 +75,7 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
           <Box display="flex">
             {props.buttons.map(({ name, icon, url }) => (
               <Button
+                key={name}
                 href={url}
                 className={classes.button}
                 color="primary"
@@ -89,7 +94,7 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
           className={classes.content}
           variant="body2"
           color="textSecondary"
-          dangerouslySetInnerHTML={{ __html: props.contentMainDescription }}
+          dangerouslySetInnerHTML={{ __html: description }}
         />
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           My role
@@ -98,7 +103,7 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
           className={classes.content}
           variant="body2"
           color="textSecondary"
-          dangerouslySetInnerHTML={{ __html: props.contentMainRole }}
+          dangerouslySetInnerHTML={{ __html: role }}
         />
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           Technologies

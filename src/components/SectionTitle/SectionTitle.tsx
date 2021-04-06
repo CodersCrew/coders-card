@@ -1,5 +1,5 @@
 import React from 'react';
-import useMeasure from 'react-use/esm/useMeasure';
+import useMeasure from 'react-use/lib/useMeasure';
 import { Box, BoxProps, Divider, makeStyles, Typography } from '@material-ui/core';
 
 export type SectionTitleProps = BoxProps;

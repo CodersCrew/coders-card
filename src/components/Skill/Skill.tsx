@@ -36,7 +36,7 @@ export const Skill = ({ name, icon, value, ...props }: SkillProps) => {
       <div className={classes.tiles}>
         {SKILL_LEVELS.map((tileLevel) => (
           <Box
-            key={name}
+            key={tileLevel}
             justifySelf="stretch"
             borderRadius={2}
             bgcolor={tileLevel <= value ? 'text.secondary' : 'divider'}

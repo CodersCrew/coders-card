@@ -2,26 +2,24 @@ import React, { useState } from 'react';
 import { Box } from '@material-ui/core';
 
 import { FilterTabs, FilterTabsProps } from '@/components/FilterTabs';
-import { Layout } from '@/components/Layout';
 import { PortfolioCard } from '@/components/PortfolioCard';
 import { PortfolioProjectDialog } from '@/components/PortfolioProjectDialog';
 import { SectionTitle } from '@/components/SectionTitle';
+import { portfolio } from '@/data/portfolio';
 import { useComponentType } from '@/hooks/useComponentType';
 import { Project } from '@/typings';
 import { formatDate } from '@/utils/date';
 
-import { usePortfolioQuery } from './Portfolio.query';
 import { usePortfolioStyles } from './Portfolio.styles';
 import { getTabsData } from './Portfolio.utils';
 
 export const Portfolio = () => {
   const classes = usePortfolioStyles();
-  const data = usePortfolioQuery();
   const { componentType, isMobile } = useComponentType();
   const [selectedProject, setSelectedProject] = useState(-1);
   const [navbarNumberTitle, setNavbarNumberTitle] = useState(0);
 
-  const sortedGroupsOfProjects = getTabsData(data.projects);
+  const sortedGroupsOfProjects = getTabsData(portfolio.projects);
   const projectsLabels: string[] = [...sortedGroupsOfProjects.map((object) => object.projectLabel)];
   const getNavbarTitle = (type: number) => projectsLabels[type];
   const tabLabelTitle = getNavbarTitle(navbarNumberTitle);
@@ -31,7 +29,7 @@ export const Portfolio = () => {
     .map(({ projectProperties }) => projectProperties)
     .flat(1);
 
-  const handleChange: FilterTabsProps['onChange'] = (event, newValue) => {
+  const handleChange: FilterTabsProps['onChange'] = (_event, newValue) => {
     setNavbarNumberTitle(newValue);
   };
 
@@ -65,14 +63,14 @@ export const Portfolio = () => {
   };
 
   const renderProject = (project: Project, index: number) => (
-    <Box key={`${project.name}-${project.description}`}>
+    <Box key={project.name}>
       <PortfolioCard
         className={classes.project}
         type={componentType}
         title={project.name}
         label={project.label}
         description={project.description}
-        image={project.previewImage.publicURL}
+        image={project.previewImage}
         onClick={() => setSelectedProject(index)}
       />
       <PortfolioProjectDialog
@@ -83,7 +81,7 @@ export const Portfolio = () => {
         isOpen={index === selectedProject}
         title={project.name}
         tags={project.technologies.map((technology) => ({ name: technology.name }))}
-        imageUrl={project.previewImage.publicURL}
+        imageUrl={project.previewImage}
         subtitle={`${formatDate(project.startDate, 'day')} - ${formatDate(project.finishDate, 'day', true)}`}
         contentMainDescription={project.description}
         contentMainRole={project.role}
@@ -95,23 +93,21 @@ export const Portfolio = () => {
   );
 
   return (
-    <Layout>
-      <Box className={classes.projectsContainer}>
-        <Box className={classes.titleBox}>
-          <SectionTitle className={classes.title}>My works</SectionTitle>
-          {!isMobile && (
-            <FilterTabs
-              className={classes.navbarTitles}
-              indicatorColor="primary"
-              textColor="primary"
-              handleChange={handleChange}
-              navbarTitle={navbarNumberTitle}
-              projectLabels={projectsLabels}
-            />
-          )}
-        </Box>
-        <Box className={classes.projects}>{projectsFilteredByLabel.map(renderProject)}</Box>
+    <Box className={classes.projectsContainer}>
+      <Box className={classes.titleBox}>
+        <SectionTitle className={classes.title}>My works</SectionTitle>
+        {!isMobile && (
+          <FilterTabs
+            className={classes.navbarTitles}
+            indicatorColor="primary"
+            textColor="primary"
+            handleChange={handleChange}
+            navbarTitle={navbarNumberTitle}
+            projectLabels={projectsLabels}
+          />
+        )}
       </Box>
-    </Layout>
+      <Box className={classes.projects}>{projectsFilteredByLabel.map(renderProject)}</Box>
+    </Box>
   );
 };

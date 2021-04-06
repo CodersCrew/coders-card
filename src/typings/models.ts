@@ -1,17 +1,13 @@
-export type Image = {
-  publicURL: string;
-};
-
 export type Skill = {
   name: string;
   category: string;
-  icon?: Image;
+  icon?: string;
   value: 1 | 2 | 3 | 4 | 5;
 };
 
 export type Testimonial = {
   content: string;
-  authorImage: Image;
+  authorImage: string;
   authorName: string;
   authorJob: string;
 };
@@ -29,7 +25,7 @@ export type ProjectButton = {
 export type Project = {
   name: string;
   label: string;
-  previewImage: Image;
+  previewImage: string;
   description: string;
   role: string;
   previewNote: string;
