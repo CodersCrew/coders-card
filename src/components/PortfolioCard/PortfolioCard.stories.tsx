@@ -2,8 +2,6 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import { action } from '@storybook/addon-actions';
 
-import image from '@/images/download.jpeg';
-
 import { PortfolioCard } from './PortfolioCard';
 import type { PortfolioCardProps } from './PortfolioCard.types';
 
@@ -13,7 +11,7 @@ export default {
 };
 
 const basePropsData: Omit<PortfolioCardProps, 'type'> = {
-  image,
+  image: 'https://source.unsplash.com/1600x900/daily?landscape',
   title: 'My Awesome Project',
   description:
     'In vel tellus ac quam elementum vulputate. Proin quis eros in elit luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui efficitur, a pellentesque.',

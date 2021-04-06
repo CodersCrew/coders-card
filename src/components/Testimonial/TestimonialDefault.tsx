@@ -55,25 +55,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TestimonialDefault = ({ label, labelBold, description, image, ...props }: TestimonialVariantProps) => {
+export const TestimonialDefault = ({
+  content,
+  authorImage,
+  authorJob,
+  authorName,
+  ...props
+}: TestimonialVariantProps) => {
   const classes = useStyles();
+
   return (
     <Card className={classes.card} {...props}>
       <CardContent className={classes.overlayDescription}>
         <Typography className={classes.description} variant="body2">
-          {description}
+          {content}
         </Typography>
       </CardContent>
       <CardContent className={classes.overlay}>
-        <CardMedia className={classes.media} image={image}>
-          <CardMedia className={classes.overlayMedia} image={image} />
+        <CardMedia className={classes.media} image={authorImage}>
+          <CardMedia className={classes.overlayMedia} image={authorImage} />
         </CardMedia>
         <CardContent className={classes.overlayLabel}>
           <Typography color="textPrimary" variant="h6">
-            {labelBold}
+            {authorName}
           </Typography>
           <Typography color="textPrimary" variant="subtitle2">
-            {label}
+            {authorJob}
           </Typography>
         </CardContent>
       </CardContent>

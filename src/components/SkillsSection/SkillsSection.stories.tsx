@@ -11,33 +11,16 @@ export default {
 const basePropsData = (title: string): SkillsSectionProps => ({
   title,
   skills: [
-    { name: 'HTML', value: 3 },
-    { name: 'CSS', value: 3 },
-    { name: 'JS', value: 3 },
+    { name: 'HTML', value: 3, category: title },
+    { name: 'CSS', value: 5, category: title },
+    { name: 'JS', value: 1, category: title },
   ],
-  renderCondition: true,
 });
 
 export const Technologies = () => {
   return (
     <Box style={{ width: '100%', height: 188 }}>
       <SkillsSection {...basePropsData('Technologies')} />
-    </Box>
-  );
-};
-
-export const Tools = () => {
-  return (
-    <Box style={{ width: '100%', height: 188 }}>
-      <SkillsSection {...basePropsData('Tools')} />
-    </Box>
-  );
-};
-
-export const OtherSkills = () => {
-  return (
-    <Box style={{ width: '100%', height: 188 }}>
-      <SkillsSection {...basePropsData('Other skills')} />
     </Box>
   );
 };

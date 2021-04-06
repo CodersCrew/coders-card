@@ -1,30 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export type Project = {
-  projectLabel: string;
-  projectCode?: string;
-  projectPreviewImage: {
-    publicURL: string;
-  };
-  projectDescription: string;
-  projectRole: string;
-  projectPreviewNote: string;
-  projectApp?: string;
-  projectStartDate: string;
-  projectFinishDate: string;
-  projectMockups?: string;
-  projectTechnologies: {
-    technologyName: string;
-  }[];
-  projectName: string;
-};
+import type { Project } from '@/typings';
 
 export type PortfolioData = {
-  portfolioPageTitle?: string;
-  portfolioPageDescription?: string;
-  portfolioPageImage?: {
-    publicURL?: string;
-  };
   projects: Project[];
 };
 
@@ -37,30 +15,27 @@ type QueryResult = {
 export const usePortfolioQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     query IndexPageQuery {
-      portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio/index-1.md/" }) {
+      portfolioPage: markdownRemark(fileAbsolutePath: { regex: "/portfolio.md/" }) {
         frontmatter {
-          portfolioPageTitle
-          portfolioPageDescription
-          portfolioPageImage {
-            publicURL
-          }
           projects {
-            projectLabel
-            projectCode
-            projectDescription
-            projectRole
-            projectPreviewNote
-            projectApp
-            projectStartDate
-            projectFinishDate
-            projectMockups
-            projectPreviewImage {
+            name
+            label
+            description
+            role
+            previewNote
+            startDate
+            finishDate
+            buttons {
+              name
+              icon
+              url
+            }
+            previewImage {
               publicURL
             }
-            projectTechnologies {
-              technologyName
+            technologies {
+              name
             }
-            projectName
           }
         }
       }

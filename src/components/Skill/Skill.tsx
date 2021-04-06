@@ -1,59 +1,48 @@
 import React from 'react';
-import { Box as MuiBox, BoxProps as MuiBoxProps, makeStyles, Typography } from '@material-ui/core';
+import { Box, BoxProps, makeStyles, Typography } from '@material-ui/core';
 
-export type LevelRange = 0 | 1 | 2 | 3 | 4 | 5;
+const SKILL_LEVELS = [1, 2, 3, 4, 5] as const;
 
-export type SkillProps = MuiBoxProps & {
-  level: LevelRange;
-  children: string;
+type Value = typeof SKILL_LEVELS[number];
+
+export type SkillProps = BoxProps & {
+  name: string;
+  icon?: string;
+  value: Value;
 };
 
-const useStyles = makeStyles((theme) => {
-  const { palette } = theme;
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    marginRight: theme.spacing(1),
+  },
+  tiles: {
+    width: '100%',
+    height: 8,
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridGap: '0 8px',
+  },
+}));
 
-  return {
-    root: {
-      minWidth: '176px',
-      height: '40px',
-    },
-    tilesContainer: {
-      width: '100%',
-      height: '8px',
-      display: 'grid',
-      gridTemplateColumns: 'repeat(5, 1fr)',
-      gridGap: '0 8px',
-    },
-    tile: {
-      justifySelf: 'stretch',
-      borderRadius: '2px',
-    },
-    active: {
-      backgroundColor: palette.text.secondary,
-    },
-    inactive: {
-      backgroundColor: palette.divider,
-    },
-  };
-});
-
-export const Skill = ({ children, level, ...props }: SkillProps) => {
+export const Skill = ({ name, icon, value, ...props }: SkillProps) => {
   const classes = useStyles();
 
   return (
-    <MuiBox {...props} className={classes.root}>
-      <Typography variant="subtitle2" gutterBottom>
-        {children}
-      </Typography>
-      <div className={classes.tilesContainer}>
-        {[1, 2, 3, 4, 5].map((tileLevel) => {
-          return (
-            <div
-              key={`${children}-${tileLevel}`}
-              className={`${classes.tile} ${tileLevel <= level ? classes.active : classes.inactive}`}
-            />
-          );
-        })}
+    <Box {...props} height={40} minWidth={176}>
+      <Box display="flex" alignItems="center" mb={1} pl={1 / 4}>
+        {icon && <img className={classes.icon} src={icon} alt={name} width={20} height={20} />}
+        <Typography variant="subtitle2">{name}</Typography>
+      </Box>
+      <div className={classes.tiles}>
+        {SKILL_LEVELS.map((tileLevel) => (
+          <Box
+            key={name}
+            justifySelf="stretch"
+            borderRadius={2}
+            bgcolor={tileLevel <= value ? 'text.secondary' : 'divider'}
+          />
+        ))}
       </div>
-    </MuiBox>
+    </Box>
   );
 };

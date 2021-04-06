@@ -10,7 +10,7 @@ export default {
 export const NoSkill = () => {
   return (
     <div style={{ width: '176px' }}>
-      <Skill level={0}>Example skill</Skill>
+      <Skill name="Example skill" value={1} />
     </div>
   );
 };
@@ -18,7 +18,7 @@ export const NoSkill = () => {
 export const MediumSkill = () => {
   return (
     <div style={{ width: '176px' }}>
-      <Skill level={3}>Example skill</Skill>
+      <Skill name="Example skill" value={3} />
     </div>
   );
 };
@@ -26,7 +26,7 @@ export const MediumSkill = () => {
 export const HardSkill = () => {
   return (
     <div style={{ width: '176px' }}>
-      <Skill level={5}>Example skill</Skill>
+      <Skill name="Example skill" value={5} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import type { Project } from './Portfolio.query';
+import { Project } from '@/typings';
 
 const maxNumberOfTabs = 2;
 const otherLabel = 'More';
@@ -21,9 +21,7 @@ const compareLengthOfProjects = (
 
 const groupByProjectLabel = (projects: Project[]) => {
   return projects.reduce<{ [key: string]: Project[] }>((groupedProjects, project) => {
-    // eslint-disable-next-line no-param-reassign
-    (groupedProjects[project.projectLabel] = groupedProjects[project.projectLabel] || []).push(project);
-    return groupedProjects;
+    return { ...groupedProjects, [project.label]: [...(groupedProjects[project.label] || []), project] };
   }, {});
 };
 

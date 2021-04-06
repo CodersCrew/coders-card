@@ -1,43 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-import type { LevelRange } from '@/components/Skill';
-
-type Technology = {
-  technologyName: string;
-  technologyValue: LevelRange;
-};
-
-type Tool = {
-  toolName: string;
-  toolValue: LevelRange;
-};
-
-type Skill = {
-  otherSkillName: string;
-  otherSkillValue: LevelRange;
-};
-
-type Testimonial = {
-  testimonialText: string;
-  testimonialImage: {
-    publicURL: string;
-  };
-  testimonialName: string;
-  testimonialJob: string;
-};
+import type { Skill, Testimonial } from '@/typings';
 
 type AboutData = {
-  aboutPageTitle?: string;
-  aboutPageDescription?: string;
-  aboutPageImage?: {
-    publicURL?: string;
-  };
   description: string;
-  socialMedia: {
-    technologies?: Technology[];
-    tools?: Tool[];
-    otherSkills?: Skill[];
-  };
+  skills: Skill[];
   testimonials?: Testimonial[];
 };
 
@@ -50,35 +17,24 @@ type QueryResult = {
 export const useAboutQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     {
-      aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me/index-1.md/" }) {
+      aboutPage: markdownRemark(fileAbsolutePath: { regex: "/about-me.md/" }) {
         frontmatter {
-          aboutPageTitle
-          aboutPageDescription
-          aboutPageImage {
-            publicURL
-          }
           description
-          socialMedia {
-            technologies {
-              technologyName
-              technologyValue
-            }
-            tools {
-              toolName
-              toolValue
-            }
-            otherSkills {
-              otherSkillName
-              otherSkillValue
-            }
-          }
-          testimonials {
-            testimonialText
-            testimonialImage {
+          skills {
+            name
+            category
+            icon {
               publicURL
             }
-            testimonialName
-            testimonialJob
+            value
+          }
+          testimonials {
+            content
+            authorImage {
+              publicURL
+            }
+            authorName
+            authorJob
           }
         }
       }

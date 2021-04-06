@@ -1,27 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-type WorkExperience = {
-  startJobDate: string;
-  finishJobDate: string;
-  jobTitle: string;
-  companyName: string;
-  jobDescription: string;
-};
-
-type Education = {
-  startSchoolDate: string;
-  finishSchoolDate: string;
-  schoolName: string;
-  course: string;
-  educationDescription: string;
-};
+import type { Education, WorkExperience } from '@/typings';
 
 type ResumeData = {
-  resumePageTitle?: string;
-  resumePageDescription?: string;
-  resumePageImage?: {
-    publicURL?: string;
-  };
   workExperience: WorkExperience[];
   education: Education[];
 };
@@ -35,26 +16,21 @@ type QueryResult = {
 export const useResumeQuery = () => {
   const result: QueryResult = useStaticQuery(graphql`
     {
-      resumePage: markdownRemark(fileAbsolutePath: { regex: "/resume/index-1.md/" }) {
+      resumePage: markdownRemark(fileAbsolutePath: { regex: "/resume.md/" }) {
         frontmatter {
-          resumePageTitle
-          resumePageDescription
-          resumePageImage {
-            publicURL
-          }
           workExperience {
-            startJobDate
-            finishJobDate
-            jobTitle
-            companyName
+            jobName
             jobDescription
+            companyName
+            startDate
+            finishDate
           }
           education {
-            startSchoolDate
-            finishSchoolDate
             schoolName
             course
-            educationDescription
+            description
+            startDate
+            finishDate
           }
         }
       }

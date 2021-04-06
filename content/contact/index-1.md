@@ -1,5 +1,0 @@
----
-contactPageTitle:
-contactPageDescription:
-contactPageImage:
----

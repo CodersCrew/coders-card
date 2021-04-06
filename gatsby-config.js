@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/content/images`,
       },
     },
     `gatsby-plugin-image`,
@@ -40,7 +40,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `${__dirname}/src/images/gatsby-icon.png`,
+        icon: `${__dirname}/content/images/gatsby-icon.png`,
         include_favicon: false, // exclude favicons
       },
     },
@@ -50,7 +50,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/content`,
+        path: `${__dirname}/content/pages`,
       },
     },
     `gatsby-transformer-remark`,

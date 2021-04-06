@@ -6,9 +6,7 @@ import * as Yup from 'yup';
 
 import { Layout } from '@/components/Layout';
 import { SectionTitle } from '@/components/SectionTitle';
-import { useDeveloperProfile } from '@/hooks/useDeveloperProfile';
 
-import { useContactQuery } from './Contact.query';
 import { useContactStyles } from './Contact.styles';
 import { ContactForm } from './ContactForm';
 
@@ -55,9 +53,7 @@ const submitFormData = (values: FormValues) =>
     .catch(log.error);
 
 export const Contact = () => {
-  const data = useContactQuery();
   const classes = useContactStyles();
-  const developerProfile = useDeveloperProfile();
 
   const handleSubmit: FormConfig['onSubmit'] = async (values, helpers) => {
     await submitFormData(values);
@@ -65,15 +61,7 @@ export const Contact = () => {
   };
 
   return (
-    <Layout
-      developerProfile={developerProfile}
-      meta={{
-        title: data.contactPageTitle,
-        description: data.contactPageDescription,
-        imageUrl: data.contactPageImage?.publicURL,
-      }}
-      variant="withDetailsCard"
-    >
+    <Layout variant="withDetailsCard">
       <Box className={classes.contactContainer}>
         <SectionTitle className={classes.title}>Contact</SectionTitle>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
