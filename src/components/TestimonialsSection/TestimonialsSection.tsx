@@ -49,7 +49,7 @@ export const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) 
             key={testimonial.content}
             isMobile={isMobile}
             {...testimonial}
-            authorImage={testimonial.authorImage.publicURL}
+            authorImage={testimonial.authorImage}
           />
         ))}
       </Box>

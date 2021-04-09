@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { navigate } from 'gatsby';
+import { useRouter } from 'next/router';
 
 const NotFoundPage = () => {
-  useEffect(() => {
-    navigate('/');
-  }, []);
+  const router = useRouter();
 
-  return <div />;
+  useEffect(() => {
+    router.push('/');
+  }, [router]);
+
+  return <h1>404 - Page Not Found</h1>;
 };
 
 export default NotFoundPage;

@@ -3,7 +3,7 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
   iaculis ultricies eros, ac iaculis eros maximus nec. Phasellus vitae mi felis.
   Curabitur iaculis nunc laoreet eleifend tincidunt. Aliquam nec lectus varius,
   mattis sapien nec, tristique elit. Suspendisse id sem sit amet mi tempus
-  fermentum. Duis non metus nec nisl convallis efficitur. Donec condimentum
+  fermentum. Duis non metus nec nisl convallis efficitur. **Donec condimentum**
   neque rhoncus congue volutpat. Maecenas scelerisque varius ornare. Morbi
   egestas rutrum mattis. In pulvinar imperdiet tellus vel laoreet. Etiam ac
   sodales nulla. Nulla sit amet enim ipsum. Nulla pharetra turpis tempus
@@ -14,63 +14,63 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
 skills:
   - name: HTML
     category: Technologies
-    icon: ../images/html5.svg
+    icon: uploads/html5.svg
     value: 5
   - name: CSS
     category: Technologies
-    icon: ../images/css3.svg
+    icon: uploads/css3.svg
     value: 5
   - name: JavaScript
     category: Technologies
-    icon: ../images/javascript.svg
+    icon: uploads/javascript.svg
     value: 5
   - name: TypeScript
     category: Technologies
-    icon: ../images/typescript.svg
+    icon: uploads/typescript.svg
     value: 5
   - name: React.js
     category: Technologies
-    icon: ../images/react.svg
+    icon: uploads/react.svg
     value: 5
   - name: SASS
     category: Technologies
-    icon: ../images/sass.svg
+    icon: uploads/sass.svg
     value: 5
   - name: Node.js
     category: Technologies
-    icon: ../images/nodejs.svg
+    icon: uploads/nodejs.svg
     value: 5
   - name: Express
     category: Technologies
-    icon: ../images/express.svg
+    icon: uploads/express.svg
     value: 5
   - name: PostgreSQL
     category: Technologies
-    icon: ../images/postgresql.svg
+    icon: uploads/postgresql.svg
     value: 5
   - name: MongoDB
     category: Technologies
-    icon: ../images/mongodb.svg
+    icon: uploads/mongodb.svg
     value: 5
   - name: Docker
     category: Tools
-    icon: ../images/docker.svg
+    icon: uploads/docker.svg
     value: 5
   - name: Gatsby
     category: Tools
-    icon: ../images/gatsby.svg
+    icon: uploads/gatsby.svg
     value: 5
   - name: Git
     category: Tools
-    icon: ../images/git.svg
+    icon: uploads/git.svg
     value: 5
   - name: Heroku
     category: Tools
-    icon: ../images/heroku.svg
+    icon: uploads/heroku.svg
     value: 5
   - name: Webpack
     category: Tools
-    icon: ../images/webpack.svg
+    icon: uploads/webpack.svg
     value: 5
   - name: Polish - native
     category: Other
@@ -79,13 +79,19 @@ skills:
     category: Other
     value: 4
 testimonials:
-  - content: testimonialText
-    authorImage: ../images/GabeMcdonalid.png
+  - content: Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Ut
+      faucibus pulvinar elementum integer enim neque volutpat ac. At urna
+      condimentum mattis pellentesque id nibh tortor id. Et ultrices neque
+      ornare aenean euismod elementum nisi quis. Ullamcorper morbi tincidunt
+      ornare massa.
+    authorImage: uploads/GabeMcdonalid.png
     authorName: testimonialName
     authorJob: testimonialJob
-
-  - content: testimonialText
-    authorImage: ../images/GabeMcdonalid.png
+  - content: Odio morbi quis commodo odio aenean sed adipiscing diam donec. Sed cras
+      ornare arcu dui vivamus arcu felis. Mauris pellentesque pulvinar
+      pellentesque habitant morbi tristique senectus. Dignissim cras tincidunt
+      lobortis feugiat vivamus at augue.
+    authorImage: uploads/GabeMcdonalid.png
     authorName: testimonialName
     authorJob: testimonialJob
 ---

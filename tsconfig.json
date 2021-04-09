@@ -2,26 +2,32 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
-    "downlevelIteration": true,
+    "alwaysStrict": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/typings": ["typings"],
-      "@/utils/*": ["utils/*"],
-      "@/views/*": ["views/*"]
+      "@/components/*": ["src/components/*"],
+      "@/data/*": ["src/data/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/typings": ["src/typings"],
+      "@/utils/*": ["src/utils/*"],
+      "@/views/*": ["src/views/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5"
-  }
+    "target": "esnext"
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }

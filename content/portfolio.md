@@ -17,7 +17,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 1
     startDate: 2020-07-23T10:45:41.756Z
-    previewImage: ../images/background.jpg
+    previewImage: uploads/background.jpg
     label: Mobile
     role: Role. In vel tellus ac quam elementum vulputate. Proin quis eros in elit
       luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui
@@ -43,7 +43,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 2
     startDate: 2020-08-23T10:45:41.756Z
-    previewImage: ../images/background.jpg
+    previewImage: uploads/background.jpg
     label: Desktop
     role: Role. In vel tellus ac quam elementum vulputate. Proin quis eros in elit
       luctus tempor. Aenean in hendrerit metus. Donec congue enim a dui

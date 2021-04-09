@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'react-feather';
 import { Box, Dialog, DialogProps, makeStyles, Typography } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import marked from 'marked';
 
 import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
@@ -65,6 +66,9 @@ export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVaria
   const classes = useStyles();
   const [dialogScroll, setDialogScroll] = useState(0);
 
+  const description = useMemo(() => marked(props.contentMainDescription), [props.contentMainDescription]);
+  const role = useMemo(() => marked(props.contentMainRole), [props.contentMainRole]);
+
   const controlsTransform = `translateY(${Math.max(dialogScroll - CONTROLS_TOP_SPACE, 0)}px)`;
 
   const handleScroll: DialogProps['onScroll'] = (e) => {
@@ -107,6 +111,7 @@ export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVaria
             <Box display="flex">
               {props.buttons.map(({ name, icon, url }) => (
                 <Button
+                  key={name}
                   href={url}
                   className={classes.button}
                   color="primary"
@@ -126,7 +131,7 @@ export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVaria
           className={classes.content}
           variant="body2"
           color="textSecondary"
-          dangerouslySetInnerHTML={{ __html: props.contentMainDescription }}
+          dangerouslySetInnerHTML={{ __html: description }}
         />
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           My role
@@ -135,7 +140,7 @@ export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVaria
           className={classes.content}
           variant="body2"
           color="textSecondary"
-          dangerouslySetInnerHTML={{ __html: props.contentMainRole }}
+          dangerouslySetInnerHTML={{ __html: role }}
         />
         <Typography className={classes.contentMain} variant="h5" color="textPrimary">
           Technologies

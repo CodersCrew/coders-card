@@ -1,12 +1,13 @@
 import React, { ComponentProps, forwardRef } from 'react';
 import { makeStyles, MenuItem, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import { GatsbyLinkProps, Link } from 'gatsby';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { FeatherIcon } from '@/typings';
 
 export type NavItemProps = ComponentProps<typeof MenuItem> & {
-  to: GatsbyLinkProps<unknown>['to'];
+  to: string;
   icon: FeatherIcon;
   children: string;
 };
@@ -28,10 +29,7 @@ const useStyles = makeStyles((theme) => ({
     transition: 'all 0.225s',
 
     '&.active': {
-      '& .MuiTypography-root': {
-        color: theme.palette.primary.main,
-      },
-      '& > svg': {
+      '& .MuiTypography-root, & > svg': {
         color: theme.palette.primary.main,
       },
     },
@@ -44,16 +42,20 @@ const useStyles = makeStyles((theme) => ({
 
 export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(({ icon, children, to, className, ...props }, ref) => {
   const classes = useStyles();
+  const { pathname } = useRouter();
 
   const Icon = icon;
 
   return (
     <MenuItem {...props} className={clsx(className, classes.root)} ref={ref}>
-      <Link to={to} className={classes.link} activeClassName="active">
-        <Icon size={24} className={classes.icon} />
-        <Typography variant="subtitle1" color="textPrimary">
-          {children}
-        </Typography>
+      <Link href={to}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a className={clsx(classes.link, { active: pathname === to })}>
+          <Icon size={24} className={classes.icon} />
+          <Typography variant="subtitle1" color="textPrimary">
+            {children}
+          </Typography>
+        </a>
       </Link>
     </MenuItem>
   );

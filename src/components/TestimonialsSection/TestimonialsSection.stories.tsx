@@ -11,14 +11,14 @@ export default {
 const basePropsData: TestimonialsSectionProps = {
   testimonials: [
     {
-      authorImage: { publicURL: 'https://i.pravatar.cc/300' },
+      authorImage: 'https://i.pravatar.cc/300',
       content:
         'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
       authorName: 'Marlene Watson',
       authorJob: 'CEO of Donec',
     },
     {
-      authorImage: { publicURL: 'https://i.pravatar.cc/300' },
+      authorImage: 'https://i.pravatar.cc/300',
       content:
         'Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.',
       authorName: 'Marlene Watson',

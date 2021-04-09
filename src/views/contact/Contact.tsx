@@ -1,10 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { Formik, FormikConfig } from 'formik';
-import log from 'loglevel';
 import * as Yup from 'yup';
 
-import { Layout } from '@/components/Layout';
 import { SectionTitle } from '@/components/SectionTitle';
 
 import { useContactStyles } from './Contact.styles';
@@ -49,8 +47,10 @@ const submitFormData = (values: FormValues) =>
       ...values,
     }),
   })
-    .then(log.info)
-    .catch(log.error);
+    // eslint-disable-next-line no-console
+    .then(console.info)
+    // eslint-disable-next-line no-console
+    .catch(console.error);
 
 export const Contact = () => {
   const classes = useContactStyles();
@@ -61,13 +61,11 @@ export const Contact = () => {
   };
 
   return (
-    <Layout variant="withDetailsCard">
-      <Box className={classes.contactContainer}>
-        <SectionTitle className={classes.title}>Contact</SectionTitle>
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-          <ContactForm />
-        </Formik>
-      </Box>
-    </Layout>
+    <Box className={classes.contactContainer}>
+      <SectionTitle className={classes.title}>Contact</SectionTitle>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+        <ContactForm />
+      </Formik>
+    </Box>
   );
 };
