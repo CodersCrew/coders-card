@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
+import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
 
 import type { TestimonialVariantProps } from './Testimonial.types';
 
@@ -9,21 +9,22 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
     boxShadow: theme.shadows[0],
     backgroundColor: 'transparent',
+    overflow: 'visible',
+    position: 'relative',
+    paddingBottom: 30,
   },
   overlay: {
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-
-    height: 48,
+    position: 'absolute',
+    top: 100,
   },
-  overlayMedia: {
+  img: {
     width: 64,
     height: 64,
-    filter: 'blur(10px)',
-    opacity: 0.4,
     padding: 0,
     borderRadius: 8,
+    boxShadow: theme.shadows[0],
   },
   overlayDescription: {
     display: 'flex',
@@ -37,16 +38,13 @@ const useStyles = makeStyles((theme) => ({
   overlayLabel: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'flex-end',
     height: '100%',
     width: '100%',
-    padding: 0,
     margin: theme.spacing(1),
-  },
-  media: {
-    width: 64,
-    height: 64,
-    borderRadius: 8,
-    transform: 'translateY(-4px)',
+    padding: 0,
+    paddingTop: theme.spacing(3),
+    paddingBottom: '0 !important',
   },
   description: {
     color: theme.palette.text.secondary,
@@ -72,16 +70,12 @@ export const TestimonialDefault = ({
         </Typography>
       </CardContent>
       <CardContent className={classes.overlay}>
-        <CardMedia className={classes.media} image={authorImage}>
-          <CardMedia className={classes.overlayMedia} image={authorImage} />
-        </CardMedia>
+        <img className={classes.img} src={authorImage} alt="hero" />
         <CardContent className={classes.overlayLabel}>
-          <Typography color="textPrimary" variant="h6">
+          <Typography color="textPrimary" variant="h5">
             {authorName}
           </Typography>
-          <Typography color="textPrimary" variant="subtitle2">
-            {authorJob}
-          </Typography>
+          <Typography color="textPrimary">{authorJob}</Typography>
         </CardContent>
       </CardContent>
     </Card>
