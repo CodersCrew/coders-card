@@ -1,13 +1,17 @@
-module.exports = {
-  future: {
-    webpack5: true,
-  },
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.md$/,
-      loader: 'frontmatter-markdown-loader',
-    });
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-    return config;
-  },
+const enhanceWebpackConfig = (config) => {
+  config.module.rules.push({
+    test: /\.md$/,
+    loader: 'frontmatter-markdown-loader',
+  });
+
+  return config;
 };
+
+module.exports = withBundleAnalyzer({
+  future: { webpack5: true },
+  webpack: enhanceWebpackConfig,
+});

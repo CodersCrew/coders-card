@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.primary.main,
       padding: theme.spacing(1, 2),
     },
+    '&.MuiButton-contained.Mui-disabled': {
+      color: theme.palette.common.white,
+      opacity: 0.7,
+    },
   },
 }));
 
