@@ -1,12 +1,10 @@
 import React from 'react';
-import withFormik from 'storybook-formik';
 
 import { TextField, TextFieldProps } from '.';
 
 export default {
   title: 'TextField',
   component: 'TextField',
-  decorators: [withFormik],
 };
 const basePropsData: Partial<TextFieldProps> = {
   label: 'Label',

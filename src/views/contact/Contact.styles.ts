@@ -62,4 +62,15 @@ export const useContactStyles = makeStyles((theme) => ({
       margin: theme.spacing(0, 2, 4, 0),
     },
   },
+  snackbar: {
+    '&.success > div': {
+      backgroundColor: theme.palette.success.main,
+      color: theme.palette.success.contrastText,
+    },
+
+    '&.error > div': {
+      backgroundColor: theme.palette.error.main,
+      color: theme.palette.error.contrastText,
+    },
+  },
 }));

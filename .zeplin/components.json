@@ -13,7 +13,7 @@
     "styleguides": [],
     "github": {
         "repository": "CodersCrew/CodersCard",
-        "branch": "master"
+        "branch": "main"
     },
     "components": [
         { "path": "src/components/Button/Button.tsx", "zeplinNames": ["button"] },
