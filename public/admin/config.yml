@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: public/uploads
-public_folder: uploads
+public_folder: /uploads
 
 collections:
   - label: "General"
@@ -291,6 +291,22 @@ collections:
                   pattern: [".{5,25}", "Must have 5-25 characters"],
                 }
               - {
+                  label: "Project label",
+                  name: "label",
+                  widget: "select",
+                  options: ["Desktop", "Mobile"],
+                }
+              - {
+                  label: "Project start date",
+                  name: "startDate",
+                  widget: "datetime",
+                }
+              - {
+                  label: "Project finish date",
+                  name: "finishDate",
+                  widget: "datetime",
+                }
+              - {
                   label: "Preview note",
                   name: "previewNote",
                   widget: "string",
@@ -305,13 +321,11 @@ collections:
                   label: "Project description",
                   name: "description",
                   widget: "markdown",
-                  pattern: [".{5,400}", "Must have 5-400 characters"],
                 }
               - {
                   label: "My role in the project",
                   name: "role",
                   widget: "markdown",
-                  pattern: [".{10,370}", "Must have 10-370 characters"],
                 }
               - label: "Link buttons"
                 name: "buttons"
@@ -345,22 +359,6 @@ collections:
                           "You need to provide a valid URL",
                         ],
                     }
-              - {
-                  label: "Project label",
-                  name: "label",
-                  widget: "select",
-                  options: ["Desktop", "Mobile"],
-                }
-              - {
-                  label: "Project start date",
-                  name: "startDate",
-                  widget: "datetime",
-                }
-              - {
-                  label: "Project finish date",
-                  name: "finishDate",
-                  widget: "datetime",
-                }
               - label: "Technologies"
                 name: "technologies"
                 widget: "list"

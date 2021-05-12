@@ -1,7 +1,7 @@
 ---
-title: Default page title
-description: Default page description
-image: uploads/screenshot-2020-11-12-at-22.10.49.png
-favicon: uploads/screenshot-2020-11-12-at-22.10.49.png
+title: Jonathan Harwood Virtual CV
+description: Demo of the virtual CV created with CodersCard.
+image: /uploads/opengraph.png
+favicon: /uploads/favicon.png
 language: en
 ---

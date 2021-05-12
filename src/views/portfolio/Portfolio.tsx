@@ -63,13 +63,13 @@ export const Portfolio = () => {
   };
 
   const renderProject = (project: Project, index: number) => (
-    <Box key={project.name}>
+    <Box display="flex" key={project.name}>
       <PortfolioCard
         className={classes.project}
         type={componentType}
         title={project.name}
         label={project.label}
-        description={project.description}
+        description={project.previewNote}
         image={project.previewImage}
         onClick={() => setSelectedProject(index)}
       />
