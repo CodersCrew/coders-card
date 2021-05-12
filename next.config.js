@@ -13,5 +13,6 @@ const enhanceWebpackConfig = (config) => {
 
 module.exports = withBundleAnalyzer({
   future: { webpack5: true },
+  target: 'serverless',
   webpack: enhanceWebpackConfig,
 });
