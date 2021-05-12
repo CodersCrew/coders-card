@@ -2,6 +2,8 @@ import React from 'react';
 import { Smartphone } from 'react-feather';
 import { Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
 
+import { transformImage } from '@/utils/image';
+
 import type { PortfolioCardVariantProps } from './PortfolioCard.types';
 
 const useStyles = makeStyles((theme) => ({
@@ -60,10 +62,12 @@ export const PortfolioCardMobile = ({
 }: PortfolioCardVariantProps) => {
   const classes = useStyles();
 
+  const projectImage = transformImage(image, { width: 542, height: 304 });
+
   return (
     <Card {...props} onClick={onClick} className={`${classes.card} ${className}`}>
       <CardActionArea className={classes.action}>
-        <CardMedia className={classes.media} image={image} title={title}>
+        <CardMedia className={classes.media} image={projectImage} title={title}>
           <Typography className={classes.label} variant="subtitle2">
             <Smartphone className={classes.icon} />
             <span>{label}</span>

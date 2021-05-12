@@ -8,6 +8,7 @@ import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { StaticIcon } from '@/components/StaticIcon';
 import { Tag } from '@/components/Tag';
+import { transformImage } from '@/utils/image';
 
 import type { PortfolioProjectDialogVariantProps } from './PortfolioProjectDialog.types';
 
@@ -69,6 +70,7 @@ export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVaria
   const description = useMemo(() => marked(props.contentMainDescription), [props.contentMainDescription]);
   const role = useMemo(() => marked(props.contentMainRole), [props.contentMainRole]);
 
+  const projectImage = transformImage(props.imageUrl, { width: 600, height: 336 });
   const controlsTransform = `translateY(${Math.max(dialogScroll - CONTROLS_TOP_SPACE, 0)}px)`;
 
   const handleScroll: DialogProps['onScroll'] = (e) => {
@@ -93,7 +95,7 @@ export const PortfolioProjectDialogDesktop = (props: PortfolioProjectDialogVaria
             <ChevronRight size={30} />
           </IconButton>
         </Box>
-        <img className={classes.img} src={props.imageUrl} alt={props.title} />
+        <img className={classes.img} src={projectImage} alt={props.title} />
         <Box bgcolor="background.light" p={4}>
           <Box className={classes.headerTitle}>
             <Typography variant="h2" color="textPrimary">

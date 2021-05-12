@@ -4,11 +4,14 @@ import { Box, Divider, makeStyles, MenuList, Typography } from '@material-ui/cor
 import clsx from 'clsx';
 
 import { Button } from '@/components/Button';
+import { transformImage } from '@/utils/image';
 
 import type { NavbarProps } from './Navbar';
 import { renderNavItems } from './renderNavItems';
 
 type NavbarTabletProps = Omit<NavbarProps, 'type'>;
+
+const AVATAR_SIZE = 48;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[3],
     overflow: 'hidden',
   },
-  image: {
-    width: 48,
-    height: 48,
+  avatar: {
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
     borderRadius: 8,
     marginRight: theme.spacing(1.5),
   },
@@ -33,11 +36,13 @@ const useStyles = makeStyles((theme) => ({
 export const NavbarTablet = ({ className, fullName, image, position, resumeLink, ...props }: NavbarTabletProps) => {
   const classes = useStyles();
 
+  const avatar = transformImage(image, { width: AVATAR_SIZE, height: AVATAR_SIZE });
+
   return (
     <Box {...props} className={clsx(className, classes.root)}>
       <Box display="flex" alignItems="center" justifyContent="space-between" px={4} py={1}>
         <Box display="flex" alignItems="center">
-          <img className={classes.image} src={image} alt={fullName} />
+          <img className={classes.avatar} src={avatar} alt={fullName} />
           <Box>
             <Typography variant="h5">{fullName}</Typography>
             <Typography variant="subtitle2">{position}</Typography>

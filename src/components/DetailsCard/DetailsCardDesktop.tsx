@@ -3,10 +3,13 @@ import { Download } from 'react-feather';
 import { Box, Card, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
 
 import { Button } from '@/components/Button';
+import { transformImage } from '@/utils/image';
 
 import type { DetailsCardVariantProps } from './DetailsCard.types';
 import { DetailsItem } from './DetailsItem';
 import { renderSocialMediaIcon } from './renderSocialMediaIcon';
+
+const AVATAR_SIZE = 200;
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -35,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: '50%',
     marginLeft: theme.spacing(-12.5),
-    width: 200,
-    height: 200,
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
     borderRadius: 16,
     boxShadow: theme.shadows[3],
   },
@@ -128,10 +131,12 @@ export const DetailsCardDesktop = ({
 }: DetailsCardVariantProps) => {
   const classes = useStyles();
 
+  const avatar = transformImage(image, { width: AVATAR_SIZE, height: AVATAR_SIZE });
+
   return (
     <Box className={classes.wrapper}>
       <Card className={classes.card}>
-        <CardMedia className={classes.avatar} image={image} />
+        <CardMedia className={classes.avatar} image={avatar} />
         <CardContent className={classes.content}>
           <Box className={classes.basicInfo}>
             <Box className={classes.name}>

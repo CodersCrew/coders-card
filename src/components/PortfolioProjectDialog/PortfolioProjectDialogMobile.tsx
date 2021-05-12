@@ -7,6 +7,7 @@ import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { StaticIcon } from '@/components/StaticIcon';
 import { Tag } from '@/components/Tag';
+import { transformImage } from '@/utils/image';
 
 import type { PortfolioProjectDialogVariantProps } from './PortfolioProjectDialog.types';
 
@@ -52,6 +53,8 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
   const description = useMemo(() => marked(props.contentMainDescription), [props.contentMainDescription]);
   const role = useMemo(() => marked(props.contentMainRole), [props.contentMainRole]);
 
+  const projectImage = transformImage(props.imageUrl, { width: 600, height: 336 });
+
   return (
     <Box display="inline-block">
       <Dialog className={classes.wrapper} fullScreen open={props.isOpen}>
@@ -70,7 +73,7 @@ export const PortfolioProjectDialogMobile = (props: PortfolioProjectDialogVarian
             <X size={20} />
           </IconButton>
         </Box>
-        <img className={classes.img} src={props.imageUrl} alt={props.title} />
+        <img className={classes.img} src={projectImage} alt={props.title} />
         {props.buttons.length > 0 && (
           <Box display="flex">
             {props.buttons.map(({ name, icon, url }) => (

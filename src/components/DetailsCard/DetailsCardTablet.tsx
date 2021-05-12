@@ -1,9 +1,13 @@
 import React from 'react';
 import { Box, Card, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
 
+import { transformImage } from '@/utils/image';
+
 import type { DetailsCardVariantProps } from './DetailsCard.types';
 import { DetailsItem } from './DetailsItem';
 import { renderSocialMediaIcon } from './renderSocialMediaIcon';
+
+const AVATAR_SIZE = 160;
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -20,8 +24,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   avatar: {
-    width: 160,
-    height: 160,
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
+    minWidth: AVATAR_SIZE,
+    minHeight: AVATAR_SIZE,
     borderRadius: 16,
   },
   content: {
@@ -83,9 +89,11 @@ export const DetailsCardTablet = ({
 }: DetailsCardVariantProps) => {
   const classes = useStyles();
 
+  const avatar = transformImage(image, { width: AVATAR_SIZE, height: AVATAR_SIZE });
+
   return (
     <Card className={classes.card}>
-      <CardMedia className={classes.avatar} image={image} />
+      <CardMedia className={classes.avatar} image={avatar} />
       <CardContent className={classes.content}>
         <Typography variant="h1">{fullName}</Typography>
         <Typography variant="subtitle1" className={classes.position}>
