@@ -27,7 +27,7 @@ export const usePortfolioStyles = makeStyles((theme) => ({
       alignItems: 'center',
       justifyContent: 'center',
       gridRowGap: theme.spacing(5),
-      gridColumnGap: theme.spacing(9),
+      gridColumnGap: theme.spacing(5),
     },
   },
   project: {

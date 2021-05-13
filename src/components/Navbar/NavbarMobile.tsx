@@ -3,10 +3,14 @@ import { Menu as MenuIcon } from 'react-feather';
 import { Box, IconButton, makeStyles, Menu, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 
+import { transformImage } from '@/utils/image';
+
 import type { NavbarProps } from './Navbar';
 import { renderNavItems } from './renderNavItems';
 
 type NavbarMobileProps = Omit<NavbarProps, 'type' | 'resumeLink'>;
+
+const AVATAR_SIZE = 40;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[3],
     overflow: 'hidden',
   },
-  image: {
-    width: 40,
-    height: 40,
+  avatar: {
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
     borderRadius: 8,
     marginRight: theme.spacing(1),
   },
@@ -39,6 +43,8 @@ export const NavbarMobile = ({ className, fullName, image, position, ...props }:
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const classes = useStyles();
 
+  const avatar = transformImage(image, { width: AVATAR_SIZE, height: AVATAR_SIZE });
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -51,7 +57,7 @@ export const NavbarMobile = ({ className, fullName, image, position, ...props }:
     <>
       <Box {...props} className={clsx(className, classes.root)}>
         <Box display="flex" alignItems="center">
-          <img className={classes.image} src={image} alt={fullName} />
+          <img className={classes.avatar} src={avatar} alt={fullName} />
           <Box>
             <Typography variant="h5">{fullName}</Typography>
             <Typography variant="subtitle2">{position}</Typography>

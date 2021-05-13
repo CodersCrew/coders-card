@@ -1,7 +1,11 @@
 import React from 'react';
 import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
 
+import { transformImage } from '@/utils/image';
+
 import type { TestimonialVariantProps } from './Testimonial.types';
+
+const AVATAR_SIZE = 64;
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -19,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: 100,
   },
-  img: {
-    width: 64,
-    height: 64,
+  avatar: {
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
     padding: 0,
     borderRadius: 8,
     boxShadow: theme.shadows[0],
@@ -62,6 +66,8 @@ export const TestimonialDefault = ({
 }: TestimonialVariantProps) => {
   const classes = useStyles();
 
+  const avatar = transformImage(authorImage, { width: AVATAR_SIZE, height: AVATAR_SIZE });
+
   return (
     <Card className={classes.card} {...props}>
       <CardContent className={classes.overlayDescription}>
@@ -70,7 +76,7 @@ export const TestimonialDefault = ({
         </Typography>
       </CardContent>
       <CardContent className={classes.overlay}>
-        <img className={classes.img} src={authorImage} alt="hero" />
+        <img className={classes.avatar} src={avatar} alt="hero" />
         <CardContent className={classes.overlayLabel}>
           <Typography color="textPrimary" variant="h5">
             {authorName}

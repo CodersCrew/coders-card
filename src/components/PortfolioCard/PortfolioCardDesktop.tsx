@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Smartphone } from 'react-feather';
 import { Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
 
+import { transformImage } from '@/utils/image';
+
 import type { PortfolioCardVariantProps } from './PortfolioCard.types';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: '100%',
-    height: '100%',
     borderRadius: 8,
     boxShadow: theme.shadows[4],
   },
@@ -70,6 +70,8 @@ export const PortfolioCardDesktop = ({
   const classes = useStyles();
   const [isHovered, setHovered] = useState(false);
 
+  const projectImage = transformImage(image, { width: 400, height: 224 });
+
   return (
     <Card
       onClick={onClick}
@@ -79,7 +81,7 @@ export const PortfolioCardDesktop = ({
       {...props}
     >
       <CardActionArea className={classes.action}>
-        <CardMedia className={classes.media} image={image} title={title} />
+        <CardMedia className={classes.media} image={projectImage} title={title} />
         <CardContent style={{ opacity: isHovered ? 0.9 : 0 }} className={classes.overlay}>
           <Typography className={classes.title} variant="h4">
             {title}

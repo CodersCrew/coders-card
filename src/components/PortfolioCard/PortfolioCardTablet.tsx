@@ -2,7 +2,12 @@ import React from 'react';
 import { Smartphone } from 'react-feather';
 import { Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core';
 
+import { transformImage } from '@/utils/image';
+
 import type { PortfolioCardVariantProps } from './PortfolioCard.types';
+
+const PROJECT_IMAGE_WIDTH = 240;
+const PROJECT_IMAGE_HEIGHT = 135;
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -18,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   media: {
-    minWidth: 240,
-    minHeight: 135,
+    minWidth: PROJECT_IMAGE_WIDTH,
+    minHeight: PROJECT_IMAGE_HEIGHT,
     height: '100%',
     display: 'flex',
     alignItems: 'flex-end',
@@ -63,10 +68,12 @@ export const PortfolioCardTablet = ({
 }: PortfolioCardVariantProps) => {
   const classes = useStyles();
 
+  const projectImage = transformImage(image, { width: PROJECT_IMAGE_WIDTH, height: PROJECT_IMAGE_HEIGHT });
+
   return (
     <Card {...props} onClick={onClick} className={`${classes.card} ${className}`}>
       <CardActionArea className={classes.action}>
-        <CardMedia className={classes.media} image={image} title={title}>
+        <CardMedia className={classes.media} image={projectImage} title={title}>
           <Typography className={classes.label} variant="subtitle2">
             <Smartphone className={classes.icon} />
             <span>{label}</span>

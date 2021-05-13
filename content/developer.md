@@ -1,7 +1,7 @@
 ---
 firstName: Jonathan
 lastName: Harwood
-avatar: uploads/profile.jpg
+avatar: /uploads/avatar.jpg
 position: Fullstack developer
 phone: "123123123"
 email: jonathan.harwood@gmail.com
@@ -15,4 +15,3 @@ socialMedia:
   instagram: https://www.instagram.com/
   facebook: https://www.facebook.com/
 ---
-

@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Box, Container, makeStyles } from '@material-ui/core';
+import { useRouter } from 'next/router';
 
 import { DetailsCard } from '@/components/DetailsCard';
 import { Navbar } from '@/components/Navbar';
@@ -8,7 +9,6 @@ import { useComponentType } from '@/hooks/useComponentType';
 
 export type LayoutProps = {
   children: ReactNode;
-  variant?: 'default' | 'withDetailsCard';
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -69,15 +69,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Layout = ({ children, variant = 'default' }: LayoutProps) => {
+export const Layout = ({ children }: LayoutProps) => {
   const classes = useStyles();
+  const { pathname } = useRouter();
   const { componentType, isDesktop } = useComponentType();
+
+  const withResponsiveDetailsCard = !isDesktop && (pathname === '/' || pathname === '/contact');
 
   return (
     <Container className={classes.container} maxWidth="lg">
       {isDesktop && (
         <Box className={classes.aside}>
-          <DetailsCard type={componentType} />
+          <DetailsCard type="desktop" />
         </Box>
       )}
       <Box className={classes.main}>
@@ -89,7 +92,7 @@ export const Layout = ({ children, variant = 'default' }: LayoutProps) => {
           image={developer.avatar}
           resumeLink={developer.cv}
         />
-        {!isDesktop && variant === 'withDetailsCard' && (
+        {withResponsiveDetailsCard && (
           <Box className={classes.detailsCard}>
             <DetailsCard type={componentType} />
           </Box>
