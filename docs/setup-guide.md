@@ -5,6 +5,7 @@ This documentation will walk you through setting up a portfolio website with Cod
 ## Prerequisites
 
 - [GitHub account](https://github.com/join)
+- [Cloudinary account](https://cloudinary.com/users/register/free)
 - [Netlify account](https://app.netlify.com/signup) - you can login with GitHub
 
 ## Setup
@@ -37,6 +38,16 @@ The deploy can take a couple of minutes, please wait patiently and once it is do
 
 ![Working website](./images/up-and-running.png)
 
+## Integrate with Cloudinary
+
+1. Log into your Cloudinary account and go to the Dashboard page.
+
+2. Copy your `Cloud name` and `API Key` properties into the `config.yml` file (fields `cloud_name` and `api_key`).
+
+![Cloudinary credentials](./images/cloudinary-console-details.png)
+
+3. It's done. Now you will automatically use Cloudinary to manage and dynamically transform your graphics.
+
 ## Populate website with content
 
 After you finished the Setup section, you can now populate the website with your own content.
@@ -61,7 +72,9 @@ Now, click on the "Developer profile" card, it will get you to the editor where 
 
 ![About collection](./images/developer-collection.png)
 
-Now go through all the collections and replace the predefined information with your real information that you want to have included on your website. After you are done filling in information in a particular collection, remember to press the **Publish** button and then the **Publish now ->** option, this will trigger another build of your website and in a couple of minutes, it will be populated with new data.
+Now go through all the collections and replace the predefined information with your real information that you want to have included on your website. Remember that to modify images you need to be logged into your Cloudinary account (If you get some troubles when logging in, try to disable your ad block).
+
+After you are done filling in information in a particular collection, remember to press the **Publish** button and then the **Publish now ->** option, this will trigger another build of your website and in a couple of minutes, it will be populated with new data.
 
 ![Publish](./images/publish.png)
 
