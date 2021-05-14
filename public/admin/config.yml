@@ -4,6 +4,11 @@ backend:
 
 media_folder: public/uploads
 public_folder: /uploads
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dnzueuvzz
+    api_key: 982284384895271
 
 collections:
   - label: "General"

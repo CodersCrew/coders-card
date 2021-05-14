@@ -14,63 +14,63 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
 skills:
   - name: HTML
     category: Technologies
-    icon: /uploads/html5.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026108/ck1lenickviqbv26kjju.svg
     value: 5
   - name: CSS
     category: Technologies
-    icon: /uploads/css3.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026110/jiybztieu3wfxoejxhfp.svg
     value: 5
   - name: JavaScript
     category: Technologies
-    icon: /uploads/javascript.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026108/wcxzq9ppgmgfoyqezztj.svg
     value: 5
   - name: TypeScript
     category: Technologies
-    icon: /uploads/typescript.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/laaqxf9hmaszvwnpqv6h.svg
     value: 4
   - name: React.js
     category: Technologies
-    icon: /uploads/react.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/osqhnay24frmoy8virke.svg
     value: 3
   - name: SASS
     category: Technologies
-    icon: /uploads/sass.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/nwbi2iodlc2plojb8u72.svg
     value: 3
   - name: Node.js
     category: Technologies
-    icon: /uploads/nodejs.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026108/gd3aivlm1wyo2hfg3jir.svg
     value: 4
   - name: Express
     category: Technologies
-    icon: /uploads/express.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026110/ey4xqujxvvbvec1kjtq0.svg
     value: 5
   - name: PostgreSQL
     category: Technologies
-    icon: /uploads/postgresql.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/qhp2fvoepjyelslqx241.svg
     value: 2
   - name: MongoDB
     category: Technologies
-    icon: /uploads/mongodb.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/r38fy9sslg60delx3poa.svg
     value: 3
   - name: Docker
     category: Tools
-    icon: /uploads/docker.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026110/bzequ627owgr5atx4nk2.svg
     value: 1
   - name: Gatsby
     category: Tools
-    icon: /uploads/gatsby.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026108/gyngejb6jkjqnuekhphm.svg
     value: 3
   - name: Git
     category: Tools
-    icon: /uploads/git.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026108/qkcooquoedlxaor6nauk.svg
     value: 4
   - name: Heroku
     category: Tools
-    icon: /uploads/heroku.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026108/rdtcb3flssxwlmebr3xx.svg
     value: 3
   - name: Webpack
     category: Tools
-    icon: /uploads/webpack.svg
+    icon: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/ygn4uwpp3oei1xrqrwjy.svg
     value: 2
   - name: Polish - native
     category: Other
@@ -79,12 +79,16 @@ skills:
     category: Other
     value: 4
 testimonials:
-  - content: Mauris suscipit risus ut lorem consequat, id gravida sem vulputate. Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit amet viverra dolor.
-    authorImage: /uploads/testimonial-1.jpg
+  - content: Mauris suscipit risus ut lorem consequat, id gravida sem vulputate.
+      Donec pharetra mi ac elit hendrerit, at viverra risus fermentum. Proin sit
+      amet viverra dolor.
+    authorImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026105/wc9unlltgzhttjvfarnm.jpg
     authorName: Marlene Watson
     authorJob: CEO of Donec
-  - content: Suspendisse ullamcorper massa nec lectus volutpat malesuada. Proin at nibh dui. Nunc at tincidunt mauris, non sagittis libero. Proin porta id elit sit amet maximus.
-    authorImage: /uploads/testimonial-2.jpg
+  - content: Suspendisse ullamcorper massa nec lectus volutpat malesuada. Proin at
+      nibh dui. Nunc at tincidunt mauris, non sagittis libero. Proin porta id
+      elit sit amet maximus.
+    authorImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026105/ljkzzt0qikzaqubyy4nr.jpg
     authorName: Gabe Mcdonalid
     authorJob: Marketing specialist in Railroad
 ---
