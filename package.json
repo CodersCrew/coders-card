@@ -23,6 +23,7 @@
     "dayjs": "1.10.4",
     "marked": "2.0.3",
     "next": "10.2.0",
+    "preact": "10.5.13",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-feather": "2.0.9",
