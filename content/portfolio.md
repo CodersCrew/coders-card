@@ -17,7 +17,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 1
     startDate: 2020-09-23T12:10:23.756Z
-    previewImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/qarqfods8bvjmxwzadpb.jpg
+    previewImage: /uploads/project-1.jpg
     label: Mobile
     role: Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur
       mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales.
@@ -51,7 +51,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 2
     startDate: 2020-04-01T17:45:21.756Z
-    previewImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/ansvh56rbr6nhwpei7qj.jpg
+    previewImage: /uploads/project-2.jpg
     label: Desktop
     role: Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur
       mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales.
@@ -85,7 +85,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 3
     startDate: 2019-12-05T10:45:41.756Z
-    previewImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026105/numnjhmhbup3youaovat.jpg
+    previewImage: /uploads/project-3.jpg
     label: Desktop
     role: Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur
       mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales.
@@ -119,7 +119,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 4
     startDate: 2019-01-05T12:32:34.756Z
-    previewImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026106/yuidsnhw0prpkbketgsg.jpg
+    previewImage: /uploads/project-4.jpg
     label: Desktop
     role: Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur
       mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales.
@@ -153,7 +153,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 5
     startDate: 2018-07-12T15:32:14.756Z
-    previewImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026105/z9hhx03vadvckluvnwja.jpg
+    previewImage: /uploads/project-5.jpg
     label: Desktop
     role: Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur
       mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales.
@@ -187,7 +187,7 @@ projects:
       - name: TypeScript
     name: My Awesome Project 6
     startDate: 2017-08-01T04:34:16.756Z
-    previewImage: https://res.cloudinary.com/dnzueuvzz/image/upload/v1621026105/tz8al8znp6evrl9kr0cj.jpg
+    previewImage: /uploads/project-6.jpg
     label: Desktop
     role: Sed eu enim auctor, auctor ipsum id, finibus metus. Donec vel efficitur
       mi. Donec at justo nunc. Nullam vitae urna ut leo vehicula sodales.

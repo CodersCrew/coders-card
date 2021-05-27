@@ -5,7 +5,6 @@ This documentation will walk you through setting up a portfolio website with Cod
 ## Prerequisites
 
 - [GitHub account](https://github.com/join)
-- [Cloudinary account](https://cloudinary.com/users/register/free)
 - [Netlify account](https://app.netlify.com/signup) - you can login with GitHub
 
 ## Setup
@@ -38,16 +37,6 @@ The deploy can take a couple of minutes, please wait patiently and once it is do
 
 ![Working website](./images/up-and-running.png)
 
-## Integrate with Cloudinary
-
-1. Log into your Cloudinary account and go to the Dashboard page.
-
-2. Copy your `Cloud name` and `API Key` properties into the `config.yml` file (fields `cloud_name` and `api_key`).
-
-![Cloudinary credentials](./images/cloudinary-console-details.png)
-
-3. It's done. Now you will automatically use Cloudinary to manage and dynamically transform your graphics.
-
 ## Populate website with content
 
 After you finished the Setup section, you can now populate the website with your own content.
@@ -72,7 +61,7 @@ Now, click on the "Developer profile" card, it will get you to the editor where 
 
 ![About collection](./images/developer-collection.png)
 
-Now go through all the collections and replace the predefined information with your real information that you want to have included on your website. Remember that to modify images you need to be logged into your Cloudinary account (If you get some troubles when logging in, try to disable your ad block).
+Now go through all the collections and replace the predefined information with your real information that you want to have included on your website.
 
 After you are done filling in information in a particular collection, remember to press the **Publish** button and then the **Publish now ->** option, this will trigger another build of your website and in a couple of minutes, it will be populated with new data.
 
@@ -99,3 +88,25 @@ On these pictures below, you can find about what each collection represents on t
 This is a special collection where you should provide an obligatory portion of metadata for your portfolio.
 
 After you fill in all your information and publish your changes every time, you should see that your website has been updated, and you have your custom portfolio website! 🎉
+
+## Integrate with Cloudinary (optional)
+
+If you want your portfolio images to be better optimized, you can integrate the project with Cloudinary. You can do it in a few steps:
+
+1. Log into your Cloudinary account and go to the Dashboard page.
+
+2. Find your `Cloud name` and `API Key` properties.
+
+![Cloudinary credentials](./images/cloudinary-console-details.png)
+
+3. Copy properties from the previous step to the `config.yml` file using the following snippet.
+
+```yml
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: your_cloud_name
+    api_key: your_api_key
+```
+
+4. It's done. Now you will automatically use Cloudinary to manage and dynamically transform your graphics. If you have some current images you want to be optimize, you need to reupload them again using Cloudinary.
