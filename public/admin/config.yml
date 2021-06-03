@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: main
+# local_backend: true
 
 media_folder: public/uploads
 public_folder: /uploads
@@ -27,7 +28,12 @@ collections:
               widget: "string",
               pattern: [".{2,20}", "Must have 2-20 characters"],
             }
-          - { label: "Avatar image", name: "avatar", widget: "image" }
+          - {
+              label: "Avatar image",
+              name: "avatar",
+              widget: "image",
+              hint: "Recommended size: 200x200 px",
+            }
           - {
               label: "Job position",
               name: "position",
@@ -137,11 +143,17 @@ collections:
               widget: "string",
               pattern: [".{50,160}", "Must have 50-160 characters"],
             }
-          - { label: "Page open graph image", name: "image", widget: "image" }
+          - {
+              label: "Page open graph image",
+              name: "image",
+              widget: "image",
+              hint: "Recommended size: 1200x630 px",
+            }
           - {
               label: "Favicon - small icon visible in bookmarks and browser tabs",
               name: "favicon",
               widget: "image",
+              hint: "Recommended size: 32x32 px",
             }
           - {
               label: "Website language code (ex. 'en', 'pl')",
@@ -186,6 +198,7 @@ collections:
                   name: "icon",
                   widget: "image",
                   required: false,
+                  hint: "Recommended size: 20x20 px",
                 }
               - {
                   label: "Value",
@@ -209,6 +222,7 @@ collections:
                   label: "Testimonial author image",
                   name: "authorImage",
                   widget: "image",
+                  hint: "Recommended size: 64x64 px",
                 }
               - {
                   label: "Testimonial author full name",
@@ -316,6 +330,7 @@ collections:
                   label: "Preview image",
                   name: "previewImage",
                   widget: "image",
+                  hint: "Recommended size: 600x336 px",
                 }
               - {
                   label: "Project description",
